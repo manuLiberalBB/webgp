@@ -25,7 +25,7 @@ lib/
 config/                 # Configuración del sitio
 ```
 
-## Content types en Contentful (fase actual)
+## Content types en Contentful (fase actual)dd
 
 Solo dos tipos por ahora:
 
