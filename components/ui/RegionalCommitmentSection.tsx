@@ -1,0 +1,84 @@
+import Image from 'next/image';
+
+import { Badge } from '@/components/ui/Badge';
+import { RichText } from '@/components/ui/RichText';
+import type { StatisticItem } from '@/lib/contentful/types/statistic';
+import type { Document } from '@contentful/rich-text-types';
+import { cn } from '@/lib/utils';
+
+type RegionalCommitmentSectionProps = {
+  tag?: string;
+  title?: string;
+  body: Document;
+  imageUrl: string;
+  imageAlt?: string;
+  statistic?: StatisticItem;
+  className?: string;
+};
+
+export function RegionalCommitmentSection({
+  tag,
+  title,
+  body,
+  imageUrl,
+  imageAlt = '',
+  statistic,
+  className,
+}: RegionalCommitmentSectionProps) {
+  return (
+    <section
+      className={cn(
+        'bg-[#f6f4ef] px-6 py-12 md:px-layout-x md:py-20',
+        className,
+      )}
+    >
+      <div className="mx-auto flex w-full max-w-content flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+        <div className="flex w-full max-w-[527px] flex-col gap-8">
+          {tag ? (
+            <Badge className="w-fit rounded bg-[#0b2d4e] px-3 py-2 text-sm leading-5 font-semibold tracking-[0.35px]">
+              {tag}
+            </Badge>
+          ) : null}
+
+          <div className="flex flex-col gap-6">
+            {title ? (
+              <h2 className="text-heading text-[2rem] leading-tight font-semibold tracking-[-0.96px] md:text-[3rem] md:leading-[3.5rem]">
+                {title}
+              </h2>
+            ) : null}
+
+            <RichText document={body} className="regional-commitment-body" />
+          </div>
+        </div>
+
+        <div className="relative mx-auto w-[431px] max-w-full shrink-0 lg:mx-0">
+          <div className="relative h-[530px] w-full overflow-hidden rounded-lg bg-white">
+            <Image
+              src={imageUrl}
+              alt={imageAlt}
+              fill
+              sizes="431px"
+              className="object-cover object-center"
+            />
+          </div>
+
+          {statistic ? (
+            <div
+              className={cn(
+                'absolute -bottom-6 -left-4 max-w-[210px] rounded-lg bg-[#1b2a38] p-7',
+                'shadow-[0px_10px_7.5px_rgba(0,0,0,0.1),0px_4px_3px_rgba(0,0,0,0.1)]',
+                'sm:-left-6',
+              )}
+            >
+              <p className="text-[2.25rem] leading-9 font-bold text-white">{statistic.value}</p>
+
+              {statistic.label ? (
+                <p className="pt-2 text-xs leading-[16.5px] text-white">{statistic.label}</p>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </section>
+  );
+}

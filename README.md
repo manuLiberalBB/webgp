@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# webGP_v2
 
-## Getting Started
+Rediseño de Grupo Petersen — Next.js 15 + Contentful.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Next.js 15 (App Router, Turbopack)
+- React 19 + TypeScript
+- Tailwind CSS 4
+- Contentful (Delivery + Preview)
+
+## Estructura
+
+```
+app/                    # Rutas y layout
+  [...page]/            # Páginas dinámicas desde Contentful
+  api/revalidate/       # Webhook on-demand ISR
+components/
+  ui/                   # Design system (Container, Section, Button…)
+  blocks/               # Bloques CMS + registry + PageRenderer
+  layout/               # Header, Footer (pendiente)
+features/               # Módulos por dominio (contact, articles…)
+lib/
+  contentful/           # Cliente, queries, tipos
+config/                 # Configuración del sitio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Content types en Contentful (fase actual)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Solo dos tipos por ahora:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### `link` (Enlace Interno)
 
-## Learn More
+| Campo (ID)      | Tipo   | Requerido | Notas                          |
+|-----------------|--------|-----------|--------------------------------|
+| `contentfulName` | Symbol | sí        | Display field, único           |
+| `link`          | Symbol | sí        | URL interna (`/inicio`, etc.)  |
 
-To learn more about Next.js, take a look at the following resources:
+Tipo TS: `lib/contentful/types/link.ts` · helper: `getLinkHref()`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### `page` (Página)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Campo (ID)        | Tipo              | Requerido | Notas                              |
+|-------------------|-------------------|-----------|------------------------------------|
+| `contentfulName`   | Symbol            | sí        | Display field, único               |
+| `title`           | Symbol            | sí        | Título SEO                         |
+| `metaDescription` | Symbol            | sí        | Meta descripción SEO               |
+| `keywords`        | Array (Symbol)    | no        | Palabras clave SEO                 |
+| `path`            | Link → `link`     | sí        | Ruta interna de la página          |
+| `content`         | Array (Entry)     | sí        | Bloques de la página               |
 
-## Deploy on Vercel
+Tipo TS: `lib/contentful/types/page.ts` · `formatPageKeywords()`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> v1 usaba content type `url` con campo `url`. v2 usa `link` con campo `link`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### `richTextBlock` (Bloque de Texto Enriquecido)
+
+| Campo (ID)      | Tipo     | Requerido | Notas                    |
+|-----------------|----------|-----------|--------------------------|
+| `contentfulName` | Symbol   | sí        | Display field            |
+| `content`       | RichText | sí        | Cuerpo con formato       |
+
+- Tipo TS: `lib/contentful/types/richTextBlock.ts`
+- Bloque: `components/blocks/RichTextBlock.tsx`
+- UI: `components/ui/RichText.tsx` (renderer compartido)
+
+Registrado en `components/blocks/registry.ts` como `richTextBlock`.
+
+### `news` (Noticia)
+
+| Campo (ID)        | Tipo              | Requerido | Notas                                      |
+|-------------------|-------------------|-----------|--------------------------------------------|
+| `contentfulName`  | Symbol            | sí        | Display field, único                       |
+| `title`           | Symbol            | sí        | Título SEO                                 |
+| `metaDescription` | Symbol          | sí        | Meta descripción SEO                       |
+| `keywords`        | Array (Symbol)    | no        | Palabras clave SEO                         |
+| `noticeTitle`     | Symbol            | sí        | Título visible de la noticia, único        |
+| `subtitle`        | Symbol            | no        | Bajada o subtítulo                         |
+| `path`            | Symbol            | sí        | Slug de la noticia (`mi-noticia`)          |
+| `companies`       | Array → `company` | no      | Empresas relacionadas                      |
+| `category`        | Symbol (enum)     | no        | Categoría editorial                        |
+| `tags`            | Array (Symbol)    | no        | Etiquetas                                  |
+| `coverImage`      | Link → Asset      | sí        | Imagen de portada                          |
+| `content`         | RichText          | sí        | Cuerpo de la noticia                       |
+
+Tipo TS: `lib/contentful/types/news.ts` · helpers: `getNewsPath()`, `formatPageKeywords()`
+
+## Agregar un bloque CMS
+
+1. Crear el content type en Contentful (ej. `hero`).
+2. Crear `components/blocks/HeroBlock.tsx`.
+3. Registrar en `components/blocks/registry.ts`:
+
+```ts
+import { HeroBlock } from './HeroBlock';
+
+export const blockRegistry = {
+  hero: HeroBlock,
+};
+```
+
+## Variables de entorno
+
+Copiá `.env.example` a `.env` y completá las credenciales de Contentful.
+
+```bash
+cp .env.example .env
+```
+
+## Scripts
+
+```bash
+npm run dev      # desarrollo (Turbopack)
+npm run build    # build producción
+npm run start    # servidor en puerto 8080
+```
+
+## ISR
+
+- `revalidate = 3600` en `[...page]/page.tsx` (1 hora).
+- Webhook: `POST /api/revalidate?secret=XXX&path=/ruta`

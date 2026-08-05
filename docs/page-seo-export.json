@@ -1,0 +1,343 @@
+[
+  {
+    "path": "/economias-regionales",
+    "contentfulName": "PAGINA - Economías Regionales",
+    "title": "Economías Regionales | Grupo Petersen",
+    "metaDescription": "Test",
+    "keywords": [],
+    "blocks": [
+      {
+        "type": "banner",
+        "name": "HERO - Economías Regionales",
+        "title": "Economías Regionales",
+        "subtitle": "Impulsamos el crecimiento económico del interior a través de inversiones estratégicas, financiamiento productivo y desarrollo de sectores clave.",
+        "tag": null
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - Nuestro compromiso con el desarrollo regional",
+        "title": "Desarrollo regional con visión de largo plazo.",
+        "subtitle": null,
+        "tag": "Nuestro compromiso con el desarrollo regional"
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - Sectores estrategicos",
+        "title": "Sectores estratégicos",
+        "subtitle": "Cada eje representa un área donde el Grupo genera impacto económico territorial sostenido.",
+        "tag": null
+      },
+      {
+        "type": "banner",
+        "name": "BANNER - Alcance economías regionales",
+        "title": "El alcance de nuestras economías regionales",
+        "subtitle": null,
+        "tag": null
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - Estamos presentes en el desarrollo regional",
+        "title": "Estamos presentes en el desarrollo Regional",
+        "subtitle": null,
+        "tag": null
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - NOTICIAS QUE PODRIAN INTERESARTE (1)",
+        "title": "Noticias relacionadas",
+        "subtitle": null,
+        "tag": null
+      }
+    ]
+  },
+  {
+    "path": "/inicio",
+    "contentfulName": "PAGINA - Home",
+    "title": "Grupo Petersen",
+    "metaDescription": "El Grupo Petersen es un conjunto de empresas argentinas con presencia en todas las regiones del país. Se diversifica en áreas como la ingeniería y la construcción, las finanzas, las soluciones fintech, la agroindustria y los servicios urbanos.",
+    "keywords": [],
+    "blocks": [
+      {
+        "type": "featuredNews",
+        "name": "NOTICIAS DESTACADAS",
+        "title": null,
+        "subtitle": null,
+        "tag": null
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - Nuestro ecosistema empresarial",
+        "title": "Nuestro ecosistema empresarial",
+        "subtitle": "Desde hace más de 100 años somos un Grupo de capitales naciones, con un portfolio de empresas líderes en banca, tecnología, ingeniería y servicios, trabajando por el desarrollo regional de nuestro país.",
+        "tag": null
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - NUESTRO COMPROMISO CON LA COMUNIDAD",
+        "title": "Nuestro compromiso con la comunidad",
+        "subtitle": "A través de nuestras empresas promovemos el desarrollo, generando un impacto positivo en miles de familias argentinas.",
+        "tag": null
+      }
+    ]
+  },
+  {
+    "path": "/noticias",
+    "contentfulName": "PAGINA - Noticias",
+    "title": "Últimas Noticias",
+    "metaDescription": "Mantenete al día con las últimas noticias",
+    "keywords": [],
+    "blocks": [
+      {
+        "type": "featuredNews",
+        "name": "NOTICIAS DESTACADAS",
+        "title": null,
+        "subtitle": null,
+        "tag": null
+      },
+      {
+        "type": "banner",
+        "name": "BANNER - QUALIA SEGUROS",
+        "title": "Conoce nuestros Seguros",
+        "subtitle": "Providing clear and accessible contact information is paramount. This typically includes details such as the name of the individual or organisation, mailing address,",
+        "tag": null
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - Ultimas dinamicas presenciales (video embebido)",
+        "title": "Últimas dinámicas presenciales",
+        "subtitle": "Nuestro crecimiento se construye impulsando iniciativas que generan valor económico, social y ambiental en las comunidades donde estamos presentes.",
+        "tag": null
+      }
+    ]
+  },
+  {
+    "path": "/nuestro-impacto",
+    "contentfulName": "PAGINA - Nuestro Impacto",
+    "title": "Nuestro Impacto | Grupo Petersen",
+    "metaDescription": "test",
+    "keywords": [],
+    "blocks": [
+      {
+        "type": "banner",
+        "name": "HERO - Nuestro impacto",
+        "title": "Nuestro impacto",
+        "subtitle": "Impulsamos iniciativas que generan valor económico, social y ambiental para contribuir al desarrollo de las regiones donde estamos presentes.",
+        "tag": null
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - Un compromiso que atraviesa todo el grupo",
+        "title": "Un compromiso que atraviesa todo el Grupo",
+        "subtitle": null,
+        "tag": null
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - Como generamos impacto",
+        "title": "Cómo generamos impacto",
+        "subtitle": null,
+        "tag": null
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - Fundaciones Grupo Petersen",
+        "title": "Fundaciones Grupo Petersen",
+        "subtitle": "Fundadas en 2001 las Fundaciones desarrollan acciones continuas, voluntarias y sistemáticas de inversión social privada con foco en la transformación de la escuela secundaria y el desarrollo de las comunidades.",
+        "tag": "Educación y Comunidades"
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - Areas de acción de las fundaciones",
+        "title": "Áreas de acción de las fundaciones",
+        "subtitle": "A través de alianzas estratégicas, nuestras fundaciones, generan oportunidades reales para las personas y sus comunidades  mediante programas educativos, desarrollo territorial, promoción de la cultura y fortalecimiento institucional.",
+        "tag": null
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - CTA FUNDACIONES GP",
+        "title": null,
+        "subtitle": null,
+        "tag": null
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - PROGRAMAS QUE IMPULSAN EL DESARROLLO",
+        "title": "Programas que impulsan el desarrollo",
+        "subtitle": "Iniciativas concretas con impacto real en las comunidades donde estamos presentes.",
+        "tag": "NUESTRAS INICIATIVAS"
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - i3 Innovación para el desarrolllo",
+        "title": "i3 - Innovación para el desarrollo",
+        "subtitle": "i3 es el centro de innovación financiera de Grupo Petersen, un espacio pensado para buscar formas de innovación, imaginar futuros posibles e impulsar transformaciones reales.",
+        "tag": "INNOVACIÓN"
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - I3 CICLO DE CONVERSACIONES",
+        "title": null,
+        "subtitle": null,
+        "tag": null
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - TAMBIEN PUEDE INTERESARTE",
+        "title": "También puede interesarte",
+        "subtitle": null,
+        "tag": null
+      }
+    ]
+  },
+  {
+    "path": "/quienes-somos",
+    "contentfulName": "PAGINA - Quienes Somos",
+    "title": "Sobre nosotros | Grupo Petersen",
+    "metaDescription": "Somos un grupo empresario argentino que tiene por objetivo contribuir al desarrollo de nuestro país, respaldado en los mismos valores de nuestros fundadores: excelencia, trayectoria, confiabilidad, solidez y transparencia.",
+    "keywords": [],
+    "blocks": [
+      {
+        "type": "banner",
+        "name": "HERO - Quienes somos",
+        "title": "Quiénes Somos",
+        "subtitle": "Un grupo empresarial diversificado que impulsa el desarrollo económico y social de Argentina, con más de un siglo de trayectoria",
+        "tag": "Desde 1920 construyendo el país"
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - Los inicios",
+        "title": "Los inicios",
+        "subtitle": null,
+        "tag": "Nuestra historia"
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - Nuestro propósito",
+        "title": "Nuestro propósito",
+        "subtitle": "Impulsamos empresas que generan valor económico, social y sostenible en los sectores estratégicos del país. Ese es el compromiso que guía cada una de nuestras acciones.",
+        "tag": null
+      },
+      {
+        "type": "banner",
+        "name": "BANNER - Que hacemos",
+        "title": "Qué hacemos",
+        "subtitle": "Unimos talento, innovación y experiencia para potenciar sectores estratégicos que impulsan el desarrollo regional.",
+        "tag": "Nuestros sectores estratégicos"
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - GRILLA SECTORES",
+        "title": null,
+        "subtitle": "Nuestro grupo empresarial opera en diversos sectores estratégicos de la economía argentina.",
+        "tag": null
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - Empresas que impulsan el desarrollo",
+        "title": "Empresas que impulsan el desarrollo",
+        "subtitle": null,
+        "tag": null
+      },
+      {
+        "type": "banner",
+        "name": "BANNER - Grupo Petersen hoy",
+        "title": "Grupo Petersen hoy",
+        "subtitle": "Más de un siglo construyendo futuro",
+        "tag": null
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - Talento y Cultura",
+        "title": "Talento y cultura",
+        "subtitle": "Nuestro equipo es el motor de nuestro crecimiento. Buscamos personas apasionadas, innovadoras y comprometidas con la excelencia.",
+        "tag": null
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - CTA Hiring Room",
+        "title": "¿Querés formar parte de nuestro equipo?",
+        "subtitle": "Explorá las oportunidades laborales en todas nuestras empresas y comenzá tu carrera en Grupo Petersen",
+        "tag": null
+      },
+      {
+        "type": "gridSection",
+        "name": "SECCION - NOTICIAS QUE PODRIAN INTERESARTE",
+        "title": "También puede interesarte",
+        "subtitle": null,
+        "tag": null
+      }
+    ]
+  },
+  {
+    "path": "/sectores/banca",
+    "contentfulName": "PAGINA - Sector Banca",
+    "title": "Banca | Grupo Petersen",
+    "metaDescription": "Banca | Grupo Petersen",
+    "keywords": [],
+    "blocks": []
+  },
+  {
+    "path": "/sectores/ingenieria-y-construccion",
+    "contentfulName": "PAGINA - Ingeniería y Construcción",
+    "title": "Ingeniería y Construcción | Grupo Petersen",
+    "metaDescription": "Ingeniería y Construcción | Grupo Petersen",
+    "keywords": [],
+    "blocks": []
+  },
+  {
+    "path": "/sectores/mineria",
+    "contentfulName": "PAGINA - Sector Minería",
+    "title": "Minería | Grupo Petersen",
+    "metaDescription": "Minería | Grupo Petersen",
+    "keywords": [],
+    "blocks": []
+  },
+  {
+    "path": "/sectores/produccion-vitivinicola",
+    "contentfulName": "PAGINA - Producción Vitivinícola",
+    "title": "Producción Vitivinícola | Grupo Petersen",
+    "metaDescription": "Ingeniería y Construcción | Grupo Petersen",
+    "keywords": [],
+    "blocks": []
+  },
+  {
+    "path": "/sectores/seguros",
+    "contentfulName": "PAGINA - Sector Seguros",
+    "title": "Seguros | Grupo Petersen",
+    "metaDescription": "Seguros | Grupo Petersen",
+    "keywords": [],
+    "blocks": []
+  },
+  {
+    "path": "/sectores/soluciones-de-pago",
+    "contentfulName": "PAGINA - Sector Soluciones de Pago",
+    "title": "Soluciones de Pago | Grupo Petersen",
+    "metaDescription": "Soluciones de Pago | Grupo Petersen",
+    "keywords": [],
+    "blocks": []
+  },
+  {
+    "path": "/sectores/tecnologia-financiera",
+    "contentfulName": "PAGINA - Sector Tecnologia Financiera",
+    "title": "Tecnología Financiera | Grupo Petersen",
+    "metaDescription": "Tecnología Financiera | Grupo Petersen",
+    "keywords": [],
+    "blocks": []
+  },
+  {
+    "path": "/trabaja-en-gp",
+    "contentfulName": "PAGINA - Trabaja en GP",
+    "title": "Trabaja en GP | Grupo Petersen",
+    "metaDescription": "test",
+    "keywords": [],
+    "blocks": [
+      {
+        "type": "externalLink",
+        "name": "WEB HIRING ROOM",
+        "title": null,
+        "subtitle": null,
+        "tag": null
+      }
+    ]
+  }
+]
