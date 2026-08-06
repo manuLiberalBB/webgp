@@ -107,12 +107,19 @@ Copiá `.env.example` a `.env` y completá las credenciales de Contentful.
 cp .env.example .env
 ```
 
+## Instalación
+
+```bash
+yarn
+```
+
 ## Scripts
 
 ```bash
-npm run dev      # desarrollo (Turbopack)
-npm run build    # build producción
-npm run start    # servidor en puerto 8080
+yarn dev         # desarrollo (Turbopack)
+yarn build       # build producción
+yarn start       # servidor en puerto 8080
+yarn lint        # ESLint
 ```
 
 ## ISR

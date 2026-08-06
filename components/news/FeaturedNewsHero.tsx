@@ -1,6 +1,5 @@
 import Image from 'next/image';
 
-import { AdaptiveHeroLogo } from '@/components/news/AdaptiveHeroLogo';
 import { NewsArticleButton } from '@/components/news/NewsArticleButton';
 import { NewsCategoryBadge } from '@/components/ui/NewsCategoryBadge';
 import { NewsCompanyBadge } from '@/components/ui/NewsCompanyBadge';
@@ -73,12 +72,12 @@ export function FeaturedNewsHero({ item, className }: FeaturedNewsHeroProps) {
 
           <div className="flex w-full flex-col items-start gap-7">
             {item.companyLogoUrl ? (
-              <AdaptiveHeroLogo
-                coverImageUrl={item.coverImageUrl}
-                logoUrl={item.companyLogoUrl}
-                logoAlt={item.companyName ?? ''}
+              <Image
+                src={item.companyLogoUrl}
+                alt={item.companyName ?? ''}
                 width={item.companyLogoWidth ?? 250}
                 height={item.companyLogoHeight ?? 55}
+                className="block h-[52px] w-auto max-w-[234px] self-start object-contain object-left"
               />
             ) : null}
 

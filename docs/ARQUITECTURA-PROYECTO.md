@@ -107,13 +107,21 @@ webGP_v2/
 | Fechas | dayjs | 1.11 |
 | Lint | ESLint + eslint-config-next | 9 |
 
-### Scripts npm
+### Scripts (Yarn)
+
+Instalación inicial:
 
 ```bash
-npm run dev      # next dev --turbopack
-npm run build    # Build de producción
-npm run start    # Servidor en puerto 8080
-npm run lint     # ESLint
+yarn
+```
+
+Comandos:
+
+```bash
+yarn dev         # next dev --turbopack
+yarn build       # Build de producción
+yarn start       # Servidor en puerto 8080
+yarn lint        # ESLint
 ```
 
 ---
