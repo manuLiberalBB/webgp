@@ -7,7 +7,7 @@ import { resolveNavLink } from '@/lib/contentful/resolveNavLink';
 import type { CardFields } from '@/lib/contentful/types/card';
 import { cn } from '@/lib/utils';
 
-import { FoundationAreaTagBadge } from './FoundationAreaTagBadge';
+import { FoundationAreaTagBadge } from '@/components/sections/foundations/FoundationAreaTagBadge';
 
 type GridOverlayCardProps = {
   fields: CardFields;

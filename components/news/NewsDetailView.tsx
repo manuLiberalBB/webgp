@@ -3,7 +3,7 @@ import { NewsArticleMeta } from '@/components/news/NewsArticleMeta';
 import { NewsSidebar } from '@/components/news/NewsSidebar';
 import { YouMayAlsoLikeSectionWithFetch } from '@/components/news/YouMayAlsoLikeSectionWithFetch';
 import { NewsDetailMoreAboutGroupSectionWithFetch } from '@/components/news/NewsDetailMoreAboutGroupSectionWithFetch';
-import { NewsHero } from '@/components/ui/NewsHero';
+import { NewsHero } from '@/components/news/NewsHero';
 import { PageContentReady } from '@/components/layout/PageLoadCoordinator';
 import { getRelatedNews } from '@/lib/contentful/queries';
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';

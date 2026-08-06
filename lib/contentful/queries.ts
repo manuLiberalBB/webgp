@@ -34,14 +34,31 @@ import { CONTENTFUL_INCLUDE } from './includeDepth';
 
 const NEWS_BASE_SEGMENT = 'noticias';
 
-function buildNewsCategoryQuery(category: NewsCategory): Record<string, string> {
-  const values = getNewsCategoryQueryValues(category);
-
-  if (values.length === 1) {
-    return { 'fields.category': values[0]! };
-  }
+function buildNewsCategoriesQuery(categories: NewsCategory[]): Record<string, string> {
+  const values = [...new Set(categories.flatMap(getNewsCategoryQueryValues))];
 
   return { 'fields.category[in]': values.join(',') };
+}
+
+function resolveFeaturedRelatedCategoryFilters(options: {
+  category?: NewsFields['category'];
+  categories?: NewsCategory[];
+}): NewsCategory[] {
+  const normalizedCategories =
+    options.categories
+      ?.map((item) => normalizeNewsCategory(item))
+      .filter((item): item is NewsCategory => Boolean(item)) ?? [];
+
+  if (normalizedCategories.length > 0) {
+    return normalizedCategories;
+  }
+
+  const normalizedCategory = normalizeNewsCategory(options.category);
+  return normalizedCategory ? [normalizedCategory] : [];
+}
+
+function buildNewsCategoryQuery(category: NewsCategory): Record<string, string> {
+  return buildNewsCategoriesQuery([category]);
 }
 
 function toPath(page: string[] | undefined): string {
@@ -173,20 +190,21 @@ export async function getRelatedNews(options: {
 }
 
 export async function getFeaturedRelatedNews(options: {
-  excludePath: string;
+  excludePath?: string;
   category?: NewsFields['category'];
+  categories?: NewsCategory[];
   limit?: number;
 }): Promise<FeaturedNewsItem[]> {
-  const { excludePath, category, limit = 3 } = options;
+  const { excludePath = '', category, categories, limit = 3 } = options;
   const client = getContentfulClient();
   const related: FeaturedNewsItem[] = [];
-  const seen = new Set<string>([excludePath]);
+  const seen = new Set<string>(excludePath ? [excludePath] : []);
 
   async function fetchBatch(query: Record<string, unknown>) {
     const entries = await client.getEntries<NewsSkeleton>({
       content_type: 'news',
       include: CONTENTFUL_INCLUDE.newsList,
-      limit: limit + 1,
+      limit: limit + seen.size + 5,
       order: ['-sys.createdAt'],
       ...query,
     });
@@ -205,10 +223,10 @@ export async function getFeaturedRelatedNews(options: {
     }
   }
 
-  const normalizedCategory = normalizeNewsCategory(category);
+  const categoryFilters = resolveFeaturedRelatedCategoryFilters({ category, categories });
 
-  if (normalizedCategory) {
-    await fetchBatch(buildNewsCategoryQuery(normalizedCategory));
+  if (categoryFilters.length > 0) {
+    await fetchBatch(buildNewsCategoriesQuery(categoryFilters));
   }
 
   if (related.length < limit) {

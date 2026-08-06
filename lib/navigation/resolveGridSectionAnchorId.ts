@@ -1,30 +1,21 @@
 import {
-  isFundacionesGrupoPetersenSectionContentfulName,
-  isI3InnovationSectionContentfulName,
-  isProgramsDevelopmentSectionContentfulName,
-} from '@/lib/contentful/types/gridSection';
+  GRID_SECTION_ANCHOR_IDS,
+  normalizeSectionVariant,
+} from '@/lib/contentful/gridSection/sectionVariants';
 
 type ResolveGridSectionAnchorIdParams = {
-  contentfulName?: string;
+  sectionVariant?: string;
   tag?: string;
-  title?: string;
 };
 
 export function resolveGridSectionAnchorId({
-  contentfulName,
+  sectionVariant,
   tag,
-  title,
 }: ResolveGridSectionAnchorIdParams): string | undefined {
-  if (isFundacionesGrupoPetersenSectionContentfulName(contentfulName, title)) {
-    return 'educacion-y-comunidades';
-  }
+  const variant = normalizeSectionVariant(sectionVariant);
 
-  if (isProgramsDevelopmentSectionContentfulName(contentfulName, title)) {
-    return 'nuestras-iniciativas';
-  }
-
-  if (isI3InnovationSectionContentfulName(contentfulName, title)) {
-    return 'innovacion';
+  if (variant && GRID_SECTION_ANCHOR_IDS[variant]) {
+    return GRID_SECTION_ANCHOR_IDS[variant];
   }
 
   const normalizedTag = tag?.trim().toUpperCase() ?? '';

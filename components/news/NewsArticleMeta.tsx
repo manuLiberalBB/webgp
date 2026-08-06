@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import { Fragment, type ReactNode } from 'react';
 
-import { NewsCategoryBadge } from '@/components/ui/NewsCategoryBadge';
+import { NewsCategoryBadge } from '@/components/news/NewsCategoryBadge';
 import {
   BreadcrumbChevronIcon,
   BuildingIcon,
   CalendarIcon,
   ClockIcon,
-} from '@/components/ui/icons/NewsMetaIcons';
+} from '@/components/news/icons/NewsMetaIcons';
 import { siteConfig } from '@/config/site';
 import { buildNewsCategoryFilterHref } from '@/lib/contentful/news/newsListFilters';
 import { newsCategoryBadgeStyles } from '@/lib/contentful/news/categoryBadgeStyles';

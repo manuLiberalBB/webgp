@@ -1,7 +1,7 @@
-import { HeroBanner } from '@/components/ui/HeroBanner';
-import { QualiaBanner } from '@/components/ui/QualiaBanner';
-import { StatisticsBanner } from '@/components/ui/StatisticsBanner';
-import { RichText } from '@/components/ui/RichText';
+import { HeroBanner } from '@/components/sections/shared/HeroBanner';
+import { QualiaBanner } from '@/components/sections/shared/QualiaBanner';
+import { StatisticsBanner } from '@/components/sections/shared/StatisticsBanner';
+import { RichText } from '@/components/cms/RichText';
 import { CtaLinks } from '@/components/ui/CtaLinks';
 import { resolveBannerCardItems } from '@/lib/contentful/banner/resolveBannerCardItems';
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';

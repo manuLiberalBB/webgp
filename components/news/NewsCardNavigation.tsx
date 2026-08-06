@@ -6,7 +6,7 @@ import type { ReactNode } from 'react';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { cn } from '@/lib/utils';
 
-import { useNewsNavigationPending } from './useNewsNavigationPending';
+import { useNewsNavigationPending } from '@/lib/hooks/useNewsNavigationPending';
 
 type OverlayTone = 'dark' | 'light';
 

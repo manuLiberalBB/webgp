@@ -54,7 +54,7 @@ export function FooterLinkList({ items, className, download }: FooterLinkListPro
         <button
           type="button"
           onClick={() => setShowAllMobile(true)}
-          className="text-link-cta w-fit text-sm leading-5 transition-opacity hover:opacity-80 md:hidden"
+          className="text-footer-text hover:text-footer-heading w-fit text-sm leading-5 transition-colors md:hidden"
         >
           Ver todas
         </button>

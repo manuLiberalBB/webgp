@@ -1,4 +1,4 @@
-import { HeroBanner } from '@/components/ui/HeroBanner';
+import { HeroBanner } from '@/components/sections/shared/HeroBanner';
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';
 import { fetchSectorEntryByPagePath } from '@/lib/contentful/sector/fetchSectorEntryByPagePath';
 import type { SectorFields } from '@/lib/contentful/types/sector';

@@ -14,6 +14,7 @@ export type BlockFields = Record<string, unknown>;
 
 export type BlockComponentProps = {
   fields: BlockFields;
+  entryId?: string;
   pagePath?: string[];
   searchParams?: Record<string, string | string[] | undefined>;
 };

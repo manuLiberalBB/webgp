@@ -1,0 +1,537 @@
+{
+  "generatedAt": "2026-08-06T22:49:06.925Z",
+  "environment": "develop-v2",
+  "preview": true,
+  "totalGridSections": 32,
+  "alreadySet": 32,
+  "suggested": 0,
+  "conflicts": 0,
+  "defaultFallback": 0,
+  "unusedEntries": 1,
+  "items": [
+    {
+      "entryId": "3a8nta5OIcdEtW1d8y5jDw",
+      "contentfulName": "SECCION - Areas de acción de las fundaciones",
+      "title": "Áreas de acción de las fundaciones",
+      "currentSectionVariant": "image-overlay-grid",
+      "suggestedSectionVariant": "image-overlay-grid",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/nuestro-impacto",
+          "pageContentfulName": "PAGINA - Nuestro Impacto",
+          "suggestedVariant": "image-overlay-grid"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/3a8nta5OIcdEtW1d8y5jDw"
+    },
+    {
+      "entryId": "2XAgzACEWPi0BMDCajQUd1",
+      "contentfulName": "SECCION - Banca",
+      "title": "Nuestros bancos",
+      "tag": "ECONOMÍAS REGIONALES",
+      "currentSectionVariant": "sector-companies",
+      "suggestedSectionVariant": "sector-companies",
+      "status": "already-set",
+      "notes": "Legacy inference would use \"business-ecosystem\" instead.",
+      "usedOnPages": [
+        {
+          "path": "/sectores/banca",
+          "pageContentfulName": "PAGINA - Sector Banca",
+          "suggestedVariant": "sector-companies"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/2XAgzACEWPi0BMDCajQUd1"
+    },
+    {
+      "entryId": "4NHkllttklcfZ8KCS2ZFVJ",
+      "contentfulName": "SECCION - CENTRO DE RECURSOS",
+      "title": "Centro de recursos",
+      "currentSectionVariant": "resource-center",
+      "suggestedSectionVariant": "resource-center",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/sectores/banca",
+          "pageContentfulName": "PAGINA - Sector Banca",
+          "suggestedVariant": "resource-center"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/4NHkllttklcfZ8KCS2ZFVJ"
+    },
+    {
+      "entryId": "2BcHQxaGophJqHuihKbJoW",
+      "contentfulName": "SECCION - Como generamos impacto",
+      "title": "Cómo generamos impacto",
+      "currentSectionVariant": "bordered-grid",
+      "suggestedSectionVariant": "bordered-grid",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/nuestro-impacto",
+          "pageContentfulName": "PAGINA - Nuestro Impacto",
+          "suggestedVariant": "bordered-grid"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/2BcHQxaGophJqHuihKbJoW"
+    },
+    {
+      "entryId": "43AS2fF4RUtBkPImngjxgg",
+      "contentfulName": "SECCION - CTA FUNDACIONES GP",
+      "currentSectionVariant": "fundaciones-cta",
+      "suggestedSectionVariant": "fundaciones-cta",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/nuestro-impacto",
+          "pageContentfulName": "PAGINA - Nuestro Impacto",
+          "suggestedVariant": "fundaciones-cta"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/43AS2fF4RUtBkPImngjxgg"
+    },
+    {
+      "entryId": "4qm6AqII1T4rS08y0mARRk",
+      "contentfulName": "SECCION - CTA Hiring Room",
+      "title": "¿Querés formar parte de nuestro equipo?",
+      "currentSectionVariant": "hiring-room-cta",
+      "suggestedSectionVariant": "hiring-room-cta",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/quienes-somos",
+          "pageContentfulName": "PAGINA - Quienes Somos",
+          "suggestedVariant": "hiring-room-cta"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/4qm6AqII1T4rS08y0mARRk"
+    },
+    {
+      "entryId": "1x3XrS2xTPEhe8n2c4uPIg",
+      "contentfulName": "SECCION - Empresas que impulsan el desarrollo",
+      "title": "Empresas que impulsan el desarrollo",
+      "currentSectionVariant": "logo-grid",
+      "suggestedSectionVariant": "logo-grid",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/quienes-somos",
+          "pageContentfulName": "PAGINA - Quienes Somos",
+          "suggestedVariant": "logo-grid"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/1x3XrS2xTPEhe8n2c4uPIg"
+    },
+    {
+      "entryId": "3eU4XTGHKg9JtUCDxXVmk3",
+      "contentfulName": "SECCION - Estamos presentes en el desarrollo regional",
+      "title": "Estamos presentes en el desarrollo Regional",
+      "currentSectionVariant": "image-overlay-grid",
+      "suggestedSectionVariant": "image-overlay-grid",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/economias-regionales",
+          "pageContentfulName": "PAGINA - Economías Regionales",
+          "suggestedVariant": "image-overlay-grid"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/3eU4XTGHKg9JtUCDxXVmk3"
+    },
+    {
+      "entryId": "68pjknk7MabQ9fYMLNTc1D",
+      "contentfulName": "SECCION - Fundaciones Grupo Petersen",
+      "title": "Fundaciones Grupo Petersen",
+      "tag": "Educación y Comunidades",
+      "currentSectionVariant": "fundaciones-grupo-petersen",
+      "suggestedSectionVariant": "fundaciones-grupo-petersen",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/nuestro-impacto",
+          "pageContentfulName": "PAGINA - Nuestro Impacto",
+          "suggestedVariant": "fundaciones-grupo-petersen"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/68pjknk7MabQ9fYMLNTc1D"
+    },
+    {
+      "entryId": "7ATB47bcAUQmtF4MpC48Cv",
+      "contentfulName": "SECCION - GRILLA SECTORES",
+      "currentSectionVariant": "sectors-grid",
+      "suggestedSectionVariant": "sectors-grid",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/quienes-somos",
+          "pageContentfulName": "PAGINA - Quienes Somos",
+          "suggestedVariant": "sectors-grid"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/7ATB47bcAUQmtF4MpC48Cv"
+    },
+    {
+      "entryId": "6X68mJXpcSXKYeXIoUP5NP",
+      "contentfulName": "SECCION - I3 CICLO DE CONVERSACIONES",
+      "currentSectionVariant": "i3-conversations",
+      "suggestedSectionVariant": "i3-conversations",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/nuestro-impacto",
+          "pageContentfulName": "PAGINA - Nuestro Impacto",
+          "suggestedVariant": "i3-conversations"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/6X68mJXpcSXKYeXIoUP5NP"
+    },
+    {
+      "entryId": "5TZiVqd1TrOE3sxWD2VFCV",
+      "contentfulName": "SECCION - i3 Innovación para el desarrolllo",
+      "title": "i3 - Innovación para el desarrollo",
+      "tag": "INNOVACIÓN",
+      "currentSectionVariant": "i3-innovation",
+      "suggestedSectionVariant": "i3-innovation",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/nuestro-impacto",
+          "pageContentfulName": "PAGINA - Nuestro Impacto",
+          "suggestedVariant": "i3-innovation"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/5TZiVqd1TrOE3sxWD2VFCV"
+    },
+    {
+      "entryId": "3Mh3AwyiBfe2PBQph8zCFk",
+      "contentfulName": "SECCION - IMPULSAMOS UNA MIRADA SOSTENTIBLE DEL NEGOCIO",
+      "title": "Impulsamos una mirada sostenible del negocio",
+      "tag": "SOSTENIBILIDAD",
+      "currentSectionVariant": "banking-sustainability",
+      "suggestedSectionVariant": "banking-sustainability",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/sectores/banca",
+          "pageContentfulName": "PAGINA - Sector Banca",
+          "suggestedVariant": "banking-sustainability"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/3Mh3AwyiBfe2PBQph8zCFk"
+    },
+    {
+      "entryId": "7i40nqvbctpoR0ZZHvyOAc",
+      "contentfulName": "SECCION - Ingenieria y construcción",
+      "title": "Lorem Ipsum",
+      "tag": "INGENIERIA Y CONSTRUCCION",
+      "currentSectionVariant": "sector-companies",
+      "suggestedSectionVariant": "sector-companies",
+      "status": "already-set",
+      "notes": "Legacy inference would use \"business-ecosystem\" instead.",
+      "usedOnPages": [
+        {
+          "path": "/sectores/ingenieria-y-construccion",
+          "pageContentfulName": "PAGINA - Sector  Ingeniería y Construcción",
+          "suggestedVariant": "sector-companies"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/7i40nqvbctpoR0ZZHvyOAc"
+    },
+    {
+      "entryId": "58iZX31biQWRcnANlK2dTV",
+      "contentfulName": "SECCION - La banca que conecta personas, empresas y comunidades",
+      "title": "La banca que conecta personas, empresas y comunidades",
+      "currentSectionVariant": "banking-connect",
+      "suggestedSectionVariant": "banking-connect",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/sectores/banca",
+          "pageContentfulName": "PAGINA - Sector Banca",
+          "suggestedVariant": "banking-connect"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/58iZX31biQWRcnANlK2dTV"
+    },
+    {
+      "entryId": "4TWKDgzdYfBd2Ew0d4Bpks",
+      "contentfulName": "SECCION - Los inicios",
+      "title": "Los inicios",
+      "tag": "Nuestra historia",
+      "currentSectionVariant": "default",
+      "suggestedSectionVariant": "default",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/quienes-somos",
+          "pageContentfulName": "PAGINA - Quienes Somos",
+          "suggestedVariant": "default"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/4TWKDgzdYfBd2Ew0d4Bpks"
+    },
+    {
+      "entryId": "2YR5ViIyT0H4lAsTH0aogl",
+      "contentfulName": "SECCION - Mineria",
+      "title": "Lorem ipsum",
+      "tag": "MINERIA",
+      "currentSectionVariant": "sector-companies",
+      "suggestedSectionVariant": "sector-companies",
+      "status": "already-set",
+      "notes": "Legacy inference would use \"business-ecosystem\" instead.",
+      "usedOnPages": [
+        {
+          "path": "/sectores/mineria",
+          "pageContentfulName": "PAGINA - Sector Minería",
+          "suggestedVariant": "sector-companies"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/2YR5ViIyT0H4lAsTH0aogl"
+    },
+    {
+      "entryId": "3XYsyC6GyVP9l2ZICbumca",
+      "contentfulName": "SECCION - Noticias Como generamos impacto",
+      "title": "Cómo generamos impacto",
+      "currentSectionVariant": "image-overlay-grid",
+      "suggestedSectionVariant": "image-overlay-grid",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/noticias",
+          "pageContentfulName": "PAGINA - Noticias",
+          "suggestedVariant": "image-overlay-grid"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/3XYsyC6GyVP9l2ZICbumca"
+    },
+    {
+      "entryId": "1ApLVGRKiHC7jVuEVrH6mz",
+      "contentfulName": "SECCION - Nuestro compromiso con el desarrollo regional",
+      "title": "Desarrollo regional con visión de largo plazo.",
+      "tag": "Nuestro compromiso con el desarrollo regional",
+      "currentSectionVariant": "regional-economies-commitment",
+      "suggestedSectionVariant": "regional-economies-commitment",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/economias-regionales",
+          "pageContentfulName": "PAGINA - Economías Regionales",
+          "suggestedVariant": "regional-economies-commitment"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/1ApLVGRKiHC7jVuEVrH6mz"
+    },
+    {
+      "entryId": "4GeVZ2GZ6IZwKbIHfrf9DI",
+      "contentfulName": "SECCION - NUESTRO COMPROMISO CON LA COMUNIDAD",
+      "title": "Nuestro compromiso con la comunidad",
+      "currentSectionVariant": "image-overlay-grid",
+      "suggestedSectionVariant": "image-overlay-grid",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/inicio",
+          "pageContentfulName": "PAGINA - Home",
+          "suggestedVariant": "image-overlay-grid"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/4GeVZ2GZ6IZwKbIHfrf9DI"
+    },
+    {
+      "entryId": "3mhXmN7CTDaWTAbVmuTes4",
+      "contentfulName": "SECCION - Nuestro ecosistema empresarial",
+      "title": "Nuestro ecosistema empresarial",
+      "currentSectionVariant": "business-ecosystem",
+      "suggestedSectionVariant": "business-ecosystem",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/inicio",
+          "pageContentfulName": "PAGINA - Home",
+          "suggestedVariant": "business-ecosystem"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/3mhXmN7CTDaWTAbVmuTes4"
+    },
+    {
+      "entryId": "LfQ1BwrI5e4mNwsIe9YCO",
+      "contentfulName": "SECCION - Nuestro propósito",
+      "title": "Nuestro propósito",
+      "currentSectionVariant": "bordered-grid",
+      "suggestedSectionVariant": "bordered-grid",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/quienes-somos",
+          "pageContentfulName": "PAGINA - Quienes Somos",
+          "suggestedVariant": "bordered-grid"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/LfQ1BwrI5e4mNwsIe9YCO"
+    },
+    {
+      "entryId": "2IQ9nkv4obNFrluWZxvlbT",
+      "contentfulName": "SECCION - Producción con visión de futuro",
+      "title": "Producción con visión de futuro",
+      "tag": "ECONOMÍAS REGIONALES",
+      "currentSectionVariant": "sector-companies",
+      "suggestedSectionVariant": "sector-companies",
+      "status": "already-set",
+      "notes": "Legacy inference would use \"business-ecosystem\" instead.",
+      "usedOnPages": [
+        {
+          "path": "/sectores/produccion-vitivinicola",
+          "pageContentfulName": "PAGINA - Sector Producción Vitivinícola",
+          "suggestedVariant": "sector-companies"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/2IQ9nkv4obNFrluWZxvlbT"
+    },
+    {
+      "entryId": "2ZhbzHXlFxGaAIDhNGMkIW",
+      "contentfulName": "SECCION - PROGRAMAS QUE IMPULSAN EL DESARROLLO",
+      "title": "Programas que impulsan el desarrollo",
+      "tag": "NUESTRAS INICIATIVAS",
+      "currentSectionVariant": "programs-development",
+      "suggestedSectionVariant": "programs-development",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/nuestro-impacto",
+          "pageContentfulName": "PAGINA - Nuestro Impacto",
+          "suggestedVariant": "programs-development"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/2ZhbzHXlFxGaAIDhNGMkIW"
+    },
+    {
+      "entryId": "7ik9ePxUZue64ADrxFnNRE",
+      "contentfulName": "SECCION - Sectores estrategicos",
+      "title": "Sectores estratégicos",
+      "currentSectionVariant": "strategic-sectors",
+      "suggestedSectionVariant": "strategic-sectors",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/economias-regionales",
+          "pageContentfulName": "PAGINA - Economías Regionales",
+          "suggestedVariant": "strategic-sectors"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/7ik9ePxUZue64ADrxFnNRE"
+    },
+    {
+      "entryId": "4dZikz4pjbrF4j3WzLcvrd",
+      "contentfulName": "SECCION - Seguros",
+      "title": "Lorem ipsum",
+      "tag": "SEGUROS",
+      "currentSectionVariant": "sector-companies",
+      "suggestedSectionVariant": "sector-companies",
+      "status": "already-set",
+      "notes": "Legacy inference would use \"business-ecosystem\" instead.",
+      "usedOnPages": [
+        {
+          "path": "/sectores/seguros",
+          "pageContentfulName": "PAGINA - Sector Seguros",
+          "suggestedVariant": "sector-companies"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/4dZikz4pjbrF4j3WzLcvrd"
+    },
+    {
+      "entryId": "6CptRJZGprU5CRUlClPN7Q",
+      "contentfulName": "SECCION - Soluciones de Pago",
+      "title": "Lorem ipsum",
+      "tag": "SOLUCIONES DE PAGO",
+      "currentSectionVariant": "sector-companies",
+      "suggestedSectionVariant": "sector-companies",
+      "status": "already-set",
+      "notes": "Legacy inference would use \"business-ecosystem\" instead.",
+      "usedOnPages": [
+        {
+          "path": "/sectores/soluciones-de-pago",
+          "pageContentfulName": "PAGINA - Sector Soluciones de Pago",
+          "suggestedVariant": "sector-companies"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/6CptRJZGprU5CRUlClPN7Q"
+    },
+    {
+      "entryId": "1z3T7cbSGoU90MBVPgQUWG",
+      "contentfulName": "SECCION - Talento y Cultura",
+      "title": "Talento y cultura",
+      "currentSectionVariant": "talent-culture",
+      "suggestedSectionVariant": "talent-culture",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/quienes-somos",
+          "pageContentfulName": "PAGINA - Quienes Somos",
+          "suggestedVariant": "talent-culture"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/1z3T7cbSGoU90MBVPgQUWG"
+    },
+    {
+      "entryId": "5NCMKR44EKZnhyLxbyEsQS",
+      "contentfulName": "SECCION - Tecnología Financiera",
+      "title": "Lorem ipsum",
+      "tag": "Tecnologia Financiera",
+      "currentSectionVariant": "sector-companies",
+      "suggestedSectionVariant": "sector-companies",
+      "status": "already-set",
+      "notes": "Legacy inference would use \"business-ecosystem\" instead.",
+      "usedOnPages": [
+        {
+          "path": "/sectores/tecnologia-financiera",
+          "pageContentfulName": "PAGINA - Sector Tecnologia Financiera",
+          "suggestedVariant": "sector-companies"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/5NCMKR44EKZnhyLxbyEsQS"
+    },
+    {
+      "entryId": "6Mc6P1lnSs7V8hMKsn91HI",
+      "contentfulName": "SECCION - Ultimas dinamicas presenciales (video embebido)",
+      "title": "Últimas dinámicas presenciales",
+      "currentSectionVariant": "in-person-dynamics",
+      "suggestedSectionVariant": "in-person-dynamics",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/noticias",
+          "pageContentfulName": "PAGINA - Noticias",
+          "suggestedVariant": "in-person-dynamics"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/6Mc6P1lnSs7V8hMKsn91HI"
+    },
+    {
+      "entryId": "4u7FlUd6NNFbpRpJTqrlJq",
+      "contentfulName": "SECCION - Un compromiso que atraviesa todo el grupo",
+      "title": "Un compromiso que atraviesa todo el Grupo",
+      "currentSectionVariant": "default",
+      "suggestedSectionVariant": "default",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/nuestro-impacto",
+          "pageContentfulName": "PAGINA - Nuestro Impacto",
+          "suggestedVariant": "default"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/4u7FlUd6NNFbpRpJTqrlJq"
+    },
+    {
+      "entryId": "AMmhKiTyOePfr2bEltKpr",
+      "contentfulName": "SECCION - VISTA NOTICIA - MAS SOBRE EL GRUPO",
+      "title": "Más sobre el Grupo Petersen",
+      "tag": "ECOSISTEMA",
+      "currentSectionVariant": "news-detail-more-about-group",
+      "suggestedSectionVariant": "news-detail-more-about-group",
+      "status": "already-set",
+      "usedOnPages": [],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/AMmhKiTyOePfr2bEltKpr"
+    }
+  ]
+}

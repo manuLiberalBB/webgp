@@ -1,4 +1,4 @@
-import { SectorsGridSection } from '@/components/ui/SectorsGridSection';
+import { SectorsGridSection } from '@/components/sections/sectors/SectorsGridSection';
 import { resolveSectorGridItems } from '@/lib/contentful/sector/resolveSectorGridItems';
 import type { SectorsGridSectionFields } from '@/lib/contentful/types/sectorsGridSection';
 

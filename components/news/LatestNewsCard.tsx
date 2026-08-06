@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { NewsCategoryBadge } from '@/components/ui/NewsCategoryBadge';
+import { NewsCategoryBadge } from '@/components/news/NewsCategoryBadge';
 import type { NewsListItem } from '@/lib/news/types';
 import { cn } from '@/lib/utils';
 

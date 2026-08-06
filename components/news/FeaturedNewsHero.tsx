@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
 import { NewsArticleButton } from '@/components/news/NewsArticleButton';
-import { NewsCategoryBadge } from '@/components/ui/NewsCategoryBadge';
-import { NewsCompanyBadge } from '@/components/ui/NewsCompanyBadge';
+import { NewsCategoryBadge } from '@/components/news/NewsCategoryBadge';
+import { NewsCompanyBadge } from '@/components/news/NewsCompanyBadge';
 import type { FeaturedNewsItem } from '@/lib/news/types';
 import { cn } from '@/lib/utils';
 

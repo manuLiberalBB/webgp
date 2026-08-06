@@ -1,8 +1,8 @@
 import type { Entry } from 'contentful';
 import type { Document } from '@contentful/rich-text-types';
 
-import { CarouselSection } from '@/components/ui/CarouselSection';
-import type { MarqueeCarouselVariant } from '@/components/ui/MarqueeCarousel';
+import { CarouselSection } from '@/components/sections/shared/CarouselSection';
+import type { MarqueeCarouselVariant } from '@/components/sections/shared/MarqueeCarousel';
 import { fetchCarouselItems } from '@/lib/contentful/carousel/fetchCarouselItems';
 import type { CarouselItem, CarouselSource } from '@/lib/contentful/carousel/types';
 

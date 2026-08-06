@@ -1,13 +1,13 @@
 import {
   NewsDetailMoreAboutGroupSection,
   resolveNewsDetailMoreAboutGroupCards,
-} from '@/components/ui/NewsDetailMoreAboutGroupSection';
-import { fetchGridSectionByContentfulName } from '@/lib/contentful/gridSection/fetchGridSectionByContentfulName';
-import { NEWS_DETAIL_MORE_ABOUT_GROUP_SECTION_CONTENTFUL_NAME } from '@/lib/contentful/types/gridSection';
+} from '@/components/news/NewsDetailMoreAboutGroupSection';
+import { fetchGridSectionBySectionVariant } from '@/lib/contentful/gridSection/fetchGridSectionBySectionVariant';
+import { GRID_SECTION_VARIANTS } from '@/lib/contentful/gridSection/sectionVariants';
 
 export async function NewsDetailMoreAboutGroupSectionWithFetch() {
-  const fields = await fetchGridSectionByContentfulName(
-    NEWS_DETAIL_MORE_ABOUT_GROUP_SECTION_CONTENTFUL_NAME,
+  const fields = await fetchGridSectionBySectionVariant(
+    GRID_SECTION_VARIANTS.NEWS_DETAIL_MORE_ABOUT_GROUP,
   );
 
   if (!fields) return null;

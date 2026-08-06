@@ -26,11 +26,9 @@ export type {
 } from './featuredNews';
 export type { GridSectionEntry, GridSectionFields, GridSectionSkeleton } from './gridSection';
 export {
-  COMPANY_LOGO_GRID_SECTION_CONTENTFUL_NAME,
   GRID_SECTION_CARD_STYLES,
+  HIRING_ROOM_CTA_LABEL,
   isGridSectionCardStyle,
-  isLogoGridSectionContentfulName,
-  LOGO_GRID_SECTION_CONTENTFUL_NAME,
   resolveGridSectionCardStyle,
 } from './gridSection';
 export type { GridSectionCardStyle } from './gridSection';
@@ -40,7 +38,6 @@ export type {
   SectorsGridSectionSkeleton,
 } from './sectorsGridSection';
 export {
-  isSectorsGridSectionContentfulName,
   SECTORS_GRID_SECTION_CONTENTFUL_NAME,
 } from './sectorsGridSection';
 export type {

@@ -1,5 +1,5 @@
 import { Container } from '@/components/ui/Container';
-import { RichText } from '@/components/ui/RichText';
+import { RichText } from '@/components/cms/RichText';
 import { Section } from '@/components/ui/Section';
 import type { RichTextBlockFields } from '@/lib/contentful/types/richTextBlock';
 

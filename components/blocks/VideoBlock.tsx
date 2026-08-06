@@ -1,5 +1,5 @@
 import { Container } from '@/components/ui/Container';
-import { ContentfulVideo } from '@/components/ui/ContentfulVideo';
+import { ContentfulVideo } from '@/components/cms/ContentfulVideo';
 import { Section } from '@/components/ui/Section';
 import { resolveVideoFields } from '@/lib/contentful/video/resolveVideoItem';
 import type { VideoFields } from '@/lib/contentful/types/video';

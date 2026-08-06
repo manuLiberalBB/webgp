@@ -1,4 +1,4 @@
-import { AppImage, LARGE_CONTAINER_IMAGE_SIZES } from '@/components/ui/AppImage';
+import { AppImage, LARGE_CONTAINER_IMAGE_SIZES } from '@/components/cms/AppImage';
 import type { ImageItem } from '@/lib/contentful/types/image';
 import { cn } from '@/lib/utils';
 

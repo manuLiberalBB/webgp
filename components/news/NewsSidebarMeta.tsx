@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 
 import { NewsSidebarSectionTitle } from '@/components/news/sidebar/NewsSidebarPrimitives';
-import { NewsCategoryBadge } from '@/components/ui/NewsCategoryBadge';
-import { BuildingIcon, ClockIcon } from '@/components/ui/icons/NewsMetaIcons';
+import { NewsCategoryBadge } from '@/components/news/NewsCategoryBadge';
+import { BuildingIcon, ClockIcon } from '@/components/news/icons/NewsMetaIcons';
 import type { NewsArticleContext } from '@/lib/news/types';
 import { cn } from '@/lib/utils';
 

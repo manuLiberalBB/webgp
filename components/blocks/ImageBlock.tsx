@@ -1,5 +1,5 @@
 import { Container } from '@/components/ui/Container';
-import { ContentfulImage } from '@/components/ui/ContentfulImage';
+import { ContentfulImage } from '@/components/cms/ContentfulImage';
 import { Section } from '@/components/ui/Section';
 import { resolveImageFields } from '@/lib/contentful/image/resolveImageItem';
 import type { ImageFields } from '@/lib/contentful/types/image';

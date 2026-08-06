@@ -15,7 +15,7 @@ import type { ReactNode } from 'react';
 
 import { NewsInlineImage } from '@/components/news/NewsInlineImage';
 import { NewsInlineStatistics } from '@/components/news/NewsInlineStatistics';
-import { renderEmbeddedNewsRichTextBlock } from '@/lib/contentful/richText/renderEmbeddedNewsRichTextBlock';
+import { renderEmbeddedNewsRichTextBlock } from '@/components/contentful/richText/renderEmbeddedNewsRichTextBlock';
 import { segmentNewsRichTextContent } from '@/lib/contentful/richText/segmentNewsRichTextContent';
 import { cn } from '@/lib/utils';
 

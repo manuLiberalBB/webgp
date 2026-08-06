@@ -4,7 +4,7 @@ import {
   NewsCardArticleShell,
   NewsCardOverlayLink,
 } from '@/components/news/NewsCardNavigation';
-import { NewsCategoryBadge } from '@/components/ui/NewsCategoryBadge';
+import { NewsCategoryBadge } from '@/components/news/NewsCategoryBadge';
 import type { FeaturedNewsItem } from '@/lib/news/types';
 import { cn } from '@/lib/utils';
 

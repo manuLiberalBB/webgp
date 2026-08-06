@@ -1,6 +1,6 @@
 import type { Entry } from 'contentful';
 
-import { SectorCompaniesSection } from '@/components/ui/SectorCompaniesSection';
+import { SectorCompaniesSection } from '@/components/sections/sectors/SectorCompaniesSection';
 import { fetchSectorCompaniesByPagePath } from '@/lib/contentful/sector/fetchSectorCompaniesByPagePath';
 import { isBankingSectorPage } from '@/lib/contentful/sector/isSectorPage';
 import {

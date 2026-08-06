@@ -1,4 +1,4 @@
-import { LogoGridSection } from '@/components/ui/LogoGridSection';
+import { LogoGridSection } from '@/components/sections/shared/LogoGridSection';
 import { fetchCarouselItems } from '@/lib/contentful/carousel/fetchCarouselItems';
 import type { CarouselSource } from '@/lib/contentful/carousel/types';
 

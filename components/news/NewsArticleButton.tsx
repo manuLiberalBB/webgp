@@ -7,7 +7,7 @@ import { buttonVariants } from '@/components/ui/Button';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { cn } from '@/lib/utils';
 
-import { useNewsNavigationPending } from './useNewsNavigationPending';
+import { useNewsNavigationPending } from '@/lib/hooks/useNewsNavigationPending';
 
 type NewsArticleButtonProps = {
   href: string;

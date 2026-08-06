@@ -1,4 +1,4 @@
-import { FoundationsConoceCtaCard } from '@/components/ui/FoundationsConoceCtaCard';
+import { FoundationsConoceCtaCard } from '@/components/sections/foundations/FoundationsConoceCtaCard';
 import { isFundacionesConoceCtaCardContentfulName } from '@/lib/contentful/foundations/resolveFundacionesSectionItems';
 import type { CardFields } from '@/lib/contentful/types/card';
 

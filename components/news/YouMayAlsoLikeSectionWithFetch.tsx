@@ -6,8 +6,9 @@ import { YouMayAlsoLikeSection } from './YouMayAlsoLikeSection';
 const FEATURED_RELATED_NEWS_COUNT = 3;
 
 type YouMayAlsoLikeSectionWithFetchProps = {
-  excludePath: string;
+  excludePath?: string;
   category?: NewsCategory;
+  categories?: NewsCategory[];
   title?: string;
   viewAllHref?: string;
 };
@@ -15,12 +16,14 @@ type YouMayAlsoLikeSectionWithFetchProps = {
 export async function YouMayAlsoLikeSectionWithFetch({
   excludePath,
   category,
+  categories,
   title,
   viewAllHref,
 }: YouMayAlsoLikeSectionWithFetchProps) {
   const items = await getFeaturedRelatedNews({
     excludePath,
     category,
+    categories,
     limit: FEATURED_RELATED_NEWS_COUNT,
   });
 

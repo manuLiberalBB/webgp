@@ -7,8 +7,9 @@ import { PageContentReady } from '@/components/layout/PageLoadCoordinator';
 
 import { AllNewsSectionWithFetch } from '@/components/news/AllNewsSectionWithFetch';
 import { NewsResultsLoading } from '@/components/news/NewsResultsLoading';
-import { I3ConversationsPanel } from '@/components/ui/I3ConversationsPanel';
-import { I3InnovationSplitSection } from '@/components/ui/I3InnovationSplitSection';
+import { YouMayAlsoLikeSectionWithFetch } from '@/components/news/YouMayAlsoLikeSectionWithFetch';
+import { I3ConversationsPanel } from '@/components/sections/i3/I3ConversationsPanel';
+import { I3InnovationSplitSection } from '@/components/sections/i3/I3InnovationSplitSection';
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';
@@ -27,11 +28,17 @@ import type { BlockComponentProps } from './registry';
 
 import {
   type GridSectionFields,
-  isI3ConversationsSectionContentfulName,
-  isI3InnovationSectionContentfulName,
 } from '@/lib/contentful/types/gridSection';
+import {
+  isI3ConversationsGridSection,
+  isI3InnovationGridSection,
+} from '@/lib/contentful/gridSection/i3Section';
 import { resolveGridSectionAnchorId } from '@/lib/navigation/resolveGridSectionAnchorId';
 import { SECTION_PADDING } from '@/lib/layout/sectionPadding';
+import {
+  getPageYouMayAlsoLikeConfig,
+  shouldSkipCmsYouMayAlsoLikeGridSection,
+} from '@/lib/news/pageYouMayAlsoLikeConfig';
 
 type PageRendererProps = {
   content?: Entry[];
@@ -77,6 +84,7 @@ function renderBlock(
 
   const props: BlockComponentProps = {
     fields: entry.fields as Record<string, unknown>,
+    entryId: entry.sys.id,
     pagePath,
     searchParams,
   };
@@ -129,12 +137,22 @@ export function PageRenderer({
     followsHero = endsWithHero;
   };
 
+  const pageYouMayAlsoLikeConfig = getPageYouMayAlsoLikeConfig(pagePath);
+
   for (let index = 0; index < contentToRender.length; index += 1) {
     const entry = contentToRender[index];
     const contentTypeId = entry.sys.contentType?.sys.id;
 
     if (contentTypeId === 'gridSection') {
       const fields = getGridSectionFields(entry);
+
+      if (
+        pageYouMayAlsoLikeConfig &&
+        shouldSkipCmsYouMayAlsoLikeGridSection(fields)
+      ) {
+        continue;
+      }
+
       const nextEntry = contentToRender[index + 1];
       const nextFields =
         nextEntry?.sys.contentType?.sys.id === 'gridSection'
@@ -142,18 +160,17 @@ export function PageRenderer({
           : null;
 
       if (
-        isI3InnovationSectionContentfulName(fields.contentfulName, fields.title) &&
+        isI3InnovationGridSection(fields) &&
         nextFields &&
-        isI3ConversationsSectionContentfulName(nextFields.contentfulName)
+        isI3ConversationsGridSection(nextFields)
       ) {
         pushBlock(
           <I3InnovationSplitSection
             innovation={fields}
             conversations={nextFields}
             sectionId={resolveGridSectionAnchorId({
-              contentfulName: fields.contentfulName,
+              sectionVariant: fields.sectionVariant,
               tag: fields.tag,
-              title: fields.title,
             })}
           />,
           entry.sys.id,
@@ -162,14 +179,13 @@ export function PageRenderer({
         continue;
       }
 
-      if (isI3InnovationSectionContentfulName(fields.contentfulName, fields.title)) {
+      if (isI3InnovationGridSection(fields)) {
         pushBlock(
           <I3InnovationSplitSection
             innovation={fields}
             sectionId={resolveGridSectionAnchorId({
-              contentfulName: fields.contentfulName,
+              sectionVariant: fields.sectionVariant,
               tag: fields.tag,
-              title: fields.title,
             })}
           />,
           entry.sys.id,
@@ -177,7 +193,7 @@ export function PageRenderer({
         continue;
       }
 
-      if (isI3ConversationsSectionContentfulName(fields.contentfulName)) {
+      if (isI3ConversationsGridSection(fields)) {
         const videos = resolveVideoItems(fields.items);
         const posterUrl = fields.image ? getAssetUrl(fields.image) : undefined;
 
@@ -238,6 +254,14 @@ export function PageRenderer({
       {isSector ? (
         <Suspense fallback={null}>
           <SectorRelatedNewsSectionWithFetch pagePath={pagePath} />
+        </Suspense>
+      ) : null}
+      {pageYouMayAlsoLikeConfig ? (
+        <Suspense fallback={null}>
+          <YouMayAlsoLikeSectionWithFetch
+            title={pageYouMayAlsoLikeConfig.title}
+            categories={pageYouMayAlsoLikeConfig.categories}
+          />
         </Suspense>
       ) : null}
       <PageContentReady />
