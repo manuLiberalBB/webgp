@@ -1,9 +1,10 @@
-import { Button } from '@/components/ui/Button';
+import { Button, buttonVariants } from '@/components/ui/Button';
 import {
   buildNewsFilterHref,
   NEWS_LIST_PATH,
 } from '@/lib/contentful/news/newsListFilters';
 import type { NewsListItem } from '@/lib/news/types';
+import { cn } from '@/lib/utils';
 
 import { AllNewsCard } from './AllNewsCard';
 import { NewsSectionHeader } from './NewsSectionHeader';
@@ -39,6 +40,9 @@ type AllNewsSectionProps = {
   showViewAllButton?: boolean;
   emptyMessage?: string;
   completeRowsOnly?: boolean;
+  hasMore?: boolean;
+  isLoadingMore?: boolean;
+  onLoadMore?: () => void;
 };
 
 export function AllNewsSection({
@@ -47,6 +51,9 @@ export function AllNewsSection({
   showViewAllButton = true,
   emptyMessage = 'No hay noticias para los filtros seleccionados.',
   completeRowsOnly = false,
+  hasMore = false,
+  isLoadingMore = false,
+  onLoadMore,
 }: AllNewsSectionProps) {
   const visibleItems = completeRowsOnly
     ? trimToFullRows(items, ALL_NEWS_GRID_COLUMNS)
@@ -86,6 +93,22 @@ export function AllNewsSection({
             >
               Ver más noticias
             </Button>
+          </div>
+        ) : null}
+
+        {hasMore && visibleItems.length > 0 ? (
+          <div className="flex w-full justify-center">
+            <button
+              type="button"
+              onClick={onLoadMore}
+              disabled={isLoadingMore}
+              className={cn(
+                buttonVariants(),
+                'w-full px-6 py-3.5 md:w-auto disabled:cursor-wait disabled:opacity-70',
+              )}
+            >
+              {isLoadingMore ? 'Cargando...' : 'Ver más noticias'}
+            </button>
           </div>
         ) : null}
       </div>

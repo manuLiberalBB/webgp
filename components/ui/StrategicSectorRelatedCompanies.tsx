@@ -12,7 +12,7 @@ type StrategicSectorRelatedCompaniesProps = {
 
 export function StrategicSectorRelatedCompanies({
   title = 'Empresas que impulsan este sector',
-  subtitle,
+  subtitle = 'Así trabajan en conjunto las empresas del Grupo Petersen dentro de este sector.',
   items,
   className,
 }: StrategicSectorRelatedCompaniesProps) {

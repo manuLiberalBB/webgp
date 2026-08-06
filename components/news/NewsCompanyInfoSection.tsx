@@ -24,7 +24,7 @@ export function NewsCompanyInfoSection({
         <Image
           src={company.imageUrl}
           alt={company.imageAlt}
-          width={304}
+          width={368}
           height={171}
           className="h-full w-full object-cover"
         />

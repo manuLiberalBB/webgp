@@ -22,7 +22,7 @@ export function FoundationImageCard({ item, className }: FoundationImageCardProp
           src={item.imageUrl}
           alt={item.imageAlt}
           fill
-          sizes="(min-width: 768px) 302px, 50vw"
+          sizes="(min-width: 768px) 302px, 100vw"
           className="object-cover object-center"
         />
       </div>
@@ -53,7 +53,7 @@ export function FoundationsImageGrid({ items, className }: FoundationsImageGridP
       {items.map((item) => (
         <div
           key={item.id}
-          className="w-[calc(50%-12px)] md:w-[calc((100%-72px)/4)]"
+          className="w-full md:w-[calc((100%-72px)/4)]"
         >
           <FoundationImageCard item={item} />
         </div>

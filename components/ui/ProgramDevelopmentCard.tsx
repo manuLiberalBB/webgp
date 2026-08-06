@@ -1,66 +1,19 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import type { Entry } from 'contentful';
 
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';
-import { resolveNavLink } from '@/lib/contentful/resolveNavLink';
 import type { CardFields } from '@/lib/contentful/types/card';
 import { cn } from '@/lib/utils';
+
+import { ProgramDevelopmentCardDescription } from './ProgramDevelopmentCardDescription';
 
 type ProgramDevelopmentCardProps = {
   fields: CardFields;
   className?: string;
 };
 
-function resolveCardLink(url?: Entry[]) {
-  const entry = url?.[0];
-  if (!entry) return null;
-  return resolveNavLink(entry);
-}
-
-function parseDescription(description: string) {
-  const match = description.match(/^([\s\S]*?)(\s*\.\.\.\s*)?(ver\s+m[aá]s)\.?$/i);
-
-  if (!match) {
-    return { body: description, hasVerMas: false };
-  }
-
-  const suffix = match[2] ?? '';
-  const body = `${match[1].trimEnd()}${suffix ? `${suffix.trimEnd()} ` : ' '}`;
-
-  return { body, hasVerMas: true };
-}
-
-function VerMasLink({
-  href,
-  external,
-}: {
-  href: string;
-  external?: boolean;
-}) {
-  const className = 'text-link-cta underline decoration-solid underline-offset-2';
-
-  if (external) {
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
-        ver más
-      </a>
-    );
-  }
-
-  return (
-    <Link href={href} className={className}>
-      ver más
-    </Link>
-  );
-}
-
 export function ProgramDevelopmentCard({ fields, className }: ProgramDevelopmentCardProps) {
   const iconUrl = fields.icon ? getAssetUrl(fields.icon) : undefined;
-  const link = resolveCardLink(fields.url);
-  const { body, hasVerMas } = fields.description
-    ? parseDescription(fields.description)
-    : { body: '', hasVerMas: false };
+  const descriptionText = fields.longDescription?.trim() || fields.description?.trim() || '';
 
   return (
     <article
@@ -83,19 +36,8 @@ export function ProgramDevelopmentCard({ fields, className }: ProgramDevelopment
         ) : null}
       </div>
 
-      {body || hasVerMas ? (
-        <p className="text-body text-base leading-normal">
-          {body}
-          {hasVerMas ? (
-            link ? (
-              <VerMasLink href={link.href} external={link.isExternal} />
-            ) : (
-              <span className="text-link-cta underline decoration-solid underline-offset-2">
-                ver más
-              </span>
-            )
-          ) : null}
-        </p>
+      {descriptionText ? (
+        <ProgramDevelopmentCardDescription text={descriptionText} />
       ) : null}
     </article>
   );

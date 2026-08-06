@@ -45,10 +45,12 @@ function ConversationVideoItem({
   video,
   isSelected,
   onSelect,
+  className,
 }: {
   video: VideoItem;
   isSelected: boolean;
   onSelect: () => void;
+  className?: string;
 }) {
   return (
     <button
@@ -60,6 +62,7 @@ function ConversationVideoItem({
         isSelected
           ? 'border-[#123476] shadow-[0_0_0_1px_#123476]'
           : 'border-card-border hover:border-[#123476]/30',
+        className,
       )}
     >
       <span
@@ -79,6 +82,14 @@ function ConversationVideoItem({
       </div>
     </button>
   );
+}
+
+function getConversationItemVisibilityClassName(index: number) {
+  if (index >= 4) return 'hidden';
+
+  if (index >= 2) return 'hidden md:flex';
+
+  return undefined;
 }
 
 export function I3ConversationsPanel({
@@ -144,12 +155,13 @@ export function I3ConversationsPanel({
 
         {videos.length > 0 ? (
           <div className="flex flex-col gap-2">
-            {videos.map((video) => (
+            {videos.map((video, index) => (
               <ConversationVideoItem
                 key={video.id}
                 video={video}
                 isSelected={selectedVideo?.id === video.id}
                 onSelect={() => setSelectedVideoId(video.id)}
+                className={getConversationItemVisibilityClassName(index)}
               />
             ))}
           </div>

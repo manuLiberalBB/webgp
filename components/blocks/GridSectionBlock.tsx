@@ -29,7 +29,6 @@ import { TalentCultureSection } from '@/components/ui/TalentCultureSection';
 import { RichText } from '@/components/ui/RichText';
 import { resolveFundacionesSectionItems } from '@/lib/contentful/foundations/resolveFundacionesSectionItems';
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';
-import { getAssetDimensions } from '@/lib/contentful/getAssetDimensions';
 import { resolveCompanyLogoGridItems } from '@/lib/contentful/company/resolveCompanyLogoGridItems';
 import { resolveNavLink } from '@/lib/contentful/resolveNavLink';
 import { resolveSectionVideo } from '@/lib/contentful/video/resolveSectionVideo';
@@ -41,6 +40,7 @@ import type { CardFields } from '@/lib/contentful/types/card';
 import {
   type GridSectionFields,
   isCommunityCommitmentSectionContentfulName,
+  isFundacionesAreasAccionSectionContentfulName,
   isFundacionesCtaSectionContentfulName,
   isFundacionesGrupoPetersenSectionContentfulName,
   isGroupWideCommitmentSectionContentfulName,
@@ -106,7 +106,7 @@ function GridSectionHeader({
 
       <div className="flex flex-col gap-4 md:gap-6">
         {title ? (
-          <h2 className="text-heading text-[2.25rem] leading-tight font-normal tracking-[-0.72px] md:text-5xl md:leading-[3.75rem] md:tracking-[-0.96px]">
+          <h2 className="text-heading text-[2.25rem] leading-tight font-semibold tracking-[-0.72px] md:text-5xl md:leading-[3.75rem] md:tracking-[-0.96px]">
             {title}
           </h2>
         ) : null}
@@ -151,6 +151,10 @@ function resolveImageOverlayGridSectionProps({
   pagePath?: string[];
 }) {
   const isRegionalPresence = isRegionalPresenceSectionContentfulName(contentfulName);
+  const isFundacionesAreasAccion = isFundacionesAreasAccionSectionContentfulName(
+    contentfulName,
+    title,
+  );
   const isImpactOnNewsPage =
     isNewsListingPage(pagePath) &&
     isComoGeneramosImpactoSectionContentfulName(contentfulName, title);
@@ -160,11 +164,23 @@ function resolveImageOverlayGridSectionProps({
     subtitle,
     cards,
     headerAlign:
-      isRegionalPresence || isImpactOnNewsPage ? ('left' as const) : ('center' as const),
+      isRegionalPresence || isImpactOnNewsPage || isFundacionesAreasAccion
+        ? ('left' as const)
+        : ('center' as const),
     cardLayout:
       isRegionalPresence && cards.length === 5
         ? ('three-two' as const)
         : ('default' as const),
+    titleClassName: isRegionalPresence
+      ? 'text-[1.75rem] leading-tight md:text-[2.5rem] md:leading-[2.75rem]'
+      : isFundacionesAreasAccion
+        ? 'text-heading text-[22px] leading-[33px] font-semibold md:text-[22px] md:leading-[33px]'
+        : undefined,
+    subtitleClassName: isFundacionesAreasAccion
+      ? 'text-body text-[18px] font-normal leading-normal md:text-[18px]'
+      : undefined,
+    className: isFundacionesAreasAccion ? 'pt-0 md:pt-0' : undefined,
+    cardVariant: isFundacionesAreasAccion ? ('foundationArea' as const) : undefined,
   };
 }
 
@@ -417,7 +433,7 @@ export function GridSectionBlock({ fields, pagePath }: BlockComponentProps) {
 
   if (isFundacionesCtaSectionContentfulName(contentfulName) && cards[0]) {
     return (
-      <section className="bg-white px-10 py-10 md:px-layout-x md:py-section-y">
+      <section className="bg-white px-10 pt-0 pb-10 md:px-layout-x md:pt-0 md:pb-section-y">
         <div className="mx-auto w-full max-w-content">
           <FoundationsConoceCtaCard fields={cards[0]} />
         </div>
@@ -470,15 +486,8 @@ export function GridSectionBlock({ fields, pagePath }: BlockComponentProps) {
             ? 'text-center md:text-left'
             : undefined
         }
-        companyVariant={
-          isBusinessEcosystemSectionContentfulName(contentfulName) ? 'cards' : undefined
-        }
         items={
-          isBusinessEcosystemSectionContentfulName(contentfulName)
-            ? companyCarouselItems
-            : companyCarouselItems.length > 0
-              ? companyCarouselItems
-              : undefined
+          companyCarouselItems.length > 0 ? companyCarouselItems : undefined
         }
       />
     );
@@ -592,9 +601,6 @@ export function GridSectionBlock({ fields, pagePath }: BlockComponentProps) {
     );
   }
 
-  const sideImageDimensions = image
-    ? getAssetDimensions(image, { width: 720, height: 412 })
-    : null;
   const imageOnLeft = isGroupWideCommitmentSectionContentfulName(
     contentfulName,
     title,
@@ -636,14 +642,13 @@ export function GridSectionBlock({ fields, pagePath }: BlockComponentProps) {
               {urlList?.length ? <CtaLinks links={urlList} /> : null}
             </div>
 
-            <div className="flex h-[412px] w-full min-w-0 flex-1 items-center">
+            <div className="relative h-[412px] w-full min-w-0 flex-1 overflow-hidden rounded-lg">
               <Image
                 src={imageUrl!}
                 alt={imageAlt}
-                width={sideImageDimensions?.width ?? 720}
-                height={sideImageDimensions?.height ?? 412}
+                fill
                 sizes="(min-width: 1024px) 720px, 100vw"
-                className="max-h-[412px] w-full rounded-[8px] object-contain"
+                className="object-cover"
               />
             </div>
           </div>

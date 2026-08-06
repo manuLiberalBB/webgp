@@ -58,7 +58,7 @@ export function NewsReadNoteLink({
   if (decorative) {
     if (variant === 'underline') {
       return (
-        <span className={underlineClassName}>
+        <span className={cn(underlineClassName, 'pointer-events-none')}>
           <ReadNoteContent variant={variant}>{children}</ReadNoteContent>
         </span>
       );
@@ -66,14 +66,14 @@ export function NewsReadNoteLink({
 
     if (variant === 'onDark') {
       return (
-        <span className={onDarkClassName}>
+        <span className={cn(onDarkClassName, 'pointer-events-none')}>
           <ReadNoteContent variant={variant}>{children}</ReadNoteContent>
         </span>
       );
     }
 
     return (
-      <span className={defaultClassName}>
+      <span className={cn(defaultClassName, 'pointer-events-none')}>
         <ReadNoteContent variant={variant}>{children}</ReadNoteContent>
       </span>
     );

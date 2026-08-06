@@ -23,7 +23,12 @@ export function NewsSidebar({
   className,
 }: NewsSidebarProps) {
   return (
-    <aside className={cn('flex w-full flex-col lg:max-w-[304px]', className)}>
+    <aside
+      className={cn(
+        'mx-auto flex w-full max-w-[16rem] min-w-0 flex-col lg:mx-0 lg:max-w-none xl:max-w-[21.5rem]',
+        className,
+      )}
+    >
       {relatedNews.length > 0 ? (
         <>
           <RelatedNewsSection items={relatedNews} />

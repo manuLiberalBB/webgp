@@ -1,17 +1,15 @@
 import {
   getFooter,
   getFooterCompanyLinks,
-  getFooterDownloadableResources,
   getHeaderNavigationLinks,
 } from '@/lib/contentful/queries';
 
 import { Footer } from './Footer';
 
 export async function SiteFooter() {
-  const [fields, companies, resources, pages] = await Promise.all([
+  const [fields, companies, pages] = await Promise.all([
     getFooter(),
     getFooterCompanyLinks(),
-    getFooterDownloadableResources(),
     getHeaderNavigationLinks(),
   ]);
 
@@ -21,7 +19,6 @@ export async function SiteFooter() {
     <Footer
       fields={fields}
       companies={companies}
-      resources={resources}
       pages={pages}
     />
   );

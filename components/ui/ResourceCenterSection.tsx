@@ -51,7 +51,7 @@ export function ResourceCenterSection({
       <div className="mx-auto flex w-full max-w-content flex-col items-start gap-10 lg:flex-row lg:items-center lg:gap-10">
         <div className="flex w-full min-w-0 flex-1 flex-col gap-5">
           {title ? (
-            <h2 className="text-[2rem] leading-[3.75rem] font-normal tracking-[-0.96px] text-[#0d0d0d] md:text-5xl">
+            <h2 className="text-[2.25rem] leading-tight font-normal tracking-[-0.96px] text-[#0d0d0d] md:text-5xl md:leading-[3.75rem]">
               {title}
             </h2>
           ) : null}

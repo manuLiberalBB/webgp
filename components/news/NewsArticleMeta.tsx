@@ -95,7 +95,7 @@ export function NewsArticleMeta({
 
   return (
     <section className={cn('bg-surface px-6 py-5 md:px-layout-x md:py-5', className)}>
-      <div className="mx-auto w-full max-w-news-article">
+      <div className="mx-auto w-full max-w-content">
         <nav aria-label="Breadcrumb" className="min-w-0">
           <ol className="flex min-w-0 items-center gap-1 overflow-hidden text-[13px] leading-[18px]">
             <li className="flex shrink-0 items-center gap-1">

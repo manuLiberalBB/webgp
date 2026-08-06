@@ -228,6 +228,9 @@ export const REGIONAL_PRESENCE_SECTION_CONTENTFUL_NAME =
 export const FUNDACIONES_GRUPO_PETERSEN_SECTION_CONTENTFUL_NAME =
   'SECCION - Fundaciones Grupo Petersen';
 
+export const FUNDACIONES_AREAS_ACCION_SECTION_CONTENTFUL_NAME =
+  'SECCION - Areas de acción de las fundaciones';
+
 export const PROGRAMS_DEVELOPMENT_SECTION_CONTENTFUL_NAME =
   'SECCION - PROGRAMAS QUE IMPULSAN EL DESARROLLO';
 
@@ -338,6 +341,25 @@ export function isComoGeneramosImpactoSectionContentfulName(
   return labels.some((label) =>
     normalizeSectionLabel(label).includes('GENERAMOS IMPACTO'),
   );
+}
+
+export function isFundacionesAreasAccionSectionContentfulName(
+  contentfulName?: string,
+  title?: string,
+): boolean {
+  const labels = [contentfulName, title].filter(
+    (value): value is string => Boolean(value?.trim()),
+  );
+
+  return labels.some((label) => {
+    const normalized = normalizeSectionLabel(label);
+
+    return (
+      normalized ===
+        normalizeSectionLabel(FUNDACIONES_AREAS_ACCION_SECTION_CONTENTFUL_NAME) ||
+      (normalized.includes('AREAS DE ACCION') && normalized.includes('FUNDACION'))
+    );
+  });
 }
 
 export const BANKING_CONNECT_SECTION_CONTENTFUL_NAME =

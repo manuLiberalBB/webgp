@@ -1,4 +1,5 @@
 import type { CardFields } from '@/lib/contentful/types/card';
+import { resolveFoundationAreaDescriptionMinHeight } from '@/lib/contentful/card/resolveFoundationAreaDescriptionMinHeight';
 import { cn } from '@/lib/utils';
 
 import { GridOverlayCard } from './GridOverlayCard';
@@ -9,6 +10,9 @@ type ImageOverlayGridSectionProps = {
   cards: CardFields[];
   headerAlign?: 'center' | 'left';
   cardLayout?: 'default' | 'three-two';
+  titleClassName?: string;
+  subtitleClassName?: string;
+  cardVariant?: 'default' | 'foundationArea';
   className?: string;
 };
 
@@ -38,12 +42,19 @@ export function ImageOverlayGridSection({
   cards,
   headerAlign = 'center',
   cardLayout = 'default',
+  titleClassName,
+  subtitleClassName,
+  cardVariant = 'default',
   className,
 }: ImageOverlayGridSectionProps) {
   if (cards.length === 0) return null;
 
   const isThreeTwoLayout = cardLayout === 'three-two' && cards.length === 5;
   const isLeftHeader = headerAlign === 'left';
+  const foundationDescriptionMinHeight =
+    cardVariant === 'foundationArea'
+      ? resolveFoundationAreaDescriptionMinHeight(cards)
+      : undefined;
 
   return (
     <section
@@ -61,7 +72,12 @@ export function ImageOverlayGridSection({
             )}
           >
             {title ? (
-              <h2 className="text-ecosystem-title text-[2rem] leading-tight font-normal md:text-[3rem] md:leading-[3rem]">
+              <h2
+                className={cn(
+                  'text-ecosystem-title text-[2rem] leading-tight font-normal md:text-[3rem] md:leading-[3rem]',
+                  titleClassName,
+                )}
+              >
                 {title}
               </h2>
             ) : null}
@@ -71,6 +87,7 @@ export function ImageOverlayGridSection({
                 className={cn(
                   'text-ecosystem-body text-lg leading-7 md:text-xl',
                   !isLeftHeader && 'max-w-[54.875rem]',
+                  subtitleClassName,
                 )}
               >
                 {subtitle}
@@ -81,7 +98,7 @@ export function ImageOverlayGridSection({
 
         <div
           className={cn(
-            'grid w-full min-w-0 gap-6',
+            'grid w-full min-w-0 items-stretch gap-6',
             isThreeTwoLayout
               ? 'grid-cols-1 lg:grid-cols-6'
               : getDefaultCardGridClassName(cards.length),
@@ -91,6 +108,8 @@ export function ImageOverlayGridSection({
             <GridOverlayCard
               key={`${card.contentfulName}-${index}`}
               fields={card}
+              variant={cardVariant}
+              foundationDescriptionMinHeight={foundationDescriptionMinHeight}
               className={getCardColumnClassName(cardLayout, index, cards.length)}
             />
           ))}

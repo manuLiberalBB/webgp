@@ -22,12 +22,12 @@ export function BankingConnectSection({
   return (
     <section
       className={cn(
-        'bg-ecosystem px-[18px] py-12 md:px-layout-x md:py-20',
+        'bg-ecosystem px-[18px] pt-0 pb-12 md:px-layout-x md:py-20',
         className,
       )}
     >
-      <div className="mx-auto flex w-full max-w-content flex-col items-center gap-10 lg:flex-row lg:gap-16">
-        <div className="relative h-[20rem] w-full min-w-0 flex-1 overflow-hidden rounded-lg bg-white md:h-[30.5rem]">
+      <div className="mx-auto flex w-full max-w-content flex-col-reverse items-center gap-10 lg:flex-row lg:gap-16">
+        <div className="relative h-[20rem] w-full min-w-0 shrink-0 overflow-hidden rounded-lg bg-white lg:h-[30.5rem] lg:flex-1">
           <Image
             src={imageUrl}
             alt={imageAlt}

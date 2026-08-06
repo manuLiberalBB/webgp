@@ -59,7 +59,7 @@ export async function NewsDetailView({ fields, publishedAt }: NewsDetailViewProp
       />
 
       <div className="px-6 py-10 md:px-layout-x lg:py-12">
-        <div className="mx-auto grid w-full max-w-news-article grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_304px] lg:gap-12">
+        <div className="mx-auto grid w-full max-w-content grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-10 xl:grid-cols-[minmax(0,54rem)_minmax(20.5rem,21.5rem)] xl:gap-12">
           <NewsArticleBody content={fields.content} tags={fields.tags} />
 
           <NewsSidebar

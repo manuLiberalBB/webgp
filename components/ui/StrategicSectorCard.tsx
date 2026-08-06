@@ -12,7 +12,7 @@ type StrategicSectorCardProps = {
 
 function ArrowRightIcon() {
   return (
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden className="shrink-0">
+    <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden className="shrink-0">
       <path
         d="M2.25 6h6.75M6.75 3.75 9.75 6l-3 2.25"
         stroke="currentColor"
@@ -31,17 +31,19 @@ export function StrategicSectorCard({
   className,
 }: StrategicSectorCardProps) {
   const ctaClassName =
-    'inline-flex items-center gap-2 text-xs leading-[18px] font-semibold text-white transition-opacity group-hover:opacity-80';
+    'inline-flex items-center gap-2 text-sm leading-5 font-semibold text-white transition-opacity group-hover:opacity-80';
 
   const textContent = (
-    <div className="relative z-10 flex w-full flex-col gap-3">
-      <h3 className="text-xl font-bold leading-6 text-white">{item.title}</h3>
+    <div className="relative z-10 flex w-full flex-col gap-2 md:gap-3">
+      <h3 className="min-h-0 text-[22px] leading-7 font-bold text-white line-clamp-2 md:min-h-14">
+        {item.title}
+      </h3>
 
-      {item.description ? (
-        <p className="text-xs leading-[19.5px] font-normal text-white">{item.description}</p>
-      ) : null}
+      <p className="min-h-0 text-base leading-6 font-normal text-white line-clamp-2 md:min-h-[4.5rem] md:line-clamp-3">
+        {item.description ?? '\u00A0'}
+      </p>
 
-      <span className={ctaClassName}>
+      <span className={cn(ctaClassName, 'shrink-0')}>
         {item.linkLabel}
         <ArrowRightIcon />
       </span>
@@ -49,7 +51,7 @@ export function StrategicSectorCard({
   );
 
   const cardClassName = cn(
-    'group relative flex h-[381px] w-full min-w-0 cursor-pointer flex-col justify-end overflow-hidden rounded-lg px-4 py-5 text-left transition-shadow',
+    'group relative flex h-[280px] w-full min-w-0 cursor-pointer flex-col justify-end overflow-hidden rounded-lg px-4 py-4 text-left transition-shadow md:h-[381px] md:py-5',
     isSelected && 'ring-2 ring-cta ring-offset-2',
     className,
   );

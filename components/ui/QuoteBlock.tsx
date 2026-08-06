@@ -9,31 +9,19 @@ type QuoteBlockProps = {
 
 export function QuoteBlock({ fields, className }: QuoteBlockProps) {
   return (
-    <figure
-      className={cn(
-        'quote-block border-news-sidebar-link border-l-[3px] pl-[35px]',
-        className,
-      )}
-    >
+    <figure className={cn('quote-block', className)}>
       <blockquote className="quote-block__quote">
         {formatPullQuoteText(fields.quote)}
       </blockquote>
 
-      <figcaption className="flex items-center gap-3 pt-5">
-        <span
-          className="bg-news-sidebar-link h-px w-7 shrink-0"
-          aria-hidden
-        />
+      <figcaption className="quote-block__footer">
+        <span className="quote-block__footer-line" aria-hidden />
 
-        <div className="min-w-0">
-          <p className="text-news-sidebar-title text-sm leading-[14px] font-medium">
-            {fields.author}
-          </p>
+        <div className="quote-block__attribution">
+          <p className="quote-block__author">{fields.author}</p>
 
           {fields.authorTitle ? (
-            <p className="text-news-meta pt-1 font-mono text-[11px] leading-[20.02px]">
-              {fields.authorTitle}
-            </p>
+            <p className="quote-block__author-title">{fields.authorTitle}</p>
           ) : null}
         </div>
       </figcaption>

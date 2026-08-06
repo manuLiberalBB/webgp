@@ -12,5 +12,5 @@ export function isQuoteBlockEntry(
 export function renderEmbeddedQuoteBlock(target: Entry | undefined) {
   if (!isQuoteBlockEntry(target)) return null;
 
-  return <QuoteBlock fields={target.fields} className="mb-12 pt-12" />;
+  return <QuoteBlock fields={target.fields} className="pt-12 md:pb-12" />;
 }

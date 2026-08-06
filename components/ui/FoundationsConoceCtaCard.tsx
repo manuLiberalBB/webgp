@@ -74,12 +74,12 @@ export function FoundationsConoceCtaCard({ fields, className }: FoundationsConoc
   return (
     <article
       className={cn(
-        'flex w-full flex-col items-start justify-between gap-6 rounded-lg border border-badge bg-badge/20 p-6 md:flex-row md:items-center md:gap-10 md:p-[41px]',
+        'flex w-full flex-col items-center justify-between gap-6 rounded-lg border border-badge bg-badge/20 p-6 text-center md:flex-row md:items-center md:gap-10 md:p-[41px] md:text-left',
         className,
       )}
     >
       {fields.title || fields.description ? (
-        <div className="flex min-w-0 flex-col items-start">
+        <div className="flex min-w-0 flex-col items-center md:items-start">
           {fields.title ? (
             <h3 className="text-heading text-lg leading-[30px] font-semibold">
               {fields.title}

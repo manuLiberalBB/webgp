@@ -1,3 +1,5 @@
+export const FOOTER_MOBILE_VISIBLE_LINKS = 5;
+
 export const FOOTER_CONNECT = {
   email: 'contacto@grupopetersen.com',
   socialTitle: 'Redes Sociales',
@@ -14,5 +16,5 @@ export const FOOTER_COLUMN_TITLES = {
   companies: 'Empresas del Grupo',
   resources: 'Recursos',
   navigation: 'Navegación',
-  connect: 'Conectá con nosotros',
+  connect: 'Contacto',
 } as const;

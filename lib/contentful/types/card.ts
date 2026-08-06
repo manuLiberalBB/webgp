@@ -8,6 +8,8 @@ export type CardFields = {
   contentfulName: string;
   title?: string;
   description?: string;
+  /** Texto extendido opcional; solo se usa donde el layout lo soporte. */
+  longDescription?: string;
   icon?: Asset;
   /** `link` o `externalLink` */
   url?: Entry[];

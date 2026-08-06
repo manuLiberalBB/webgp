@@ -88,20 +88,24 @@ export function BorderedGridCard({ fields, className }: BorderedGridCardProps) {
         </div>
       ) : null}
 
-      <div className="flex flex-1 flex-col items-center gap-5 p-5 text-center">
-        {fields.title || fields.description ? (
-          <div className="flex flex-col gap-3">
-            {fields.title ? (
-              <h3 className="text-heading text-xl font-semibold leading-6">{fields.title}</h3>
-            ) : null}
+      <div className="flex flex-1 flex-col items-center p-5 text-center">
+        <div className="flex w-full flex-col gap-3">
+          {fields.title ? (
+            <h3 className="min-h-12 text-heading text-xl font-semibold leading-6 line-clamp-2">
+              {fields.title}
+            </h3>
+          ) : null}
 
-            {fields.description ? (
-              <p className="text-body text-base leading-6">{fields.description}</p>
-            ) : null}
+          <p className="min-h-[4.5rem] text-body text-base leading-6 line-clamp-3">
+            {fields.description ?? '\u00A0'}
+          </p>
+        </div>
+
+        {link ? (
+          <div className="mt-auto pt-5">
+            <FeatureCardCta link={link} />
           </div>
         ) : null}
-
-        {link ? <FeatureCardCta link={link} /> : null}
       </div>
     </article>
   );

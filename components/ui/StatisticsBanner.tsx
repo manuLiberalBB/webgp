@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { CtaLinks } from '@/components/ui/CtaLinks';
 import type { StatisticItem } from '@/lib/contentful/types/statistic';
 import { HERO_BOTTOM_PADDING } from '@/lib/layout/sectionPadding';
+import { COMPACT_MOBILE_HERO_SECTION_CLASS } from '@/lib/layout/compactMobileHeroPages';
 import { cn } from '@/lib/utils';
 
 type StatisticsBannerProps = {
@@ -14,6 +15,7 @@ type StatisticsBannerProps = {
   statistics: StatisticItem[];
   urlList?: Entry[];
   className?: string;
+  compactMobile?: boolean;
 };
 
 export function StatisticsBanner({
@@ -24,12 +26,18 @@ export function StatisticsBanner({
   statistics,
   urlList,
   className,
+  compactMobile = false,
 }: StatisticsBannerProps) {
   return (
     <section
       className={cn(
-        'relative flex min-h-hero w-full flex-col items-center justify-center gap-10 px-10 pt-10 md:gap-12 md:px-layout-x md:pt-12',
-        HERO_BOTTOM_PADDING,
+        'relative flex w-full flex-col items-center px-10 md:px-layout-x',
+        compactMobile
+          ? cn(COMPACT_MOBILE_HERO_SECTION_CLASS, 'gap-8 md:gap-12')
+          : cn(
+              'min-h-hero items-center justify-center gap-10 pt-10 md:gap-12 md:pt-12',
+              HERO_BOTTOM_PADDING,
+            ),
         className,
       )}
     >
@@ -46,7 +54,7 @@ export function StatisticsBanner({
 
       <div className="relative z-10 flex w-full max-w-content flex-col items-center gap-5 text-center">
         {title ? (
-          <h2 className="text-[2.25rem] font-semibold leading-[3rem] tracking-[-0.72px] text-white">
+          <h2 className="text-[1.75rem] font-semibold leading-9 tracking-[-0.56px] text-white md:text-[2.25rem] md:leading-[3rem] md:tracking-[-0.72px]">
             {title}
           </h2>
         ) : null}
@@ -83,8 +91,12 @@ export function StatisticsBanner({
       ) : null}
 
       {urlList?.length ? (
-        <div className="relative z-10 flex justify-center">
-          <CtaLinks links={urlList} />
+        <div className="relative z-10 flex w-full max-w-content justify-center">
+          <CtaLinks
+            links={urlList}
+            className="w-full justify-center md:w-auto"
+            buttonClassName="w-full justify-center md:w-auto"
+          />
         </div>
       ) : null}
     </section>

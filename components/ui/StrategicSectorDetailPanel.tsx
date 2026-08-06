@@ -39,7 +39,7 @@ export function StrategicSectorDetailPanel({
         </h3>
 
         {item.sectorSubtitle ? (
-          <p className="text-base leading-5 text-[#6b6358]">{item.sectorSubtitle}</p>
+          <p className="text-base leading-6 text-[#6b6358]">{item.sectorSubtitle}</p>
         ) : null}
       </div>
 
@@ -58,12 +58,12 @@ export function StrategicSectorDetailPanel({
           <div className="flex min-w-0 flex-col justify-center bg-white p-8 lg:p-10">
             <div className="flex flex-col gap-6">
               {item.body ? (
-                <p className="text-sm leading-[22.75px] text-[#6b6358]">{item.body}</p>
+                <p className="text-base leading-[26px] text-[#6b6358]">{item.body}</p>
               ) : null}
 
               {item.waysWeContribute.length > 0 ? (
                 <div className="flex flex-col">
-                  <p className="text-xs leading-[22.75px] font-semibold text-[#6b6358]">
+                  <p className="text-sm leading-[22.75px] font-semibold text-[#6b6358]">
                     {STRATEGIC_SECTOR_CONTRIBUTE_HEADING}
                   </p>
 
@@ -71,7 +71,7 @@ export function StrategicSectorDetailPanel({
                     {item.waysWeContribute.map((way) => (
                       <li
                         key={way}
-                        className="border-b border-[rgba(27,42,56,0.12)] py-4 text-xs leading-4 text-[#6b6358]"
+                        className="border-b border-[rgba(27,42,56,0.12)] py-4 text-sm leading-5 text-[#6b6358]"
                       >
                         {way}
                       </li>
@@ -85,7 +85,7 @@ export function StrategicSectorDetailPanel({
               <Button
                 href={item.projectsHref}
                 external={item.projectsExternal}
-                className="self-start px-5 py-3 text-sm leading-5"
+                className="w-full justify-center px-5 py-3 text-sm leading-5 lg:w-auto lg:self-start"
               >
                 {item.projectsLabel}
                 <ArrowRightIcon />

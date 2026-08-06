@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 import { siteConfig } from '@/config/site';
 import {
@@ -17,11 +16,10 @@ import { FooterLinkList } from './footer/FooterLinkList';
 type FooterProps = {
   fields: FooterFields;
   companies: FooterLinkItem[];
-  resources: FooterLinkItem[];
   pages: FooterLinkItem[];
 };
 
-export function Footer({ fields, companies, resources, pages }: FooterProps) {
+export function Footer({ fields, companies, pages }: FooterProps) {
   const logoUrl = getAssetUrl(fields.logo);
   const currentYear = new Date().getFullYear();
 
@@ -79,12 +77,6 @@ export function Footer({ fields, companies, resources, pages }: FooterProps) {
               <FooterLinkList items={companies} />
             </FooterColumn>
 
-            {resources.length > 0 ? (
-              <FooterColumn title={FOOTER_COLUMN_TITLES.resources}>
-                <FooterLinkList items={resources} download />
-              </FooterColumn>
-            ) : null}
-
             <FooterColumn title={FOOTER_COLUMN_TITLES.navigation}>
               <FooterLinkList items={pages} />
             </FooterColumn>
@@ -113,9 +105,11 @@ export function Footer({ fields, companies, resources, pages }: FooterProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={network.label}
-                      className="bg-footer-social-bg text-footer-heading flex size-10 items-center justify-center rounded-full transition-opacity hover:opacity-80"
+                      className="bg-footer-social-bg flex size-10 items-center justify-center rounded-full transition-opacity hover:opacity-80"
                     >
-                      {network.id === 'linkedin' ? <LinkedInIcon /> : null}
+                      {network.id === 'linkedin' ? (
+                        <LinkedInIcon className="text-footer-icon" />
+                      ) : null}
                     </a>
                   ))}
                 </div>

@@ -17,14 +17,14 @@ function I3FeatureItem({ card }: { card: CardFields }) {
   const iconUrl = card.icon ? getAssetUrl(card.icon) : undefined;
 
   return (
-    <div className="flex items-start gap-4">
+    <div className="flex flex-col items-center gap-3 text-center md:flex-row md:items-start md:gap-4 md:text-left">
       {iconUrl ? (
         <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-[rgba(21,93,252,0.1)]">
           <Image src={iconUrl} alt="" width={20} height={20} className="size-5" />
         </div>
       ) : null}
 
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div className="flex min-w-0 flex-col md:flex-1">
         {card.title ? (
           <p className="text-heading text-lg leading-6 font-semibold">{card.title}</p>
         ) : null}
@@ -57,7 +57,9 @@ export function I3InnovationPanel({
         {title || subtitle ? (
           <div className="flex flex-col gap-3">
             {title ? (
-              <h2 className="text-heading text-[3rem] leading-normal font-semibold">{title}</h2>
+              <h2 className="text-heading text-[2.25rem] leading-[2.75rem] font-semibold md:text-[3rem] md:leading-normal">
+                {title}
+              </h2>
             ) : null}
 
             {subtitle ? (
@@ -67,7 +69,7 @@ export function I3InnovationPanel({
         ) : null}
 
         {cards.length > 0 ? (
-          <div className="flex flex-col gap-5 pb-10">
+          <div className="flex flex-col gap-5 md:pb-10">
             {cards.map((card, index) => (
               <I3FeatureItem key={`${card.contentfulName}-${index}`} card={card} />
             ))}

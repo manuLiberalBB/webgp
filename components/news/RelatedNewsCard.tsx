@@ -28,7 +28,7 @@ export function RelatedNewsCard({
         <Image
           src={item.coverImageUrl}
           alt={item.coverImageAlt}
-          width={304}
+          width={368}
           height={171}
           className="h-full w-full object-cover"
         />

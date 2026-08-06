@@ -5,6 +5,8 @@ import { Suspense } from 'react';
 import { Header, SiteFooter } from '@/components/layout';
 import { HashScrollOnLoad } from '@/components/layout/HashScrollOnLoad';
 import { getHeader } from '@/lib/contentful/queries';
+import { dmMono } from '@/lib/fonts/dmMono';
+import { dmSans } from '@/lib/fonts/dmSans';
 import { playfairDisplay } from '@/lib/fonts/playfairDisplay';
 
 import './globals.css';
@@ -16,6 +18,22 @@ const openSans = Open_Sans({
 
 export const metadata: Metadata = {
   title: 'Grupo Petersen',
+  icons: {
+    icon: [
+      { url: '/favicon/favicon.ico' },
+      { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: '/favicon/apple-touch-icon.png',
+    other: [
+      {
+        rel: 'mask-icon',
+        url: '/favicon/safari-pinned-tab.svg',
+        color: '#001b57',
+      },
+    ],
+  },
+  manifest: '/favicon/site.webmanifest',
 };
 
 export const revalidate = 3600;
@@ -30,7 +48,7 @@ export default async function RootLayout({
   return (
     <html lang="es" className="is-page-loading">
       <body
-        className={`${openSans.variable} ${playfairDisplay.variable} font-sans antialiased`}
+        className={`${openSans.variable} ${playfairDisplay.variable} ${dmSans.variable} ${dmMono.variable} font-sans antialiased`}
       >
         <noscript>
           <style>{'html.is-page-loading .app-shell { visibility: visible; }'}</style>
@@ -39,7 +57,7 @@ export default async function RootLayout({
           <HashScrollOnLoad />
         </Suspense>
         <div className="app-shell">
-          <div className="app-content">
+          <div className="app-content pt-header lg:pt-0">
             {header ? <Header fields={header} /> : null}
             <main className="app-main">{children}</main>
           </div>

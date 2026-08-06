@@ -82,12 +82,12 @@ export function BankingSustainabilitySection({
   return (
     <section
       className={cn(
-        'bg-white px-[18px] py-12 md:px-layout-x md:py-[3.75rem]',
+        'bg-white px-[18px] pt-0 pb-12 md:px-layout-x md:py-[3.75rem]',
         className,
       )}
     >
-      <div className="mx-auto flex w-full max-w-content flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
-        <div className="relative h-[20rem] w-full min-w-0 flex-1 overflow-hidden rounded-lg md:h-[39.3125rem]">
+      <div className="mx-auto flex w-full max-w-content flex-col-reverse gap-10 lg:flex-row lg:items-start lg:gap-16">
+        <div className="relative h-[20rem] w-full min-w-0 shrink-0 overflow-hidden rounded-lg lg:h-[39.3125rem] lg:flex-1">
           <Image
             src={imageUrl}
             alt={imageAlt}

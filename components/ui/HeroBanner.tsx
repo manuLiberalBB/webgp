@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import { HERO_BOTTOM_PADDING } from '@/lib/layout/sectionPadding';
+import { COMPACT_MOBILE_HERO_SECTION_CLASS } from '@/lib/layout/compactMobileHeroPages';
 import { cn } from '@/lib/utils';
 
 import { Badge } from './Badge';
@@ -13,6 +14,7 @@ type HeroBannerProps = {
   imageAlt?: string;
   id?: string;
   className?: string;
+  compactMobile?: boolean;
 };
 
 export function HeroBanner({
@@ -23,13 +25,16 @@ export function HeroBanner({
   imageAlt = '',
   id,
   className,
+  compactMobile = false,
 }: HeroBannerProps) {
   return (
     <section
       id={id}
       className={cn(
-        'relative flex min-h-hero w-full max-w-full flex-col justify-center overflow-hidden px-[1.875rem] pt-10 md:px-layout-x md:pt-12',
-        HERO_BOTTOM_PADDING,
+        'relative flex w-full max-w-full flex-col overflow-hidden px-[1.875rem] md:px-layout-x',
+        compactMobile
+          ? COMPACT_MOBILE_HERO_SECTION_CLASS
+          : cn('min-h-hero justify-center pt-10 md:pt-12', HERO_BOTTOM_PADDING),
         id && 'scroll-mt-20',
         className,
       )}

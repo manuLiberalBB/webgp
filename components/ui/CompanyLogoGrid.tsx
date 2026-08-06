@@ -48,13 +48,16 @@ export function CompanyLogoCardGrid({
   return (
     <div
       className={cn(
-        'grid w-full min-w-0 max-w-full grid-cols-2 gap-x-3 gap-y-4 md:grid-cols-4 md:gap-6',
+        'flex w-full min-w-0 max-w-full flex-wrap justify-center gap-x-3 gap-y-4 md:gap-x-6 md:gap-y-6',
         className,
       )}
       aria-label="Logos de empresas"
     >
       {items.map((item) => (
-        <div key={item.id} className="min-w-0">
+        <div
+          key={item.id}
+          className="w-[calc(50%-0.375rem)] min-w-0 md:w-[calc(25%-1.125rem)]"
+        >
           <CompanyLogoCard item={item} />
         </div>
       ))}

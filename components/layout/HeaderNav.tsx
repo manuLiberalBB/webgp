@@ -79,7 +79,7 @@ export function HeaderNav({
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="bg-surface sticky top-0 z-50 w-full shrink-0 shadow-header">
+    <header className="bg-surface fixed inset-x-0 top-0 z-50 w-full shrink-0 shadow-header lg:sticky">
       <div className="px-6 md:px-layout-x">
         <div className="mx-auto flex h-header w-full max-w-content items-center justify-between">
           <Link
@@ -136,14 +136,17 @@ export function HeaderNav({
         )}
       >
         <div className="px-6 md:px-layout-x">
-          <ul className="mx-auto flex w-full max-w-content flex-col gap-6 py-8">
+          <ul className="mx-auto flex w-full max-w-content flex-col py-8">
             {navLinks.map((link) => (
-              <li key={link.id}>
+              <li
+                key={link.id}
+                className="border-b border-black/10 py-4 last:border-b-0 last:pb-0 first:pt-0"
+              >
                 <NavLink
                   link={link}
                   active={isActivePath(pathname, link.href)}
                   onNavigate={closeMenu}
-                  className="text-base"
+                  className="block w-full text-base"
                 />
               </li>
             ))}

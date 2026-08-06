@@ -60,16 +60,14 @@ export function NewsPageFeaturedLargeCard({
             {item.readingMinutes} min
           </span>
           <div className="flex-1" />
-          <div className="pointer-events-auto">
-            <NewsReadNoteLink
-              href={item.href}
-              variant="onDark"
-              decorative
-              className="text-sm leading-[16.5px]"
-            >
-              {readMoreLabel}
-            </NewsReadNoteLink>
-          </div>
+          <NewsReadNoteLink
+            href={item.href}
+            variant="onDark"
+            decorative
+            className="text-sm leading-[16.5px]"
+          >
+            {readMoreLabel}
+          </NewsReadNoteLink>
         </div>
       </div>
     </div>

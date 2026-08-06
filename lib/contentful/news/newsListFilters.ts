@@ -21,6 +21,8 @@ export type NewsFilterCompanyRef = {
 };
 
 const FILTERED_NEWS_LIMIT = 100;
+export const FILTERED_NEWS_INITIAL_LIMIT = 12;
+export const FILTERED_NEWS_LOAD_MORE_LIMIT = 6;
 
 /** Quita tildes y diacríticos para params de URL estables. */
 export function stripFilterAccents(value: string): string {

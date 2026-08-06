@@ -12,7 +12,7 @@ export function CardBlock({ fields }: BlockComponentProps) {
   }
 
   return (
-    <section className="bg-white px-10 py-10 md:px-layout-x md:py-section-y">
+    <section className="bg-white px-10 pt-0 pb-10 md:px-layout-x md:pt-0 md:pb-section-y">
       <div className="mx-auto w-full max-w-content">
         <FoundationsConoceCtaCard fields={cardFields} />
       </div>

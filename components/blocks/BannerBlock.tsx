@@ -13,10 +13,11 @@ import {
   isStatisticsBannerContentfulName,
   QUE_HACEMOS_SECTION_ID,
 } from '@/lib/contentful/types/banner';
+import { isCompactMobileHeroPage } from '@/lib/layout/compactMobileHeroPages';
 
 import type { BlockComponent } from './registry';
 
-export const BannerBlock: BlockComponent = ({ fields }) => {
+export const BannerBlock: BlockComponent = ({ fields, pagePath }) => {
   const {
     contentfulName,
     tag,
@@ -44,6 +45,7 @@ export const BannerBlock: BlockComponent = ({ fields }) => {
 
   const statistics = resolveStatisticItems(items);
   const qualiaCards = resolveBannerCardItems(items);
+  const compactMobile = isCompactMobileHeroPage(pagePath);
   const isStatisticsBanner =
     statistics.length > 0 || isStatisticsBannerContentfulName(contentfulName);
   const isQualiaBanner =
@@ -72,6 +74,7 @@ export const BannerBlock: BlockComponent = ({ fields }) => {
         imageAlt={imageAlt}
         statistics={statistics}
         urlList={urlList}
+        compactMobile={compactMobile}
       />
     );
   }
@@ -84,6 +87,7 @@ export const BannerBlock: BlockComponent = ({ fields }) => {
         subtitle={subtitle}
         imageUrl={imageUrl}
         imageAlt={imageAlt}
+        compactMobile={compactMobile}
         id={
           isQueHacemosBannerContentfulName(contentfulName)
             ? QUE_HACEMOS_SECTION_ID

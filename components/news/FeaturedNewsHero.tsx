@@ -61,7 +61,7 @@ export function FeaturedNewsHero({ item, className }: FeaturedNewsHeroProps) {
             ) : null}
           </div>
 
-          <h1 className="text-[34px] leading-[1.2] font-normal text-white md:text-[51px] md:leading-[1.3]">
+          <h1 className="max-w-[50rem] text-[34px] leading-[1.2] font-normal text-white md:max-w-[58rem] md:text-[51px] md:leading-[1.3]">
             {item.title}
           </h1>
 

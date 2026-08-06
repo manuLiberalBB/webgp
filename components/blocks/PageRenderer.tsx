@@ -21,6 +21,7 @@ import { isSectorPage } from '@/lib/contentful/sector/isSectorPage';
 
 import { SectorCompaniesSectionWithFetch } from './SectorCompaniesSectionWithFetch';
 import { SectorPageHeroWithFetch } from './SectorPageHeroWithFetch';
+import { SectorRelatedNewsSectionWithFetch } from './SectorRelatedNewsSectionWithFetch';
 import { blockRegistry } from './registry';
 import type { BlockComponentProps } from './registry';
 
@@ -232,6 +233,11 @@ export function PageRenderer({
       {showAllNewsSection && !hideAllNewsSection ? (
         <Suspense fallback={<NewsResultsLoading />}>
           <AllNewsSectionWithFetch />
+        </Suspense>
+      ) : null}
+      {isSector ? (
+        <Suspense fallback={null}>
+          <SectorRelatedNewsSectionWithFetch pagePath={pagePath} />
         </Suspense>
       ) : null}
       <PageContentReady />

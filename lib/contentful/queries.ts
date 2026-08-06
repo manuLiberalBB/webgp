@@ -218,6 +218,50 @@ export async function getFeaturedRelatedNews(options: {
   return related.slice(0, limit);
 }
 
+export async function getRelatedNewsForCompanies(options: {
+  companyIds: string[];
+  limit?: number;
+  excludePaths?: string[];
+}): Promise<FeaturedNewsItem[]> {
+  const { companyIds, limit = 3, excludePaths = [] } = options;
+  const client = getContentfulClient();
+  const related: FeaturedNewsItem[] = [];
+  const seen = new Set<string>(excludePaths);
+
+  async function fetchBatch(query: Record<string, unknown>) {
+    const entries = await client.getEntries<NewsSkeleton>({
+      content_type: 'news',
+      include: CONTENTFUL_INCLUDE.newsList,
+      limit: limit + seen.size + 5,
+      order: ['-sys.createdAt'],
+      ...query,
+    });
+
+    for (const item of entries.items) {
+      const fields = item.fields as NewsFields;
+      if (seen.has(fields.path)) continue;
+
+      const mapped = mapFeaturedNewsItem(item.sys.id, fields, item.sys.createdAt);
+      if (!mapped) continue;
+
+      related.push(mapped);
+      seen.add(fields.path);
+
+      if (related.length >= limit) break;
+    }
+  }
+
+  if (companyIds.length > 0) {
+    await fetchBatch({ 'fields.companies.sys.id[in]': companyIds.join(',') });
+  }
+
+  if (related.length < limit) {
+    await fetchBatch({});
+  }
+
+  return related.slice(0, limit);
+}
+
 export type NewsListQueryOptions = {
   limit?: number;
   skip?: number;
@@ -226,9 +270,21 @@ export type NewsListQueryOptions = {
   query?: string;
 };
 
+export type NewsListItemsPage = {
+  items: NewsListItem[];
+  total: number;
+};
+
 export async function getNewsListItems(
   options: number | NewsListQueryOptions = 4,
 ): Promise<NewsListItem[]> {
+  const page = await getNewsListItemsPage(options);
+  return page.items;
+}
+
+export async function getNewsListItemsPage(
+  options: number | NewsListQueryOptions = 4,
+): Promise<NewsListItemsPage> {
   const resolvedOptions: NewsListQueryOptions =
     typeof options === 'number' ? { limit: options } : options;
 
@@ -267,15 +323,35 @@ export async function getNewsListItems(
 
   const entries = await client.getEntries<NewsSkeleton>(queryParams);
 
-  return entries.items
-    .map((item) =>
-      mapNewsListItem(item.sys.id, item.fields as NewsFields, item.sys.createdAt),
-    )
-    .filter((item): item is NewsListItem => item !== null);
+  return {
+    items: entries.items
+      .map((item) =>
+        mapNewsListItem(item.sys.id, item.fields as NewsFields, item.sys.createdAt),
+      )
+      .filter((item): item is NewsListItem => item !== null),
+    total: entries.total,
+  };
 }
 
 export async function getLatestNews(limit = 4): Promise<NewsListItem[]> {
   return getNewsListItems(limit);
+}
+
+export async function getLatestFeaturedNews(limit = 3): Promise<FeaturedNewsItem[]> {
+  const client = getContentfulClient();
+
+  const entries = await client.getEntries<NewsSkeleton>({
+    content_type: 'news',
+    include: CONTENTFUL_INCLUDE.newsList,
+    limit,
+    order: ['-sys.createdAt'],
+  });
+
+  return entries.items
+    .map((item) =>
+      mapFeaturedNewsItem(item.sys.id, item.fields as NewsFields, item.sys.createdAt),
+    )
+    .filter((item): item is FeaturedNewsItem => item !== null);
 }
 
 export async function getHeader(): Promise<HeaderFields | null> {

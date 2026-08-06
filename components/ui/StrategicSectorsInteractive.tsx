@@ -16,12 +16,19 @@ type StrategicSectorsInteractiveProps = {
   className?: string;
 };
 
-function getDesktopGridClassName(itemCount: number) {
-  if (itemCount === 1) return 'max-w-sm';
-  if (itemCount === 2) return 'md:grid-cols-2';
-  if (itemCount === 3) return 'md:grid-cols-2 lg:grid-cols-3';
-  if (itemCount === 4) return 'md:grid-cols-2 lg:grid-cols-4';
-  return 'md:grid-cols-2 lg:grid-cols-5';
+function getDesktopContainerClassName(itemCount: number) {
+  if (itemCount === 1) return 'md:flex md:max-w-sm';
+
+  return 'md:grid md:grid-cols-2 lg:flex';
+}
+
+function getDesktopCardClassName(isSelected: boolean, itemCount: number) {
+  if (itemCount <= 1) return undefined;
+
+  return cn(
+    'lg:min-w-0 lg:transition-[flex-grow,flex-shrink,flex-basis] lg:duration-300 lg:ease-out',
+    isSelected ? 'lg:flex-[1.35]' : 'lg:flex-[0.9]',
+  );
 }
 
 export function StrategicSectorsInteractive({
@@ -44,7 +51,7 @@ export function StrategicSectorsInteractive({
         {(title || subtitle) && (
           <div className="flex flex-col gap-5">
             {title ? (
-              <h2 className="text-heading text-[2rem] leading-tight font-semibold tracking-[-0.96px] md:text-[3rem] md:leading-[3.75rem]">
+              <h2 className="text-[2rem] leading-tight font-semibold tracking-[-0.96px] text-black md:text-[3rem] md:leading-[3.75rem]">
                 {title}
               </h2>
             ) : null}
@@ -65,7 +72,7 @@ export function StrategicSectorsInteractive({
                 item={item}
                 isSelected={selectedId === item.id}
                 onSelect={() => setSelectedId(item.id)}
-                className="w-[78vw] max-w-[280px] shrink-0 snap-start snap-always"
+                className="w-[calc(100vw-3.5rem)] max-w-[340px] shrink-0 snap-start snap-always md:w-full md:max-w-none"
               />
             ))}
           </div>
@@ -74,17 +81,22 @@ export function StrategicSectorsInteractive({
         <div
           className={cn(
             'hidden w-full min-w-0 gap-3 md:grid',
-            getDesktopGridClassName(items.length),
+            getDesktopContainerClassName(items.length),
           )}
         >
-          {items.map((item) => (
-            <StrategicSectorCard
-              key={item.id}
-              item={item}
-              isSelected={selectedId === item.id}
-              onSelect={() => setSelectedId(item.id)}
-            />
-          ))}
+          {items.map((item) => {
+            const isSelected = selectedId === item.id;
+
+            return (
+              <StrategicSectorCard
+                key={item.id}
+                item={item}
+                isSelected={isSelected}
+                onSelect={() => setSelectedId(item.id)}
+                className={getDesktopCardClassName(isSelected, items.length)}
+              />
+            );
+          })}
         </div>
 
         {selectedItem ? (
