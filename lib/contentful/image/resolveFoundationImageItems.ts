@@ -11,7 +11,3 @@ export function resolveFoundationImageItems(items?: Entry[]): FoundationImageIte
     accentColor: resolveFoundationAccentColor(item.contentfulName, item.epigraph),
   }));
 }
-
-export function hasFoundationImageItems(items?: Entry[]): boolean {
-  return resolveFoundationImageItems(items).length > 0;
-}

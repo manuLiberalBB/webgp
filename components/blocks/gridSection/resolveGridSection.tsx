@@ -5,7 +5,6 @@ import { buildGridSectionContext } from '@/lib/contentful/gridSection/buildGridS
 import { logGridSectionVariantResolution } from '@/lib/contentful/gridSection/sectionVariantLogger';
 import {
   GRID_SECTION_VARIANTS,
-  isKnownGridSectionVariant,
   normalizeSectionVariant,
   type GridSectionVariant,
 } from '@/lib/contentful/gridSection/sectionVariants';
@@ -39,24 +38,3 @@ export function renderGridSection(props: BlockComponentProps): ReactNode {
 
   return render(ctx);
 }
-
-/** Resolve variant slug from CMS fields (for anchor ids, etc.). */
-export function resolveGridSectionVariantFromFields(
-  fields: BlockComponentProps['fields'],
-): GridSectionVariant {
-  const ctx = buildGridSectionContext({ fields });
-  return resolveSectionVariant(ctx);
-}
-
-export function isGridSectionVariant(
-  fields: BlockComponentProps['fields'],
-  variant: GridSectionVariant,
-): boolean {
-  const explicit = normalizeSectionVariant(
-    (fields as { sectionVariant?: string }).sectionVariant,
-  );
-
-  return (explicit ?? GRID_SECTION_VARIANTS.DEFAULT) === variant;
-}
-
-export { isKnownGridSectionVariant, normalizeSectionVariant, GRID_SECTION_VARIANTS };

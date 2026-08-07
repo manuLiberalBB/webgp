@@ -1,11 +1,4 @@
 export type { BannerEntry, BannerFields, BannerSkeleton } from './banner';
-export {
-  isQueHacemosBannerContentfulName,
-  isStatisticsBannerContentfulName,
-  QUE_HACEMOS_SECTION_ID,
-  REGIONAL_REACH_BANNER_CONTENTFUL_NAME,
-  STATISTICS_BANNER_CONTENTFUL_NAME,
-} from './banner';
 export type { CardEntry, CardFields, CardSkeleton } from './card';
 export type { CompanyEntry, CompanyFields, CompanySkeleton } from './company';
 export type {
@@ -25,21 +18,8 @@ export type {
   FeaturedNewsSkeleton,
 } from './featuredNews';
 export type { GridSectionEntry, GridSectionFields, GridSectionSkeleton } from './gridSection';
-export {
-  GRID_SECTION_CARD_STYLES,
-  HIRING_ROOM_CTA_LABEL,
-  isGridSectionCardStyle,
-  resolveGridSectionCardStyle,
-} from './gridSection';
+export { HIRING_ROOM_CTA_LABEL, resolveGridSectionCardStyle } from './gridSection';
 export type { GridSectionCardStyle } from './gridSection';
-export type {
-  SectorsGridSectionEntry,
-  SectorsGridSectionFields,
-  SectorsGridSectionSkeleton,
-} from './sectorsGridSection';
-export {
-  SECTORS_GRID_SECTION_CONTENTFUL_NAME,
-} from './sectorsGridSection';
 export type {
   SectorEntry,
   SectorFields,
@@ -52,7 +32,6 @@ export type {
   StrategicSectorReference,
   StrategicSectorSkeleton,
 } from './strategicSector';
-export { getStrategicSectorContentfulName } from './strategicSector';
 export type { HeaderEntry, HeaderFields, HeaderSkeleton } from './header';
 export type { ImageEntry, ImageFields, FoundationImageItem, ImageItem, ImageSkeleton } from './image';
 export type { FooterEntry, FooterFields, FooterSkeleton } from './footer';

@@ -1,0 +1,452 @@
+{
+  "generatedAt": "2026-08-07T13:21:27.745Z",
+  "environment": "develop-v2",
+  "preview": true,
+  "cards": {
+    "total": 43,
+    "cardRoleAlreadySet": 0,
+    "cardRoleMissing": 43,
+    "tagCategoryNeeded": 3,
+    "tagCategoryAlreadySet": 0,
+    "tagCategoryMissing": 3,
+    "items": [
+      {
+        "entryId": "6MhR3OeSOOHRRczytyysMS",
+        "contentfulName": "CARD - AREAS DE ACCION FUNDACIONES - COMUNIDAD",
+        "title": "Comunidad",
+        "tag": "PROGRAMAS SOCIALES",
+        "suggestedCardRole": "default",
+        "suggestedTagCategory": "sociales",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "missing",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/6MhR3OeSOOHRRczytyysMS"
+      },
+      {
+        "entryId": "3K0Z1XQPcKzmjgKFvBs8Qz",
+        "contentfulName": "CARD - AREAS DE ACCION FUNDACIONES - CULTURA",
+        "title": "Cultura",
+        "tag": "PROGRAMAS CULTURALES",
+        "suggestedCardRole": "default",
+        "suggestedTagCategory": "culturales",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "missing",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/3K0Z1XQPcKzmjgKFvBs8Qz"
+      },
+      {
+        "entryId": "43gTzCyE3itGUXUiUcHjYH",
+        "contentfulName": "CARD - AREAS DE ACCION FUNDACIONES - EDUCACION",
+        "title": "Educación",
+        "tag": "Educación",
+        "suggestedCardRole": "default",
+        "suggestedTagCategory": "educacion",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "missing",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/43gTzCyE3itGUXUiUcHjYH"
+      },
+      {
+        "entryId": "6ZmI06aY1zhYD6mvW0DpKT",
+        "contentfulName": "CARD - BANCO SAN JUAN",
+        "title": "Banco San Juan",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/6ZmI06aY1zhYD6mvW0DpKT"
+      },
+      {
+        "entryId": "3fVd571gQFWPneUPY9ZphW",
+        "contentfulName": "CARD - CATEGORIA - Comunidad",
+        "title": "Comunidad",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/3fVd571gQFWPneUPY9ZphW"
+      },
+      {
+        "entryId": "70Aa8ESeRCTYMkXQbFSjkH",
+        "contentfulName": "CARD - CATEGORIA - Desarrollo Regional",
+        "title": "Desarrollo regional",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/70Aa8ESeRCTYMkXQbFSjkH"
+      },
+      {
+        "entryId": "TkoLyWf5PUiHm5e2imQi6",
+        "contentfulName": "CARD - CATEGORIA - Educación",
+        "title": "Educación",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/TkoLyWf5PUiHm5e2imQi6"
+      },
+      {
+        "entryId": "613mq4ZfjG0J9MvURWnJMY",
+        "contentfulName": "CARD - CATEGORIA - Innovación",
+        "title": "Innovación",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/613mq4ZfjG0J9MvURWnJMY"
+      },
+      {
+        "entryId": "1CxOmnnruYBsm4ZZ7YE0Uj",
+        "contentfulName": "CARD - COMO GENERAMOS IMPACTO - CULTURA",
+        "title": "Cultura",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/1CxOmnnruYBsm4ZZ7YE0Uj"
+      },
+      {
+        "entryId": "52xSuVn6w4ZKAfoLW4wFlq",
+        "contentfulName": "CARD - COMO GENERAMOS IMPACTO - EDUCACION Y COMUNIDADES",
+        "title": "Educación y comunidades",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/52xSuVn6w4ZKAfoLW4wFlq"
+      },
+      {
+        "entryId": "628cRs6AFx2LkRkMc4Y7l4",
+        "contentfulName": "CARD - COMO GENERAMOS IMPACTO - INNOVACION",
+        "title": "Innovación",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/628cRs6AFx2LkRkMc4Y7l4"
+      },
+      {
+        "entryId": "62olW2eA3JfQ0K8XpRwXy3",
+        "contentfulName": "CARD - CTA - Conoce más sobre nuestras fundaciones",
+        "title": "Conocé más sobre nuestras fundaciones",
+        "suggestedCardRole": "fundaciones-cta",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/62olW2eA3JfQ0K8XpRwXy3"
+      },
+      {
+        "entryId": "5AWXl4QAH1duuOQ0h8yzgb",
+        "contentfulName": "CARD - EVENTOS - AAPRESID",
+        "title": "AAPRESID",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/5AWXl4QAH1duuOQ0h8yzgb"
+      },
+      {
+        "entryId": "4yTHOKtRtkTKDzJYFmx0Fv",
+        "contentfulName": "CARD - EVENTOS - Agroactiva",
+        "title": "Agroactiva",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/4yTHOKtRtkTKDzJYFmx0Fv"
+      },
+      {
+        "entryId": "5lZc609qoFYaSmSvHZdDny",
+        "contentfulName": "CARD - EVENTOS - AR Minera",
+        "title": "AR Minera",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/5lZc609qoFYaSmSvHZdDny"
+      },
+      {
+        "entryId": "6cKuaWVtfqxsViNbFS0JKS",
+        "contentfulName": "CARD - EVENTOS - Expoagro",
+        "title": "Expoagro",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/6cKuaWVtfqxsViNbFS0JKS"
+      },
+      {
+        "entryId": "3W25izqjxZ642EkmneuFtC",
+        "contentfulName": "CARD - EVENTOS - Innova Cuyo",
+        "title": "Innova Cuyo",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/3W25izqjxZ642EkmneuFtC"
+      },
+      {
+        "entryId": "4JUI2Bj7XesH2sXsC6OevG",
+        "contentfulName": "CARD - I3 - Innovación constante",
+        "title": "Innovación constante",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/4JUI2Bj7XesH2sXsC6OevG"
+      },
+      {
+        "entryId": "16dNhKWfotv92yQHpyfBNH",
+        "contentfulName": "CARD - I3 - Interacción creativa",
+        "title": "Interacción creativa",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/16dNhKWfotv92yQHpyfBNH"
+      },
+      {
+        "entryId": "J9J1CEK6EqBwLAsnA8sIB",
+        "contentfulName": "CARD - I3 - Vínculo con la comunidad",
+        "title": "Vínculo con la comunidad",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/J9J1CEK6EqBwLAsnA8sIB"
+      },
+      {
+        "entryId": "6l1sfWgUhH6spLQ4Dc7G0t",
+        "contentfulName": "CARD - IMPULSAMOS UNA MIRADA - EDUCACION FINANCIERA",
+        "title": "Educación financiera",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/6l1sfWgUhH6spLQ4Dc7G0t"
+      },
+      {
+        "entryId": "7nbJtswUO5xRUCgDMQHReT",
+        "contentfulName": "CARD - IMPULSAMOS UNA MIRADA - FINANZAS SOSTENIBLES",
+        "title": "Finanzas sostenibles",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/7nbJtswUO5xRUCgDMQHReT"
+      },
+      {
+        "entryId": "5PvgGZkmuujt8likLm3QcW",
+        "contentfulName": "CARD - IMPULSAMOS UNA MIRADA - GESTION SOSTENIBLE",
+        "title": "Gestión sostenible",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/5PvgGZkmuujt8likLm3QcW"
+      },
+      {
+        "entryId": "4w4mclqieXtByRLbLA1OBA",
+        "contentfulName": "CARD - NOTICIAS - IMPACTO",
+        "title": "Educación",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/4w4mclqieXtByRLbLA1OBA"
+      },
+      {
+        "entryId": "6H3Bsbr12iBGij3meLxb9v",
+        "contentfulName": "CARD - NOTICIAS - IMPACTO (1)",
+        "title": "Sustentabilidad",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/6H3Bsbr12iBGij3meLxb9v"
+      },
+      {
+        "entryId": "lxVod7WZAn2zntj3wnfdY",
+        "contentfulName": "CARD - NOTICIAS - IMPACTO (2)",
+        "title": "Desarrollo regional",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/lxVod7WZAn2zntj3wnfdY"
+      },
+      {
+        "entryId": "1EOg9binZmBE24r48dVURu",
+        "contentfulName": "CARD - NOTICIAS - IMPACTO (3)",
+        "title": "Innovación",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/1EOg9binZmBE24r48dVURu"
+      },
+      {
+        "entryId": "1HVpX7xvf6lP0coCQnaYVb",
+        "contentfulName": "CARD - PlusPagos",
+        "title": "PlusPagos",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/1HVpX7xvf6lP0coCQnaYVb"
+      },
+      {
+        "entryId": "22rwFilnK3ngmWuqhBZK17",
+        "contentfulName": "CARD - PROGRAMAS - Desarrollo de Comunidades",
+        "title": "Desarollo de Comunidades",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/22rwFilnK3ngmWuqhBZK17"
+      },
+      {
+        "entryId": "6tqoVztadMFCwrhwLQzcLQ",
+        "contentfulName": "CARD - PROGRAMAS - Fortalecimiento de la Educación Técnica",
+        "title": "Fortalecimiento de la Educación Técnica",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/6tqoVztadMFCwrhwLQzcLQ"
+      },
+      {
+        "entryId": "54O5j2fHavzG6HjmfnT025",
+        "contentfulName": "CARD - PROGRAMAS - Rever",
+        "title": "Rever",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/54O5j2fHavzG6HjmfnT025"
+      },
+      {
+        "entryId": "Re0Czl3nKQYQwTaF7KoO2",
+        "contentfulName": "CARD - PROGRAMAS - Transformar la secundaria",
+        "title": "Transformar la Secundaria",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/Re0Czl3nKQYQwTaF7KoO2"
+      },
+      {
+        "entryId": "2clv8JnzXw5RCLMNM6nvSZ",
+        "contentfulName": "CARD - PROGRAMAS - Voluntariado Corporativo",
+        "title": "Voluntariado Corporativo",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/2clv8JnzXw5RCLMNM6nvSZ"
+      },
+      {
+        "entryId": "5bPiy5Inm8PfhsrDFLwLCb",
+        "contentfulName": "CARD - Proposito - Economias Regionales",
+        "title": "Economías regionales",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/5bPiy5Inm8PfhsrDFLwLCb"
+      },
+      {
+        "entryId": "6prWaEur8MxT1zWWLqkpX5",
+        "contentfulName": "CARD - Proposito - Impacto positivo",
+        "title": "Impacto positivo",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/6prWaEur8MxT1zWWLqkpX5"
+      },
+      {
+        "entryId": "SpUcfehV2f6V7gMAwB1VT",
+        "contentfulName": "CARD - Proposito - Visión de largo plazo",
+        "title": "Visión de largo plazo",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/SpUcfehV2f6V7gMAwB1VT"
+      },
+      {
+        "entryId": "4cS2FQCgDZmqZGsg1yVaqa",
+        "contentfulName": "CARD - QUALIA - Cobertura",
+        "title": "Cobertura pensada para acompañarte",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/4cS2FQCgDZmqZGsg1yVaqa"
+      },
+      {
+        "entryId": "3OcB5ZjpUyKmh2F623hpOt",
+        "contentfulName": "CARD - QUALIA - Seguros para cada etapa",
+        "title": "Seguros para cada etapa de tu vida",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/3OcB5ZjpUyKmh2F623hpOt"
+      },
+      {
+        "entryId": "7EREZ0iwCiyPPL3xXfdMEx",
+        "contentfulName": "CARD - QUALIA - Tu tranquilidad",
+        "title": "Tu tranquilidad, nuestro compromiso",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/7EREZ0iwCiyPPL3xXfdMEx"
+      },
+      {
+        "entryId": "42544lUJJDWwKcHjV1X0yX",
+        "contentfulName": "CARD - qualia seguros",
+        "title": "Qualia Seguros",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/42544lUJJDWwKcHjV1X0yX"
+      },
+      {
+        "entryId": "dk9K8sp6WPpC9Bfo7X1Oa",
+        "contentfulName": "CARD - TALENTO Y CULTURA - Beneficios generales",
+        "title": "Beneficios generales",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/dk9K8sp6WPpC9Bfo7X1Oa"
+      },
+      {
+        "entryId": "2HoRPBlSy0QHSyoUuk3fhQ",
+        "contentfulName": "CARD - TALENTO Y CULTURA - Cultura Organizacional",
+        "title": "Cultura organizacional",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/2HoRPBlSy0QHSyoUuk3fhQ"
+      },
+      {
+        "entryId": "3ecJ2kf3B5eNO7mgrDpUh",
+        "contentfulName": "CARD - TALENTO Y CULTURA - Desarrollo profesional",
+        "title": "Desarrollo profesional",
+        "suggestedCardRole": "default",
+        "cardRoleStatus": "missing",
+        "tagCategoryStatus": "not-applicable",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/3ecJ2kf3B5eNO7mgrDpUh"
+      }
+    ]
+  },
+  "images": {
+    "total": 5,
+    "alreadySet": 0,
+    "missing": 5,
+    "unknown": 0,
+    "items": [
+      {
+        "entryId": "6hh2efV8pWA18Ln03omLhj",
+        "contentfulName": "IMAGEN - FUNDACION BANCO ENTRE RIOS",
+        "suggestedFoundationRegion": "entre-rios",
+        "status": "missing",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/6hh2efV8pWA18Ln03omLhj"
+      },
+      {
+        "entryId": "6KUQaalSQ2Gt0Qq8gijOe8",
+        "contentfulName": "IMAGEN - FUNDACION BANCO SAN JUAN",
+        "suggestedFoundationRegion": "san-juan",
+        "status": "missing",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/6KUQaalSQ2Gt0Qq8gijOe8"
+      },
+      {
+        "entryId": "9JV0yT06pKAr68yw5iftB",
+        "contentfulName": "IMAGEN - FUNDACION BANCO SANTA CRUZ",
+        "suggestedFoundationRegion": "santa-cruz",
+        "status": "missing",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/9JV0yT06pKAr68yw5iftB"
+      },
+      {
+        "entryId": "4ULL6M077kroK53tM8TDb2",
+        "contentfulName": "IMAGEN - FUNDACION BANCO SANTA FE",
+        "suggestedFoundationRegion": "santa-fe",
+        "status": "missing",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/4ULL6M077kroK53tM8TDb2"
+      },
+      {
+        "entryId": "2e47cwMhnzMCbWobIswPmh",
+        "contentfulName": "IMAGEN - Sistemas Fotovoltaicos",
+        "epigraph": "Los sistemas fotovoltaicos instalados en San Juan generan energía durante más de 300 días al año, según datos del INTI regional.",
+        "suggestedFoundationRegion": "san-juan",
+        "status": "missing",
+        "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/2e47cwMhnzMCbWobIswPmh"
+      }
+    ]
+  }
+}

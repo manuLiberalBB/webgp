@@ -1,0 +1,134 @@
+{
+  "generatedAt": "2026-08-07T13:19:32.331Z",
+  "environment": "develop-v2",
+  "preview": true,
+  "totalBanners": 8,
+  "alreadySet": 8,
+  "missing": 0,
+  "unknown": 0,
+  "unusedEntries": 0,
+  "items": [
+    {
+      "entryId": "20hQaYbKpgnXUBZ9S8T6gz",
+      "contentfulName": "BANNER - Alcance economías regionales",
+      "title": "El alcance de nuestras economías regionales",
+      "currentBannerVariant": "statistics",
+      "resolvedBannerVariant": "statistics",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/economias-regionales",
+          "pageContentfulName": "PAGINA - Economías Regionales"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/20hQaYbKpgnXUBZ9S8T6gz"
+    },
+    {
+      "entryId": "6eKyzm99Q5KEO15HyBlSQo",
+      "contentfulName": "BANNER - Grupo Petersen hoy",
+      "title": "Grupo Petersen hoy",
+      "currentBannerVariant": "statistics",
+      "resolvedBannerVariant": "statistics",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/quienes-somos",
+          "pageContentfulName": "PAGINA - Quienes Somos"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/6eKyzm99Q5KEO15HyBlSQo"
+    },
+    {
+      "entryId": "3h1p7Gv96SAbkY7ZxKyKHT",
+      "contentfulName": "BANNER - Qualia seguros",
+      "title": "Conocé nuestros Seguros",
+      "currentBannerVariant": "qualia",
+      "resolvedBannerVariant": "qualia",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/noticias",
+          "pageContentfulName": "PAGINA - Noticias"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/3h1p7Gv96SAbkY7ZxKyKHT"
+    },
+    {
+      "entryId": "5PdYHxlboZt0NuQlrs9kmB",
+      "contentfulName": "BANNER - Que hacemos",
+      "title": "Qué hacemos",
+      "currentBannerVariant": "hero",
+      "currentSectionId": "que-hacemos",
+      "resolvedBannerVariant": "hero",
+      "status": "already-set",
+      "notes": "sectionId=\"que-hacemos\".",
+      "usedOnPages": [
+        {
+          "path": "/quienes-somos",
+          "pageContentfulName": "PAGINA - Quienes Somos"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/5PdYHxlboZt0NuQlrs9kmB"
+    },
+    {
+      "entryId": "7wi2t3FtwZV6srWbHI1ugF",
+      "contentfulName": "HERO - Economías Regionales",
+      "title": "Economías Regionales",
+      "currentBannerVariant": "hero",
+      "resolvedBannerVariant": "hero",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/economias-regionales",
+          "pageContentfulName": "PAGINA - Economías Regionales"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/7wi2t3FtwZV6srWbHI1ugF"
+    },
+    {
+      "entryId": "53hIJ41hHkrVOUi5JE9w92",
+      "contentfulName": "HERO - Nuestro impacto",
+      "title": "Nuestro impacto",
+      "currentBannerVariant": "hero",
+      "resolvedBannerVariant": "hero",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/nuestro-impacto",
+          "pageContentfulName": "PAGINA - Nuestro Impacto"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/53hIJ41hHkrVOUi5JE9w92"
+    },
+    {
+      "entryId": "5YwUPKA2nyAoU3wjpYHt8N",
+      "contentfulName": "HERO - Quienes somos",
+      "title": "Quiénes Somos",
+      "currentBannerVariant": "hero",
+      "resolvedBannerVariant": "hero",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/quienes-somos",
+          "pageContentfulName": "PAGINA - Quienes Somos"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/5YwUPKA2nyAoU3wjpYHt8N"
+    },
+    {
+      "entryId": "4jCgmhNyQv46b1h14g0O2F",
+      "contentfulName": "HERO - Trabajá en GP",
+      "title": "Trabajá en GP",
+      "currentBannerVariant": "hero",
+      "resolvedBannerVariant": "hero",
+      "status": "already-set",
+      "usedOnPages": [
+        {
+          "path": "/trabaja-en-gp",
+          "pageContentfulName": "PAGINA - Trabaja en GP"
+        }
+      ],
+      "contentfulAdminUrl": "https://app.contentful.com/spaces/jp6bg6rq84t7/environments/develop-v2/entries/4jCgmhNyQv46b1h14g0O2F"
+    }
+  ]
+}

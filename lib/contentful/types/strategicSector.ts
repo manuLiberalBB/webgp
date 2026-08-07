@@ -30,10 +30,3 @@ export type StrategicSectorSkeleton = EntrySkeletonType & {
 };
 
 export type StrategicSectorReference = Entry<StrategicSectorSkeleton>;
-
-/** Resuelve el nombre interno de Contentful respetando el id del campo en el CMS. */
-export function getStrategicSectorContentfulName(
-  entry: StrategicSectorEntry,
-): string {
-  return entry.fields.contenfulName;
-}

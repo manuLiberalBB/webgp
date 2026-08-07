@@ -7,7 +7,6 @@ import { FeaturedNewsBlock } from './FeaturedNewsBlock';
 import { GridSectionBlock } from './GridSectionBlock';
 import { ImageBlock } from './ImageBlock';
 import { RichTextBlock } from './RichTextBlock';
-import { SectorsGridSectionBlock } from './SectorsGridSectionBlock';
 import { VideoBlock } from './VideoBlock';
 
 export type BlockFields = Record<string, unknown>;
@@ -32,7 +31,6 @@ export const blockRegistry: Record<string, BlockComponent> = {
   featuredNews: FeaturedNewsBlock,
   gridSection: GridSectionBlock,
   image: ImageBlock,
-  sectorsGridSection: SectorsGridSectionBlock,
   richTextBlock: RichTextBlock,
   video: VideoBlock,
 };

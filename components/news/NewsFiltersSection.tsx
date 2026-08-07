@@ -278,7 +278,7 @@ export function NewsFiltersSection({
 
       <NewsFilterSheet
         open={categoriesSheetOpen}
-        title="Categorías"
+        title="Seleccionar categoría"
         onClose={() => setCategoriesSheetOpen(false)}
       >
         <div role="radiogroup" aria-label="Categorías">
@@ -305,7 +305,7 @@ export function NewsFiltersSection({
 
       <NewsFilterSheet
         open={companiesSheetOpen}
-        title="Empresas"
+        title="Seleccionar empresas"
         onClose={() => setCompaniesSheetOpen(false)}
       >
         <NewsCompanyFilterPanel

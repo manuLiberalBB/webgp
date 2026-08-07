@@ -18,7 +18,3 @@ export function resolveStatisticItems(items?: Entry[]): StatisticItem[] {
       }) ?? []
   );
 }
-
-export function hasStatisticItems(items?: Entry[]): boolean {
-  return resolveStatisticItems(items).length > 0;
-}

@@ -1,16 +1,16 @@
-import type { GridSectionVariant } from '@/lib/contentful/gridSection/sectionVariants';
-import { normalizeSectionVariant } from '@/lib/contentful/gridSection/sectionVariants';
+import type { BannerVariant } from '@/lib/contentful/banner/bannerVariants';
+import { normalizeBannerVariant } from '@/lib/contentful/banner/bannerVariants';
 
 /** Dedupe logs per entry during a dev server session. */
 const loggedKeys = new Set<string>();
 
-type LogGridSectionVariantResolutionParams = {
+type LogBannerVariantResolutionParams = {
   entryId?: string;
   contentfulName: string;
   title?: string;
   pagePath?: string[];
-  rawSectionVariant?: string;
-  resolvedVariant: GridSectionVariant;
+  rawBannerVariant?: string;
+  resolvedVariant: BannerVariant;
 };
 
 function buildLogKey(
@@ -37,40 +37,40 @@ function formatEntryLabel(contentfulName: string, title?: string, entryId?: stri
   return `${contentfulName}${titleSuffix}`;
 }
 
-export function logGridSectionVariantResolution({
+export function logBannerVariantResolution({
   entryId,
   contentfulName,
   title,
   pagePath,
-  rawSectionVariant,
+  rawBannerVariant,
   resolvedVariant,
-}: LogGridSectionVariantResolutionParams): void {
+}: LogBannerVariantResolutionParams): void {
   if (process.env.NODE_ENV !== 'development') return;
 
   const entryLabel = formatEntryLabel(contentfulName, title, entryId);
   const pageLabel = formatPagePath(pagePath);
-  const explicitVariant = normalizeSectionVariant(rawSectionVariant);
+  const explicitVariant = normalizeBannerVariant(rawBannerVariant);
 
-  if (rawSectionVariant?.trim() && !explicitVariant) {
-    const logKey = buildLogKey(entryId, contentfulName, `unknown:${rawSectionVariant}`);
+  if (rawBannerVariant?.trim() && !explicitVariant) {
+    const logKey = buildLogKey(entryId, contentfulName, `unknown:${rawBannerVariant}`);
     if (loggedKeys.has(logKey)) return;
 
     loggedKeys.add(logKey);
 
     console.warn(
-      `[GridSection] Unknown sectionVariant "${rawSectionVariant}" on ${entryLabel} @ ${pageLabel}. Using "${resolvedVariant}".`,
+      `[Banner] Unknown bannerVariant "${rawBannerVariant}" on ${entryLabel} @ ${pageLabel}. Using "${resolvedVariant}".`,
     );
     return;
   }
 
-  if (!rawSectionVariant?.trim()) {
+  if (!rawBannerVariant?.trim()) {
     const logKey = buildLogKey(entryId, contentfulName, 'missing');
     if (loggedKeys.has(logKey)) return;
 
     loggedKeys.add(logKey);
 
     console.warn(
-      `[GridSection] Missing sectionVariant on ${entryLabel} @ ${pageLabel}. Using "${resolvedVariant}".`,
+      `[Banner] Missing bannerVariant on ${entryLabel} @ ${pageLabel}. Using "${resolvedVariant}".`,
     );
   }
 }

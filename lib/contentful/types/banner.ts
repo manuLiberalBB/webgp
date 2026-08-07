@@ -7,6 +7,13 @@ import type { Document } from '@contentful/rich-text-types';
  */
 export type BannerFields = {
   contentfulName: string;
+  /**
+   * Stable slug that identifies which banner layout to render.
+   * @see BANNER_VARIANTS in lib/contentful/banner/bannerVariants.ts
+   */
+  bannerVariant?: string;
+  /** Optional in-page anchor id for hash navigation (e.g. que-hacemos). */
+  sectionId?: string;
   tag?: string;
   title?: string;
   subtitle?: string;
@@ -25,49 +32,3 @@ export type BannerSkeleton = EntrySkeletonType & {
   contentTypeId: 'banner';
   fields: BannerFields;
 };
-
-export const STATISTICS_BANNER_CONTENTFUL_NAME = 'BANNER - GRUPO PETERSEN HOY';
-
-export const REGIONAL_REACH_BANNER_CONTENTFUL_NAME =
-  'BANNER - ALCANCE ECONOMÍAS REGIONALES';
-
-export const QUALIA_BANNER_CONTENTFUL_NAME = 'BANNER - QUALIA';
-
-export const QUE_HACEMOS_BANNER_CONTENTFUL_NAME = 'BANNER - QUE HACEMOS';
-
-export const QUE_HACEMOS_SECTION_ID = 'que-hacemos';
-
-export function isQueHacemosBannerContentfulName(contentfulName?: string): boolean {
-  if (!contentfulName) return false;
-
-  const normalized = contentfulName.trim().toUpperCase();
-
-  return (
-    normalized === QUE_HACEMOS_BANNER_CONTENTFUL_NAME ||
-    normalized.includes('QUE HACEMOS')
-  );
-}
-
-export function isStatisticsBannerContentfulName(contentfulName?: string): boolean {
-  if (!contentfulName) return false;
-
-  const normalized = contentfulName.trim().toUpperCase();
-
-  return (
-    normalized === STATISTICS_BANNER_CONTENTFUL_NAME.toUpperCase() ||
-    normalized === REGIONAL_REACH_BANNER_CONTENTFUL_NAME.toUpperCase() ||
-    normalized.includes('GRUPO PETERSEN HOY') ||
-    (normalized.includes('ALCANCE') && normalized.includes('ECONOM'))
-  );
-}
-
-export function isQualiaBannerContentfulName(contentfulName?: string): boolean {
-  if (!contentfulName) return false;
-
-  const normalized = contentfulName.trim().toUpperCase();
-
-  return (
-    normalized === QUALIA_BANNER_CONTENTFUL_NAME ||
-    normalized.includes('QUALIA')
-  );
-}

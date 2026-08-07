@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start -p 8080",
     "lint": "next lint",
-    "suggest-grid-variants": "npx tsx scripts/suggest-grid-section-variants.ts"
+    "suggest-grid-variants": "npx tsx scripts/suggest-grid-section-variants.ts",
+    "suggest-banner-variants": "npx tsx scripts/suggest-banner-variants.ts"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^16.0.1",
