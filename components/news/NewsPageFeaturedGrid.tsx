@@ -8,6 +8,7 @@ import { NewsSectionHeader } from './NewsSectionHeader';
 import {
   NewsPageFeaturedCompactCard,
   NewsPageFeaturedLargeCard,
+  NewsPageFeaturedStackedCard,
   NewsPageFeaturedTextCard,
 } from './NewsPageFeaturedCards';
 
@@ -21,6 +22,8 @@ const FEATURED_NEWS_VIEW_ALL_HREF = buildNewsFilterHref(
   [],
   [],
 );
+
+const FEATURED_NEWS_SIDE_IMAGE_HEIGHT = 'h-[clamp(5rem,21vw,12.5rem)]';
 
 export function NewsPageFeaturedGrid({ items }: NewsPageFeaturedGridProps) {
   if (items.length === 0) return null;
@@ -47,12 +50,26 @@ export function NewsPageFeaturedGrid({ items }: NewsPageFeaturedGridProps) {
           <NewsPageFeaturedLargeCard item={largeItem} className="h-full" />
 
           {sideItems.length > 0 ? (
-            <div className="flex flex-col gap-6 lg:min-h-[451px]">
+            <div className="flex flex-col gap-8 lg:min-h-[451px] lg:gap-6">
               {sideItems[0] ? (
-                <NewsPageFeaturedCompactCard item={sideItems[0]} />
+                <>
+                  <NewsPageFeaturedStackedCard
+                    item={sideItems[0]}
+                    className="lg:hidden"
+                    imageContainerClassName={FEATURED_NEWS_SIDE_IMAGE_HEIGHT}
+                  />
+                  <NewsPageFeaturedCompactCard item={sideItems[0]} className="hidden lg:flex" />
+                </>
               ) : null}
               {sideItems[1] ? (
-                <NewsPageFeaturedCompactCard item={sideItems[1]} />
+                <>
+                  <NewsPageFeaturedStackedCard
+                    item={sideItems[1]}
+                    className="lg:hidden"
+                    imageContainerClassName={FEATURED_NEWS_SIDE_IMAGE_HEIGHT}
+                  />
+                  <NewsPageFeaturedCompactCard item={sideItems[1]} className="hidden lg:flex" />
+                </>
               ) : null}
               {sideItems[2] ? (
                 <NewsPageFeaturedTextCard item={sideItems[2]} className="mt-auto" />

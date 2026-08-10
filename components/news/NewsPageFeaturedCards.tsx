@@ -77,11 +77,13 @@ export function NewsPageFeaturedLargeCard({
 type NewsPageFeaturedStackedCardProps = {
   item: FeaturedNewsItem;
   className?: string;
+  imageContainerClassName?: string;
 };
 
 export function NewsPageFeaturedStackedCard({
   item,
   className,
+  imageContainerClassName = 'h-[252px]',
 }: NewsPageFeaturedStackedCardProps) {
   return (
     <NewsCardArticleShell
@@ -90,7 +92,12 @@ export function NewsPageFeaturedStackedCard({
       overlayTone="light"
       className={cn('group flex flex-col', className)}
     >
-      <div className="relative mb-4 block h-[252px] w-full overflow-hidden rounded-lg">
+      <div
+        className={cn(
+          'relative mb-4 block w-full overflow-hidden rounded-lg',
+          imageContainerClassName,
+        )}
+      >
         <Image
           src={item.coverImageUrl}
           alt={item.coverImageAlt}

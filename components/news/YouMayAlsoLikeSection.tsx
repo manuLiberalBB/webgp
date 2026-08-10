@@ -1,4 +1,5 @@
 import type { FeaturedNewsItem } from '@/lib/news/types';
+import { cn } from '@/lib/utils';
 
 import {
   NewsPageFeaturedLargeCard,
@@ -12,6 +13,9 @@ type YouMayAlsoLikeSectionProps = {
   title?: string;
   viewAllHref?: string;
 };
+
+const YOU_MAY_ALSO_LIKE_MOBILE_HERO_MIN_HEIGHT =
+  'min-h-[clamp(18rem,52vw,22.5rem)]';
 
 export function YouMayAlsoLikeSection({
   items,
@@ -45,7 +49,7 @@ export function YouMayAlsoLikeSection({
           <NewsPageFeaturedLargeCard
             item={largeItem}
             readMoreLabel="Leer más"
-            className="min-h-[451px] rounded-lg"
+            className={cn(YOU_MAY_ALSO_LIKE_MOBILE_HERO_MIN_HEIGHT, 'rounded-lg')}
           />
 
           {sideCardItems.length > 0 ? (
