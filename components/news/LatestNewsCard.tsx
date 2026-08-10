@@ -13,10 +13,12 @@ type LatestNewsCardProps = {
 };
 
 export function LatestNewsCard({ item, className }: LatestNewsCardProps) {
+  const hasSubtitle = Boolean(item.subtitle?.trim());
+
   return (
     <article
       className={cn(
-        'flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-6',
+        'flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-6',
         className,
       )}
     >
@@ -36,20 +38,31 @@ export function LatestNewsCard({ item, className }: LatestNewsCardProps) {
         ) : null}
       </div>
 
-      <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-        <div className="flex flex-col gap-2">
-          <h3 className="text-[22px] leading-8 text-[#0d0d0d] md:text-[24px] md:leading-8">
+      <div className="flex min-w-0 flex-1 flex-col gap-1.5 sm:h-[282px] sm:justify-between">
+        <div className="flex min-h-0 flex-col gap-2 overflow-hidden">
+          <h3
+            className={cn(
+              'text-[22px] leading-8 text-[#0d0d0d] md:text-[24px] md:leading-8',
+              hasSubtitle ? 'line-clamp-3' : 'line-clamp-5 lg:line-clamp-6',
+            )}
+          >
             <Link href={item.href} className="hover:underline">
               {item.title}
             </Link>
           </h3>
 
-          {item.subtitle ? (
-            <p className="text-base leading-6 text-[#808080]">{item.subtitle}</p>
+          {hasSubtitle ? (
+            <p className="line-clamp-3 text-base leading-6 text-[#808080]">
+              {item.subtitle}
+            </p>
           ) : null}
         </div>
 
-        <NewsReadNoteLink href={item.href} variant="underline" />
+        <NewsReadNoteLink
+          href={item.href}
+          variant="underline"
+          className="shrink-0"
+        />
       </div>
     </article>
   );
