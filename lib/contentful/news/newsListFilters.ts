@@ -223,31 +223,67 @@ function formatNamesWithSpanishConjunction(names: string[]): string {
   return `${names.slice(0, -1).join(', ')} y ${names[names.length - 1]}`;
 }
 
+function resolveFilteredNewsCategory(
+  parsed: ParsedNewsUrlParams,
+  filters: NewsListFilters,
+): NewsCategory | undefined {
+  if (filters.category) {
+    return filters.category;
+  }
+
+  if (parsed.category && parsed.category !== 'Todo') {
+    return parsed.category;
+  }
+
+  return undefined;
+}
+
+function resolveFilteredNewsCompanyNames(
+  filters: NewsListFilters,
+  companies: NewsFilterCompanyRef[],
+): string[] {
+  if (filters.companyIds.length === 0) {
+    return [];
+  }
+
+  return resolveCompanyIdsToNames(filters.companyIds, companies);
+}
+
 export function getFilteredNewsSectionTitle(
   parsed: ParsedNewsUrlParams,
   filters: NewsListFilters,
   companies: NewsFilterCompanyRef[],
 ): string {
-  if (filters.query?.trim()) {
-    const searchTerm = filters.query.trim();
+  const category = resolveFilteredNewsCategory(parsed, filters);
+  const companyNames = resolveFilteredNewsCompanyNames(filters, companies);
+  const searchTerm = filters.query?.trim();
 
-    if (parsed.category && parsed.category !== 'Todo') {
-      return `Noticias sobre "${searchTerm}" en ${parsed.category}`;
+  if (searchTerm) {
+    if (category && companyNames.length > 0) {
+      return `Noticias sobre "${searchTerm}" en ${category} de ${formatNamesWithSpanishConjunction(companyNames)}`;
+    }
+
+    if (category) {
+      return `Noticias sobre "${searchTerm}" en ${category}`;
+    }
+
+    if (companyNames.length > 0) {
+      return `Noticias sobre "${searchTerm}" de ${formatNamesWithSpanishConjunction(companyNames)}`;
     }
 
     return `Noticias sobre "${searchTerm}"`;
   }
 
-  if (parsed.category && parsed.category !== 'Todo') {
-    return `Noticias de ${parsed.category}`;
+  if (category && companyNames.length > 0) {
+    return `Noticias de ${category} de ${formatNamesWithSpanishConjunction(companyNames)}`;
   }
 
-  if (filters.companyIds.length > 0) {
-    const names = resolveCompanyIdsToNames(filters.companyIds, companies);
+  if (category) {
+    return `Noticias de ${category}`;
+  }
 
-    if (names.length > 0) {
-      return `Noticias de ${formatNamesWithSpanishConjunction(names)}`;
-    }
+  if (companyNames.length > 0) {
+    return `Noticias de ${formatNamesWithSpanishConjunction(companyNames)}`;
   }
 
   if (parsed.category === 'Todo') {
