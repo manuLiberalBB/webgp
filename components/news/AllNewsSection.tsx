@@ -9,16 +9,6 @@ import { cn } from '@/lib/utils';
 import { AllNewsCard } from './AllNewsCard';
 import { NewsSectionHeader } from './NewsSectionHeader';
 
-function chunkItems<T>(items: T[], size: number): T[][] {
-  const rows: T[][] = [];
-
-  for (let index = 0; index < items.length; index += size) {
-    rows.push(items.slice(index, index + size));
-  }
-
-  return rows;
-}
-
 const ALL_NEWS_GRID_COLUMNS = 3;
 
 function trimToFullRows<T>(items: T[], rowSize: number): T[] {
@@ -58,7 +48,6 @@ export function AllNewsSection({
   const visibleItems = completeRowsOnly
     ? trimToFullRows(items, ALL_NEWS_GRID_COLUMNS)
     : items;
-  const rows = chunkItems(visibleItems, ALL_NEWS_GRID_COLUMNS);
 
   return (
     <section
@@ -71,16 +60,9 @@ export function AllNewsSection({
         {visibleItems.length === 0 ? (
           <p className="text-body text-center text-base leading-6">{emptyMessage}</p>
         ) : (
-          <div className="flex flex-col gap-12">
-            {rows.map((row, rowIndex) => (
-              <div
-                key={`all-news-row-${rowIndex}`}
-                className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-6"
-              >
-                {row.map((item) => (
-                  <AllNewsCard key={item.id} item={item} />
-                ))}
-              </div>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-6">
+            {visibleItems.map((item) => (
+              <AllNewsCard key={item.id} item={item} />
             ))}
           </div>
         )}
