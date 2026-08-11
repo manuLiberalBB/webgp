@@ -108,7 +108,7 @@ export function Footer({ fields, companies, pages }: FooterProps) {
                       className="bg-footer-social-bg flex size-10 items-center justify-center rounded-full transition-opacity hover:opacity-80"
                     >
                       {network.id === 'linkedin' ? (
-                        <LinkedInIcon className="text-footer-icon" />
+                        <LinkedInIcon className="text-[#D1D5DC]" />
                       ) : null}
                     </a>
                   ))}

@@ -1,4 +1,4 @@
-import type { Asset, EntrySkeletonType } from 'contentful';
+import type { Asset, Entry, EntrySkeletonType } from 'contentful';
 
 import type { LinkEntry } from './link';
 import type { NavigationMenuEntry } from './navigationMenu';
@@ -14,6 +14,8 @@ export type FooterFields = {
   ubication: string;
   phone: string;
   navigationMenus: NavigationMenuEntry[];
+  /** References to `company` entries, in display order. */
+  companies?: Entry[];
   cta: LinkEntry;
 };
 

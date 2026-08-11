@@ -20,13 +20,19 @@ function FooterLink({
   item: FooterLinkItem;
   download?: boolean;
 }) {
+  const labelClassName = 'text-footer-text text-sm leading-5';
+
+  if (!item.href) {
+    return <span className={labelClassName}>{item.label}</span>;
+  }
+
   return (
     <Link
       href={item.href}
       target={item.external ? '_blank' : undefined}
       rel={item.external ? 'noopener noreferrer' : undefined}
       download={download ? true : undefined}
-      className="text-footer-text hover:text-footer-heading text-sm leading-5 transition-colors"
+      className={cn(labelClassName, 'hover:text-footer-heading transition-colors')}
     >
       {item.label}
     </Link>

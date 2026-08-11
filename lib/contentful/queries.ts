@@ -6,7 +6,6 @@ import { mapNewsListItem } from '../news/mapNewsListItem';
 import type { FeaturedNewsItem, NewsListItem } from '../news/types';
 import type { RelatedNewsItem } from '../news/types';
 import type { FooterLinkItem } from '../footer/types';
-import { resolveCompanyWebsiteUrl } from './company/resolveCompanyWebsite';
 import { getContentfulClient } from './client';
 import { getAssetUrl } from './getAssetUrl';
 import type {
@@ -413,33 +412,6 @@ export async function getNewsFilterCompanies(): Promise<{ id: string; name: stri
     id: item.sys.id,
     name: (item.fields as CompanyFields).name,
   }));
-}
-
-export async function getFooterCompanyLinks(): Promise<FooterLinkItem[]> {
-  const client = getContentfulClient();
-
-  const entries = await client.getEntries<CompanySkeleton>({
-    content_type: 'company',
-    include: CONTENTFUL_INCLUDE.newsList,
-    order: ['fields.name'],
-    select: ['sys.id', 'fields.name', 'fields.webSiteURL'],
-  });
-
-  return entries.items.flatMap((item) => {
-    const fields = item.fields as CompanyFields;
-    const href = resolveCompanyWebsiteUrl(fields.webSiteURL);
-
-    if (!href) return [];
-
-    return [
-      {
-        id: item.sys.id,
-        label: fields.name,
-        href,
-        external: true,
-      },
-    ];
-  });
 }
 
 export async function getFooterDownloadableResources(): Promise<FooterLinkItem[]> {

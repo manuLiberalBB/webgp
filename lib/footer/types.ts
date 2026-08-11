@@ -1,6 +1,6 @@
 export type FooterLinkItem = {
   id: string;
   label: string;
-  href: string;
+  href?: string;
   external?: boolean;
 };
