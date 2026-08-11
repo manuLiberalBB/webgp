@@ -63,12 +63,12 @@ export function SectorCompanyCard({ item, className }: SectorCompanyCardProps) {
   return (
     <article
       className={cn(
-        'flex flex-col items-center justify-center gap-2.5 rounded-2xl border border-card-border px-5 py-6 md:items-stretch md:gap-0 md:px-6 md:py-8',
+        'flex h-full flex-col items-center gap-2.5 rounded-2xl border border-card-border px-5 py-6 md:items-stretch md:gap-0 md:px-6 md:py-8',
         className,
       )}
     >
-      <div className="flex w-full flex-col items-center gap-2.5 md:items-stretch md:gap-5">
-        <div className="flex w-full flex-col items-center gap-2 md:items-stretch md:gap-2">
+      <div className="flex w-full flex-1 flex-col items-center gap-2.5 md:items-stretch md:gap-5">
+        <div className="flex w-full flex-1 flex-col items-center gap-2 md:items-stretch md:gap-2">
           <div className="flex flex-col items-center gap-2.5 md:items-stretch md:gap-6">
             <div className="flex h-10 items-center justify-center md:h-12 md:justify-start">
               <Image
@@ -92,13 +92,15 @@ export function SectorCompanyCard({ item, className }: SectorCompanyCardProps) {
           ) : null}
         </div>
 
-        {item.href ? (
-          <SectorCompanyCardLink
-            href={item.href}
-            label={item.linkLabel}
-            external={item.external}
-          />
-        ) : null}
+        <div className="mt-auto flex min-h-[18px] w-full items-center justify-center md:justify-start">
+          {item.href ? (
+            <SectorCompanyCardLink
+              href={item.href}
+              label={item.linkLabel}
+              external={item.external}
+            />
+          ) : null}
+        </div>
       </div>
     </article>
   );

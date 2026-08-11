@@ -19,18 +19,22 @@ function SectorsGridPromoCard({
   return (
     <aside
       className={cn(
-        'flex min-h-[439px] flex-col items-center justify-center gap-10 rounded-lg bg-[#dce7ff] p-2.5',
+        'flex flex-col items-center gap-4 rounded-lg bg-[#dce7ff] px-8 py-2 md:min-h-[439px] md:justify-center md:gap-10 md:p-2.5',
         className,
       )}
     >
-      <p className="text-center text-[30px] leading-normal text-[#123476]">
+      <p className="text-center text-xl leading-normal text-[#123476] md:text-[30px]">
         <span className="font-bold">{sectorCount} sectores.</span>
         <br />
         <span className="font-normal">Un mismo </span>
         <span className="font-bold">compromiso</span>
       </p>
 
-      <p className="text-center text-[30px] leading-normal italic text-[#123476]">
+      <p className="text-center text-xl leading-normal italic whitespace-nowrap text-[#123476] md:hidden">
+        Presencia que impulsa el país.
+      </p>
+
+      <p className="hidden text-center text-[30px] leading-normal italic text-[#123476] md:block">
         Presencia
         <br />
         que impulsa
@@ -61,17 +65,35 @@ export function SectorsGridSection({
         ) : null}
 
         {items.length > 0 ? (
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {firstRowItems.map((item) => (
-              <SectorsGridCard key={item.id} item={item} className="h-full" />
-            ))}
+          <>
+            <div className="flex flex-col gap-8 md:hidden">
+              <SectorsGridPromoCard sectorCount={items.length} className="w-full" />
 
-            <SectorsGridPromoCard sectorCount={items.length} className="h-full" />
+              <div className="-mx-10 min-w-0 overflow-x-auto overscroll-x-contain px-10 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                <div className="flex w-max min-w-full snap-x snap-mandatory gap-6">
+                  {items.map((item) => (
+                    <SectorsGridCard
+                      key={item.id}
+                      item={item}
+                      className="w-[calc(100vw-5.5rem)] max-w-[320px] shrink-0 snap-start snap-always"
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
 
-            {secondRowItems.map((item) => (
-              <SectorsGridCard key={item.id} item={item} className="h-full" />
-            ))}
-          </div>
+            <div className="hidden grid-cols-2 gap-8 md:grid lg:grid-cols-4">
+              {firstRowItems.map((item) => (
+                <SectorsGridCard key={item.id} item={item} className="h-full" />
+              ))}
+
+              <SectorsGridPromoCard sectorCount={items.length} className="h-full" />
+
+              {secondRowItems.map((item) => (
+                <SectorsGridCard key={item.id} item={item} className="h-full" />
+              ))}
+            </div>
+          </>
         ) : null}
       </div>
     </section>
