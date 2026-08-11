@@ -17,6 +17,8 @@ export type CompanyFields = {
   icon?: Asset;
   /** Entry `externalLink` */
   webSiteURL?: ExternalLinkEntry;
+  linkedin?: string;
+  instagram?: string;
   image: Asset;
 };
 

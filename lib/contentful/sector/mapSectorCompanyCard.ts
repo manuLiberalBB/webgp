@@ -9,6 +9,11 @@ import type { CompanyFields } from '../types/company';
 
 import type { SectorCompanyCardItem } from './types';
 
+function normalizeSocialUrl(url?: string): string | undefined {
+  const trimmed = url?.trim();
+  return trimmed || undefined;
+}
+
 type MapCompanyToSectorCardOptions = {
   linkLabel?: string;
   preferLogo?: boolean;
@@ -99,5 +104,7 @@ export function mapCompanyToSectorBankingCard(
     href: link?.href,
     external: link?.external,
     linkLabel: SECTOR_COMPANY_WEBSITE_LINK_LABEL,
+    linkedinUrl: normalizeSocialUrl(fields.linkedin),
+    instagramUrl: normalizeSocialUrl(fields.instagram),
   };
 }

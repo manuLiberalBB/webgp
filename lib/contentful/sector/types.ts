@@ -16,6 +16,8 @@ export type SectorCompanyCardItem = {
   href?: string;
   external?: boolean;
   linkLabel: string;
+  linkedinUrl?: string;
+  instagramUrl?: string;
 };
 
 export type SectorsGridItem = {

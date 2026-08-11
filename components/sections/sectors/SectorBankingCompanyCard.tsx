@@ -4,6 +4,8 @@ import Link from 'next/link';
 import type { SectorCompanyCardItem } from '@/lib/contentful/sector/types';
 import { cn } from '@/lib/utils';
 
+import { SectorCompanySocialLinks } from './SectorCompanySocialLinks';
+
 type SectorBankingCompanyCardProps = {
   item: SectorCompanyCardItem;
   className?: string;
@@ -30,6 +32,34 @@ function ArrowIcon() {
   );
 }
 
+function SectorBankingCompanyWebsiteLink({ item }: { item: SectorCompanyCardItem }) {
+  if (!item.href) return null;
+
+  const linkClassName =
+    'inline-flex items-center gap-2 text-sm leading-[18px] font-semibold text-white transition-opacity hover:opacity-80';
+
+  if (item.external) {
+    return (
+      <a
+        href={item.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={linkClassName}
+      >
+        {item.linkLabel}
+        <ArrowIcon />
+      </a>
+    );
+  }
+
+  return (
+    <Link href={item.href} className={linkClassName}>
+      {item.linkLabel}
+      <ArrowIcon />
+    </Link>
+  );
+}
+
 function SectorBankingCompanyCardContent({ item }: { item: SectorCompanyCardItem }) {
   return (
     <>
@@ -51,7 +81,7 @@ function SectorBankingCompanyCardContent({ item }: { item: SectorCompanyCardItem
               alt=""
               width={item.iconWidth}
               height={item.iconHeight}
-              className="size-full object-contain"
+              className="size-full object-contain brightness-0 invert"
             />
           </div>
         ) : null}
@@ -59,12 +89,12 @@ function SectorBankingCompanyCardContent({ item }: { item: SectorCompanyCardItem
         <div className="flex w-full flex-col items-start gap-3">
           <h3 className="text-xl leading-6 font-bold text-white">{item.title}</h3>
 
-          {item.href ? (
-            <span className="inline-flex items-center gap-2 text-sm leading-[18px] font-semibold text-white">
-              {item.linkLabel}
-              <ArrowIcon />
-            </span>
-          ) : null}
+          <SectorBankingCompanyWebsiteLink item={item} />
+
+          <SectorCompanySocialLinks
+            linkedinUrl={item.linkedinUrl}
+            instagramUrl={item.instagramUrl}
+          />
         </div>
       </div>
     </>
@@ -74,35 +104,13 @@ function SectorBankingCompanyCardContent({ item }: { item: SectorCompanyCardItem
 export function SectorBankingCompanyCard({ item, className }: SectorBankingCompanyCardProps) {
   if (!item.imageUrl) return null;
 
-  const cardClassName = cn(
-    'group relative flex h-[20rem] flex-col justify-end overflow-hidden rounded-lg p-5 md:h-[23.8125rem]',
-    item.href && 'cursor-pointer',
-    className,
-  );
-
-  if (item.href && !item.external) {
-    return (
-      <Link href={item.href} className={cardClassName}>
-        <SectorBankingCompanyCardContent item={item} />
-      </Link>
-    );
-  }
-
-  if (item.href && item.external) {
-    return (
-      <a
-        href={item.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={cardClassName}
-      >
-        <SectorBankingCompanyCardContent item={item} />
-      </a>
-    );
-  }
-
   return (
-    <article className={cardClassName}>
+    <article
+      className={cn(
+        'group relative flex h-[20rem] flex-col justify-end overflow-hidden rounded-lg p-5 md:h-[23.8125rem]',
+        className,
+      )}
+    >
       <SectorBankingCompanyCardContent item={item} />
     </article>
   );
