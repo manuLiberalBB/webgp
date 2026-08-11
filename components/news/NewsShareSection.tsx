@@ -52,7 +52,7 @@ function ShareButton({ action }: { action: ShareAction }) {
         href={action.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-3"
+        className="flex cursor-pointer items-center gap-3"
       >
         {content}
       </Link>
@@ -63,7 +63,7 @@ function ShareButton({ action }: { action: ShareAction }) {
     <button
       type="button"
       onClick={action.onClick}
-      className="flex items-center gap-3 text-left"
+      className="flex cursor-pointer items-center gap-3 text-left"
     >
       {content}
     </button>
