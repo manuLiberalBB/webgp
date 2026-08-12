@@ -152,7 +152,7 @@ export function NewsShareSection({ title, className }: NewsShareSectionProps) {
     <section className={cn('w-full', className)} aria-label="Compartir noticia">
       <NewsSidebarSectionTitle>Compartir</NewsSidebarSectionTitle>
 
-      <ul className="flex flex-col gap-1.5 pt-4">
+      <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5 pt-4 lg:grid-cols-1 lg:gap-x-0">
         {actions.map((action) => (
           <li key={action.id}>
             <ShareButton action={action} />

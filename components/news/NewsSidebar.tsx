@@ -25,7 +25,7 @@ export function NewsSidebar({
   return (
     <aside
       className={cn(
-        'mx-auto flex w-full max-w-[16rem] min-w-0 flex-col lg:mx-0 lg:max-w-none xl:max-w-[21.5rem]',
+        'flex w-full min-w-0 flex-col lg:max-w-none xl:max-w-[21.5rem]',
         className,
       )}
     >
