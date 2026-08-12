@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { AppImage as Image } from '@/components/cms/AppImage';
 import Link from 'next/link';
 
 import type { SectorsGridItem } from '@/lib/contentful/sector/types';

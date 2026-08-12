@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { AppImage as Image, AUTO_ASPECT_STYLE } from '@/components/cms/AppImage';
 
 import type { CarouselItem } from '@/lib/contentful/carousel/types';
 import { cn } from '@/lib/utils';
@@ -15,6 +15,7 @@ export function CompanyLogoCard({ item }: { item: CarouselItem }) {
       alt={item.label}
       width={item.imageWidth}
       height={item.imageHeight}
+      style={AUTO_ASPECT_STYLE}
       className="max-h-[44px] w-auto max-w-full object-contain md:max-h-[60px]"
     />
   );

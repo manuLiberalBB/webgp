@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { AppImage as Image } from '@/components/cms/AppImage';
 
 import type { StrategicSectorGridItem } from '@/lib/contentful/strategicSector/types';
 import { cn } from '@/lib/utils';

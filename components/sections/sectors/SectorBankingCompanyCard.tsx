@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { AppImage as Image } from '@/components/cms/AppImage';
 import Link from 'next/link';
 
 import type { SectorCompanyCardItem } from '@/lib/contentful/sector/types';
@@ -79,9 +79,9 @@ function SectorBankingCompanyCardContent({ item }: { item: SectorCompanyCardItem
             <Image
               src={item.iconUrl}
               alt=""
-              width={item.iconWidth}
-              height={item.iconHeight}
-              className="size-full object-contain brightness-0 invert"
+              fill
+              sizes="31px"
+              className="object-contain brightness-0 invert"
             />
           </div>
         ) : null}

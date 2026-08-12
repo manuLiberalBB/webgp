@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { AppImage as Image } from '@/components/cms/AppImage';
 
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';
 import type { CardFields } from '@/lib/contentful/types/card';

@@ -5,7 +5,6 @@ import { buildGridSectionContext } from '@/lib/contentful/gridSection/buildGridS
 import { logGridSectionVariantResolution } from '@/lib/contentful/gridSection/sectionVariantLogger';
 import {
   GRID_SECTION_VARIANTS,
-  normalizeSectionVariant,
   type GridSectionVariant,
 } from '@/lib/contentful/gridSection/sectionVariants';
 

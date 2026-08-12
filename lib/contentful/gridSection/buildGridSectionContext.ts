@@ -49,11 +49,13 @@ export type GridSectionContext = {
   hasNewsItems: boolean;
   companyCarouselItems: ReturnType<typeof resolveCompanyLogoGridItems>;
   isNewsListingPage: boolean;
+  isAboveFold: boolean;
 };
 
 export function buildGridSectionContext({
   fields,
   pagePath,
+  isAboveFold = false,
 }: BlockComponentProps): GridSectionContext {
   const gridFields = fields as GridSectionFields;
   const {
@@ -110,5 +112,6 @@ export function buildGridSectionContext({
     hasNewsItems: hasNewsEntries(items),
     companyCarouselItems: resolveCompanyLogoGridItems(items),
     isNewsListingPage: isNewsListingPage(pagePath),
+    isAboveFold,
   };
 }

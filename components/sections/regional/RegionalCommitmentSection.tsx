@@ -1,4 +1,4 @@
-import { AppImage, HALF_WIDTH_IMAGE_SIZES } from '@/components/cms/AppImage';
+import { AppImage, HALF_WIDTH_IMAGE_SIZES, HeroImage } from '@/components/cms/AppImage';
 import { Badge } from '@/components/ui/Badge';
 import { RichText } from '@/components/cms/RichText';
 import type { StatisticItem } from '@/lib/contentful/types/statistic';
@@ -13,6 +13,7 @@ type RegionalCommitmentSectionProps = {
   imageAlt?: string;
   statistic?: StatisticItem;
   className?: string;
+  imagePriority?: boolean;
 };
 
 export function RegionalCommitmentSection({
@@ -23,6 +24,7 @@ export function RegionalCommitmentSection({
   imageAlt = '',
   statistic,
   className,
+  imagePriority = false,
 }: RegionalCommitmentSectionProps) {
   return (
     <section
@@ -54,13 +56,23 @@ export function RegionalCommitmentSection({
 
         <div className="relative mx-auto w-full min-w-0 shrink-0 lg:mx-0 lg:w-[min(100%,28rem)] lg:max-w-[28rem] lg:pb-8">
           <div className="relative aspect-[431/530] w-full overflow-hidden rounded-lg bg-white">
-            <AppImage
-              src={imageUrl}
-              alt={imageAlt}
-              fill
-              sizes={HALF_WIDTH_IMAGE_SIZES}
-              className="object-cover object-center"
-            />
+            {imagePriority ? (
+              <HeroImage
+                src={imageUrl}
+                alt={imageAlt}
+                fill
+                sizes={HALF_WIDTH_IMAGE_SIZES}
+                className="object-cover object-center"
+              />
+            ) : (
+              <AppImage
+                src={imageUrl}
+                alt={imageAlt}
+                fill
+                sizes={HALF_WIDTH_IMAGE_SIZES}
+                className="object-cover object-center"
+              />
+            )}
           </div>
 
           {statistic ? (

@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import { AppImage as Image, AUTO_ASPECT_STYLE } from '@/components/cms/AppImage';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -93,6 +93,7 @@ export function HeaderNav({
               width={logoWidth}
               height={logoHeight}
               priority
+              style={AUTO_ASPECT_STYLE}
               className="h-[35px] w-auto max-w-[157px] object-contain"
             />
           </Link>

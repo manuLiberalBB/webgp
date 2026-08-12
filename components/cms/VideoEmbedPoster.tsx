@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import { AppImage as Image } from '@/components/cms/AppImage';
 import { useState } from 'react';
 
 import { withVideoAutoplay } from '@/lib/contentful/video/resolveVideoEmbedUrl';

@@ -1,7 +1,7 @@
-import NextImage from 'next/image';
-
 import type { ImageItem } from '@/lib/contentful/types/image';
 import { cn } from '@/lib/utils';
+
+import { AppImage } from '@/components/cms/AppImage';
 
 type ContentfulImageProps = {
   item: ImageItem;
@@ -15,7 +15,7 @@ export function ContentfulImage({ item, className, priority = false }: Contentfu
   return (
     <figure className={cn('flex w-full flex-col gap-3', className)}>
       <div className="relative w-full overflow-hidden rounded-lg">
-        <NextImage
+        <AppImage
           src={item.imageUrl}
           alt={item.imageAlt}
           width={item.width}

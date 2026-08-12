@@ -1,12 +1,10 @@
-import Image from 'next/image';
+import { AppImage as Image } from '@/components/cms/AppImage';
 
 type SectorCompanySocialLinksProps = {
   linkedinUrl?: string;
   instagramUrl?: string;
   className?: string;
 };
-
-const SOCIAL_ICON_SIZE = 20;
 
 export function SectorCompanySocialLinks({
   linkedinUrl,
@@ -29,9 +27,9 @@ export function SectorCompanySocialLinks({
             <Image
               src="/icons/social/linkedin.svg"
               alt=""
-              width={SOCIAL_ICON_SIZE}
-              height={SOCIAL_ICON_SIZE}
-              className="size-full"
+              fill
+              sizes="20px"
+              className="object-contain"
             />
           </a>
         ) : null}
@@ -47,9 +45,9 @@ export function SectorCompanySocialLinks({
             <Image
               src="/icons/social/instagram.svg"
               alt=""
-              width={SOCIAL_ICON_SIZE}
-              height={SOCIAL_ICON_SIZE}
-              className="size-full"
+              fill
+              sizes="20px"
+              className="object-contain"
             />
           </a>
         ) : null}

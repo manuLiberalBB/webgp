@@ -1,5 +1,9 @@
-import Image from 'next/image';
+import { AppImage as Image } from '@/components/cms/AppImage';
 
+import {
+  CONTENT_PADDED_IMAGE_SIZES,
+  FEATURED_NEWS_LARGE_CARD_SIZES,
+} from '@/components/cms/AppImage';
 import type { FeaturedNewsItem } from '@/lib/news/types';
 import { cn } from '@/lib/utils';
 
@@ -39,7 +43,7 @@ export function FeaturedNewsCard({
           src={item.coverImageUrl}
           alt={item.coverImageAlt}
           fill
-          sizes="(max-width: 1024px) 100vw, 760px"
+          sizes={FEATURED_NEWS_LARGE_CARD_SIZES}
           className="pointer-events-none object-cover transition-transform duration-300 group-hover:scale-[1.02]"
         />
         <div
@@ -75,7 +79,7 @@ export function FeaturedNewsCard({
             src={item.coverImageUrl}
             alt={item.coverImageAlt}
             fill
-            sizes="100vw"
+            sizes={CONTENT_PADDED_IMAGE_SIZES}
             className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
           />
         </div>

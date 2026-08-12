@@ -1,5 +1,5 @@
 import type { Entry } from 'contentful';
-import Image from 'next/image';
+import { AppImage as Image } from '@/components/cms/AppImage';
 import Link from 'next/link';
 
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';

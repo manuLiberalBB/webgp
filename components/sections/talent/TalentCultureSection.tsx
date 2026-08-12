@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { AppImage as Image, HeroImage } from '@/components/cms/AppImage';
 
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';
 import type { CardFields } from '@/lib/contentful/types/card';
@@ -11,6 +11,7 @@ type TalentCultureSectionProps = {
   imageAlt?: string;
   cards: CardFields[];
   className?: string;
+  imagePriority?: boolean;
 };
 
 function TalentCultureFeatureItem({ card }: { card: CardFields }) {
@@ -50,6 +51,7 @@ export function TalentCultureSection({
   imageAlt = '',
   cards,
   className,
+  imagePriority = false,
 }: TalentCultureSectionProps) {
   return (
     <section
@@ -57,13 +59,23 @@ export function TalentCultureSection({
     >
       <div className="mx-auto flex w-full max-w-content flex-col items-center gap-10 lg:flex-row lg:gap-16">
         <div className="relative h-[300px] w-full min-w-0 flex-1 overflow-hidden rounded-lg lg:h-[485px]">
-          <Image
-            src={imageUrl}
-            alt={imageAlt}
-            fill
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="object-cover"
-          />
+          {imagePriority ? (
+            <HeroImage
+              src={imageUrl}
+              alt={imageAlt}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
+          ) : (
+            <Image
+              src={imageUrl}
+              alt={imageAlt}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
+          )}
         </div>
 
         <div className="flex w-full min-w-0 flex-1 flex-col gap-8">

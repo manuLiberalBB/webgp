@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import { AppImage as Image, AUTO_ASPECT_STYLE } from '@/components/cms/AppImage';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import type { CarouselItem } from '@/lib/contentful/carousel/types';
@@ -33,6 +33,7 @@ function MarqueeCarouselItem({
       alt={item.label}
       width={item.imageWidth}
       height={item.imageHeight}
+      style={AUTO_ASPECT_STYLE}
       className="h-12 w-auto max-w-full object-contain"
     />
   );

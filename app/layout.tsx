@@ -46,7 +46,7 @@ export default async function RootLayout({
   const header = await getHeader();
 
   return (
-    <html lang="es" className="is-page-loading">
+    <html lang="es" className="is-page-loading" data-scroll-behavior="smooth">
       <body
         className={`${openSans.variable} ${playfairDisplay.variable} ${dmSans.variable} ${dmMono.variable} font-sans antialiased`}
       >

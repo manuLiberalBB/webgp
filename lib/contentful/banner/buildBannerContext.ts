@@ -33,6 +33,7 @@ export type BannerContext = {
   statistics: StatisticItem[];
   qualiaCards: CardFields[];
   compactMobile: boolean;
+  isAboveFold: boolean;
 };
 
 function normalizeSectionId(value?: string): string | undefined {
@@ -46,6 +47,7 @@ function normalizeSectionId(value?: string): string | undefined {
 export function buildBannerContext({
   fields,
   pagePath,
+  isAboveFold = false,
 }: BlockComponentProps): BannerContext | null {
   const bannerFields = fields as BannerFields;
   const {
@@ -94,5 +96,6 @@ export function buildBannerContext({
     statistics: resolveStatisticItems(items),
     qualiaCards: resolveBannerCardItems(items),
     compactMobile: isCompactMobileHeroPage(pagePath),
+    isAboveFold,
   };
 }

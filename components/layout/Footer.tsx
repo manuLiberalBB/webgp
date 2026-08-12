@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { AppImage as Image, AUTO_ASPECT_STYLE } from '@/components/cms/AppImage';
 
 import { siteConfig } from '@/config/site';
 import {
@@ -49,6 +49,7 @@ export function Footer({ fields, companies, pages }: FooterProps) {
               alt={logoAlt}
               width={logoWidth}
               height={logoHeight}
+              style={AUTO_ASPECT_STYLE}
               className="block h-[35px] w-auto self-start brightness-0 invert"
             />
 

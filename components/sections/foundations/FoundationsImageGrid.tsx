@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { AppImage as Image } from '@/components/cms/AppImage';
 
 import type { FoundationImageItem } from '@/lib/contentful/types/image';
 import { cn } from '@/lib/utils';

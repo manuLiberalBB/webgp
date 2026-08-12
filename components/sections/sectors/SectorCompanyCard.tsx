@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { AppImage as Image, AUTO_ASPECT_STYLE } from '@/components/cms/AppImage';
 import Link from 'next/link';
 
 import type { SectorCompanyCardItem } from '@/lib/contentful/sector/types';
@@ -76,6 +76,7 @@ export function SectorCompanyCard({ item, className }: SectorCompanyCardProps) {
                 alt={item.title}
                 width={item.logoWidth}
                 height={item.logoHeight}
+                style={AUTO_ASPECT_STYLE}
                 className="block max-h-10 w-auto max-w-full object-contain md:max-h-12 md:object-left"
               />
             </div>

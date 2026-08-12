@@ -1,5 +1,4 @@
-import Image from 'next/image';
-
+import { HeroImage } from '@/components/cms/AppImage';
 import { HERO_BOTTOM_PADDING } from '@/lib/layout/sectionPadding';
 import { COMPACT_MOBILE_HERO_SECTION_CLASS } from '@/lib/layout/compactMobileHeroPages';
 import { cn } from '@/lib/utils';
@@ -15,6 +14,7 @@ type HeroBannerProps = {
   id?: string;
   className?: string;
   compactMobile?: boolean;
+  priority?: boolean;
 };
 
 export function HeroBanner({
@@ -26,6 +26,7 @@ export function HeroBanner({
   id,
   className,
   compactMobile = false,
+  priority = true,
 }: HeroBannerProps) {
   return (
     <section
@@ -39,12 +40,11 @@ export function HeroBanner({
         className,
       )}
     >
-      <Image
+      <HeroImage
         src={imageUrl}
         alt={imageAlt}
         fill
-        priority
-        sizes="100vw"
+        priority={priority}
         className="object-cover"
       />
 

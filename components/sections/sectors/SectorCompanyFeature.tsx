@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { AppImage as Image, AUTO_ASPECT_STYLE } from '@/components/cms/AppImage';
 import Link from 'next/link';
 
 import { RichText } from '@/components/cms/RichText';
@@ -77,6 +77,7 @@ export function SectorCompanyFeature({ item, className }: SectorCompanyFeaturePr
             alt={item.title}
             width={item.logoWidth}
             height={item.logoHeight}
+            style={AUTO_ASPECT_STYLE}
             className="block max-h-[4.5625rem] w-auto max-w-full object-contain object-left"
           />
         </div>

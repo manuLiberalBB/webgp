@@ -1,6 +1,5 @@
-import Image from 'next/image';
+import { AppImage as Image, HeroImage } from '@/components/cms/AppImage';
 import type { Document } from '@contentful/rich-text-types';
-
 import { RichText } from '@/components/cms/RichText';
 import { cn } from '@/lib/utils';
 
@@ -10,6 +9,7 @@ type BankingConnectSectionProps = {
   imageUrl: string;
   imageAlt?: string;
   className?: string;
+  imagePriority?: boolean;
 };
 
 export function BankingConnectSection({
@@ -18,6 +18,7 @@ export function BankingConnectSection({
   imageUrl,
   imageAlt = '',
   className,
+  imagePriority = false,
 }: BankingConnectSectionProps) {
   return (
     <section
@@ -28,13 +29,23 @@ export function BankingConnectSection({
     >
       <div className="mx-auto flex w-full max-w-content flex-col-reverse items-center gap-10 lg:flex-row lg:gap-16">
         <div className="relative h-[20rem] w-full min-w-0 shrink-0 overflow-hidden rounded-lg bg-white lg:h-[30.5rem] lg:flex-1">
-          <Image
-            src={imageUrl}
-            alt={imageAlt}
-            fill
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="object-cover object-top"
-          />
+          {imagePriority ? (
+            <HeroImage
+              src={imageUrl}
+              alt={imageAlt}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover object-top"
+            />
+          ) : (
+            <Image
+              src={imageUrl}
+              alt={imageAlt}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover object-top"
+            />
+          )}
         </div>
 
         <div className="flex w-full min-w-0 flex-1 flex-col gap-6">

@@ -1,6 +1,6 @@
 import type { Entry } from 'contentful';
-import Image from 'next/image';
 
+import { HeroImage } from '@/components/cms/AppImage';
 import { CtaLinks } from '@/components/ui/CtaLinks';
 import type { StatisticItem } from '@/lib/contentful/types/statistic';
 import { HERO_BOTTOM_PADDING } from '@/lib/layout/sectionPadding';
@@ -16,6 +16,7 @@ type StatisticsBannerProps = {
   urlList?: Entry[];
   className?: string;
   compactMobile?: boolean;
+  priority?: boolean;
 };
 
 export function StatisticsBanner({
@@ -27,6 +28,7 @@ export function StatisticsBanner({
   urlList,
   className,
   compactMobile = false,
+  priority = true,
 }: StatisticsBannerProps) {
   return (
     <section
@@ -41,12 +43,11 @@ export function StatisticsBanner({
         className,
       )}
     >
-      <Image
+      <HeroImage
         src={imageUrl}
         alt={imageAlt}
         fill
-        priority
-        sizes="100vw"
+        priority={priority}
         className="object-cover"
       />
 

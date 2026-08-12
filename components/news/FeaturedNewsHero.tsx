@@ -1,5 +1,4 @@
-import Image from 'next/image';
-
+import { AppImage as Image, AUTO_ASPECT_STYLE, HeroImage } from '@/components/cms/AppImage';
 import { NewsArticleButton } from '@/components/news/NewsArticleButton';
 import { NewsCategoryBadge } from '@/components/news/NewsCategoryBadge';
 import { NewsCompanyBadge } from '@/components/news/NewsCompanyBadge';
@@ -35,12 +34,10 @@ export function FeaturedNewsHero({ item, className }: FeaturedNewsHeroProps) {
         className,
       )}
     >
-      <Image
+      <HeroImage
         src={item.coverImageUrl}
         alt={item.coverImageAlt}
         fill
-        priority
-        sizes="100vw"
         className="object-cover"
       />
 
@@ -77,6 +74,7 @@ export function FeaturedNewsHero({ item, className }: FeaturedNewsHeroProps) {
                 alt={item.companyName ?? ''}
                 width={item.companyLogoWidth ?? 250}
                 height={item.companyLogoHeight ?? 55}
+                style={AUTO_ASPECT_STYLE}
                 className="block h-[52px] w-auto max-w-[234px] self-start object-contain object-left"
               />
             ) : null}

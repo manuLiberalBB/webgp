@@ -62,6 +62,7 @@ function renderBlock(
   entry: Entry,
   pagePath?: string[],
   searchParams?: Record<string, string | string[] | undefined>,
+  isAboveFold = false,
 ) {
   const contentTypeId = entry.sys.contentType?.sys.id;
   if (!contentTypeId) return null;
@@ -87,6 +88,7 @@ function renderBlock(
     entryId: entry.sys.id,
     pagePath,
     searchParams,
+    isAboveFold,
   };
 
   return <Block key={entry.sys.id} {...props} />;
@@ -223,7 +225,12 @@ export function PageRenderer({
     }
 
     pushBlock(
-      renderBlock(entry, pagePath, searchParams),
+      renderBlock(
+        entry,
+        pagePath,
+        searchParams,
+        index === 0 && !showSectorHeroFallback,
+      ),
       entry.sys.id,
       contentTypeId === 'banner',
     );

@@ -22,6 +22,7 @@ function renderHeroBanner(ctx: BannerContext) {
         imageAlt={ctx.imageAlt}
         compactMobile={ctx.compactMobile}
         id={ctx.sectionId}
+        priority={ctx.isAboveFold}
       />
 
       {ctx.body || ctx.urlList?.length ? (
@@ -48,6 +49,7 @@ export const bannerRenderers: Record<BannerVariant, (ctx: BannerContext) => Reac
       statistics={ctx.statistics}
       urlList={ctx.urlList}
       compactMobile={ctx.compactMobile}
+      priority={ctx.isAboveFold}
     />
   ),
 
@@ -60,6 +62,7 @@ export const bannerRenderers: Record<BannerVariant, (ctx: BannerContext) => Reac
       logoUrl={ctx.logoUrl}
       logoAlt={ctx.logoAlt}
       cards={ctx.qualiaCards}
+      priority={ctx.isAboveFold}
     />
   ),
 };

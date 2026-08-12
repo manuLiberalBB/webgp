@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { AppImage as Image } from '@/components/cms/AppImage';
 import type { Entry } from 'contentful';
 
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';

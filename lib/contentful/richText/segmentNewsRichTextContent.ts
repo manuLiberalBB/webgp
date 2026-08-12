@@ -53,7 +53,13 @@ function splitParagraphWithStatistics(node: TopLevelBlock): NewsRichTextSegment[
     if (paragraphHasVisibleText(textBuffer)) {
       segments.push({
         type: 'blocks',
-        nodes: [{ ...block, content: [...textBuffer] }],
+        nodes: [
+          {
+            nodeType: BLOCKS.PARAGRAPH,
+            data: block.data,
+            content: [...textBuffer],
+          },
+        ],
       });
     }
 

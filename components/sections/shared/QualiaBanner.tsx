@@ -1,7 +1,8 @@
-import Image from 'next/image';
+import { AppImage as Image } from '@/components/cms/AppImage';
 import Link from 'next/link';
 import type { Entry } from 'contentful';
 
+import { HeroImage } from '@/components/cms/AppImage';
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';
 import { HERO_BOTTOM_PADDING } from '@/lib/layout/sectionPadding';
 import { resolveNavLink } from '@/lib/contentful/resolveNavLink';
@@ -19,6 +20,7 @@ type QualiaBannerProps = {
   logoAlt?: string;
   cards: CardFields[];
   className?: string;
+  priority?: boolean;
 };
 
 function ArrowOutwardIcon() {
@@ -113,6 +115,7 @@ export function QualiaBanner({
   logoAlt = 'Qualia Seguros',
   cards,
   className,
+  priority = true,
 }: QualiaBannerProps) {
   if (cards.length === 0) return null;
 
@@ -124,7 +127,13 @@ export function QualiaBanner({
         className,
       )}
     >
-      <Image src={imageUrl} alt={imageAlt} fill sizes="100vw" className="object-cover" />
+      <HeroImage
+        src={imageUrl}
+        alt={imageAlt}
+        fill
+        priority={priority}
+        className="object-cover"
+      />
 
       <div aria-hidden className="absolute inset-0 bg-black/45" />
 

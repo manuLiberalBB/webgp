@@ -1,5 +1,4 @@
-import Image from 'next/image';
-
+import { HeroImage } from '@/components/cms/AppImage';
 import type { NewsCategory } from '@/lib/contentful/types/news';
 import { cn } from '@/lib/utils';
 
@@ -24,14 +23,7 @@ export function NewsHero({
 }: NewsHeroProps) {
   return (
     <section className={cn('relative w-full', className)}>
-      <Image
-        src={imageUrl}
-        alt={imageAlt}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
+      <HeroImage src={imageUrl} alt={imageAlt} fill className="object-cover" />
 
       <div
         aria-hidden

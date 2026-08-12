@@ -16,6 +16,7 @@ export type BlockComponentProps = {
   entryId?: string;
   pagePath?: string[];
   searchParams?: Record<string, string | string[] | undefined>;
+  isAboveFold?: boolean;
 };
 
 export type BlockComponent = ComponentType<BlockComponentProps>;

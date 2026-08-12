@@ -1,6 +1,7 @@
-import Image from 'next/image';
 import type { ReactNode } from 'react';
 import { Suspense } from 'react';
+
+import { HeroImage } from '@/components/cms/AppImage';
 
 import { BankingConnectSection } from '@/components/sections/banking/BankingConnectSection';
 import { BankingSustainabilitySection } from '@/components/sections/banking/BankingSustainabilitySection';
@@ -212,6 +213,7 @@ export const gridSectionRenderers: Record<
         imageUrl={ctx.imageUrl!}
         imageAlt={ctx.imageAlt}
         statistic={statistics[0]}
+        imagePriority={ctx.isAboveFold}
       />
     );
   },
@@ -264,6 +266,7 @@ export const gridSectionRenderers: Record<
       body={ctx.body!}
       imageUrl={ctx.imageUrl!}
       imageAlt={ctx.imageAlt}
+      imagePriority={ctx.isAboveFold}
     />
   ),
 
@@ -275,6 +278,7 @@ export const gridSectionRenderers: Record<
       imageUrl={ctx.imageUrl!}
       imageAlt={ctx.imageAlt}
       cards={ctx.cards}
+      imagePriority={ctx.isAboveFold}
     />
   ),
 
@@ -287,6 +291,7 @@ export const gridSectionRenderers: Record<
         imageAlt={ctx.imageAlt}
         cards={ctx.cards}
         className="pb-0 md:pb-0"
+        imagePriority={ctx.isAboveFold}
       />
       <Suspense fallback={null}>
         <TalentCultureNewsSectionWithFetch />
@@ -336,10 +341,11 @@ export const gridSectionRenderers: Record<
               </div>
 
               <div className="relative h-[412px] w-full min-w-0 flex-1 overflow-hidden rounded-lg">
-                <Image
+                <HeroImage
                   src={ctx.imageUrl!}
                   alt={ctx.imageAlt}
                   fill
+                  priority={ctx.isAboveFold}
                   sizes="(min-width: 1024px) 720px, 100vw"
                   className="object-cover"
                 />
