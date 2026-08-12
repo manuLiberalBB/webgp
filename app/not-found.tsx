@@ -11,7 +11,7 @@ export default function NotFound() {
       <Container>
         <h1 className="text-2xl font-semibold">Página no encontrada</h1>
         <p className="text-text-muted mt-2 text-sm">
-          La URL solicitada no existe en Contentful.
+        La página que busca no se encuentra disponible. Le invitamos a regresar al inicio o contactarnos para mayor asistencia..
         </p>
         <Link
           href={siteConfig.homePath}
