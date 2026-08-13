@@ -17,12 +17,6 @@ export type NewsCategory =
  */
 export type NewsFields = {
   contentfulName: string;
-  /** Título SEO */
-  title: string;
-  /** Meta descripción SEO */
-  metaDescription: string;
-  /** Palabras clave SEO */
-  keywords?: string[];
   /** Título visible de la noticia */
   noticeTitle: string;
   /** Bajada o subtítulo */

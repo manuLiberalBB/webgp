@@ -397,6 +397,16 @@ body {
   color: inherit;
 }
 
+.rich-text.news-rich-text
+  p:not(.quote-block__author):not(.quote-block__author-title):not(
+    .news-inline-statistic__value
+  ):not(.news-inline-statistic__label)
+  + p:not(.quote-block__author):not(.quote-block__author-title):not(
+    .news-inline-statistic__value
+  ):not(.news-inline-statistic__label) {
+  margin-top: 1rem;
+}
+
 .rich-text.news-rich-text strong,
 .rich-text.news-rich-text b {
   font-weight: 700;

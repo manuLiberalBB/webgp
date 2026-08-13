@@ -7,6 +7,7 @@ import {
 import { BLOCKS, INLINES, type Document } from '@contentful/rich-text-types';
 import type { ReactNode } from 'react';
 
+import { renderTextWithLineBreaks } from '@/lib/contentful/richText/renderTextWithLineBreaks';
 import { cn } from '@/lib/utils';
 
 type RichTextProps = {
@@ -23,16 +24,6 @@ type AssetTarget = {
     };
   };
 };
-
-function renderTextWithLineBreaks(text: string): ReactNode {
-  const lines = text.split('\n');
-
-  if (lines.length === 1) return text;
-
-  return lines.flatMap((line, index) =>
-    index === 0 ? [line] : [<br key={`line-break-${index}`} />, line],
-  );
-}
 
 const richTextOptions: Options = {
   renderText: renderTextWithLineBreaks,

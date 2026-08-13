@@ -13,6 +13,7 @@ import {
   type PageProps,
 } from '@/lib/contentful/types';
 import { getLinkHref } from '@/lib/contentful/types/link';
+import { buildNewsMetaDescription } from '@/lib/news/buildNewsMetaDescription';
 
 export const revalidate = 3600;
 
@@ -52,12 +53,11 @@ export async function generateMetadata({
     return { title: 'Grupo Petersen' };
   }
 
-  const fields = newsFields as NewsFields;
+  const fields = newsFields as Pick<NewsFields, 'noticeTitle' | 'subtitle' | 'content'>;
 
   return {
-    title: `${fields.title} | Grupo Petersen`,
-    description: fields.metaDescription,
-    keywords: formatPageKeywords(fields.keywords),
+    title: `${fields.noticeTitle} | Grupo Petersen`,
+    description: buildNewsMetaDescription(fields),
   };
 }
 

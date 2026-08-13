@@ -16,6 +16,7 @@ import type { ReactNode } from 'react';
 import { NewsInlineImage } from '@/components/news/NewsInlineImage';
 import { NewsInlineStatistics } from '@/components/news/NewsInlineStatistics';
 import { renderEmbeddedNewsRichTextBlock } from '@/components/contentful/richText/renderEmbeddedNewsRichTextBlock';
+import { renderTextWithLineBreaks } from '@/lib/contentful/richText/renderTextWithLineBreaks';
 import { segmentNewsRichTextContent } from '@/lib/contentful/richText/segmentNewsRichTextContent';
 import { cn } from '@/lib/utils';
 
@@ -65,6 +66,7 @@ function renderEmbeddedAsset(node: { data: { target?: AssetTarget } }) {
 }
 
 const newsRichTextOptions: Options = {
+  renderText: renderTextWithLineBreaks,
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, children) => {
       if (paragraphHasEmbeddedInline(node as Block)) {

@@ -133,7 +133,7 @@ export async function getNewsMetadataFields(page: string[] | undefined) {
     content_type: 'news',
     include: CONTENTFUL_INCLUDE.metadata,
     'fields.path': newsPath,
-    select: ['fields.title', 'fields.metaDescription', 'fields.keywords'],
+    select: ['fields.noticeTitle', 'fields.subtitle', 'fields.content'],
     limit: 1,
   });
 
