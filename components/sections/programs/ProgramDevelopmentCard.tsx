@@ -29,11 +29,17 @@ export function ProgramDevelopmentCard({ fields, className }: ProgramDevelopment
               <Image src={iconUrl} alt="" fill className="object-contain" />
             </div>
           </div>
-        ) : null}
+        ) : (
+          <div aria-hidden className="size-12 shrink-0" />
+        )}
 
         {fields.title ? (
-          <h3 className="pb-2 text-lg leading-6 font-semibold text-[#123476]">{fields.title}</h3>
-        ) : null}
+          <h3 className="min-h-12 pb-2 text-lg leading-6 font-semibold text-[#123476] line-clamp-2">
+            {fields.title}
+          </h3>
+        ) : (
+          <div aria-hidden className="min-h-12 pb-2" />
+        )}
       </div>
 
       {descriptionText ? (

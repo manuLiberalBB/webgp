@@ -9,41 +9,79 @@ type ProgramDevelopmentCardDescriptionProps = {
   text: string;
 };
 
+const MAX_LINES = 6;
+
+function isElementVisible(element: HTMLElement): boolean {
+  return element.getClientRects().length > 0;
+}
+
 export function ProgramDevelopmentCardDescription({
   text,
 }: ProgramDevelopmentCardDescriptionProps) {
   const [expanded, setExpanded] = useState(false);
   const [canExpand, setCanExpand] = useState(false);
   const paragraphRef = useRef<HTMLParagraphElement>(null);
+  const measureRef = useRef<HTMLParagraphElement>(null);
 
   useLayoutEffect(() => {
     const paragraph = paragraphRef.current;
-    if (!paragraph || expanded) return;
+    const measure = measureRef.current;
 
-    setCanExpand(paragraph.scrollHeight > paragraph.clientHeight + 1);
-  }, [text, expanded]);
+    if (!paragraph || !measure) return;
+
+    const updateCanExpand = () => {
+      if (!isElementVisible(paragraph)) return;
+
+      const lineHeight = Number.parseFloat(window.getComputedStyle(paragraph).lineHeight);
+
+      if (!Number.isFinite(lineHeight) || lineHeight <= 0) return;
+
+      const maxHeight = lineHeight * MAX_LINES;
+      const fullHeight = measure.scrollHeight;
+
+      setCanExpand(fullHeight > maxHeight + 1);
+    };
+
+    updateCanExpand();
+
+    const observer = new ResizeObserver(updateCanExpand);
+    observer.observe(paragraph);
+    observer.observe(measure);
+
+    return () => observer.disconnect();
+  }, [text]);
 
   return (
-    <div>
+    <div className="relative">
       <p
         ref={paragraphRef}
         className={cn(
           'text-body text-base leading-normal whitespace-pre-line',
-          !expanded && 'line-clamp-6',
+          !expanded && 'line-clamp-6 min-h-36',
         )}
       >
         {parseItalicText(text)}
       </p>
 
-      {canExpand ? (
-        <button
-          type="button"
-          onClick={() => setExpanded((current) => !current)}
-          className="text-link-cta mt-1 underline decoration-solid underline-offset-2"
-        >
-          {expanded ? 'ver menos' : 'ver más'}
-        </button>
-      ) : null}
+      <p
+        ref={measureRef}
+        aria-hidden="true"
+        className="pointer-events-none invisible absolute inset-x-0 top-0 -z-10 m-0 text-body text-base leading-normal whitespace-pre-line"
+      >
+        {parseItalicText(text)}
+      </p>
+
+      <div className="mt-1 min-h-6">
+        {canExpand ? (
+          <button
+            type="button"
+            onClick={() => setExpanded((current) => !current)}
+            className="text-link-cta underline decoration-solid underline-offset-2"
+          >
+            {expanded ? 'ver menos' : 'ver más'}
+          </button>
+        ) : null}
+      </div>
     </div>
   );
 }
