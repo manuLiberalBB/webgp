@@ -14,4 +14,4 @@ export function isCompactMobileHeroPage(pagePath?: string[]): boolean {
 }
 
 export const COMPACT_MOBILE_HERO_SECTION_CLASS =
-  'min-h-[22rem] justify-center pt-12 pb-10 md:min-h-0 md:justify-center md:pt-28 md:pb-21';
+  'min-h-[22rem] justify-center pt-12 pb-10 md:min-h-0 md:justify-center md:pt-[6.25rem] md:pb-20';

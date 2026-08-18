@@ -12,6 +12,9 @@ type FeaturedNewsHeroProps = {
 
 const HERO_EYEBROW_CLASS = 'px-2.5 py-1.5 text-xs tracking-[1.25px]';
 
+const HERO_OVERLAY_GRADIENT =
+  'linear-gradient(76deg, rgba(0, 0, 0, 0.80) 24.91%, rgba(0, 0, 0, 0.50) 52.19%, rgba(0, 0, 0, 0.00) 79.48%)';
+
 function ArrowRightIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
@@ -43,7 +46,8 @@ export function FeaturedNewsHero({ item, className }: FeaturedNewsHeroProps) {
 
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20"
+        className="absolute inset-0"
+        style={{ background: HERO_OVERLAY_GRADIENT }}
       />
 
       <div className="relative z-10 px-6 pb-12 pt-10 md:px-layout-x md:pb-16 md:pt-14 lg:pt-16">
@@ -88,7 +92,7 @@ export function FeaturedNewsHero({ item, className }: FeaturedNewsHeroProps) {
                 <ArrowRightIcon />
               </NewsArticleButton>
 
-              <div className="text-sm leading-[16.5px] text-white/80">
+              <div className="text-sm font-semibold leading-[16.5px] text-white">
                 <span>{item.readingMinutes} min lectura</span>
               </div>
             </div>

@@ -5,6 +5,7 @@ import type { Entry } from 'contentful';
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';
 import { resolveNavLink } from '@/lib/contentful/resolveNavLink';
 import type { CardFields } from '@/lib/contentful/types/card';
+import { CARD_IMAGE_OVERLAY_GRADIENT } from '@/lib/ui/cardImageOverlayGradient';
 import { cn } from '@/lib/utils';
 
 import { FoundationAreaTagBadge } from '@/components/sections/foundations/FoundationAreaTagBadge';
@@ -48,7 +49,11 @@ export function GridOverlayCard({
         className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
       />
 
-      <div aria-hidden className="absolute inset-0 rounded-lg bg-black/30" />
+      <div
+        aria-hidden
+        className="absolute inset-0 rounded-lg"
+        style={{ background: CARD_IMAGE_OVERLAY_GRADIENT }}
+      />
 
       <div className="relative z-10 flex h-full min-h-0 flex-col">
         {fields.tag ? (
@@ -88,7 +93,11 @@ export function GridOverlayCard({
         className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
       />
 
-      <div aria-hidden className="absolute inset-0 rounded-lg bg-black/30" />
+      <div
+        aria-hidden
+        className="absolute inset-0 rounded-lg"
+        style={{ background: CARD_IMAGE_OVERLAY_GRADIENT }}
+      />
 
       <div className="relative z-10 flex w-full flex-col gap-1.5">
         {fields.title ? (

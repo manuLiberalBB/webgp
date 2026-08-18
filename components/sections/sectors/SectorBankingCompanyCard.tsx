@@ -2,6 +2,7 @@ import { AppImage as Image } from '@/components/cms/AppImage';
 import Link from 'next/link';
 
 import type { SectorCompanyCardItem } from '@/lib/contentful/sector/types';
+import { SECTOR_BANKING_COMPANY_OVERLAY_GRADIENT } from '@/lib/ui/cardImageOverlayGradient';
 import { cn } from '@/lib/utils';
 
 import { SectorCompanySocialLinks } from './SectorCompanySocialLinks';
@@ -71,7 +72,11 @@ function SectorBankingCompanyCardContent({ item }: { item: SectorCompanyCardItem
         className="object-cover object-top"
       />
 
-      <div aria-hidden className="absolute inset-0 rounded-lg bg-black/30" />
+      <div
+        aria-hidden
+        className="absolute inset-0 rounded-lg"
+        style={{ background: SECTOR_BANKING_COMPANY_OVERLAY_GRADIENT }}
+      />
 
       <div className="relative z-10 flex flex-col items-start gap-6">
         {item.iconUrl ? (

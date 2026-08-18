@@ -1,5 +1,6 @@
 import { HeroImage } from '@/components/cms/AppImage';
 import type { NewsCategory } from '@/lib/contentful/types/news';
+import { NEWS_IMAGE_OVERLAY_GRADIENT } from '@/lib/news/newsImageOverlayGradient';
 import { cn } from '@/lib/utils';
 
 import { NewsCategoryBadge } from './NewsCategoryBadge';
@@ -27,12 +28,8 @@ export function NewsHero({
 
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-black/85 from-40% to-black/20 md:hidden"
-      />
-
-      <div
-        aria-hidden
-        className="absolute inset-0 hidden bg-gradient-to-r from-black/70 via-black/50 to-transparent md:block"
+        className="absolute inset-0"
+        style={{ background: NEWS_IMAGE_OVERLAY_GRADIENT }}
       />
 
       <div className="relative z-10 w-full px-6 md:px-layout-x">

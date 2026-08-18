@@ -61,16 +61,16 @@ export function YouMayAlsoLikeSection({
           ) : null}
         </div>
 
-        <div className="hidden grid-cols-1 gap-10 md:grid lg:grid-cols-[minmax(0,1fr)_506px] lg:gap-10">
+        <div className="hidden grid-cols-1 gap-10 md:grid lg:grid-cols-[minmax(0,1fr)_506px] lg:items-stretch lg:gap-10">
           <NewsPageFeaturedLargeCard
             item={largeItem}
-            className="min-h-[360px] md:min-h-[470px]"
+            className="h-full min-h-[360px] md:min-h-[470px]"
           />
 
           {sideCardItems.length > 0 ? (
-            <div className="flex flex-col gap-6 lg:min-h-[470px]">
+            <div className="flex flex-col gap-6 lg:h-full">
               {sideCardItems.map((item) => (
-                <YouMayAlsoLikeSideCard key={item.id} item={item} />
+                <YouMayAlsoLikeSideCard key={item.id} item={item} className="lg:flex-1" />
               ))}
             </div>
           ) : null}

@@ -25,6 +25,7 @@ export async function SectorPageHeroWithFetch({ pagePath }: SectorPageHeroWithFe
       subtitle={description}
       imageUrl={imageUrl}
       imageAlt={imageAlt}
+      pagePath={pagePath}
       compactMobile={isCompactMobileHeroPage(pagePath)}
     />
   );

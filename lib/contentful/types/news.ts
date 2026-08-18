@@ -9,7 +9,9 @@ export type NewsCategory =
   | 'Desarrollo regional'
   | 'Comunidad'
   | 'Talento'
-  | 'Minería';
+  | 'Minería'
+  | 'Finanzas'
+  | 'Historia destacada';
 
 /**
  * Content type: `news` (Noticia)

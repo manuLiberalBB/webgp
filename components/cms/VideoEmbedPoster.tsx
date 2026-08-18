@@ -12,6 +12,7 @@ type VideoEmbedPosterProps = {
   embedUrl: string;
   title: string;
   className?: string;
+  showDimOverlay?: boolean;
 };
 
 function VideoPlayIcon() {
@@ -66,6 +67,7 @@ export function VideoEmbedPoster({
   embedUrl,
   title,
   className,
+  showDimOverlay = true,
 }: VideoEmbedPosterProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -95,7 +97,7 @@ export function VideoEmbedPoster({
         className="object-cover transition-transform duration-300 group-hover:scale-[1.01]"
       />
 
-      <div aria-hidden className="absolute inset-0 bg-black/30" />
+      {showDimOverlay ? <div aria-hidden className="absolute inset-0 bg-black/30" /> : null}
 
       <div className="relative z-10">
         <VideoPlayIcon />

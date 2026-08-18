@@ -5,6 +5,7 @@ import {
   NewsCardOverlayLink,
 } from '@/components/news/NewsCardNavigation';
 import { NewsCategoryBadge } from '@/components/news/NewsCategoryBadge';
+import { NEWS_IMAGE_OVERLAY_GRADIENT } from '@/lib/news/newsImageOverlayGradient';
 import type { FeaturedNewsItem } from '@/lib/news/types';
 import { cn } from '@/lib/utils';
 
@@ -39,7 +40,8 @@ export function NewsPageFeaturedLargeCard({
 
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 via-50% to-transparent"
+        className="pointer-events-none absolute inset-0"
+        style={{ background: NEWS_IMAGE_OVERLAY_GRADIENT }}
       />
 
       <div className="pointer-events-none relative z-10 flex min-h-full w-full flex-col justify-end p-6 md:p-8">

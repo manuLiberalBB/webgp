@@ -6,11 +6,13 @@ type CategoryBadgeStyle = {
 };
 
 export const newsCategoryBadgeStyles: Record<NewsCategory, CategoryBadgeStyle> = {
-  Sustentabilidad: { background: '#f0fdfa', color: '#0f766e' },
+  Sustentabilidad: { background: '#d6e8e6', color: '#0d4d48' },
   Innovación: { background: '#f0f3fd', color: '#3328bf' },
   Educación: { background: '#fdf9f0', color: '#755000' },
-  'Desarrollo regional': { background: '#fdfaf0', color: '#76550f' },
-  Comunidad: { background: '#fdf0fb', color: '#760f6a' },
-  Talento: { background: '#eef2ff', color: '#1e3a8a' },
-  Minería: { background: '#fdf9f0', color: '#6f4204' },
+  'Desarrollo regional': { background: '#f4f0e7', color: '#513a09' },
+  Comunidad: { background: '#f2e7f0', color: '#780e6c' },
+  Talento: { background: '#eadbdc', color: '#760f16' },
+  Minería: { background: '#fbf7f3', color: '#b75500' },
+  Finanzas: { background: '#e7eee7', color: '#0f5912' },
+  'Historia destacada': { background: '#f4f0fd', color: '#5a133e' },
 };

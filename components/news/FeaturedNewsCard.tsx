@@ -13,6 +13,7 @@ import {
 } from '@/components/news/NewsCardNavigation';
 import { NewsCategoryBadge } from '@/components/news/NewsCategoryBadge';
 import { NewsCompanyBadge } from '@/components/news/NewsCompanyBadge';
+import { NEWS_IMAGE_OVERLAY_GRADIENT } from '@/lib/news/newsImageOverlayGradient';
 
 type FeaturedNewsCardProps = {
   item: FeaturedNewsItem;
@@ -21,8 +22,6 @@ type FeaturedNewsCardProps = {
   className?: string;
 };
 
-const CARD_GRADIENT =
-  'linear-gradient(16.56deg, rgba(0, 0, 0, 0.8) 18.3%, rgba(0, 0, 0, 0.2) 51.74%, rgba(0, 0, 0, 0) 85.18%)';
 
 export function FeaturedNewsCard({
   item,
@@ -49,7 +48,7 @@ export function FeaturedNewsCard({
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
-          style={{ backgroundImage: CARD_GRADIENT }}
+          style={{ background: NEWS_IMAGE_OVERLAY_GRADIENT }}
         />
         <div className="pointer-events-none relative z-10 flex h-full flex-col justify-end gap-3 p-6 md:p-8">
           <div className="pointer-events-auto flex flex-wrap items-start gap-3">

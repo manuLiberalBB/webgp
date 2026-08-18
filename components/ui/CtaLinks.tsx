@@ -9,9 +9,15 @@ type CtaLinksProps = {
   links?: Entry[];
   className?: string;
   buttonClassName?: string;
+  buttonVariant?: 'primary' | 'inverse';
 };
 
-export function CtaLinks({ links = [], className, buttonClassName }: CtaLinksProps) {
+export function CtaLinks({
+  links = [],
+  className,
+  buttonClassName,
+  buttonVariant = 'primary',
+}: CtaLinksProps) {
   const resolved = links
     .map(resolveNavLink)
     .filter((link): link is NonNullable<typeof link> => link !== null);
@@ -25,6 +31,7 @@ export function CtaLinks({ links = [], className, buttonClassName }: CtaLinksPro
           key={link.id}
           href={link.href}
           external={link.isExternal}
+          variant={buttonVariant}
           className={buttonClassName}
         >
           {link.label}

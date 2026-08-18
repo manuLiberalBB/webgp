@@ -8,6 +8,7 @@ import { VideoEmbedPoster } from '@/components/cms/VideoEmbedPoster';
 import { resolveNavLink } from '@/lib/contentful/resolveNavLink';
 import { resolveVideoPosterUrl } from '@/lib/contentful/video/resolveVideoEmbedUrl';
 import type { VideoItem } from '@/lib/contentful/types/video';
+import { I3_VIDEO_POSTER_OVERLAY_GRADIENT } from '@/lib/ui/cardImageOverlayGradient';
 import { cn } from '@/lib/utils';
 
 type I3ConversationsPanelProps = {
@@ -129,10 +130,14 @@ export function I3ConversationsPanel({
             posterUrl={posterUrl}
             posterAlt={selectedVideo?.title ?? posterAlt}
             title={posterTitle}
+            showDimOverlay={false}
             className="absolute inset-0 h-full rounded-none sm:h-full lg:h-full"
           />
 
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{ background: I3_VIDEO_POSTER_OVERLAY_GRADIENT }}
+          />
 
           <div className="pointer-events-none absolute bottom-4 left-4 z-10 flex flex-col">
             <p className="text-2xl leading-9 font-bold text-white">{posterTitle}</p>

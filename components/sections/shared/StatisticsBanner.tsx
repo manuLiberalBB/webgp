@@ -55,7 +55,7 @@ export function StatisticsBanner({
 
       <div className="relative z-10 flex w-full max-w-content flex-col items-center gap-5 text-center">
         {title ? (
-          <h2 className="text-[1.75rem] font-semibold leading-9 tracking-[-0.56px] text-white md:text-[2.25rem] md:leading-[3rem] md:tracking-[-0.72px]">
+          <h2 className="text-[1.75rem] font-bold leading-9 tracking-[-0.56px] text-white md:text-[2.25rem] md:leading-[3rem] md:tracking-[-0.72px]">
             {title}
           </h2>
         ) : null}
@@ -71,7 +71,7 @@ export function StatisticsBanner({
             <div
               key={statistic.id}
               className={cn(
-                'flex flex-1 flex-col items-center justify-center gap-4 px-5 py-12 text-center',
+                'flex flex-1 flex-col items-center justify-center gap-4 bg-black/40 px-5 py-12 text-center',
                 'min-h-[172px]',
                 index < statistics.length - 1 &&
                   'border-b-2 border-white lg:border-r-2 lg:border-b-0',
@@ -95,6 +95,7 @@ export function StatisticsBanner({
         <div className="relative z-10 flex w-full max-w-content justify-center">
           <CtaLinks
             links={urlList}
+            buttonVariant="inverse"
             className="w-full justify-center md:w-auto"
             buttonClassName="w-full justify-center md:w-auto"
           />

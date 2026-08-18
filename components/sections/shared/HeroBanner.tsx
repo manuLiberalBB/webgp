@@ -1,6 +1,16 @@
 import { HeroImage } from '@/components/cms/AppImage';
 import { HERO_BOTTOM_PADDING } from '@/lib/layout/sectionPadding';
 import { COMPACT_MOBILE_HERO_SECTION_CLASS } from '@/lib/layout/compactMobileHeroPages';
+import {
+  COMPACT_LANDING_HERO_OVERLAY,
+  isCompactLandingHeroPage,
+} from '@/lib/layout/compactLandingHeroPages';
+import {
+  INSTITUTIONAL_HERO_EYEBROW_CLASS,
+  INSTITUTIONAL_HERO_OVERLAY_GRADIENT,
+  isInstitutionalHeroPage,
+  isQueHacemosHeroPage,
+} from '@/lib/layout/institutionalHeroPages';
 import { cn } from '@/lib/utils';
 
 import { Badge } from '@/components/ui/Badge';
@@ -12,6 +22,7 @@ type HeroBannerProps = {
   imageUrl: string;
   imageAlt?: string;
   id?: string;
+  pagePath?: string[];
   className?: string;
   compactMobile?: boolean;
   priority?: boolean;
@@ -24,10 +35,13 @@ export function HeroBanner({
   imageUrl,
   imageAlt = '',
   id,
+  pagePath,
   className,
   compactMobile = false,
   priority = true,
 }: HeroBannerProps) {
+  const isInstitutionalHero = isInstitutionalHeroPage(pagePath);
+  const isCompactLandingHero = isCompactLandingHeroPage(pagePath);
   return (
     <section
       id={id}
@@ -45,30 +59,72 @@ export function HeroBanner({
         alt={imageAlt}
         fill
         priority={priority}
-        className="object-cover"
+        className={cn('object-cover', isQueHacemosHeroPage(pagePath) && 'object-top')}
       />
 
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-black/80 from-[39.421%] to-black/25"
+        className={cn(
+          'absolute inset-0',
+          !isInstitutionalHero &&
+            !isCompactLandingHero &&
+            'bg-gradient-to-t from-black/80 from-[39.421%] to-black/25',
+        )}
+        style={
+          isInstitutionalHero
+            ? { background: INSTITUTIONAL_HERO_OVERLAY_GRADIENT }
+            : isCompactLandingHero
+              ? { background: COMPACT_LANDING_HERO_OVERLAY }
+              : undefined
+        }
       />
 
       <div className="relative z-10 mx-auto flex w-full max-w-content flex-col justify-center">
-        <div className="flex max-w-[52.875rem] flex-col justify-center gap-0">
+        <div
+          className={cn(
+            'flex max-w-[52.875rem] flex-col justify-center',
+            isCompactLandingHero ? 'gap-10' : 'gap-0',
+          )}
+        >
           {tag ? (
             <div className="mb-4 md:mb-6">
-              <Badge>{tag}</Badge>
+              {isInstitutionalHero ? (
+                <span
+                  className={cn(
+                    'inline-flex items-center justify-center',
+                    INSTITUTIONAL_HERO_EYEBROW_CLASS,
+                  )}
+                >
+                  {tag}
+                </span>
+              ) : (
+                <Badge>{tag}</Badge>
+              )}
             </div>
           ) : null}
 
           {title ? (
-            <h1 className="text-[2.25rem] leading-[1.2] font-bold text-white md:text-[3rem] md:leading-[4.25rem]">
+            <h1
+              className={cn(
+                'text-white',
+                isCompactLandingHero
+                  ? 'text-[2.25rem] font-semibold leading-[1.2] tracking-[-0.04em] md:text-[3.375rem] md:leading-[4.104rem] md:tracking-[-1.52px]'
+                  : 'text-[2.25rem] leading-[1.2] font-bold md:text-[3rem] md:leading-[4.25rem]',
+              )}
+            >
               {title}
             </h1>
           ) : null}
 
           {subtitle ? (
-            <p className="pt-4 text-[1.25rem] leading-9 text-white md:pt-6 md:text-[1.375rem]">
+            <p
+              className={cn(
+                'text-white',
+                isCompactLandingHero
+                  ? 'text-lg leading-normal md:text-2xl'
+                  : 'pt-4 text-[1.25rem] leading-9 md:pt-6 md:text-[1.375rem]',
+              )}
+            >
               {subtitle}
             </p>
           ) : null}

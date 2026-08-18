@@ -91,14 +91,14 @@ export function BorderedGridCard({ fields, className }: BorderedGridCardProps) {
       <div className="flex flex-1 flex-col items-center p-5 text-center">
         <div className="flex w-full flex-col gap-3">
           {fields.title ? (
-            <h3 className="min-h-12 text-heading text-xl font-semibold leading-6 line-clamp-2">
+            <h3 className="text-heading text-xl font-semibold leading-6">
               {fields.title}
             </h3>
           ) : null}
 
-          <p className="min-h-[4.5rem] text-body text-base leading-6 line-clamp-3">
-            {fields.description ?? '\u00A0'}
-          </p>
+          {fields.description ? (
+            <p className="text-body text-base leading-6">{fields.description}</p>
+          ) : null}
         </div>
 
         {link ? (

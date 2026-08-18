@@ -8,6 +8,8 @@ export const NEWS_CATEGORIES: NewsCategory[] = [
   'Comunidad',
   'Talento',
   'Minería',
+  'Finanzas',
+  'Historia destacada',
 ];
 
 export type NewsFilterCategory = 'Todo' | NewsCategory;

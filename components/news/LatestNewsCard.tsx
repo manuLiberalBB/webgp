@@ -2,6 +2,7 @@ import { AppImage as Image } from '@/components/cms/AppImage';
 import Link from 'next/link';
 
 import { NewsCategoryBadge } from '@/components/news/NewsCategoryBadge';
+import { LATEST_NEWS_IMAGE_OVERLAY } from '@/lib/news/newsImageOverlayGradient';
 import type { NewsListItem } from '@/lib/news/types';
 import { cn } from '@/lib/utils';
 
@@ -30,6 +31,11 @@ export function LatestNewsCard({ item, className }: LatestNewsCardProps) {
           fill
           sizes="(max-width: 640px) 100vw, 269px"
           className="object-cover transition-transform duration-300 hover:scale-[1.02]"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 rounded-[20px]"
+          style={{ background: LATEST_NEWS_IMAGE_OVERLAY }}
         />
         {item.category ? (
           <div className="absolute bottom-5 left-5 z-10">

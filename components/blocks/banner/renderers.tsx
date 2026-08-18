@@ -21,6 +21,7 @@ function renderHeroBanner(ctx: BannerContext) {
         imageUrl={ctx.imageUrl}
         imageAlt={ctx.imageAlt}
         compactMobile={ctx.compactMobile}
+        pagePath={ctx.pagePath}
         id={ctx.sectionId}
         priority={ctx.isAboveFold}
       />

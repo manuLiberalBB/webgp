@@ -1,6 +1,7 @@
 import { AppImage as Image } from '@/components/cms/AppImage';
 
 import type { StrategicSectorGridItem } from '@/lib/contentful/strategicSector/types';
+import { CARD_IMAGE_OVERLAY_GRADIENT } from '@/lib/ui/cardImageOverlayGradient';
 import { cn } from '@/lib/utils';
 
 type StrategicSectorCardProps = {
@@ -67,10 +68,8 @@ export function StrategicSectorCard({
       />
       <div
         aria-hidden
-        className={cn(
-          'absolute inset-0 rounded-lg bg-black/60 transition-opacity',
-          isSelected && 'bg-black/50',
-        )}
+        className="absolute inset-0 rounded-lg"
+        style={{ background: CARD_IMAGE_OVERLAY_GRADIENT }}
       />
     </>
   );

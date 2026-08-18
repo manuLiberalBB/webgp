@@ -5,7 +5,18 @@ import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 export const buttonVariants = cva(
-  'bg-cta hover:bg-cta/90 inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-base leading-5 font-semibold whitespace-nowrap !text-white transition-colors',
+  'inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-base leading-5 font-semibold whitespace-nowrap transition-colors',
+  {
+    variants: {
+      variant: {
+        primary: 'bg-cta hover:bg-cta/90 !text-white',
+        inverse: 'bg-white text-[#062043] hover:bg-white/90',
+      },
+    },
+    defaultVariants: {
+      variant: 'primary',
+    },
+  },
 );
 
 type ButtonProps = {
@@ -13,6 +24,7 @@ type ButtonProps = {
   children: ReactNode;
   className?: string;
   external?: boolean;
+  variant?: 'primary' | 'inverse';
 } & Omit<ComponentPropsWithoutRef<'a'>, 'href' | 'children' | 'className'>;
 
 export function Button({
@@ -20,9 +32,10 @@ export function Button({
   children,
   className,
   external = false,
+  variant = 'primary',
   ...props
 }: ButtonProps) {
-  const classes = cn(buttonVariants(), className);
+  const classes = cn(buttonVariants({ variant }), className);
 
   if (external) {
     return (

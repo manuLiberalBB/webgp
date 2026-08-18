@@ -12,8 +12,8 @@ import {
   type PageFields,
   type PageProps,
 } from '@/lib/contentful/types';
-import { getLinkHref } from '@/lib/contentful/types/link';
 import { buildNewsMetaDescription } from '@/lib/news/buildNewsMetaDescription';
+import { siteConfig } from '@/config/site';
 
 export const revalidate = 3600;
 
@@ -25,10 +25,9 @@ export async function generateMetadata({
 
   if (entries.items.length > 0) {
     const fields = entries.items[0].fields as PageFields;
-    const isHome = getLinkHref(fields.path) === '/inicio';
 
     return {
-      title: `${isHome ? '' : `${fields.title} | `}Grupo Petersen`,
+      title: fields.title || siteConfig.defaultTitle,
       description: fields.metaDescription,
       keywords: formatPageKeywords(fields.keywords),
     };
@@ -41,7 +40,7 @@ export async function generateMetadata({
       const sectorFields = sectorEntry.fields as SectorFields;
 
       return {
-        title: `${sectorFields.name} | Grupo Petersen`,
+        title: sectorFields.name,
         description: sectorFields.description,
       };
     }
@@ -50,13 +49,13 @@ export async function generateMetadata({
   const newsFields = await getNewsMetadataFields(page);
 
   if (!newsFields) {
-    return { title: 'Grupo Petersen' };
+    return { title: siteConfig.defaultTitle };
   }
 
   const fields = newsFields as Pick<NewsFields, 'noticeTitle' | 'subtitle' | 'content'>;
 
   return {
-    title: `${fields.noticeTitle} | Grupo Petersen`,
+    title: fields.noticeTitle,
     description: buildNewsMetaDescription(fields),
   };
 }

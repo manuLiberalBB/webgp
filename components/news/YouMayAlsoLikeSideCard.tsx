@@ -29,7 +29,7 @@ export function YouMayAlsoLikeSideCard({
     <article className={cn('flex gap-4', className)}>
       <Link
         href={item.href}
-        className="relative w-[198px] shrink-0 self-stretch min-h-[140px] overflow-hidden rounded-md"
+        className="relative w-[198px] shrink-0 self-stretch overflow-hidden rounded-md"
       >
         <Image
           src={item.coverImageUrl}
@@ -55,7 +55,7 @@ export function YouMayAlsoLikeSideCard({
           </p>
         ) : null}
 
-        <div className="mt-2 flex items-center gap-4">
+        <div className="mt-auto flex items-center gap-4 pt-2">
           <div className="flex items-center gap-2 text-[10px] leading-[15px] text-[#777]">
             <span>{cardDate}</span>
             <span className="text-base leading-6 text-[#777]" aria-hidden>·</span>

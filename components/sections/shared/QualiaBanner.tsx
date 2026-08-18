@@ -155,12 +155,12 @@ export function QualiaBanner({
             )}
 
             {logoUrl ? (
-              <div className="relative order-first h-[74px] w-[215px] shrink-0 lg:order-last">
+              <div className="relative order-first h-[104px] w-[304px] shrink-0 md:h-[124px] md:w-[360px] lg:order-last">
                 <Image
                   src={logoUrl}
                   alt={logoAlt}
                   fill
-                  sizes="215px"
+                  sizes="(max-width: 768px) 304px, 360px"
                   className="object-contain object-left lg:object-right"
                 />
               </div>
