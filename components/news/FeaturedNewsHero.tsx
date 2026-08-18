@@ -79,7 +79,7 @@ export function FeaturedNewsHero({ item, className }: FeaturedNewsHeroProps) {
                 width={item.companyLogoWidth ?? 250}
                 height={item.companyLogoHeight ?? 55}
                 style={AUTO_ASPECT_STYLE}
-                className="block h-[52px] w-auto max-w-[234px] self-start object-contain object-left"
+                className="block h-[52px] w-auto max-w-[234px] self-start object-contain object-left brightness-0 invert"
               />
             ) : null}
 
