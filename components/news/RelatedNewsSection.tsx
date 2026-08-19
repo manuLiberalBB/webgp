@@ -20,6 +20,7 @@ export function RelatedNewsSection({ items, className }: RelatedNewsSectionProps
         {items.map((item, index) => (
           <div
             key={item.id}
+            data-related-news-item={index}
             className={cn(index === 0 ? 'pb-6' : undefined)}
           >
             <RelatedNewsCard item={item} showTopSpacing={index === 0} />

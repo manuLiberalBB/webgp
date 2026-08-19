@@ -1,3 +1,5 @@
+import { forwardRef } from 'react';
+
 import type { NewsArticleContext, NewsCompanyInfo, RelatedNewsItem } from '@/lib/news/types';
 import { cn } from '@/lib/utils';
 
@@ -15,15 +17,19 @@ type NewsSidebarProps = {
   className?: string;
 };
 
-export function NewsSidebar({
-  noticeTitle,
-  relatedNews,
-  meta,
-  company,
-  className,
-}: NewsSidebarProps) {
+export const NewsSidebar = forwardRef<HTMLElement, NewsSidebarProps>(function NewsSidebar(
+  {
+    noticeTitle,
+    relatedNews,
+    meta,
+    company,
+    className,
+  },
+  ref,
+) {
   return (
     <aside
+      ref={ref}
       className={cn(
         'flex w-full min-w-0 flex-col lg:max-w-none xl:max-w-[21.5rem]',
         className,
@@ -63,4 +69,4 @@ export function NewsSidebar({
       ) : null}
     </aside>
   );
-}
+});
