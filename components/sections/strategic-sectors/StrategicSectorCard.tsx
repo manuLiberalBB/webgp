@@ -11,9 +11,19 @@ type StrategicSectorCardProps = {
   className?: string;
 };
 
-function ArrowRightIcon() {
+function ArrowIcon({ isSelected = false }: { isSelected?: boolean }) {
   return (
-    <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden className="shrink-0">
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 12 12"
+      fill="none"
+      aria-hidden
+      className={cn(
+        'shrink-0 transition-transform duration-300',
+        isSelected && 'rotate-90',
+      )}
+    >
       <path
         d="M2.25 6h6.75M6.75 3.75 9.75 6l-3 2.25"
         stroke="currentColor"
@@ -46,7 +56,7 @@ export function StrategicSectorCard({
 
       <span className={cn(ctaClassName, 'shrink-0')}>
         {item.linkLabel}
-        <ArrowRightIcon />
+        <ArrowIcon isSelected={isSelected} />
       </span>
     </div>
   );
