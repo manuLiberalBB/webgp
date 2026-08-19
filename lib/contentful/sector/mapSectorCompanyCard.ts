@@ -27,7 +27,7 @@ export function mapCompanyToSectorCard(
 ): SectorCompanyCardItem | null {
   const {
     linkLabel = COMPANY_WEBSITE_LINK_LABEL,
-    preferLogo = false,
+    preferLogo = true,
     includeImage = false,
   } = options;
 

@@ -69,21 +69,15 @@ export function SectorCompanyCard({ item, className }: SectorCompanyCardProps) {
     >
       <div className="flex w-full flex-1 flex-col items-center gap-2.5 md:items-stretch md:gap-5">
         <div className="flex w-full flex-1 flex-col items-center gap-2 md:items-stretch md:gap-2">
-          <div className="flex flex-col items-center gap-2.5 md:items-stretch md:gap-6">
-            <div className="flex h-10 items-center justify-center md:h-12 md:justify-start">
-              <Image
-                src={item.logoUrl}
-                alt={item.title}
-                width={item.logoWidth}
-                height={item.logoHeight}
-                style={AUTO_ASPECT_STYLE}
-                className="block max-h-10 w-auto max-w-full object-contain md:max-h-12 md:object-left"
-              />
-            </div>
-
-            <h3 className="text-card-title text-center text-lg leading-7 font-semibold md:text-left md:text-2xl md:leading-8">
-              {item.title}
-            </h3>
+          <div className="flex h-10 w-full items-center justify-center md:h-12 md:justify-start">
+            <Image
+              src={item.logoUrl}
+              alt={item.title}
+              width={item.logoWidth}
+              height={item.logoHeight}
+              style={AUTO_ASPECT_STYLE}
+              className="block max-h-10 w-auto max-w-full object-contain md:max-h-12 md:object-left"
+            />
           </div>
 
           {item.tagline ? (
