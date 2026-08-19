@@ -86,9 +86,9 @@ export function SectorCompanyCard({ item, className }: SectorCompanyCardProps) {
             </h3>
           </div>
 
-          {item.description ? (
+          {item.tagline ? (
             <p className="text-card-description hidden text-base leading-6 md:block">
-              {item.description}
+              {item.tagline}
             </p>
           ) : null}
         </div>

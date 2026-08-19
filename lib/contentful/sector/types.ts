@@ -4,6 +4,7 @@ export type SectorCompanyCardItem = {
   id: string;
   title: string;
   description: string;
+  tagline: string;
   body?: Document;
   logoUrl: string;
   logoWidth: number;
