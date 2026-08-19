@@ -76,24 +76,24 @@ function SectorBankingCompanyCardContent({ item }: { item: SectorCompanyCardItem
         style={{ background: SECTOR_BANKING_COMPANY_OVERLAY_GRADIENT }}
       />
 
-      <div className="relative z-10 flex flex-col items-start gap-6">
-        {item.iconUrl ? (
-          <div className="relative size-[1.9375rem] shrink-0">
-            <Image
-              src={item.iconUrl}
-              alt=""
-              fill
-              sizes="31px"
-              className="object-contain brightness-0 invert"
-            />
-          </div>
-        ) : null}
+      <div className="relative z-10 flex w-full flex-col items-start gap-3">
+        <div className="flex w-full items-center gap-3">
+          {item.iconUrl ? (
+            <div className="relative size-[1.9375rem] shrink-0">
+              <Image
+                src={item.iconUrl}
+                alt=""
+                fill
+                sizes="31px"
+                className="object-contain brightness-0 invert"
+              />
+            </div>
+          ) : null}
 
-        <div className="flex w-full flex-col items-start gap-3">
-          <h3 className="text-xl leading-6 font-bold text-white">{item.title}</h3>
-
-          <SectorBankingCompanyWebsiteLink item={item} />
+          <h3 className="min-w-0 flex-1 text-xl leading-6 font-bold text-white">{item.title}</h3>
         </div>
+
+        <SectorBankingCompanyWebsiteLink item={item} />
       </div>
     </>
   );
