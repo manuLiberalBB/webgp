@@ -5,8 +5,6 @@ import type { SectorCompanyCardItem } from '@/lib/contentful/sector/types';
 import { SECTOR_BANKING_COMPANY_OVERLAY_GRADIENT } from '@/lib/ui/cardImageOverlayGradient';
 import { cn } from '@/lib/utils';
 
-import { SectorCompanySocialLinks } from './SectorCompanySocialLinks';
-
 type SectorBankingCompanyCardProps = {
   item: SectorCompanyCardItem;
   className?: string;
@@ -95,11 +93,6 @@ function SectorBankingCompanyCardContent({ item }: { item: SectorCompanyCardItem
           <h3 className="text-xl leading-6 font-bold text-white">{item.title}</h3>
 
           <SectorBankingCompanyWebsiteLink item={item} />
-
-          <SectorCompanySocialLinks
-            linkedinUrl={item.linkedinUrl}
-            instagramUrl={item.instagramUrl}
-          />
         </div>
       </div>
     </>
