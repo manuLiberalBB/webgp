@@ -1,5 +1,4 @@
 import type { CardFields } from '@/lib/contentful/types/card';
-import { resolveFoundationAreaDescriptionMinHeight } from '@/lib/contentful/card/resolveFoundationAreaDescriptionMinHeight';
 import { cn } from '@/lib/utils';
 
 import { GridOverlayCard } from '@/components/ui/GridOverlayCard';
@@ -51,10 +50,6 @@ export function ImageOverlayGridSection({
 
   const isThreeTwoLayout = cardLayout === 'three-two' && cards.length === 5;
   const isLeftHeader = headerAlign === 'left';
-  const foundationDescriptionMinHeight =
-    cardVariant === 'foundationArea'
-      ? resolveFoundationAreaDescriptionMinHeight(cards)
-      : undefined;
 
   return (
     <section
@@ -109,7 +104,6 @@ export function ImageOverlayGridSection({
               key={`${card.contentfulName}-${index}`}
               fields={card}
               variant={cardVariant}
-              foundationDescriptionMinHeight={foundationDescriptionMinHeight}
               className={getCardColumnClassName(cardLayout, index, cards.length)}
             />
           ))}

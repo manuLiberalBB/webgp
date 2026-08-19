@@ -8,13 +8,13 @@ import type { CardFields } from '@/lib/contentful/types/card';
 import { CARD_IMAGE_OVERLAY_GRADIENT } from '@/lib/ui/cardImageOverlayGradient';
 import { cn } from '@/lib/utils';
 
+import { FoundationAreaCardDescription } from '@/components/sections/foundations/FoundationAreaCardDescription';
 import { FoundationAreaTagBadge } from '@/components/sections/foundations/FoundationAreaTagBadge';
 
 type GridOverlayCardProps = {
   fields: CardFields;
   className?: string;
   variant?: 'default' | 'foundationArea';
-  foundationDescriptionMinHeight?: number;
 };
 
 function resolveCardLink(url?: Entry[]) {
@@ -27,7 +27,6 @@ export function GridOverlayCard({
   fields,
   className,
   variant = 'default',
-  foundationDescriptionMinHeight,
 }: GridOverlayCardProps) {
   const imageUrl = fields.image ? getAssetUrl(fields.image) : undefined;
   const link = resolveCardLink(fields.url);
@@ -70,16 +69,13 @@ export function GridOverlayCard({
             <h3 className="text-xl font-bold leading-6 text-white">{fields.title}</h3>
           ) : null}
 
-          <p
-            className="text-base leading-6 whitespace-pre-line text-white"
-            style={
-              foundationDescriptionMinHeight
-                ? { minHeight: foundationDescriptionMinHeight }
-                : undefined
-            }
-          >
-            {fields.description ?? '\u00A0'}
-          </p>
+          {fields.description?.trim() ? (
+            <FoundationAreaCardDescription text={fields.description.trim()} />
+          ) : (
+            <p aria-hidden className="min-h-[7.5rem] text-base leading-6 text-white">
+              {'\u00A0'}
+            </p>
+          )}
         </div>
       </div>
     </>
