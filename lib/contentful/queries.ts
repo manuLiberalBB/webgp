@@ -212,7 +212,7 @@ export async function getFeaturedRelatedNews(options: {
       const fields = item.fields as NewsFields;
       if (seen.has(fields.path)) continue;
 
-      const mapped = mapFeaturedNewsItem(item.sys.id, fields, item.sys.createdAt);
+      const mapped = mapFeaturedNewsItem(item.sys.id, fields, item.sys);
       if (!mapped) continue;
 
       related.push(mapped);
@@ -258,7 +258,7 @@ export async function getRelatedNewsForCompanies(options: {
       const fields = item.fields as NewsFields;
       if (seen.has(fields.path)) continue;
 
-      const mapped = mapFeaturedNewsItem(item.sys.id, fields, item.sys.createdAt);
+      const mapped = mapFeaturedNewsItem(item.sys.id, fields, item.sys);
       if (!mapped) continue;
 
       related.push(mapped);
@@ -316,12 +316,14 @@ export async function getNewsListItemsPage(
     order: ['-sys.createdAt'],
     select: [
       'sys.id',
+      'sys.publishedAt',
       'sys.createdAt',
       'fields.noticeTitle',
       'fields.subtitle',
       'fields.path',
       'fields.category',
       'fields.coverImage',
+      'fields.date',
     ],
   };
 
@@ -343,7 +345,7 @@ export async function getNewsListItemsPage(
   return {
     items: entries.items
       .map((item) =>
-        mapNewsListItem(item.sys.id, item.fields as NewsFields, item.sys.createdAt),
+        mapNewsListItem(item.sys.id, item.fields as NewsFields, item.sys),
       )
       .filter((item): item is NewsListItem => item !== null),
     total: entries.total,
@@ -366,7 +368,7 @@ export async function getLatestFeaturedNews(limit = 3): Promise<FeaturedNewsItem
 
   return entries.items
     .map((item) =>
-      mapFeaturedNewsItem(item.sys.id, item.fields as NewsFields, item.sys.createdAt),
+      mapFeaturedNewsItem(item.sys.id, item.fields as NewsFields, item.sys),
     )
     .filter((item): item is FeaturedNewsItem => item !== null);
 }

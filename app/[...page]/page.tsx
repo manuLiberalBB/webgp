@@ -104,7 +104,7 @@ export default async function Page({ params, searchParams }: PageProps) {
   return (
     <NewsDetailView
       fields={newsFields}
-      publishedAt={newsEntry.sys.createdAt}
+      entrySys={newsEntry.sys}
     />
   );
 }

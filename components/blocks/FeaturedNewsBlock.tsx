@@ -36,7 +36,7 @@ export const FeaturedNewsBlock: BlockComponent = ({
       mapFeaturedNewsItem(
         entry.sys.id,
         entry.fields as NewsFields,
-        entry.sys.createdAt,
+        entry.sys,
       ),
     )
     .filter((item): item is NonNullable<typeof item> => item !== null);

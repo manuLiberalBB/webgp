@@ -11,13 +11,14 @@ import { normalizeNewsCategory } from '@/lib/contentful/news/normalizeNewsCatego
 import type { NewsFields } from '@/lib/contentful/types/news';
 import { buildNewsArticleContext } from '@/lib/news/buildNewsArticleContext';
 import { getPrimaryCompany } from '@/lib/news/getPrimaryCompany';
+import { resolveNewsPublishedAt, type NewsEntryPublicationSys } from '@/lib/news/resolveNewsPublishedAt';
 
 type NewsDetailViewProps = {
   fields: NewsFields;
-  publishedAt?: string;
+  entrySys?: NewsEntryPublicationSys;
 };
 
-export async function NewsDetailView({ fields, publishedAt }: NewsDetailViewProps) {
+export async function NewsDetailView({ fields, entrySys }: NewsDetailViewProps) {
   const imageUrl = getAssetUrl(fields.coverImage);
   const imageAlt =
     (typeof fields.coverImage.fields.title === 'string'
@@ -28,6 +29,8 @@ export async function NewsDetailView({ fields, publishedAt }: NewsDetailViewProp
 
   const category = normalizeNewsCategory(fields.category);
 
+  const resolvedPublishedAt = resolveNewsPublishedAt(fields, entrySys);
+
   const [relatedNews] = await Promise.all([
     getRelatedNews({
       excludePath: fields.path,
@@ -36,7 +39,7 @@ export async function NewsDetailView({ fields, publishedAt }: NewsDetailViewProp
     }),
   ]);
 
-  const articleContext = buildNewsArticleContext(fields, publishedAt);
+  const articleContext = buildNewsArticleContext(fields, resolvedPublishedAt);
   const company = getPrimaryCompany(fields.companies);
 
   return (
@@ -55,7 +58,7 @@ export async function NewsDetailView({ fields, publishedAt }: NewsDetailViewProp
         companyName={articleContext.companyName}
         content={fields.content}
         subtitle={fields.subtitle}
-        publishedAt={publishedAt}
+        publishedAt={resolvedPublishedAt}
       />
 
       <div className="px-6 py-10 md:px-layout-x lg:py-12">

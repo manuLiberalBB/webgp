@@ -10,6 +10,7 @@ import { normalizeNewsCategory } from '@/lib/contentful/news/normalizeNewsCatego
 
 import { calculateNewsReadingTimeMinutes } from './readingTime';
 import { formatNewsPublishDate } from './formatNewsDate';
+import { resolveNewsPublishedAt, type NewsEntryPublicationSys } from './resolveNewsPublishedAt';
 import type { FeaturedNewsItem } from './types';
 
 function mapCompanyFromEntry(companies: Entry[] | undefined) {
@@ -35,12 +36,13 @@ function mapCompanyFromEntry(companies: Entry[] | undefined) {
 export function mapFeaturedNewsItem(
   id: string,
   fields: NewsFields,
-  publishedAt?: string,
+  entrySys?: NewsEntryPublicationSys,
 ): FeaturedNewsItem | null {
   const coverImageUrl = getAssetUrl(fields.coverImage);
   if (!coverImageUrl || !fields.path) return null;
 
   const company = mapCompanyFromEntry(fields.companies);
+  const publishedAt = resolveNewsPublishedAt(fields, entrySys);
   const publishDate = formatNewsPublishDate(publishedAt);
   const readingMinutes = calculateNewsReadingTimeMinutes({
     content: fields.content,
@@ -61,7 +63,7 @@ export function mapFeaturedNewsItem(
     companyLogoWidth: company?.logoWidth,
     companyLogoHeight: company?.logoHeight,
     publishDate,
-    publishedAt: publishedAt ?? new Date().toISOString(),
+    publishedAt,
     readingMinutes,
   };
 }

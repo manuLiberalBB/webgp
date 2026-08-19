@@ -31,6 +31,8 @@ export type NewsFields = {
   tags?: string[];
   coverImage: Asset;
   content: Document;
+  /** Fecha de publicación manual. Si no está definida, se usa `sys.publishedAt`. */
+  date?: string;
 };
 
 export type NewsEntry = {

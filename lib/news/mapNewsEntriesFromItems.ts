@@ -19,7 +19,7 @@ export function mapNewsEntriesToFeaturedItems(
       mapFeaturedNewsItem(
         entry.sys.id,
         entry.fields as NewsFields,
-        entry.sys.createdAt,
+        entry.sys,
       ),
     )
     .filter((item): item is FeaturedNewsItem => item !== null);
