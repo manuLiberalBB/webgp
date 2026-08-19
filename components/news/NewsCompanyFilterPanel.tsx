@@ -1,7 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
 import { cn } from '@/lib/utils';
 
 import type { NewsFilterCompany } from './NewsFiltersSection';
@@ -10,42 +8,48 @@ import {
   NewsFilterInlineRadioOption,
 } from './NewsFilterSheet';
 
-type CompanyFilterMode = 'all' | 'select';
+export type CompanyFilterMode = 'all' | 'select';
 
 type NewsCompanyFilterPanelProps = {
   companies: NewsFilterCompany[];
   selectedCompanyIds: string[];
+  companyFilterMode: CompanyFilterMode;
+  onCompanyFilterModeChange: (mode: CompanyFilterMode) => void;
   onToggleCompany: (companyId: string) => void;
   onClearCompanies: () => void;
+  onEnterSelectCompaniesMode: () => void;
   className?: string;
   id?: string;
 };
 
+function isCompanyChecked(
+  companyId: string,
+  companyFilterMode: CompanyFilterMode,
+  selectedCompanyIds: string[],
+): boolean {
+  return companyFilterMode === 'all' || selectedCompanyIds.includes(companyId);
+}
+
 export function NewsCompanyFilterPanel({
   companies,
   selectedCompanyIds,
+  companyFilterMode,
+  onCompanyFilterModeChange,
   onToggleCompany,
   onClearCompanies,
+  onEnterSelectCompaniesMode,
   className,
   id,
 }: NewsCompanyFilterPanelProps) {
-  const [mode, setMode] = useState<CompanyFilterMode>(
-    selectedCompanyIds.length > 0 ? 'select' : 'all',
-  );
-
-  useEffect(() => {
-    if (selectedCompanyIds.length > 0) {
-      setMode('select');
-    }
-  }, [selectedCompanyIds.length]);
+  const isAllMode = companyFilterMode === 'all';
 
   function handleSelectAll() {
-    setMode('all');
+    onCompanyFilterModeChange('all');
     onClearCompanies();
   }
 
   function handleSelectCompanies() {
-    setMode('select');
+    onEnterSelectCompaniesMode();
   }
 
   return (
@@ -62,31 +66,31 @@ export function NewsCompanyFilterPanel({
           name="news-company-filter-mode"
           value="all"
           label="Todas"
-          checked={mode === 'all'}
+          checked={companyFilterMode === 'all'}
           onChange={handleSelectAll}
         />
         <NewsFilterInlineRadioOption
           name="news-company-filter-mode"
           value="select"
           label="Seleccionar empresas"
-          checked={mode === 'select'}
+          checked={companyFilterMode === 'select'}
           onChange={handleSelectCompanies}
         />
       </div>
 
-      {mode === 'select' ? (
-        <div className="flex w-full flex-wrap items-start justify-center gap-x-7 gap-y-4">
-          {companies.map((company) => (
-            <NewsFilterCheckboxOption
-              key={company.id}
-              layout="dropdown"
-              label={company.name}
-              checked={selectedCompanyIds.includes(company.id)}
-              onChange={() => onToggleCompany(company.id)}
-            />
-          ))}
-        </div>
-      ) : null}
+      <div className="flex w-full flex-wrap items-start justify-center gap-x-7 gap-y-4">
+        {companies.map((company) => (
+          <NewsFilterCheckboxOption
+            key={company.id}
+            layout="dropdown"
+            label={company.name}
+            checked={isCompanyChecked(company.id, companyFilterMode, selectedCompanyIds)}
+            checkedVariant={isAllMode ? 'all' : 'selected'}
+            disabled={isAllMode}
+            onChange={() => onToggleCompany(company.id)}
+          />
+        ))}
+      </div>
     </div>
   );
 }

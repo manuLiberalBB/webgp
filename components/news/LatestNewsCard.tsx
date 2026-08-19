@@ -46,12 +46,7 @@ export function LatestNewsCard({ item, className }: LatestNewsCardProps) {
 
       <div className="flex min-w-0 flex-1 flex-col gap-1.5 sm:h-[282px] sm:justify-between">
         <div className="flex min-h-0 flex-col gap-2 overflow-hidden">
-          <h3
-            className={cn(
-              'text-[22px] leading-8 text-[#0d0d0d] md:text-[24px] md:leading-8',
-              hasSubtitle ? 'line-clamp-3' : 'line-clamp-5 lg:line-clamp-6',
-            )}
-          >
+          <h3 className="line-clamp-4 text-[22px] leading-8 text-[#0d0d0d] md:text-[24px] md:leading-8">
             <Link href={item.href} className="hover:underline">
               {item.title}
             </Link>

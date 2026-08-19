@@ -2,10 +2,11 @@ import { getAssetUrl } from '@/lib/contentful/getAssetUrl';
 import type { NewsFields } from '@/lib/contentful/types/news';
 import { getNewsPath } from '@/lib/contentful/types/news';
 
-import { truncateText } from './truncateText';
+import {
+  NEWS_RELATED_SUBTITLE_MAX_LENGTH,
+  resolveNewsDisplaySubtitle,
+} from './resolveNewsDisplaySubtitle';
 import type { RelatedNewsItem } from './types';
-
-const RELATED_SUBTITLE_MAX_LENGTH = 120;
 
 export function mapRelatedNewsItem(
   id: string,
@@ -17,9 +18,7 @@ export function mapRelatedNewsItem(
   return {
     id,
     title: fields.noticeTitle,
-    subtitle: fields.subtitle
-      ? truncateText(fields.subtitle, RELATED_SUBTITLE_MAX_LENGTH)
-      : undefined,
+    subtitle: resolveNewsDisplaySubtitle(fields, NEWS_RELATED_SUBTITLE_MAX_LENGTH),
     coverImageUrl,
     coverImageAlt: fields.noticeTitle,
     href: getNewsPath(fields.path),

@@ -117,26 +117,57 @@ export function NewsFilterRadioOption({
   );
 }
 
-function NewsFilterCheckboxIndicator({ checked }: { checked: boolean }) {
+function NewsFilterCheckboxIndicator({
+  checked,
+  variant = 'selected',
+}: {
+  checked: boolean;
+  variant?: 'selected' | 'all';
+}) {
+  if (!checked) {
+    return (
+      <span aria-hidden className="flex size-6 shrink-0 items-center justify-center">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path
+            d="M16 0C17.1 0 18 0.9 18 2V16C18 17.1 17.1 18 16 18H2C0.9 18 0 17.1 0 16V2C0 0.9 0.9 0 2 0H16ZM2 2V16H16V2H2Z"
+            fill="#535353"
+          />
+        </svg>
+      </span>
+    );
+  }
+
+  if (variant === 'all') {
+    return (
+      <span aria-hidden className="flex size-6 shrink-0 items-center justify-center">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path
+            d="M16 0H2C0.89 0 0 0.9 0 2V16C0 17.1 0.89 18 2 18H16C17.11 18 18 17.1 18 16V2C18 0.9 17.11 0 16 0Z"
+            fill="#BBBBBB"
+          />
+          <path
+            d="M7 14L2 8.99999L3.41 7.58999L7 11.17L14.59 3.57999L16 4.99999L7 14Z"
+            fill="white"
+          />
+        </svg>
+      </span>
+    );
+  }
+
   return (
     <span
       aria-hidden
-      className={cn(
-        'flex size-6 shrink-0 items-center justify-center rounded-[3px]',
-        checked ? 'bg-[#123476]' : 'border border-[#bdbdbd] bg-white',
-      )}
+      className="flex size-6 shrink-0 items-center justify-center rounded-[3px] bg-[#123476]"
     >
-      {checked ? (
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path
-            d="M2.75 7.25 5.75 10.25 11.25 3.75"
-            stroke="white"
-            strokeWidth="1.75"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      ) : null}
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path
+          d="M2.75 7.25 5.75 10.25 11.25 3.75"
+          stroke="white"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
     </span>
   );
 }
@@ -193,6 +224,8 @@ type NewsFilterCheckboxOptionProps = {
   checked: boolean;
   onChange: () => void;
   layout?: 'list' | 'dropdown';
+  checkedVariant?: 'selected' | 'all';
+  disabled?: boolean;
 };
 
 export function NewsFilterCheckboxOption({
@@ -200,11 +233,14 @@ export function NewsFilterCheckboxOption({
   checked,
   onChange,
   layout = 'list',
+  checkedVariant = 'selected',
+  disabled = false,
 }: NewsFilterCheckboxOptionProps) {
   return (
     <label
       className={cn(
-        'flex cursor-pointer items-center gap-2 rounded-[10px] px-1',
+        'flex items-center gap-2 rounded-[10px] px-1',
+        disabled ? 'cursor-default' : 'cursor-pointer',
         layout === 'list' && 'border-b border-black/5 py-4 last:border-b-0',
         layout === 'dropdown' && 'shrink-0',
       )}
@@ -212,10 +248,11 @@ export function NewsFilterCheckboxOption({
       <input
         type="checkbox"
         checked={checked}
-        onChange={onChange}
+        disabled={disabled}
+        onChange={disabled ? undefined : onChange}
         className="sr-only"
       />
-      <NewsFilterCheckboxIndicator checked={checked} />
+      <NewsFilterCheckboxIndicator checked={checked} variant={checkedVariant} />
       <span className="text-[14px] leading-4 tracking-[0.15px] text-[#535353] whitespace-nowrap">
         {label}
       </span>

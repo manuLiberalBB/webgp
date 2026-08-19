@@ -26,7 +26,7 @@ import { cn } from '@/lib/utils';
 
 import { NewsCategoryFilterChip } from './NewsCategoryFilterChip';
 import { NewsCompanyFilterDropdown } from './NewsCompanyFilterDropdown';
-import { NewsCompanyFilterPanel } from './NewsCompanyFilterPanel';
+import { NewsCompanyFilterPanel, type CompanyFilterMode } from './NewsCompanyFilterPanel';
 import {
   NewsFilterRadioOption,
   NewsFilterSheet,
@@ -93,6 +93,7 @@ export function NewsFiltersSection({
   const searchParams = useSearchParams();
   const [categoriesSheetOpen, setCategoriesSheetOpen] = useState(false);
   const [companiesSheetOpen, setCompaniesSheetOpen] = useState(false);
+  const [companyFilterMode, setCompanyFilterMode] = useState<CompanyFilterMode>('all');
   const [isPending, startTransition] = useTransition();
 
   const { category, companyIds, query } = useMemo(() => {
@@ -110,8 +111,10 @@ export function NewsFiltersSection({
   const [searchInput, setSearchInput] = useState(query);
   const debouncedSearchInput = useDebouncedValue(searchInput, NEWS_SEARCH_DEBOUNCE_MS);
   const pendingUrlQueryRef = useRef<string | null>(null);
+  const skipAllModeSyncRef = useRef(false);
 
   const activeCategory = category;
+  const empresaParam = searchParams.get('empresa');
 
   const syncFiltersToUrl = useCallback(
     (
@@ -161,6 +164,22 @@ export function NewsFiltersSection({
     setSearchInput((current) => (urlQuery === current.trim() ? current : query));
   }, [query]);
 
+  useEffect(() => {
+    if (companyIds.length > 0) {
+      setCompanyFilterMode('select');
+      return;
+    }
+
+    if (!empresaParam) {
+      if (skipAllModeSyncRef.current) {
+        skipAllModeSyncRef.current = false;
+        return;
+      }
+
+      setCompanyFilterMode('all');
+    }
+  }, [companyIds.length, empresaParam]);
+
   function updateFilters(
     nextCategory: NewsFilterCategory | undefined,
     nextCompanyIds: string[],
@@ -189,11 +208,31 @@ export function NewsFiltersSection({
       ? companyIds.filter((id) => id !== companyId)
       : [...companyIds, companyId];
 
+    if (nextCompanyIds.length === companies.length && companies.length > 0) {
+      clearCompanies();
+      return;
+    }
+
+    setCompanyFilterMode('select');
     updateFilters(category, nextCompanyIds);
   }
 
   function clearCompanies() {
+    setCompanyFilterMode('all');
     updateFilters(category, []);
+  }
+
+  function handleCompanyFilterModeChange(mode: CompanyFilterMode) {
+    setCompanyFilterMode(mode);
+  }
+
+  function enterSelectCompaniesMode() {
+    skipAllModeSyncRef.current = true;
+    setCompanyFilterMode('select');
+
+    if (companyIds.length > 0) {
+      updateFilters(category, []);
+    }
   }
 
   function handleSearchSubmit(event: FormEvent<HTMLFormElement>) {
@@ -271,8 +310,11 @@ export function NewsFiltersSection({
         <NewsCompanyFilterDropdown
           companies={companies}
           selectedCompanyIds={companyIds}
+          companyFilterMode={companyFilterMode}
+          onCompanyFilterModeChange={handleCompanyFilterModeChange}
           onToggleCompany={toggleCompany}
           onClearCompanies={clearCompanies}
+          onEnterSelectCompaniesMode={enterSelectCompaniesMode}
         />
       </div>
 
@@ -311,8 +353,11 @@ export function NewsFiltersSection({
         <NewsCompanyFilterPanel
           companies={companies}
           selectedCompanyIds={companyIds}
+          companyFilterMode={companyFilterMode}
+          onCompanyFilterModeChange={handleCompanyFilterModeChange}
           onToggleCompany={toggleCompany}
           onClearCompanies={clearCompanies}
+          onEnterSelectCompaniesMode={enterSelectCompaniesMode}
         />
       </NewsFilterSheet>
     </section>

@@ -5,6 +5,7 @@ import { getNewsPath } from '@/lib/contentful/types/news';
 import { normalizeNewsCategory } from '@/lib/contentful/news/normalizeNewsCategory';
 import { calculateNewsReadingTimeMinutes } from './readingTime';
 import { formatNewsCardDate } from './formatNewsDate';
+import { resolveNewsDisplaySubtitle } from './resolveNewsDisplaySubtitle';
 import { resolveNewsPublishedAt, type NewsEntryPublicationSys } from './resolveNewsPublishedAt';
 import type { NewsListItem } from './types';
 
@@ -12,7 +13,7 @@ export function mapNewsListItem(
   id: string,
   fields: Pick<
     NewsFields,
-    'noticeTitle' | 'subtitle' | 'path' | 'category' | 'coverImage' | 'date'
+    'noticeTitle' | 'subtitle' | 'path' | 'category' | 'coverImage' | 'date' | 'content'
   >,
   entrySys?: NewsEntryPublicationSys,
 ): NewsListItem | null {
@@ -29,7 +30,7 @@ export function mapNewsListItem(
   return {
     id,
     title: fields.noticeTitle,
-    subtitle: fields.subtitle,
+    subtitle: resolveNewsDisplaySubtitle(fields),
     coverImageUrl,
     coverImageAlt: fields.noticeTitle,
     href: getNewsPath(fields.path),

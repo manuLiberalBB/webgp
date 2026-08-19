@@ -143,10 +143,15 @@ export function sanitizeNewsListFilters(
   companies: NewsFilterCompanyRef[],
 ): NewsListFilters {
   const validCompanyIds = new Set(companies.map((company) => company.id));
+  const sanitizedCompanyIds = filters.companyIds.filter((id) =>
+    validCompanyIds.has(id),
+  );
+  const allCompaniesSelected =
+    companies.length > 0 && sanitizedCompanyIds.length >= companies.length;
 
   return {
     category: filters.category,
-    companyIds: filters.companyIds.filter((id) => validCompanyIds.has(id)),
+    companyIds: allCompaniesSelected ? [] : sanitizedCompanyIds,
     query: filters.query?.trim() || undefined,
   };
 }
@@ -207,6 +212,8 @@ export function buildNewsFilterHref(
   return queryString ? `${pathname}?${queryString}` : pathname;
 }
 
+const MAX_VISIBLE_COMPANY_NAMES_IN_TITLE = 3;
+
 function formatNamesWithSpanishConjunction(names: string[]): string {
   if (names.length === 0) {
     return '';
@@ -221,6 +228,19 @@ function formatNamesWithSpanishConjunction(names: string[]): string {
   }
 
   return `${names.slice(0, -1).join(', ')} y ${names[names.length - 1]}`;
+}
+
+export function formatCompanyNamesForTitle(names: string[]): string {
+  if (names.length <= MAX_VISIBLE_COMPANY_NAMES_IN_TITLE) {
+    return formatNamesWithSpanishConjunction(names);
+  }
+
+  const visibleNames = names.slice(0, MAX_VISIBLE_COMPANY_NAMES_IN_TITLE);
+  const remainingCount = names.length - MAX_VISIBLE_COMPANY_NAMES_IN_TITLE;
+  const remainingLabel =
+    remainingCount === 1 ? '1 empresa más' : `${remainingCount} empresas más`;
+
+  return `${visibleNames.join(', ')} y ${remainingLabel}`;
 }
 
 function resolveFilteredNewsCategory(
@@ -258,9 +278,11 @@ export function getFilteredNewsSectionTitle(
   const companyNames = resolveFilteredNewsCompanyNames(filters, companies);
   const searchTerm = filters.query?.trim();
 
+  const formattedCompanyNames = formatCompanyNamesForTitle(companyNames);
+
   if (searchTerm) {
     if (category && companyNames.length > 0) {
-      return `Noticias sobre "${searchTerm}" en ${category} de ${formatNamesWithSpanishConjunction(companyNames)}`;
+      return `Noticias sobre "${searchTerm}" en ${category} de ${formattedCompanyNames}`;
     }
 
     if (category) {
@@ -268,14 +290,14 @@ export function getFilteredNewsSectionTitle(
     }
 
     if (companyNames.length > 0) {
-      return `Noticias sobre "${searchTerm}" de ${formatNamesWithSpanishConjunction(companyNames)}`;
+      return `Noticias sobre "${searchTerm}" de ${formattedCompanyNames}`;
     }
 
     return `Noticias sobre "${searchTerm}"`;
   }
 
   if (category && companyNames.length > 0) {
-    return `Noticias de ${category} de ${formatNamesWithSpanishConjunction(companyNames)}`;
+    return `Noticias de ${category} de ${formattedCompanyNames}`;
   }
 
   if (category) {
@@ -283,7 +305,7 @@ export function getFilteredNewsSectionTitle(
   }
 
   if (companyNames.length > 0) {
-    return `Noticias de ${formatNamesWithSpanishConjunction(companyNames)}`;
+    return `Noticias de ${formattedCompanyNames}`;
   }
 
   if (parsed.category === 'Todo') {

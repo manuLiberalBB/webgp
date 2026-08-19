@@ -324,6 +324,7 @@ export async function getNewsListItemsPage(
       'fields.category',
       'fields.coverImage',
       'fields.date',
+      'fields.content',
     ],
   };
 

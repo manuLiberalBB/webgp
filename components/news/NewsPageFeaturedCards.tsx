@@ -113,7 +113,10 @@ export function NewsPageFeaturedStackedCard({
 
       <h3 className="pt-2.5 text-lg leading-[23.375px] font-bold text-[#111]">{item.title}</h3>
 
-      <p className="pt-3.5 text-xs leading-[15px] text-[#777]">{item.readingMinutes} min</p>
+      <div className="pt-3.5 flex items-center gap-3">
+        <span className="text-xs leading-[15px] text-[#777]">{item.readingMinutes} min</span>
+        <NewsReadNoteLink href={item.href} decorative />
+      </div>
     </NewsCardArticleShell>
   );
 }
@@ -149,11 +152,10 @@ export function NewsPageFeaturedCompactCard({
           {item.title}
         </h3>
 
-        <div className="mt-2 flex items-center gap-4">
+        <div className="mt-2 flex items-center gap-3">
           <span className="text-[10px] leading-[15px] text-[#777]">
             {item.readingMinutes} min
           </span>
-          <div className="flex-1" />
           <NewsReadNoteLink href={item.href} decorative />
         </div>
       </div>
@@ -187,11 +189,10 @@ export function NewsPageFeaturedTextCard({
           <p className="pt-2 text-sm leading-[22.75px] text-[#666]">{item.subtitle}</p>
         ) : null}
 
-        <div className="mt-3.5 flex items-center gap-4">
+        <div className="mt-3.5 flex items-center gap-3">
           <span className="text-[10px] leading-[15px] text-[#777]">
             {item.readingMinutes} min
           </span>
-          <div className="flex-1" />
           <NewsReadNoteLink href={item.href} decorative />
         </div>
       </div>

@@ -2,7 +2,6 @@ import { AppImage as Image } from '@/components/cms/AppImage';
 import Link from 'next/link';
 
 import { NewsCategoryBadge } from '@/components/news/NewsCategoryBadge';
-import { formatNewsCardDate } from '@/lib/news/formatNewsDate';
 import { truncateText } from '@/lib/news/truncateText';
 import type { FeaturedNewsItem } from '@/lib/news/types';
 import { cn } from '@/lib/utils';
@@ -20,7 +19,6 @@ export function YouMayAlsoLikeSideCard({
   item,
   className,
 }: YouMayAlsoLikeSideCardProps) {
-  const cardDate = formatNewsCardDate(item.publishedAt);
   const subtitle = item.subtitle
     ? truncateText(item.subtitle, SIDE_CARD_SUBTITLE_MAX_LENGTH)
     : undefined;
@@ -56,11 +54,9 @@ export function YouMayAlsoLikeSideCard({
         ) : null}
 
         <div className="mt-auto flex items-center gap-4 pt-2">
-          <div className="flex items-center gap-2 text-[10px] leading-[15px] text-[#777]">
-            <span>{cardDate}</span>
-            <span className="text-base leading-6 text-[#777]" aria-hidden>·</span>
-            <span>{item.readingMinutes} min</span>
-          </div>
+          <span className="text-[10px] leading-[15px] text-[#777]">
+            {item.readingMinutes} min
+          </span>
           <div className="flex-1" />
           <NewsReadNoteLink href={item.href} />
         </div>

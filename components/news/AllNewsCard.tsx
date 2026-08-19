@@ -2,7 +2,6 @@ import { AppImage as Image } from '@/components/cms/AppImage';
 import Link from 'next/link';
 
 import { NewsCategoryBadge } from '@/components/news/NewsCategoryBadge';
-import { formatNewsCardDate } from '@/lib/news/formatNewsDate';
 import type { NewsListItem } from '@/lib/news/types';
 import { cn } from '@/lib/utils';
 
@@ -12,8 +11,6 @@ type AllNewsCardProps = {
 };
 
 export function AllNewsCard({ item, className }: AllNewsCardProps) {
-  const cardDate = formatNewsCardDate(item.publishedAt);
-
   return (
     <article className={cn('flex flex-col', className)}>
       <Link
@@ -37,11 +34,9 @@ export function AllNewsCard({ item, className }: AllNewsCardProps) {
         </Link>
       </h3>
 
-      <div className="mt-3.5 flex items-center gap-2 text-[10px] leading-[15px] text-[#777]">
-        <span>{cardDate}</span>
-        <span className="text-base leading-6 text-[#e0e0e0]" aria-hidden>·</span>
-        <span>{item.readingMinutes} min</span>
-      </div>
+      <p className="mt-3.5 text-[10px] leading-[15px] text-[#777]">
+        {item.readingMinutes} min
+      </p>
     </article>
   );
 }

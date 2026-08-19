@@ -10,6 +10,7 @@ import { normalizeNewsCategory } from '@/lib/contentful/news/normalizeNewsCatego
 
 import { calculateNewsReadingTimeMinutes } from './readingTime';
 import { formatNewsPublishDate } from './formatNewsDate';
+import { resolveNewsDisplaySubtitle } from './resolveNewsDisplaySubtitle';
 import { resolveNewsPublishedAt, type NewsEntryPublicationSys } from './resolveNewsPublishedAt';
 import type { FeaturedNewsItem } from './types';
 
@@ -53,7 +54,7 @@ export function mapFeaturedNewsItem(
   return {
     id,
     title: fields.noticeTitle,
-    subtitle: fields.subtitle,
+    subtitle: resolveNewsDisplaySubtitle(fields),
     coverImageUrl,
     coverImageAlt: fields.noticeTitle,
     href: getNewsPath(fields.path),
