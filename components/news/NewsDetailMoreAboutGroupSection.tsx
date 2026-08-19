@@ -1,6 +1,4 @@
-import type { Entry } from 'contentful';
-
-import type { CardFields } from '@/lib/contentful/types/card';
+import type { NewsDetailMoreAboutGroupCardItem } from '@/lib/contentful/company/newsDetailMoreAboutGroupTypes';
 import { cn } from '@/lib/utils';
 
 import { NewsDetailMoreAboutGroupCard } from './NewsDetailMoreAboutGroupCard';
@@ -8,23 +6,9 @@ import { NewsDetailMoreAboutGroupCard } from './NewsDetailMoreAboutGroupCard';
 type NewsDetailMoreAboutGroupSectionProps = {
   tag?: string;
   title?: string;
-  cards: CardFields[];
+  cards: NewsDetailMoreAboutGroupCardItem[];
   className?: string;
 };
-
-function resolveCardEntries(items?: Entry[]): CardFields[] {
-  return (
-    items
-      ?.filter((item) => item.sys.contentType?.sys.id === 'card')
-      .map((item) => item.fields as CardFields) ?? []
-  );
-}
-
-export function resolveNewsDetailMoreAboutGroupCards(
-  items?: Entry[],
-): CardFields[] {
-  return resolveCardEntries(items);
-}
 
 export function NewsDetailMoreAboutGroupSection({
   tag,
@@ -66,11 +50,8 @@ export function NewsDetailMoreAboutGroupSection({
                 : 'md:grid-cols-2 lg:grid-cols-3',
           )}
         >
-          {cards.map((card, index) => (
-            <NewsDetailMoreAboutGroupCard
-              key={`${card.contentfulName}-${index}`}
-              fields={card}
-            />
+          {cards.map((card) => (
+            <NewsDetailMoreAboutGroupCard key={card.id} item={card} />
           ))}
         </div>
       </div>

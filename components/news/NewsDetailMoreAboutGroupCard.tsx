@@ -1,41 +1,33 @@
-import type { Entry } from 'contentful';
 import { AppImage as Image } from '@/components/cms/AppImage';
 import Link from 'next/link';
 
+import type { NewsDetailMoreAboutGroupCardItem } from '@/lib/contentful/company/newsDetailMoreAboutGroupTypes';
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';
-import { resolveNavLink, type ResolvedNavLink } from '@/lib/contentful/resolveNavLink';
-import type { CardFields } from '@/lib/contentful/types/card';
+import type { ResolvedNavLink } from '@/lib/contentful/resolveNavLink';
 import { cn } from '@/lib/utils';
 
 type NewsDetailMoreAboutGroupCardProps = {
-  fields: CardFields;
+  item: NewsDetailMoreAboutGroupCardItem;
   className?: string;
 };
 
-function resolveCardLink(url?: Entry[]) {
-  const entry = url?.[0];
-  if (!entry) return null;
-  return resolveNavLink(entry);
-}
-
-const CONOCER_MAS_LABEL = 'Conocer más';
+const CONOCER_MAS_LABEL = 'CONOCER MÁS';
 
 function ConocerMasCta({ link }: { link: ResolvedNavLink }) {
   const className =
-    'inline-flex items-center gap-2 text-xs leading-[18px] !text-white transition-opacity hover:opacity-80';
+    'inline-flex h-[18px] items-center gap-2 text-xs leading-[18px] font-normal tracking-[1.2px] text-white uppercase transition-opacity hover:opacity-80';
 
   const content = (
     <>
-      {CONOCER_MAS_LABEL}
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden className="shrink-0 text-white">
-        <path
-          d="M2.5 6H9M6.5 3 9.5 6 6.5 9"
-          stroke="currentColor"
-          strokeWidth="1.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      <span>{CONOCER_MAS_LABEL}</span>
+      <Image
+        src="/icons/arrow-right-white.svg"
+        alt=""
+        width={12}
+        height={12}
+        aria-hidden
+        className="shrink-0"
+      />
     </>
   );
 
@@ -55,39 +47,34 @@ function ConocerMasCta({ link }: { link: ResolvedNavLink }) {
 }
 
 export function NewsDetailMoreAboutGroupCard({
-  fields,
+  item,
   className,
 }: NewsDetailMoreAboutGroupCardProps) {
-  const imageUrl = fields.image ? getAssetUrl(fields.image) : undefined;
-  const link = resolveCardLink(fields.url);
+  const imageUrl = getAssetUrl(item.image)!;
   const imageAlt =
-    (typeof fields.image?.fields.title === 'string'
-      ? fields.image.fields.title
-      : undefined) ?? fields.title ?? '';
+    (typeof item.image.fields.title === 'string'
+      ? item.image.fields.title
+      : undefined) ?? item.title;
 
   return (
     <article className={cn('flex h-full flex-col', className)}>
-      {imageUrl ? (
-        <div className="relative h-[252px] w-full overflow-hidden bg-[#ddd]">
-          <Image
-            src={imageUrl}
-            alt={imageAlt}
-            fill
-            sizes="(min-width: 1024px) 344px, 100vw"
-            className="object-cover"
-          />
-        </div>
-      ) : null}
+      <div className="relative h-[252px] w-full overflow-hidden bg-[#ddd]">
+        <Image
+          src={imageUrl}
+          alt={imageAlt}
+          fill
+          sizes="(min-width: 1024px) 344px, 100vw"
+          className="object-cover"
+        />
+      </div>
 
-      {fields.title ? (
-        <h3 className="pt-2.5 text-lg leading-normal font-bold text-white">{fields.title}</h3>
-      ) : null}
+      <h3 className="pt-2.5 text-lg leading-normal font-bold text-white">{item.title}</h3>
 
-      {fields.description ? (
-        <p className="pt-3 pb-5 text-sm leading-[21.94px] text-white/80">{fields.description}</p>
-      ) : null}
+      <p className="pt-3 pb-5 text-sm leading-[21.94px] text-white/80">{item.description}</p>
 
-      {link ? <ConocerMasCta link={link} /> : null}
+      <div className="pt-1">
+        <ConocerMasCta link={item.link} />
+      </div>
     </article>
   );
 }

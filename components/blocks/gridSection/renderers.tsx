@@ -22,9 +22,8 @@ import { LogoGridSection } from '@/components/sections/shared/LogoGridSection';
 import { StrategicSectorsSection } from '@/components/sections/strategic-sectors/StrategicSectorsSection';
 import { TalentCultureSection } from '@/components/sections/talent/TalentCultureSection';
 import {
-  NewsDetailMoreAboutGroupSection,
-  resolveNewsDetailMoreAboutGroupCards,
-} from '@/components/news/NewsDetailMoreAboutGroupSection';
+  NewsDetailMoreAboutGroupSectionWithFetch,
+} from '@/components/news/NewsDetailMoreAboutGroupSectionWithFetch';
 import { TalentCultureNewsSectionWithFetch } from '@/components/news/TalentCultureNewsSectionWithFetch';
 import { YouMayAlsoLikeSection } from '@/components/news/YouMayAlsoLikeSection';
 import { RichText } from '@/components/cms/RichText';
@@ -99,11 +98,12 @@ export const gridSectionRenderers: Record<
   ),
 
   [GRID_SECTION_VARIANTS.NEWS_DETAIL_MORE_ABOUT_GROUP]: (ctx) => (
-    <NewsDetailMoreAboutGroupSection
-      tag={ctx.tag}
-      title={ctx.title}
-      cards={resolveNewsDetailMoreAboutGroupCards(ctx.items)}
-    />
+    <Suspense fallback={null}>
+      <NewsDetailMoreAboutGroupSectionWithFetch
+        tag={ctx.tag}
+        title={ctx.title}
+      />
+    </Suspense>
   ),
 
   [GRID_SECTION_VARIANTS.YOU_MAY_ALSO_LIKE]: (ctx) => {

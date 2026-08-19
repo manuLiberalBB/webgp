@@ -1,25 +1,35 @@
-import {
-  NewsDetailMoreAboutGroupSection,
-  resolveNewsDetailMoreAboutGroupCards,
-} from '@/components/news/NewsDetailMoreAboutGroupSection';
+import { fetchRandomNewsDetailMoreAboutGroupCards } from '@/lib/contentful/company/fetchRandomNewsDetailMoreAboutGroupCards';
 import { fetchGridSectionBySectionVariant } from '@/lib/contentful/gridSection/fetchGridSectionBySectionVariant';
 import { GRID_SECTION_VARIANTS } from '@/lib/contentful/gridSection/sectionVariants';
 
-export async function NewsDetailMoreAboutGroupSectionWithFetch() {
-  const fields = await fetchGridSectionBySectionVariant(
-    GRID_SECTION_VARIANTS.NEWS_DETAIL_MORE_ABOUT_GROUP,
-  );
+import { NewsDetailMoreAboutGroupSection } from './NewsDetailMoreAboutGroupSection';
 
-  if (!fields) return null;
+type NewsDetailMoreAboutGroupSectionWithFetchProps = {
+  tag?: string;
+  title?: string;
+  className?: string;
+};
 
-  const cards = resolveNewsDetailMoreAboutGroupCards(fields.items);
+export async function NewsDetailMoreAboutGroupSectionWithFetch({
+  tag,
+  title,
+  className,
+}: NewsDetailMoreAboutGroupSectionWithFetchProps = {}) {
+  const [fields, cards] = await Promise.all([
+    fetchGridSectionBySectionVariant(
+      GRID_SECTION_VARIANTS.NEWS_DETAIL_MORE_ABOUT_GROUP,
+    ),
+    fetchRandomNewsDetailMoreAboutGroupCards(),
+  ]);
+
+  if (!fields && cards.length === 0) return null;
 
   return (
     <NewsDetailMoreAboutGroupSection
-      tag={fields.tag}
-      title={fields.title}
+      tag={tag ?? fields?.tag}
+      title={title ?? fields?.title}
       cards={cards}
-      className="-mb-layout-gap"
+      className={className ?? '-mb-layout-gap'}
     />
   );
 }

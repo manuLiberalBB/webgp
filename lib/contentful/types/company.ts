@@ -2,6 +2,7 @@ import type { Asset, EntrySkeletonType } from 'contentful';
 import type { Document } from '@contentful/rich-text-types';
 
 import type { ExternalLinkEntry } from './externalLink';
+import type { SectorReference } from './sector';
 
 /**
  * Content type: `company` (Empresa)
@@ -20,6 +21,8 @@ export type CompanyFields = {
   linkedin?: string;
   instagram?: string;
   image: Asset;
+  /** Entry `sector` */
+  sector?: SectorReference;
 };
 
 export type CompanyEntry = {
