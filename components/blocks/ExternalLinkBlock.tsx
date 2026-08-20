@@ -1,19 +1,11 @@
 import { ExternalLinkEmbed } from '@/components/ui/ExternalLinkEmbed';
+import { isValidEmbedUrl } from '@/lib/externalLink/validateExternalEmbedUrl';
 import {
   getExternalLinkLabel,
   type ExternalLinkFields,
 } from '@/lib/contentful/types/externalLink';
 
 import type { BlockComponent } from './registry';
-
-function isValidEmbedUrl(url: string): boolean {
-  try {
-    const parsed = new URL(url);
-    return parsed.protocol === 'https:' || parsed.protocol === 'http:';
-  } catch {
-    return false;
-  }
-}
 
 export const ExternalLinkBlock: BlockComponent = ({ fields }) => {
   const { link } = fields as ExternalLinkFields;

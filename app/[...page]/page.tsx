@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 import { NewsDetailView } from '@/components/news/NewsDetailView';
 import { PageRenderer } from '@/components/blocks/PageRenderer';
+import { resolvePageExternalEmbedUrl } from '@/lib/externalLink/resolvePageExternalEmbedUrl';
+import { validateExternalEmbedUrl } from '@/lib/externalLink/validateExternalEmbedUrl';
 import { getNewsByPath, getNewsMetadataFields, getPageByPath } from '@/lib/contentful/queries';
 import { fetchSectorEntryByPagePath } from '@/lib/contentful/sector/fetchSectorEntryByPagePath';
 import { isSectorPage } from '@/lib/contentful/sector/isSectorPage';
@@ -13,6 +16,7 @@ import {
   type PageProps,
 } from '@/lib/contentful/types';
 import { buildNewsMetaDescription } from '@/lib/news/buildNewsMetaDescription';
+import { isTrabajaEnGpPage } from '@/lib/pages/trabajaEnGpPage';
 import { siteConfig } from '@/config/site';
 
 export const revalidate = 3600;
@@ -68,6 +72,16 @@ export default async function Page({ params, searchParams }: PageProps) {
   if (entries.items.length > 0) {
     const fields = entries.items[0].fields as PageFields;
 
+    if (isTrabajaEnGpPage(page)) {
+      const embedUrl = resolvePageExternalEmbedUrl(fields.content);
+      const isEmbedAvailable =
+        embedUrl !== undefined && (await validateExternalEmbedUrl(embedUrl));
+
+      if (!isEmbedAvailable) {
+        notFound();
+      }
+    }
+
     return (
       <PageRenderer
         content={fields.content}
@@ -94,7 +108,6 @@ export default async function Page({ params, searchParams }: PageProps) {
   const newsEntries = await getNewsByPath(page);
 
   if (newsEntries.items.length === 0) {
-    const { notFound } = await import('next/navigation');
     notFound();
   }
 
