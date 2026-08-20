@@ -99,7 +99,7 @@ export function GridOverlayCard({
   );
 
   const cardClassName = cn(
-    'group relative flex h-full min-h-[320px] flex-col overflow-hidden rounded-lg p-5 md:min-h-[381px]',
+    'group relative flex h-full w-full min-h-[320px] flex-col overflow-hidden rounded-lg p-5 md:min-h-[381px]',
     link && 'cursor-pointer',
     className,
   );

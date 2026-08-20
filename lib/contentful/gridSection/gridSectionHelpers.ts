@@ -119,14 +119,18 @@ export function resolveImageOverlayGridSectionProps({
         ? ('three-two' as const)
         : ('default' as const),
     titleClassName: isRegionalPresence
-      ? 'text-[1.75rem] leading-tight md:text-[2.5rem] md:leading-[2.75rem]'
+      ? 'w-full text-[1.75rem] leading-tight md:text-[2.5rem] md:leading-[2.75rem]'
       : isFundacionesAreasAccion
         ? 'text-heading text-[22px] leading-[33px] font-semibold md:text-[22px] md:leading-[33px]'
         : undefined,
     subtitleClassName: isFundacionesAreasAccion
       ? 'text-body text-[18px] font-normal leading-normal md:text-[18px]'
       : undefined,
-    className: isFundacionesAreasAccion ? 'pt-0 md:pt-0' : undefined,
+    className: isFundacionesAreasAccion
+      ? 'pt-0 md:pt-0'
+      : isRegionalPresence
+        ? '!px-6 md:!px-layout-x'
+        : undefined,
     cardVariant: isFundacionesAreasAccion ? ('foundationArea' as const) : undefined,
     expandableDescription: hasExpandableDescription,
   };

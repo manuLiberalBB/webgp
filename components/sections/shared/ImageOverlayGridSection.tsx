@@ -64,7 +64,7 @@ export function ImageOverlayGridSection({
         {(title || subtitle) && (
           <div
             className={cn(
-              'flex flex-col gap-5',
+              'flex w-full flex-col gap-5',
               isLeftHeader ? 'items-start text-left' : 'items-center text-center',
             )}
           >
@@ -72,6 +72,7 @@ export function ImageOverlayGridSection({
               <h2
                 className={cn(
                   'text-ecosystem-title text-[2rem] leading-tight font-normal md:text-[3rem] md:leading-[3rem]',
+                  isLeftHeader && 'w-full',
                   titleClassName,
                 )}
               >
