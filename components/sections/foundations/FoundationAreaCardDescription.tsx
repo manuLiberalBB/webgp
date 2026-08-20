@@ -51,12 +51,12 @@ export function FoundationAreaCardDescription({
   }, [text]);
 
   return (
-    <div className="relative">
+    <div className="relative w-full min-w-0">
       <p
         ref={paragraphRef}
         className={cn(
           'text-base leading-6 whitespace-pre-line text-white',
-          !expanded && 'line-clamp-5 min-h-[7.5rem]',
+          !expanded && 'line-clamp-5',
         )}
       >
         {text}
@@ -65,13 +65,13 @@ export function FoundationAreaCardDescription({
       <p
         ref={measureRef}
         aria-hidden="true"
-        className="pointer-events-none invisible absolute inset-x-0 top-0 -z-10 m-0 text-base leading-6 whitespace-pre-line text-white"
+        className="pointer-events-none invisible absolute top-0 left-0 -z-10 m-0 w-full text-base leading-6 whitespace-pre-line text-white"
       >
         {text}
       </p>
 
-      <div className="mt-1 min-h-6">
-        {canExpand ? (
+      {canExpand ? (
+        <div className="mt-1">
           <button
             type="button"
             onClick={(event) => {
@@ -83,8 +83,8 @@ export function FoundationAreaCardDescription({
           >
             {expanded ? 'ver menos' : 'ver más'}
           </button>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
     </div>
   );
 }

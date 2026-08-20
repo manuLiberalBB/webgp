@@ -12,6 +12,7 @@ type ImageOverlayGridSectionProps = {
   titleClassName?: string;
   subtitleClassName?: string;
   cardVariant?: 'default' | 'foundationArea';
+  expandableDescription?: boolean;
   className?: string;
 };
 
@@ -44,6 +45,7 @@ export function ImageOverlayGridSection({
   titleClassName,
   subtitleClassName,
   cardVariant = 'default',
+  expandableDescription = false,
   className,
 }: ImageOverlayGridSectionProps) {
   if (cards.length === 0) return null;
@@ -104,6 +106,7 @@ export function ImageOverlayGridSection({
               key={`${card.contentfulName}-${index}`}
               fields={card}
               variant={cardVariant}
+              expandableDescription={expandableDescription}
               className={getCardColumnClassName(cardLayout, index, cards.length)}
             />
           ))}

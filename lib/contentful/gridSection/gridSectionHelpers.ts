@@ -33,17 +33,18 @@ function isFoundationAreasSection(title?: string, subtitle?: string): boolean {
   });
 }
 
-function isRegionalPresenceSection(title?: string, cardsCount?: number): boolean {
-  if (title) {
-    const normalized = normalizeSectionLabel(title);
+function isRegionalPresenceTitle(title?: string): boolean {
+  if (!title?.trim()) return false;
 
-    if (
-      normalized.includes('ESTAMOS PRESENTES') &&
-      normalized.includes('REGIONAL')
-    ) {
-      return true;
-    }
-  }
+  const normalized = normalizeSectionLabel(title);
+
+  return (
+    normalized.includes('ESTAMOS PRESENTES') && normalized.includes('REGIONAL')
+  );
+}
+
+function isRegionalPresenceSection(title?: string, cardsCount?: number): boolean {
+  if (isRegionalPresenceTitle(title)) return true;
 
   return cardsCount === 5;
 }
@@ -52,6 +53,25 @@ function isNewsListingImpactSection(pagePath?: string[], title?: string): boolea
   if (!isNewsListingPage(pagePath) || !title?.trim()) return false;
 
   return normalizeSectionLabel(title).includes('GENERAMOS IMPACTO');
+}
+
+function isCommunityCommitmentSection(title?: string): boolean {
+  if (!title?.trim()) return false;
+
+  const normalized = normalizeSectionLabel(title);
+
+  return normalized.includes('COMPROMISO') && normalized.includes('COMUNIDAD');
+}
+
+function hasExpandableImageOverlayDescription(
+  pagePath?: string[],
+  title?: string,
+): boolean {
+  return (
+    isNewsListingImpactSection(pagePath, title) ||
+    isCommunityCommitmentSection(title) ||
+    isRegionalPresenceTitle(title)
+  );
 }
 
 export function isGroupWideCommitmentLayout(title?: string, tag?: string): boolean {
@@ -81,14 +101,17 @@ export function resolveImageOverlayGridSectionProps({
 }) {
   const isRegionalPresence = isRegionalPresenceSection(title, cards.length);
   const isFundacionesAreasAccion = isFoundationAreasSection(title, subtitle);
-  const isImpactOnNewsPage = isNewsListingImpactSection(pagePath, title);
+  const hasExpandableDescription = hasExpandableImageOverlayDescription(
+    pagePath,
+    title,
+  );
 
   return {
     title,
     subtitle,
     cards,
     headerAlign:
-      isRegionalPresence || isImpactOnNewsPage || isFundacionesAreasAccion
+      isRegionalPresence || hasExpandableDescription || isFundacionesAreasAccion
         ? ('left' as const)
         : ('center' as const),
     cardLayout:
@@ -105,6 +128,7 @@ export function resolveImageOverlayGridSectionProps({
       : undefined,
     className: isFundacionesAreasAccion ? 'pt-0 md:pt-0' : undefined,
     cardVariant: isFundacionesAreasAccion ? ('foundationArea' as const) : undefined,
+    expandableDescription: hasExpandableDescription,
   };
 }
 
