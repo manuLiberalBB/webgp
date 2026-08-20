@@ -1,11 +1,7 @@
 @import 'tailwindcss';
 
-/*
- * md/lg require hover + fine pointer so touch devices (including phones in
- * landscape) keep mobile layout while desktop windows still get desktop UI.
- */
-@custom-variant md (@media (min-width: 768px) and (hover: hover) and (pointer: fine));
-@custom-variant lg (@media (min-width: 1024px) and (hover: hover) and (pointer: fine));
+/* Desktop nav only — touch devices (incl. landscape) keep hamburger menu. */
+@custom-variant nav-desktop (@media (min-width: 768px) and (hover: hover) and (pointer: fine));
 
 @theme {
   /* Brand */
