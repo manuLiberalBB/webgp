@@ -30,11 +30,13 @@ function NavLink({
   active,
   onNavigate,
   className,
+  mobile = false,
 }: {
   link: ResolvedNavLink;
   active: boolean;
   onNavigate?: () => void;
   className?: string;
+  mobile?: boolean;
 }) {
   return (
     <Link
@@ -43,8 +45,16 @@ function NavLink({
       rel={link.isExternal ? 'noopener noreferrer' : undefined}
       onClick={onNavigate}
       className={cn(
-        'text-nav text-sm leading-5 whitespace-nowrap transition-opacity hover:opacity-80',
-        active && 'font-bold !underline decoration-solid underline-offset-[3px]',
+        'text-nav whitespace-nowrap transition-opacity hover:opacity-80',
+        mobile
+          ? cn(
+              'text-[20px] leading-5',
+              active ? 'font-bold underline' : 'font-normal',
+            )
+          : cn(
+              'text-sm leading-5',
+              active && 'font-bold !underline decoration-solid underline-offset-[3px]',
+            ),
         className,
       )}
     >
@@ -132,22 +142,19 @@ export function HeaderNav({
         id="mobile-nav"
         aria-label="Navegación mobile"
         className={cn(
-          'border-border border-t bg-surface lg:hidden',
+          'bg-surface min-h-[calc(100dvh-var(--spacing-header))] lg:hidden',
           menuOpen ? 'block' : 'hidden',
         )}
       >
         <div className="px-6 md:px-layout-x">
-          <ul className="mx-auto flex w-full max-w-content flex-col py-8">
+          <ul className="mx-auto flex w-full max-w-content flex-col items-end gap-[60px] py-10">
             {navLinks.map((link) => (
-              <li
-                key={link.id}
-                className="border-b border-black/10 py-4 last:border-b-0 last:pb-0 first:pt-0"
-              >
+              <li key={link.id}>
                 <NavLink
                   link={link}
                   active={isActivePath(pathname, link.href)}
                   onNavigate={closeMenu}
-                  className="block w-full text-base"
+                  mobile
                 />
               </li>
             ))}
