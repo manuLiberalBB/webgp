@@ -4,6 +4,7 @@ import { AppImage as Image, AUTO_ASPECT_STYLE } from '@/components/cms/AppImage'
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import type { CarouselItem } from '@/lib/contentful/carousel/types';
+import { MD_MEDIA_QUERY } from '@/lib/layout/breakpoints';
 import { cn } from '@/lib/utils';
 
 import { CompanyLogoCardGrid } from '@/components/sections/sectors/CompanyLogoGrid';
@@ -75,7 +76,7 @@ export function MarqueeCarousel({
   const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
-    const desktopMedia = window.matchMedia('(min-width: 768px)');
+    const desktopMedia = window.matchMedia(MD_MEDIA_QUERY);
     const motionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     const updateDesktop = () => setIsDesktop(desktopMedia.matches);

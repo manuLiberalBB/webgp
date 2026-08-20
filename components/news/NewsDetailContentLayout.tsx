@@ -10,8 +10,7 @@ import {
 import { NewsSidebar } from '@/components/news/NewsSidebar';
 import type { NewsArticleContext, NewsCompanyInfo, RelatedNewsItem } from '@/lib/news/types';
 import { cn } from '@/lib/utils';
-
-const DESKTOP_LAYOUT_MEDIA_QUERY = '(min-width: 1024px)';
+import { LG_MEDIA_QUERY } from '@/lib/layout/breakpoints';
 
 type NewsDetailContentLayoutProps = {
   children: ReactNode;
@@ -86,7 +85,7 @@ export function NewsDetailContentLayout({
         }
       }
 
-      const isDesktopLayout = window.matchMedia(DESKTOP_LAYOUT_MEDIA_QUERY).matches;
+      const isDesktopLayout = window.matchMedia(LG_MEDIA_QUERY).matches;
       const nextCount = resolveVisibleRelatedCount({
         isDesktopLayout,
         relatedNewsCount: relatedNews.length,
@@ -108,7 +107,7 @@ export function NewsDetailContentLayout({
     resizeObserver.observe(article);
     resizeObserver.observe(sidebar);
 
-    const mediaQuery = window.matchMedia(DESKTOP_LAYOUT_MEDIA_QUERY);
+    const mediaQuery = window.matchMedia(LG_MEDIA_QUERY);
     mediaQuery.addEventListener('change', update);
 
     return () => {
