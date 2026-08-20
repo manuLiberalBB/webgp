@@ -44,7 +44,7 @@ export function ResourceCenterSection({
   return (
     <section
       className={cn(
-        'bg-ecosystem px-[18px] py-12 md:px-layout-x md:py-[3.75rem]',
+        'bg-ecosystem px-6 py-12 md:px-layout-x md:py-[3.75rem]',
         className,
       )}
     >

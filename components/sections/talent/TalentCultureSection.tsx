@@ -55,7 +55,7 @@ export function TalentCultureSection({
 }: TalentCultureSectionProps) {
   return (
     <section
-      className={cn('bg-white px-10 py-10 md:px-layout-x md:py-20', className)}
+      className={cn('bg-white px-6 py-10 md:px-layout-x md:py-20', className)}
     >
       <div className="mx-auto flex w-full max-w-content flex-col items-center gap-10 lg:flex-row lg:gap-16">
         <div className="relative h-[300px] w-full min-w-0 flex-1 overflow-hidden rounded-lg lg:h-[485px]">

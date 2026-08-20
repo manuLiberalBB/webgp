@@ -1,12 +1,16 @@
 import { cn } from '@/lib/utils';
 
+/** Horizontal padding estándar de secciones (mobile + desktop). */
+export const SECTION_PADDING_X = 'px-6 md:px-layout-x';
+
 /** Padding estándar de secciones de contenido. */
-export const SECTION_PADDING =
-  'px-10 py-10 md:px-layout-x md:py-section-y';
+export const SECTION_PADDING = cn(SECTION_PADDING_X, 'py-10 md:py-section-y');
 
 /** Padding con espacio intermedio arriba, para la primera sección después de un hero. */
-export const SECTION_PADDING_AFTER_HERO =
-  'px-10 pt-8 pb-10 md:px-layout-x md:pt-10 md:pb-section-y';
+export const SECTION_PADDING_AFTER_HERO = cn(
+  SECTION_PADDING_X,
+  'pt-8 pb-10 md:pt-10 md:pb-section-y',
+);
 
 export function sectionPaddingClass(
   compactTop?: boolean,

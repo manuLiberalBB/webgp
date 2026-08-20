@@ -32,7 +32,7 @@ export function CarouselSection({
   return (
     <section
       className={cn(
-        'bg-ecosystem overflow-hidden px-10 py-10 md:px-layout-x md:py-section-y',
+        'bg-ecosystem overflow-hidden px-6 py-10 md:px-layout-x md:py-section-y',
         className,
       )}
     >

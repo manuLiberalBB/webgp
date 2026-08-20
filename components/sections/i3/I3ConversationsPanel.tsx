@@ -88,7 +88,7 @@ function ConversationVideoItem({
 function getConversationItemVisibilityClassName(index: number) {
   if (index >= 4) return 'hidden';
 
-  if (index >= 2) return 'hidden md:flex';
+  if (index >= 2) return 'hidden layout-md:flex';
 
   return undefined;
 }

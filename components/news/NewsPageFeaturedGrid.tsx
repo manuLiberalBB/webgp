@@ -37,38 +37,38 @@ export function NewsPageFeaturedGrid({ items }: NewsPageFeaturedGridProps) {
           title="Noticias destacadas"
           viewAllHref={FEATURED_NEWS_VIEW_ALL_HREF}
           layout="stacked"
-          className="md:hidden"
+          className="layout-md:hidden"
         />
 
         <NewsSectionHeader
           title="Noticias destacadas"
           viewAllHref={FEATURED_NEWS_VIEW_ALL_HREF}
-          className="hidden md:flex"
+          className="hidden layout-md:flex"
         />
 
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_506px] lg:gap-10">
+        <div className="grid grid-cols-1 gap-10 layout-lg:grid-cols-[minmax(0,1fr)_506px] layout-lg:gap-10">
           <NewsPageFeaturedLargeCard item={largeItem} className="h-full" />
 
           {sideItems.length > 0 ? (
-            <div className="flex flex-col gap-8 lg:min-h-[451px] lg:gap-6">
+            <div className="flex flex-col gap-8 layout-lg:min-h-[451px] layout-lg:gap-6">
               {sideItems[0] ? (
                 <>
                   <NewsPageFeaturedStackedCard
                     item={sideItems[0]}
-                    className="lg:hidden"
+                    className="layout-lg:hidden"
                     imageContainerClassName={FEATURED_NEWS_SIDE_IMAGE_HEIGHT}
                   />
-                  <NewsPageFeaturedCompactCard item={sideItems[0]} className="hidden lg:flex" />
+                  <NewsPageFeaturedCompactCard item={sideItems[0]} className="hidden layout-lg:flex" />
                 </>
               ) : null}
               {sideItems[1] ? (
                 <>
                   <NewsPageFeaturedStackedCard
                     item={sideItems[1]}
-                    className="lg:hidden"
+                    className="layout-lg:hidden"
                     imageContainerClassName={FEATURED_NEWS_SIDE_IMAGE_HEIGHT}
                   />
-                  <NewsPageFeaturedCompactCard item={sideItems[1]} className="hidden lg:flex" />
+                  <NewsPageFeaturedCompactCard item={sideItems[1]} className="hidden layout-lg:flex" />
                 </>
               ) : null}
               {sideItems[2] ? (

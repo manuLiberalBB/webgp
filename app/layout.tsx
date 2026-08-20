@@ -57,7 +57,7 @@ export default async function RootLayout({
           <HashScrollOnLoad />
         </Suspense>
         <div className="app-shell">
-          <div className="app-content pt-header lg:pt-0">
+          <div className="app-content pt-header layout-lg:pt-0">
             {header ? <Header fields={header} /> : null}
             <main className="app-main">{children}</main>
           </div>

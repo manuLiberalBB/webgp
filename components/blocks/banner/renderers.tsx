@@ -27,7 +27,7 @@ function renderHeroBanner(ctx: BannerContext) {
       />
 
       {ctx.body || ctx.urlList?.length ? (
-        <div className="bg-surface mx-auto w-full max-w-content px-10 py-10 md:px-layout-x">
+        <div className="bg-surface mx-auto w-full max-w-content px-6 py-10 md:px-layout-x">
           {ctx.body ? (
             <RichText document={ctx.body} className="rich-text-banner-body" />
           ) : null}

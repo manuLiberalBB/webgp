@@ -21,7 +21,7 @@ export function BorderedGridSection({
   return (
     <section
       className={cn(
-        'bg-ecosystem px-10 py-10 md:px-layout-x md:py-section-y',
+        'bg-ecosystem px-6 py-10 md:px-layout-x md:py-section-y',
         className,
       )}
     >
@@ -46,8 +46,8 @@ export function BorderedGridSection({
             cards.length === 1
               ? 'max-w-md'
               : cards.length === 2
-                ? 'md:grid-cols-2'
-                : 'md:grid-cols-2 lg:grid-cols-3',
+                ? 'layout-md:grid-cols-2'
+                : 'layout-md:grid-cols-2 layout-lg:grid-cols-3',
           )}
         >
           {cards.map((card, index) => (

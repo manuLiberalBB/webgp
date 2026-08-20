@@ -4,13 +4,13 @@ import { AppImage as Image, AUTO_ASPECT_STYLE } from '@/components/cms/AppImage'
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import type { CarouselItem } from '@/lib/contentful/carousel/types';
+import { LAYOUT_MD_MEDIA_QUERY } from '@/lib/layout/breakpoints';
 import { cn } from '@/lib/utils';
 
 import { CompanyLogoCardGrid } from '@/components/sections/sectors/CompanyLogoGrid';
 
 const SCROLL_SPEED = 42;
 const EASE = 0.06;
-const DESKTOP_MEDIA_QUERY = '(min-width: 768px)';
 
 export type MarqueeCarouselVariant = 'marquee' | 'cards';
 
@@ -76,7 +76,7 @@ export function MarqueeCarousel({
   const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
-    const desktopMedia = window.matchMedia(DESKTOP_MEDIA_QUERY);
+    const desktopMedia = window.matchMedia(LAYOUT_MD_MEDIA_QUERY);
     const motionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     const updateDesktop = () => setIsDesktop(desktopMedia.matches);
@@ -150,14 +150,14 @@ export function MarqueeCarousel({
 
   return (
     <div className={cn('w-full', className)} aria-label="Carrusel de logos">
-      <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:hidden">
+      <div className="grid grid-cols-2 gap-x-6 gap-y-10 layout-md:hidden">
         {items.map((item) => (
           <MarqueeCarouselItem key={item.id} item={item} className="w-full px-2" />
         ))}
       </div>
 
       <div
-        className="relative hidden w-full overflow-hidden md:block"
+        className="relative hidden w-full overflow-hidden layout-md:block"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >

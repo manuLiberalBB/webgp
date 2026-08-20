@@ -35,17 +35,17 @@ export function YouMayAlsoLikeSection({
           titleSize="medium"
           viewAllHref={viewAllHref}
           layout="stacked"
-          className="md:hidden"
+          className="layout-md:hidden"
         />
 
         <NewsSectionHeader
           title={title}
           titleSize="medium"
           viewAllHref={viewAllHref}
-          className="hidden md:flex"
+          className="hidden layout-md:flex"
         />
 
-        <div className="flex flex-col gap-10 md:hidden">
+        <div className="flex flex-col gap-10 layout-md:hidden">
           <NewsPageFeaturedLargeCard
             item={largeItem}
             readMoreLabel="Leer más"
@@ -61,16 +61,16 @@ export function YouMayAlsoLikeSection({
           ) : null}
         </div>
 
-        <div className="hidden grid-cols-1 gap-10 md:grid lg:grid-cols-[minmax(0,1fr)_506px] lg:items-stretch lg:gap-10">
+        <div className="hidden grid-cols-1 gap-10 layout-md:grid layout-lg:grid-cols-[minmax(0,1fr)_506px] layout-lg:items-stretch layout-lg:gap-10">
           <NewsPageFeaturedLargeCard
             item={largeItem}
-            className="h-full min-h-[360px] md:min-h-[470px]"
+            className="h-full min-h-[360px] layout-md:min-h-[470px] short-landscape:min-h-[240px]"
           />
 
           {sideCardItems.length > 0 ? (
-            <div className="flex flex-col gap-6 lg:h-full">
+            <div className="flex flex-col gap-6 layout-lg:h-full">
               {sideCardItems.map((item) => (
-                <YouMayAlsoLikeSideCard key={item.id} item={item} className="lg:flex-1" />
+                <YouMayAlsoLikeSideCard key={item.id} item={item} className="layout-lg:flex-1" />
               ))}
             </div>
           ) : null}

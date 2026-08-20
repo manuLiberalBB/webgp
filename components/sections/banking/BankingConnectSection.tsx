@@ -23,7 +23,7 @@ export function BankingConnectSection({
   return (
     <section
       className={cn(
-        'bg-ecosystem px-[18px] pt-0 pb-12 md:px-layout-x md:py-20',
+        'bg-ecosystem px-6 pt-0 pb-12 md:px-layout-x md:py-20',
         className,
       )}
     >

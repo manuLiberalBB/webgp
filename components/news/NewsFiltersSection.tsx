@@ -257,7 +257,7 @@ export function NewsFiltersSection({
         ) : null}
 
         {/* Mobile */}
-        <div className="flex w-full items-center justify-center gap-[42px] md:hidden">
+        <div className="flex w-full items-center justify-center gap-[42px] layout-md:hidden">
           <button
             type="button"
             onClick={() => setCategoriesSheetOpen(true)}
@@ -292,7 +292,7 @@ export function NewsFiltersSection({
         </div>
 
         {/* Desktop */}
-        <div className="hidden w-full flex-wrap items-center justify-between gap-3 md:flex">
+        <div className="hidden w-full flex-wrap items-center justify-between gap-3 layout-md:flex">
           {NEWS_FILTER_OPTIONS.map((option) => (
             <NewsCategoryFilterChip
               key={option}

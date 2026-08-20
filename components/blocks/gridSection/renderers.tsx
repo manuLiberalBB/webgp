@@ -194,7 +194,7 @@ export const gridSectionRenderers: Record<
     if (!card) return null;
 
     return (
-      <section className="bg-white px-10 pt-0 pb-10 md:px-layout-x md:pt-0 md:pb-section-y">
+      <section className="bg-white px-6 pt-0 pb-10 md:px-layout-x md:pt-0 md:pb-section-y">
         <div className="mx-auto w-full max-w-content">
           <FoundationsConoceCtaCard fields={card} />
         </div>
@@ -308,7 +308,7 @@ export const gridSectionRenderers: Record<
     return (
       <section
         className={cn(
-          'relative w-full bg-white px-10 py-10 md:px-layout-x md:py-section-y',
+          'relative w-full bg-white px-6 py-10 md:px-layout-x md:py-section-y',
           ctx.backgroundUrl && 'bg-cover bg-center',
         )}
         style={
@@ -370,7 +370,7 @@ export const gridSectionRenderers: Record<
                     'grid gap-10',
                     ctx.cards.length === 1
                       ? 'max-w-3xl'
-                      : 'md:grid-cols-2 lg:grid-cols-3',
+                      : 'layout-md:grid-cols-2 layout-lg:grid-cols-3',
                   )}
                 >
                   {ctx.cards.map((card, index) => (

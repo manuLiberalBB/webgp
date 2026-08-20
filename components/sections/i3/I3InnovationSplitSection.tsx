@@ -53,7 +53,7 @@ export function I3InnovationSplitSection({
       <section
         id={sectionId}
         className={cn(
-          'section-anchor bg-white px-10 py-10 md:px-layout-x md:py-section-y',
+          'section-anchor bg-white px-6 py-10 md:px-layout-x md:py-section-y',
           className,
         )}
       >
@@ -73,7 +73,7 @@ export function I3InnovationSplitSection({
     <section
       id={sectionId}
       className={cn(
-        'section-anchor bg-white px-10 py-10 md:px-layout-x md:py-section-y',
+        'section-anchor bg-white px-6 py-10 md:px-layout-x md:py-section-y',
         className,
       )}
     >

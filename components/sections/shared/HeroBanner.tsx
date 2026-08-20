@@ -46,10 +46,13 @@ export function HeroBanner({
     <section
       id={id}
       className={cn(
-        'relative flex w-full max-w-full flex-col overflow-hidden px-[1.875rem] md:px-layout-x',
+        'relative flex w-full max-w-full flex-col overflow-hidden px-6 md:px-layout-x',
         compactMobile
           ? COMPACT_MOBILE_HERO_SECTION_CLASS
-          : cn('min-h-hero justify-center pt-10 md:pt-12', HERO_BOTTOM_PADDING),
+          : cn(
+              'min-h-hero justify-center pt-10 md:pt-12 short-landscape:min-h-0 short-landscape:py-6',
+              HERO_BOTTOM_PADDING,
+            ),
         id && 'scroll-mt-20',
         className,
       )}

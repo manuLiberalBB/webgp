@@ -84,7 +84,7 @@ export function BankingSustainabilitySection({
   return (
     <section
       className={cn(
-        'bg-white px-[18px] pt-0 pb-12 md:px-layout-x md:py-[3.75rem]',
+        'bg-white px-6 pt-0 pb-12 md:px-layout-x md:py-[3.75rem]',
         className,
       )}
     >

@@ -85,7 +85,7 @@ export function HiringRoomCtaSection({
   return (
     <section
       className={cn(
-        'bg-ecosystem flex w-full items-center px-10 py-10 md:px-layout-x md:py-section-y',
+        'bg-ecosystem flex w-full items-center px-6 py-10 md:px-layout-x md:py-section-y',
         className,
       )}
     >

@@ -13,7 +13,7 @@ export function LogoGridSection({ title, items, className }: LogoGridSectionProp
   return (
     <section
       className={cn(
-        'bg-white px-10 pt-[30px] pb-section-y md:px-layout-x',
+        'bg-white px-6 pt-[30px] pb-section-y md:px-layout-x',
         className,
       )}
     >

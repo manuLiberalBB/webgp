@@ -18,20 +18,20 @@ function getProgramCardColumnClassName(index: number, total: number) {
   const remainder = total % DESKTOP_COLUMNS;
 
   if (remainder === 0) {
-    return 'md:col-span-2';
+    return 'layout-md:col-span-2';
   }
 
   const lastRowStart = total - remainder;
 
   if (index < lastRowStart) {
-    return 'md:col-span-2';
+    return 'layout-md:col-span-2';
   }
 
   if (remainder === 1) {
-    return 'md:col-span-6';
+    return 'layout-md:col-span-6';
   }
 
-  return 'md:col-span-3';
+  return 'layout-md:col-span-3';
 }
 
 export function ProgramsDevelopmentSection({
@@ -48,7 +48,7 @@ export function ProgramsDevelopmentSection({
     <section
       id={sectionId}
       className={cn(
-        'section-anchor overflow-x-hidden bg-white px-10 pt-0 pb-10 md:px-layout-x md:pt-0 md:pb-section-y',
+        'section-anchor overflow-x-hidden bg-white px-6 pt-0 pb-10 md:px-layout-x md:pt-0 md:pb-section-y',
         className,
       )}
     >
@@ -77,19 +77,19 @@ export function ProgramsDevelopmentSection({
           </header>
         ) : null}
 
-        <div className="md:hidden -mx-10 min-w-0 overflow-x-auto overscroll-x-contain px-10 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="layout-md:hidden -mx-6 min-w-0 overflow-x-auto overscroll-x-contain px-6 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           <div className="flex w-max min-w-full snap-x snap-mandatory gap-6">
             {cards.map((card, index) => (
               <ProgramDevelopmentCard
                 key={`${card.contentfulName}-${index}`}
                 fields={card}
-                className="w-[calc(100vw-5.5rem)] max-w-[280px] shrink-0 snap-start snap-always"
+                className="w-[calc(100vw-3.5rem)] max-w-[280px] shrink-0 snap-start snap-always"
               />
             ))}
           </div>
         </div>
 
-        <div className="hidden gap-6 md:grid md:grid-cols-6">
+        <div className="hidden gap-6 layout-md:grid layout-md:grid-cols-6">
           {cards.map((card, index) => (
             <ProgramDevelopmentCard
               key={`${card.contentfulName}-${index}`}

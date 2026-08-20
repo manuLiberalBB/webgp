@@ -126,11 +126,7 @@ export function resolveImageOverlayGridSectionProps({
     subtitleClassName: isFundacionesAreasAccion
       ? 'text-body text-[18px] font-normal leading-normal md:text-[18px]'
       : undefined,
-    className: isFundacionesAreasAccion
-      ? 'pt-0 md:pt-0'
-      : isRegionalPresence
-        ? '!px-6 md:!px-layout-x'
-        : undefined,
+    className: isFundacionesAreasAccion ? 'pt-0 md:pt-0' : undefined,
     cardVariant: isFundacionesAreasAccion ? ('foundationArea' as const) : undefined,
     expandableDescription: hasExpandableDescription,
   };
