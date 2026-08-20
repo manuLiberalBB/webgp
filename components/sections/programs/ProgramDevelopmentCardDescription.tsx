@@ -57,7 +57,7 @@ export function ProgramDevelopmentCardDescription({
         ref={paragraphRef}
         className={cn(
           'text-body text-base leading-normal whitespace-pre-line',
-          !expanded && 'line-clamp-6 min-h-36',
+          !expanded && 'line-clamp-6 layout-md:min-h-36',
         )}
       >
         {parseItalicText(text)}
@@ -71,7 +71,7 @@ export function ProgramDevelopmentCardDescription({
         {parseItalicText(text)}
       </p>
 
-      <div className="mt-1 min-h-6">
+      <div className={cn('mt-1', canExpand && 'min-h-6')}>
         {canExpand ? (
           <button
             type="button"
