@@ -59,10 +59,10 @@ function ConversationVideoItem({
       onClick={onSelect}
       aria-pressed={isSelected}
       className={cn(
-        'flex w-full gap-3 rounded-[10px] border bg-white p-[17px] text-left transition-colors',
+        'flex w-full cursor-pointer gap-3 rounded-[10px] border bg-white p-[17px] text-left transition-colors',
         isSelected
           ? 'border-[#123476] shadow-[0_0_0_1px_#123476]'
-          : 'border-card-border hover:border-[#123476]/30',
+          : 'border-card-border hover:border-[#123476]/30 hover:bg-[#123476]/5',
         className,
       )}
     >
