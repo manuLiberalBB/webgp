@@ -340,7 +340,7 @@ export const gridSectionRenderers: Record<
                 {ctx.urlList?.length ? <CtaLinks links={ctx.urlList} /> : null}
               </div>
 
-              <div className="relative h-[412px] w-full min-w-0 flex-1 overflow-hidden rounded-lg">
+              <div className="relative h-[412px] w-full min-w-0 shrink-0 overflow-hidden rounded-lg lg:flex-1">
                 <HeroImage
                   src={ctx.imageUrl!}
                   alt={ctx.imageAlt}
