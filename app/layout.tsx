@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import { Header, SiteFooter } from '@/components/layout';
 import { HashScrollOnLoad } from '@/components/layout/HashScrollOnLoad';
 import { getHeader } from '@/lib/contentful/queries';
+import { env } from '@/lib/env';
 import { dmMono } from '@/lib/fonts/dmMono';
 import { dmSans } from '@/lib/fonts/dmSans';
 import { playfairDisplay } from '@/lib/fonts/playfairDisplay';
@@ -16,8 +17,18 @@ const openSans = Open_Sans({
   subsets: ['latin'],
 });
 
+const noIndexMetadata: Pick<Metadata, 'robots'> = {
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: { index: false, follow: false },
+  },
+};
+
 export const metadata: Metadata = {
   title: 'Grupo Petersen',
+  ...(env.site.allowIndexing() ? {} : noIndexMetadata),
   icons: {
     icon: [
       { url: '/favicon/favicon.ico' },
@@ -57,7 +68,7 @@ export default async function RootLayout({
           <HashScrollOnLoad />
         </Suspense>
         <div className="app-shell">
-          <div className="app-content pt-header layout-lg:pt-0">
+          <div className="app-content pt-header md:pt-0">
             {header ? <Header fields={header} /> : null}
             <main className="app-main">{children}</main>
           </div>

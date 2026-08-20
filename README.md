@@ -197,6 +197,7 @@ Copiá `.env.example` a `.env`. Variables principales:
 | `CONTENTFUL_PREVIEW_HOST` | `preview.contentful.com` |
 | `REVALIDATE_SECRET` | Secreto del webhook ISR |
 | `BASE_URL` / `NEXT_PUBLIC_BASE_URL` | URL base del sitio |
+| `ALLOW_INDEXING` | `true` para permitir indexación en buscadores; `false` (default) bloquea todo el sitio |
 
 ## ISR y revalidación
 

@@ -23,10 +23,15 @@ const nextConfig: NextConfig = {
     ],
   },
   async headers() {
+    const allowIndexing = process.env.ALLOW_INDEXING === 'true';
+
     return [
       {
         source: '/:path*',
         headers: [
+          ...(allowIndexing
+            ? []
+            : [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }]),
           {
             key: 'Link',
             value: '<https://images.ctfassets.net>; rel=preconnect; crossorigin',

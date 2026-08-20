@@ -30,6 +30,7 @@ export const env = {
   },
   site: {
     baseUrl: () => process.env.BASE_URL ?? 'http://localhost:3000',
+    allowIndexing: () => process.env.ALLOW_INDEXING === 'true',
   },
   revalidate: {
     secret: () => process.env.REVALIDATE_SECRET,

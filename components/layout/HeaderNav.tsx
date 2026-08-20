@@ -89,7 +89,7 @@ export function HeaderNav({
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="bg-surface fixed inset-x-0 top-0 z-50 w-full shrink-0 shadow-header layout-lg:sticky">
+    <header className="bg-surface fixed inset-x-0 top-0 z-50 w-full shrink-0 shadow-header md:sticky">
       <div className="px-6 md:px-layout-x">
         <div className="mx-auto flex h-header w-full max-w-content items-center justify-between">
           <Link
@@ -110,7 +110,7 @@ export function HeaderNav({
 
           <nav
             aria-label="Navegación principal"
-            className="hidden items-center gap-8 layout-lg:flex"
+            className="hidden items-center gap-8 md:flex"
           >
             {navLinks.map((link) => (
               <NavLink
@@ -127,7 +127,7 @@ export function HeaderNav({
             aria-controls="mobile-nav"
             aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
             onClick={() => setMenuOpen((open) => !open)}
-            className="text-text flex size-6 shrink-0 items-center justify-center layout-lg:hidden"
+            className="text-text flex size-6 shrink-0 items-center justify-center md:hidden"
           >
             {menuOpen ? (
               <Image src="/icons/close.svg" alt="" width={17} height={17} aria-hidden />
@@ -142,7 +142,7 @@ export function HeaderNav({
         id="mobile-nav"
         aria-label="Navegación mobile"
         className={cn(
-          'bg-surface layout-lg:hidden',
+          'bg-surface md:hidden',
           menuOpen
             ? 'block max-h-[calc(100dvh-var(--spacing-header))] overflow-y-auto overscroll-contain'
             : 'hidden',
