@@ -142,7 +142,7 @@ export function HeaderNav({
         id="mobile-nav"
         aria-label="Navegación mobile"
         className={cn(
-          'bg-surface min-h-[calc(100dvh-var(--spacing-header))] lg:hidden',
+          'bg-surface lg:hidden',
           menuOpen ? 'block' : 'hidden',
         )}
       >
