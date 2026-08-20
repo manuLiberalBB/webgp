@@ -149,7 +149,7 @@ export function HeaderNav({
         )}
       >
         <div className="px-6 md:px-layout-x">
-          <ul className="mx-auto flex w-full max-w-content flex-col items-end gap-[60px] py-10 short-landscape:gap-8 short-landscape:py-6">
+          <ul className="mx-auto flex w-full max-w-content flex-col items-end gap-[60px] py-10">
             {navLinks.map((link) => (
               <li key={link.id}>
                 <NavLink

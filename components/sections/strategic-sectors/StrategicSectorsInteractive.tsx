@@ -17,17 +17,17 @@ type StrategicSectorsInteractiveProps = {
 };
 
 function getDesktopContainerClassName(itemCount: number) {
-  if (itemCount === 1) return 'layout-md:flex layout-md:max-w-sm';
+  if (itemCount === 1) return 'md:flex md:max-w-sm';
 
-  return 'layout-md:grid layout-md:grid-cols-2 layout-lg:flex';
+  return 'md:grid md:grid-cols-2 lg:flex';
 }
 
 function getDesktopCardClassName(isSelected: boolean, itemCount: number) {
   if (itemCount <= 1) return undefined;
 
   return cn(
-    'layout-lg:min-w-0 layout-lg:transition-[flex-grow,flex-shrink,flex-basis] layout-lg:duration-300 layout-lg:ease-out',
-    isSelected ? 'layout-lg:flex-[1.35]' : 'layout-lg:flex-[0.9]',
+    'lg:min-w-0 lg:transition-[flex-grow,flex-shrink,flex-basis] lg:duration-300 lg:ease-out',
+    isSelected ? 'lg:flex-[1.35]' : 'lg:flex-[0.9]',
   );
 }
 
@@ -64,7 +64,7 @@ export function StrategicSectorsInteractive({
           </div>
         )}
 
-        <div className="layout-md:hidden -mx-6 min-w-0 overflow-x-auto overscroll-x-contain px-6 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="md:hidden -mx-6 min-w-0 overflow-x-auto overscroll-x-contain px-6 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           <div className="flex w-max min-w-full snap-x snap-mandatory gap-3">
             {items.map((item) => (
               <StrategicSectorCard
@@ -80,7 +80,7 @@ export function StrategicSectorsInteractive({
 
         <div
           className={cn(
-            'hidden w-full min-w-0 gap-3 layout-md:grid',
+            'hidden w-full min-w-0 gap-3 md:grid',
             getDesktopContainerClassName(items.length),
           )}
         >

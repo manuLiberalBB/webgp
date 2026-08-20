@@ -118,13 +118,13 @@ export function SectorCompaniesSection({
             ))}
           </div>
         ) : isBankingLayout ? (
-          <div className="grid grid-cols-1 gap-5 min-[640px]:grid-cols-2 layout-lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-5 min-[640px]:grid-cols-2 lg:grid-cols-4">
             {items.map((item) => (
               <SectorBankingCompanyCard key={item.id} item={item} />
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-5 layout-md:grid-cols-2 layout-lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {items.map((item) => (
               <SectorCompanyCard key={item.id} item={item} />
             ))}

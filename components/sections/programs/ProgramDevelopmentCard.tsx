@@ -34,11 +34,11 @@ export function ProgramDevelopmentCard({ fields, className }: ProgramDevelopment
         )}
 
         {fields.title ? (
-          <h3 className="pb-2 text-lg leading-6 font-semibold text-[#123476] line-clamp-2 layout-md:min-h-12">
+          <h3 className="pb-2 text-lg leading-6 font-semibold text-[#123476] line-clamp-2 md:min-h-12">
             {fields.title}
           </h3>
         ) : (
-          <div aria-hidden className="pb-2 layout-md:min-h-12" />
+          <div aria-hidden className="pb-2 md:min-h-12" />
         )}
       </div>
 

@@ -61,7 +61,7 @@ export function NewsCompanyFilterDropdown({
   );
 
   return (
-    <div className="hidden w-full flex-col items-center gap-7 layout-md:flex">
+    <div className="hidden w-full flex-col items-center gap-7 md:flex">
       <div className="flex items-center gap-1.5 py-1">
         <span className="text-[14px] leading-[13.5px] tracking-[1.62px] text-[#bbb] whitespace-nowrap">
           Filtrar por empresa:

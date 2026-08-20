@@ -18,12 +18,12 @@ type ImageOverlayGridSectionProps = {
 
 function getDefaultCardGridClassName(count: number) {
   if (count === 1) return 'mx-auto max-w-md';
-  if (count === 2) return 'layout-md:grid-cols-2';
-  if (count === 3) return 'layout-md:grid-cols-2 layout-lg:grid-cols-3';
-  if (count === 4) return 'layout-md:grid-cols-2 layout-lg:grid-cols-4';
-  if (count === 5) return 'layout-md:grid-cols-2 layout-lg:grid-cols-5';
+  if (count === 2) return 'md:grid-cols-2';
+  if (count === 3) return 'md:grid-cols-2 lg:grid-cols-3';
+  if (count === 4) return 'md:grid-cols-2 lg:grid-cols-4';
+  if (count === 5) return 'md:grid-cols-2 lg:grid-cols-5';
 
-  return 'layout-md:grid-cols-2 layout-lg:grid-cols-4';
+  return 'md:grid-cols-2 lg:grid-cols-4';
 }
 
 function getCardColumnClassName(
@@ -33,7 +33,7 @@ function getCardColumnClassName(
 ) {
   if (layout !== 'three-two' || total !== 5) return undefined;
 
-  return index < 3 ? 'layout-lg:col-span-2' : 'layout-lg:col-span-3';
+  return index < 3 ? 'lg:col-span-2' : 'lg:col-span-3';
 }
 
 export function ImageOverlayGridSection({
@@ -98,7 +98,7 @@ export function ImageOverlayGridSection({
           className={cn(
             'grid w-full min-w-0 items-stretch gap-6',
             isThreeTwoLayout
-              ? 'grid-cols-1 layout-lg:grid-cols-6'
+              ? 'grid-cols-1 lg:grid-cols-6'
               : getDefaultCardGridClassName(cards.length),
           )}
         >

@@ -11,7 +11,7 @@ import { NewsSidebar } from '@/components/news/NewsSidebar';
 import type { NewsArticleContext, NewsCompanyInfo, RelatedNewsItem } from '@/lib/news/types';
 import { cn } from '@/lib/utils';
 
-import { LAYOUT_LG_MEDIA_QUERY } from '@/lib/layout/breakpoints';
+const DESKTOP_LAYOUT_MEDIA_QUERY = '(min-width: 1024px)';
 
 type NewsDetailContentLayoutProps = {
   children: ReactNode;
@@ -86,7 +86,7 @@ export function NewsDetailContentLayout({
         }
       }
 
-      const isDesktopLayout = window.matchMedia(LAYOUT_LG_MEDIA_QUERY).matches;
+      const isDesktopLayout = window.matchMedia(DESKTOP_LAYOUT_MEDIA_QUERY).matches;
       const nextCount = resolveVisibleRelatedCount({
         isDesktopLayout,
         relatedNewsCount: relatedNews.length,
@@ -108,7 +108,7 @@ export function NewsDetailContentLayout({
     resizeObserver.observe(article);
     resizeObserver.observe(sidebar);
 
-    const mediaQuery = window.matchMedia(LAYOUT_LG_MEDIA_QUERY);
+    const mediaQuery = window.matchMedia(DESKTOP_LAYOUT_MEDIA_QUERY);
     mediaQuery.addEventListener('change', update);
 
     return () => {
@@ -122,7 +122,7 @@ export function NewsDetailContentLayout({
   return (
     <div
       className={cn(
-        'mx-auto grid w-full max-w-content grid-cols-1 items-start gap-10 layout-lg:grid-cols-[minmax(0,1fr)_16rem] layout-lg:gap-10 xl:grid-cols-[minmax(0,54rem)_minmax(20.5rem,21.5rem)] xl:gap-12',
+        'mx-auto grid w-full max-w-content grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-10 xl:grid-cols-[minmax(0,54rem)_minmax(20.5rem,21.5rem)] xl:gap-12',
         className,
       )}
     >

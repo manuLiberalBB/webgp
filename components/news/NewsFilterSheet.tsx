@@ -23,7 +23,7 @@ export function NewsFilterSheet({
   const isCategoryVariant = variant === 'category';
 
   return (
-    <div className="fixed inset-0 z-50 layout-md:hidden" role="presentation">
+    <div className="fixed inset-0 z-50 md:hidden" role="presentation">
       <button
         type="button"
         aria-label="Cerrar filtros"

@@ -18,20 +18,20 @@ function getProgramCardColumnClassName(index: number, total: number) {
   const remainder = total % DESKTOP_COLUMNS;
 
   if (remainder === 0) {
-    return 'layout-md:col-span-2';
+    return 'md:col-span-2';
   }
 
   const lastRowStart = total - remainder;
 
   if (index < lastRowStart) {
-    return 'layout-md:col-span-2';
+    return 'md:col-span-2';
   }
 
   if (remainder === 1) {
-    return 'layout-md:col-span-6';
+    return 'md:col-span-6';
   }
 
-  return 'layout-md:col-span-3';
+  return 'md:col-span-3';
 }
 
 export function ProgramsDevelopmentSection({
@@ -77,7 +77,7 @@ export function ProgramsDevelopmentSection({
           </header>
         ) : null}
 
-        <div className="layout-md:hidden -mx-6 min-w-0 snap-x snap-mandatory overflow-x-auto overflow-y-hidden overscroll-x-contain px-6 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="md:hidden -mx-6 min-w-0 snap-x snap-mandatory overflow-x-auto overflow-y-hidden overscroll-x-contain px-6 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           <div className="flex w-max min-w-full items-start gap-6">
             {cards.map((card, index) => (
               <ProgramDevelopmentCard
@@ -89,7 +89,7 @@ export function ProgramsDevelopmentSection({
           </div>
         </div>
 
-        <div className="hidden gap-6 layout-md:grid layout-md:grid-cols-6">
+        <div className="hidden gap-6 md:grid md:grid-cols-6">
           {cards.map((card, index) => (
             <ProgramDevelopmentCard
               key={`${card.contentfulName}-${index}`}

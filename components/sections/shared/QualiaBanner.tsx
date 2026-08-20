@@ -122,7 +122,7 @@ export function QualiaBanner({
   return (
     <section
       className={cn(
-        'relative flex min-h-hero w-full flex-col items-center overflow-hidden px-6 pt-hero-pt md:px-layout-x md:pt-20 short-landscape:min-h-0 short-landscape:gap-6 short-landscape:pt-8',
+        'relative flex min-h-hero w-full flex-col items-center overflow-hidden px-6 pt-hero-pt md:px-layout-x md:pt-20',
         HERO_BOTTOM_PADDING,
         className,
       )}
@@ -139,9 +139,9 @@ export function QualiaBanner({
 
       <div className="relative z-10 mx-auto flex w-full max-w-content flex-col gap-12">
         {(title || subtitle || logoUrl) && (
-          <div className="flex flex-col items-start justify-between gap-8 layout-lg:flex-row layout-lg:items-center">
+          <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
             {(title || subtitle) && (
-              <div className="order-last flex max-w-[683px] flex-col gap-4 text-white layout-lg:order-first">
+              <div className="order-last flex max-w-[683px] flex-col gap-4 text-white lg:order-first">
                 {title ? (
                   <h2 className="text-[2rem] leading-tight tracking-[-0.96px] md:text-[3rem] md:leading-normal">
                     {title}
@@ -155,13 +155,13 @@ export function QualiaBanner({
             )}
 
             {logoUrl ? (
-              <div className="relative order-first h-[104px] w-[304px] shrink-0 md:h-[124px] md:w-[360px] layout-lg:order-last">
+              <div className="relative order-first h-[104px] w-[304px] shrink-0 md:h-[124px] md:w-[360px] lg:order-last">
                 <Image
                   src={logoUrl}
                   alt={logoAlt}
                   fill
                   sizes="(max-width: 768px) 304px, 360px"
-                  className="object-contain object-left layout-lg:object-right"
+                  className="object-contain object-left lg:object-right"
                 />
               </div>
             ) : null}
@@ -171,8 +171,8 @@ export function QualiaBanner({
         <div
           className={cn(
             'grid grid-cols-1 gap-5',
-            cards.length === 2 ? 'layout-md:grid-cols-2' : 'layout-md:grid-cols-2 layout-lg:grid-cols-3',
-            cards.length >= 4 && 'layout-lg:grid-cols-4',
+            cards.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols-3',
+            cards.length >= 4 && 'lg:grid-cols-4',
           )}
         >
           {cards.map((card, index) => (

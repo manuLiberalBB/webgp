@@ -370,7 +370,7 @@ export const gridSectionRenderers: Record<
                     'grid gap-10',
                     ctx.cards.length === 1
                       ? 'max-w-3xl'
-                      : 'layout-md:grid-cols-2 layout-lg:grid-cols-3',
+                      : 'md:grid-cols-2 lg:grid-cols-3',
                   )}
                 >
                   {ctx.cards.map((card, index) => (

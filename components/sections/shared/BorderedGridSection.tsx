@@ -46,8 +46,8 @@ export function BorderedGridSection({
             cards.length === 1
               ? 'max-w-md'
               : cards.length === 2
-                ? 'layout-md:grid-cols-2'
-                : 'layout-md:grid-cols-2 layout-lg:grid-cols-3',
+                ? 'md:grid-cols-2'
+                : 'md:grid-cols-2 lg:grid-cols-3',
           )}
         >
           {cards.map((card, index) => (

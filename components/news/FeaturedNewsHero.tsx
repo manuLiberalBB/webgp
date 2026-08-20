@@ -33,7 +33,7 @@ export function FeaturedNewsHero({ item, className }: FeaturedNewsHeroProps) {
   return (
     <section
       className={cn(
-        'relative flex w-full min-h-[440px] flex-col overflow-hidden layout-md:min-h-[500px] short-landscape:min-h-0 short-landscape:py-6',
+        'relative flex w-full min-h-[440px] flex-col overflow-hidden md:min-h-[500px]',
         className,
       )}
     >
@@ -83,7 +83,7 @@ export function FeaturedNewsHero({ item, className }: FeaturedNewsHeroProps) {
               />
             ) : null}
 
-            <div className="flex w-full flex-col items-start gap-5 layout-md:flex-row layout-md:items-center layout-md:gap-7">
+            <div className="flex w-full flex-col items-start gap-5 md:flex-row md:items-center md:gap-7">
               <NewsArticleButton
                 href={item.href}
                 className="w-full px-6 py-3 text-[15px] leading-6 md:w-auto md:py-3.5 md:text-base md:leading-7"

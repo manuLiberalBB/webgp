@@ -60,7 +60,7 @@ export function AllNewsSection({
         {visibleItems.length === 0 ? (
           <p className="text-body text-center text-base leading-6">{emptyMessage}</p>
         ) : (
-          <div className="grid grid-cols-1 gap-8 layout-md:grid-cols-2 layout-md:gap-6 layout-lg:grid-cols-3 layout-lg:gap-6">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-6">
             {visibleItems.map((item) => (
               <AllNewsCard key={item.id} item={item} />
             ))}

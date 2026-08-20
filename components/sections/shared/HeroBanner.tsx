@@ -50,7 +50,7 @@ export function HeroBanner({
         compactMobile
           ? COMPACT_MOBILE_HERO_SECTION_CLASS
           : cn(
-              'min-h-hero justify-center pt-10 md:pt-12 short-landscape:min-h-0 short-landscape:py-6',
+              'min-h-hero justify-center pt-10 md:pt-12',
               HERO_BOTTOM_PADDING,
             ),
         id && 'scroll-mt-20',

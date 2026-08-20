@@ -57,7 +57,7 @@ export function ProgramDevelopmentCardDescription({
         ref={paragraphRef}
         className={cn(
           'text-body text-base leading-normal whitespace-pre-line',
-          !expanded && 'line-clamp-6 layout-md:min-h-36',
+          !expanded && 'line-clamp-6 md:min-h-36',
         )}
       >
         {parseItalicText(text)}

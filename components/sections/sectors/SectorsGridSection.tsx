@@ -19,7 +19,7 @@ function SectorsGridPromoCard({
   return (
     <aside
       className={cn(
-        'flex flex-col items-center gap-4 rounded-lg bg-[#dce7ff] px-8 py-2 layout-md:min-h-[439px] layout-md:justify-center layout-md:gap-10 layout-md:p-2.5 short-landscape:min-h-0',
+        'flex flex-col items-center gap-4 rounded-lg bg-[#dce7ff] px-8 py-2 md:min-h-[439px] md:justify-center md:gap-10 md:p-2.5',
         className,
       )}
     >
@@ -30,11 +30,11 @@ function SectorsGridPromoCard({
         <span className="font-bold">compromiso</span>
       </p>
 
-      <p className="text-center text-xl leading-normal italic whitespace-nowrap text-[#123476] layout-md:hidden">
+      <p className="text-center text-xl leading-normal italic whitespace-nowrap text-[#123476] md:hidden">
         Presencia que impulsa el país.
       </p>
 
-      <p className="hidden text-center text-[30px] leading-normal italic text-[#123476] layout-md:block">
+      <p className="hidden text-center text-[30px] leading-normal italic text-[#123476] md:block">
         Presencia
         <br />
         que impulsa
@@ -66,7 +66,7 @@ export function SectorsGridSection({
 
         {items.length > 0 ? (
           <>
-            <div className="flex flex-col gap-8 layout-md:hidden">
+            <div className="flex flex-col gap-8 md:hidden">
               <SectorsGridPromoCard sectorCount={items.length} className="w-full" />
 
               <div className="-mx-6 min-w-0 overflow-x-auto overscroll-x-contain px-6 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
@@ -82,7 +82,7 @@ export function SectorsGridSection({
               </div>
             </div>
 
-            <div className="hidden grid-cols-2 gap-8 layout-md:grid layout-lg:grid-cols-4">
+            <div className="hidden grid-cols-2 gap-8 md:grid lg:grid-cols-4">
               {firstRowItems.map((item) => (
                 <SectorsGridCard key={item.id} item={item} className="h-full" />
               ))}

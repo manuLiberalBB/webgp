@@ -67,19 +67,19 @@ export function FeaturedNewsSection({ items }: FeaturedNewsSectionProps) {
           </p>
         </div>
 
-        <div className="flex flex-col gap-8 layout-lg:hidden">
+        <div className="flex flex-col gap-8 lg:hidden">
           {mobileItems.map((item) => (
             <FeaturedNewsCard key={item.id} item={item} variant="stacked" />
           ))}
         </div>
 
-        <div className="hidden flex-col gap-7 layout-lg:flex">
+        <div className="hidden flex-col gap-7 lg:flex">
           {rows.map((row, rowIndex) => {
             if (row.kind === 'triple') {
               return (
                 <div
                   key={`triple-${rowIndex}`}
-                  className="grid grid-cols-1 gap-4 layout-lg:grid-cols-3 layout-lg:items-center"
+                  className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:items-center"
                 >
                   {row.items.map((item) => (
                     <FeaturedNewsCard key={item.id} item={item} variant="horizontal" />
@@ -95,8 +95,8 @@ export function FeaturedNewsSection({ items }: FeaturedNewsSectionProps) {
               <div
                 key={`pair-${rowIndex}`}
                 className={cn(
-                  'grid grid-cols-1 gap-7 layout-lg:items-center layout-lg:gap-[27px]',
-                  flip ? 'layout-lg:grid-cols-[1fr_2fr]' : 'layout-lg:grid-cols-[2fr_1fr]',
+                  'grid grid-cols-1 gap-7 lg:items-center lg:gap-[27px]',
+                  flip ? 'lg:grid-cols-[1fr_2fr]' : 'lg:grid-cols-[2fr_1fr]',
                 )}
               >
                 {first ? (

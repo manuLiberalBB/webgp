@@ -22,7 +22,7 @@ export function TalentCultureNewsSection({
       )}
     >
       <div className="mx-auto w-full max-w-content">
-        <div className="layout-lg:hidden -mx-6 min-w-0 overflow-x-auto overscroll-x-contain px-6 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="lg:hidden -mx-6 min-w-0 overflow-x-auto overscroll-x-contain px-6 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           <div className="flex w-max min-w-full snap-x snap-mandatory gap-6">
             {items.map((item) => (
               <AllNewsCard
@@ -34,7 +34,7 @@ export function TalentCultureNewsSection({
           </div>
         </div>
 
-        <div className="hidden grid-cols-1 gap-4 layout-lg:grid layout-lg:grid-cols-3">
+        <div className="hidden grid-cols-1 gap-4 lg:grid lg:grid-cols-3">
           {items.map((item) => (
             <FeaturedNewsCard key={item.id} item={item} variant="horizontal" />
           ))}

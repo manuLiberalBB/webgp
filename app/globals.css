@@ -1,15 +1,5 @@
 @import 'tailwindcss';
 
-/*
- * Layout breakpoints require sufficient viewport height so landscape phones
- * (wide but short) keep mobile UI instead of desktop layouts.
- */
-@custom-variant layout-md (@media (min-width: 768px) and (min-height: 600px));
-@custom-variant layout-lg (@media (min-width: 1024px) and (min-height: 600px));
-
-/* Short landscape phones — reduce fixed heights and vertical spacing. */
-@custom-variant short-landscape (@media (orientation: landscape) and (max-height: 500px));
-
 @theme {
   /* Brand */
   --color-surface: #ffffff;

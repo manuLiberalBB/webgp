@@ -37,7 +37,7 @@ export function StatisticsBanner({
         compactMobile
           ? cn(COMPACT_MOBILE_HERO_SECTION_CLASS, 'gap-8 md:gap-12')
           : cn(
-              'min-h-hero items-center justify-center gap-10 pt-10 md:gap-12 md:pt-12 short-landscape:min-h-0 short-landscape:gap-6 short-landscape:py-6',
+              'min-h-hero items-center justify-center gap-10 pt-10 md:gap-12 md:pt-12',
               HERO_BOTTOM_PADDING,
             ),
         className,
@@ -66,7 +66,7 @@ export function StatisticsBanner({
       </div>
 
       {statistics.length > 0 ? (
-        <div className="relative z-10 flex w-full max-w-content flex-col rounded-lg border-2 border-white layout-lg:flex-row">
+        <div className="relative z-10 flex w-full max-w-content flex-col rounded-lg border-2 border-white lg:flex-row">
           {statistics.map((statistic, index) => (
             <div
               key={statistic.id}
@@ -74,7 +74,7 @@ export function StatisticsBanner({
                 'flex flex-1 flex-col items-center justify-center gap-4 bg-black/40 px-5 py-12 text-center',
                 'min-h-[172px]',
                 index < statistics.length - 1 &&
-                  'border-b-2 border-white layout-lg:border-r-2 layout-lg:border-b-0',
+                  'border-b-2 border-white lg:border-r-2 lg:border-b-0',
               )}
             >
               <p className="text-[3rem] font-semibold leading-[3rem] tracking-[-1.2px] text-white">
