@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { ReactNode } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -7,10 +8,19 @@ type NewsFilterSheetProps = {
   title: string;
   onClose: () => void;
   children: ReactNode;
+  variant?: 'bottom-sheet' | 'category';
 };
 
-export function NewsFilterSheet({ open, title, onClose, children }: NewsFilterSheetProps) {
+export function NewsFilterSheet({
+  open,
+  title,
+  onClose,
+  children,
+  variant = 'bottom-sheet',
+}: NewsFilterSheetProps) {
   if (!open) return null;
+
+  const isCategoryVariant = variant === 'category';
 
   return (
     <div className="fixed inset-0 z-50 md:hidden" role="presentation">
@@ -25,20 +35,36 @@ export function NewsFilterSheet({ open, title, onClose, children }: NewsFilterSh
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className="absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-2xl bg-white px-6 pt-6 pb-8"
+        className={cn(
+          'absolute bg-white',
+          isCategoryVariant
+            ? 'inset-x-6 top-1/2 max-h-[85vh] -translate-y-1/2 overflow-y-auto rounded-[10px] px-[18px] py-6'
+            : 'inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-2xl px-6 pt-6 pb-8',
+        )}
       >
-        <div className="mb-6 flex items-center justify-between gap-4">
-          <h2 className="text-heading text-xl leading-7 font-semibold">{title}</h2>
-          <button
-            type="button"
-            onClick={onClose}
-            className="text-news-sidebar-link text-base leading-6 underline"
-          >
-            Listo
-          </button>
-        </div>
+        {isCategoryVariant ? (
+          <div className="flex flex-col gap-8">
+            <h2 className="text-card-title w-full text-[22px] leading-normal font-semibold">
+              {title}
+            </h2>
+            {children}
+          </div>
+        ) : (
+          <>
+            <div className="mb-6 flex items-center justify-between gap-4">
+              <h2 className="text-heading text-xl leading-7 font-semibold">{title}</h2>
+              <button
+                type="button"
+                onClick={onClose}
+                className="text-news-sidebar-link text-base leading-6 underline"
+              >
+                Listo
+              </button>
+            </div>
 
-        {children}
+            {children}
+          </>
+        )}
       </div>
     </div>
   );
@@ -49,70 +75,37 @@ type NewsFilterRadioOptionProps = {
   value: string;
   label: string;
   checked: boolean;
-  removable?: boolean;
   onChange: () => void;
-  onClear?: () => void;
 };
-
-function CloseIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden
-      className="shrink-0"
-    >
-      <path
-        d="M7 7 17 17M17 7 7 17"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
 
 export function NewsFilterRadioOption({
   name,
   value,
   label,
   checked,
-  removable = false,
   onChange,
-  onClear,
 }: NewsFilterRadioOptionProps) {
   return (
-    <label
-      className={cn(
-        'flex cursor-pointer items-center gap-3 border-b border-black/5 py-4 last:border-b-0 transition-colors hover:bg-[#f5f8fc]',
-        checked && 'bg-[#0b2d4e] px-3 text-white hover:bg-[#0b2d4e]',
-      )}
-    >
+    <label className="flex cursor-pointer items-center gap-2 px-2">
       <input
         type="radio"
         name={name}
         value={value}
         checked={checked}
         onChange={onChange}
-        className="size-5 shrink-0 accent-[#123476]"
+        className="sr-only"
       />
-      <span className="flex-1 text-base leading-6">{label}</span>
-      {removable ? (
-        <button
-          type="button"
-          aria-label={`Quitar filtro ${label}`}
-          onClick={(event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            onClear?.();
-          }}
-          className="inline-flex shrink-0 text-white"
-        >
-          <CloseIcon />
-        </button>
-      ) : null}
+      <Image
+        src={checked ? '/icons/news/radio-checked.svg' : '/icons/news/radio-unchecked.svg'}
+        alt=""
+        width={16}
+        height={16}
+        aria-hidden
+        className="size-4 shrink-0"
+      />
+      <span className="text-[20px] leading-4 tracking-[0.15px] text-[#535353] whitespace-nowrap">
+        {label}
+      </span>
     </label>
   );
 }

@@ -21,6 +21,8 @@ import {
   type NewsFilterCategory,
 } from '@/lib/contentful/news/newsCategories';
 import { NEWS_SEARCH_DEBOUNCE_MS, useDebouncedValue } from '@/lib/hooks/useDebouncedValue';
+import Image from 'next/image';
+
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { cn } from '@/lib/utils';
 
@@ -36,48 +38,6 @@ export type NewsFilterCompany = {
   id: string;
   name: string;
 };
-
-function TagOutlineIcon() {
-  return (
-    <svg
-      width="21"
-      height="21"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden
-      className="shrink-0"
-    >
-      <path
-        d="M20 12.5 12.5 20a2 2 0 0 1-2.83 0l-6.34-6.34a2 2 0 0 1-.58-1.41V7.41A2 2 0 0 1 5.24 6h4.84a2 2 0 0 1 1.41.58L20 12.5Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-      <circle cx="9.5" cy="9.5" r="1.25" fill="currentColor" />
-    </svg>
-  );
-}
-
-function BuildingIcon() {
-  return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden
-      className="shrink-0"
-    >
-      <path
-        d="M4 20V6.5A1.5 1.5 0 0 1 5.5 5H10v15M10 10h4M10 14h4M14 20V9.5A1.5 1.5 0 0 1 15.5 8H20v12M4 20h16"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 type NewsFiltersSectionProps = {
   companies?: NewsFilterCompany[];
@@ -235,6 +195,28 @@ export function NewsFiltersSection({
     }
   }
 
+  function handleCategorySelect(option: NewsFilterCategory) {
+    if (option === 'Todo') {
+      clearCategory();
+    } else {
+      updateFilters(option, companyIds);
+    }
+
+    setCategoriesSheetOpen(false);
+  }
+
+  function isCategorySelected(option: NewsFilterCategory): boolean {
+    if (option === 'Todo') {
+      return activeCategory === undefined || activeCategory === 'Todo';
+    }
+
+    return activeCategory === option;
+  }
+
+  function getCategoryFilterLabel(option: NewsFilterCategory): string {
+    return option === 'Todo' ? 'Todas' : option;
+  }
+
   function handleSearchSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const nextQuery = searchInput.trim();
@@ -282,7 +264,14 @@ export function NewsFiltersSection({
             className="text-news-sidebar-link inline-flex items-center gap-1.5 py-1 text-base leading-[16.5px] underline"
           >
             Ver categorías
-            <TagOutlineIcon />
+            <Image
+              src="/icons/news/tag-outline.svg"
+              alt=""
+              width={21}
+              height={21}
+              aria-hidden
+              className="size-[21px] shrink-0"
+            />
           </button>
 
           <button
@@ -291,7 +280,14 @@ export function NewsFiltersSection({
             className="text-news-sidebar-link inline-flex items-center gap-1.5 py-1 text-base leading-[16.5px] underline"
           >
             Ver empresas
-            <BuildingIcon />
+            <Image
+              src="/icons/news/building.svg"
+              alt=""
+              width={22}
+              height={22}
+              aria-hidden
+              className="size-[22px] shrink-0"
+            />
           </button>
         </div>
 
@@ -321,25 +317,18 @@ export function NewsFiltersSection({
       <NewsFilterSheet
         open={categoriesSheetOpen}
         title="Seleccionar categoría"
+        variant="category"
         onClose={() => setCategoriesSheetOpen(false)}
       >
-        <div role="radiogroup" aria-label="Categorías">
+        <div role="radiogroup" aria-label="Categorías" className="flex flex-col gap-8">
           {NEWS_FILTER_OPTIONS.map((option) => (
             <NewsFilterRadioOption
               key={option}
               name="news-category"
               value={option}
-              label={option}
-              checked={activeCategory === option}
-              removable={activeCategory === option}
-              onChange={() => {
-                handleCategoryClick(option);
-                setCategoriesSheetOpen(false);
-              }}
-              onClear={() => {
-                clearCategory();
-                setCategoriesSheetOpen(false);
-              }}
+              label={getCategoryFilterLabel(option)}
+              checked={isCategorySelected(option)}
+              onChange={() => handleCategorySelect(option)}
             />
           ))}
         </div>
