@@ -1,6 +1,8 @@
 import type { ResourceCenterItem } from '@/lib/contentful/resource/resolveResourceCenterItems';
 import { cn } from '@/lib/utils';
 
+import { ResourceCenterDownloadButton } from './ResourceCenterDownloadButton';
+
 type ResourceCenterSectionProps = {
   title?: string;
   subtitle?: string;
@@ -21,14 +23,7 @@ function ResourceCenterRow({ item }: { item: ResourceCenterItem }) {
         ) : null}
       </div>
 
-      <a
-        href={item.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-link-cta shrink-0 text-base leading-6 transition-opacity hover:opacity-80"
-      >
-        Descargar
-      </a>
+      <ResourceCenterDownloadButton href={item.href} label={item.title} />
     </div>
   );
 }

@@ -1,9 +1,13 @@
 'use client';
 
 import { AppImage as Image } from '@/components/cms/AppImage';
+import { YoutubeEmbedPlayer } from '@/components/cms/YoutubeEmbedPlayer';
 import { useState } from 'react';
 
-import { withVideoAutoplay } from '@/lib/contentful/video/resolveVideoEmbedUrl';
+import {
+  parseYoutubeVideoId,
+  withVideoAutoplay,
+} from '@/lib/contentful/video/resolveVideoEmbedUrl';
 import { cn } from '@/lib/utils';
 
 type VideoEmbedPosterProps = {
@@ -13,6 +17,7 @@ type VideoEmbedPosterProps = {
   title: string;
   className?: string;
   showDimOverlay?: boolean;
+  onPlayingChange?: (isPlaying: boolean) => void;
 };
 
 function VideoPlayIcon() {
@@ -36,12 +41,28 @@ function VideoIframe({
   title,
   className,
   autoplay = false,
+  onPlayingChange,
 }: {
   embedUrl: string;
   title: string;
   className?: string;
   autoplay?: boolean;
+  onPlayingChange?: (isPlaying: boolean) => void;
 }) {
+  const youtubeVideoId = parseYoutubeVideoId(embedUrl);
+
+  if (youtubeVideoId && onPlayingChange) {
+    return (
+      <YoutubeEmbedPlayer
+        videoId={youtubeVideoId}
+        title={title}
+        className={className}
+        autoplay={autoplay}
+        onPlayingChange={onPlayingChange}
+      />
+    );
+  }
+
   return (
     <div
       className={cn(
@@ -68,11 +89,25 @@ export function VideoEmbedPoster({
   title,
   className,
   showDimOverlay = true,
+  onPlayingChange,
 }: VideoEmbedPosterProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const handlePlay = () => {
+    setIsPlaying(true);
+    onPlayingChange?.(true);
+  };
+
   if (isPlaying) {
-    return <VideoIframe embedUrl={embedUrl} title={title} className={className} autoplay />;
+    return (
+      <VideoIframe
+        embedUrl={embedUrl}
+        title={title}
+        className={className}
+        autoplay
+        onPlayingChange={onPlayingChange}
+      />
+    );
   }
 
   if (!posterUrl) {
@@ -83,7 +118,7 @@ export function VideoEmbedPoster({
     <button
       type="button"
       aria-label={`Reproducir video: ${title}`}
-      onClick={() => setIsPlaying(true)}
+      onClick={handlePlay}
       className={cn(
         'group relative flex h-[280px] w-full items-center justify-center overflow-hidden rounded-lg sm:h-[360px] lg:h-[442px]',
         className,

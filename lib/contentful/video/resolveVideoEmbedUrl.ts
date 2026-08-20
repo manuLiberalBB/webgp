@@ -1,4 +1,4 @@
-function parseYoutubeId(url: string): string | null {
+export function parseYoutubeVideoId(url: string): string | null {
   const patterns = [
     /youtu\.be\/([^#&?/]+)/,
     /youtube\.com\/embed\/([^#&?/]+)/,
@@ -15,7 +15,7 @@ function parseYoutubeId(url: string): string | null {
 }
 
 export function resolveVideoPosterUrl(url: string): string | null {
-  const youtubeId = parseYoutubeId(url);
+  const youtubeId = parseYoutubeVideoId(url);
   if (youtubeId) {
     return `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`;
   }
@@ -37,7 +37,7 @@ export function resolveVideoEmbedUrl(url: string): string | null {
       return url;
     }
 
-    const youtubeId = parseYoutubeId(url);
+    const youtubeId = parseYoutubeVideoId(url);
     if (youtubeId) {
       return `https://www.youtube.com/embed/${youtubeId}`;
     }

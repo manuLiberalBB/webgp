@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import type { Entry } from 'contentful';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { VideoEmbedPoster } from '@/components/cms/VideoEmbedPoster';
 import { resolveNavLink } from '@/lib/contentful/resolveNavLink';
@@ -103,10 +103,15 @@ export function I3ConversationsPanel({
   className,
 }: I3ConversationsPanelProps) {
   const [selectedVideoId, setSelectedVideoId] = useState(videos[0]?.id);
+  const [hasStartedPlayback, setHasStartedPlayback] = useState(false);
   const ctaLink = urlList?.map(resolveNavLink).find(Boolean) ?? null;
 
   const selectedVideo =
     videos.find((video) => video.id === selectedVideoId) ?? videos[0] ?? null;
+
+  useEffect(() => {
+    setHasStartedPlayback(false);
+  }, [selectedVideo?.id]);
 
   const embedUrl = selectedVideo?.embedUrl;
   const posterUrl =
@@ -131,18 +136,25 @@ export function I3ConversationsPanel({
             posterAlt={selectedVideo?.title ?? posterAlt}
             title={posterTitle}
             showDimOverlay={false}
+            onPlayingChange={(isPlaying) => {
+              if (isPlaying) setHasStartedPlayback(true);
+            }}
             className="absolute inset-0 h-full rounded-none sm:h-full lg:h-full"
           />
 
-          <div
-            className="pointer-events-none absolute inset-0"
-            style={{ background: I3_VIDEO_POSTER_OVERLAY_GRADIENT }}
-          />
+          {!hasStartedPlayback ? (
+            <>
+              <div
+                className="pointer-events-none absolute inset-0"
+                style={{ background: I3_VIDEO_POSTER_OVERLAY_GRADIENT }}
+              />
 
-          <div className="pointer-events-none absolute bottom-4 left-4 z-10 flex flex-col">
-            <p className="text-2xl leading-9 font-bold text-white">{posterTitle}</p>
-            <p className="text-sm leading-normal text-white/80">{posterSubtitle}</p>
-          </div>
+              <div className="pointer-events-none absolute bottom-4 left-4 z-10 flex flex-col">
+                <p className="text-2xl leading-9 font-bold text-white">{posterTitle}</p>
+                <p className="text-sm leading-normal text-white/80">{posterSubtitle}</p>
+              </div>
+            </>
+          ) : null}
         </div>
       ) : null}
 
