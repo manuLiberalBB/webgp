@@ -77,8 +77,8 @@ export function ProgramsDevelopmentSection({
           </header>
         ) : null}
 
-        <div className="layout-md:hidden -mx-6 min-w-0 overflow-x-auto overscroll-x-contain px-6 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-          <div className="flex w-max min-w-full snap-x snap-mandatory gap-6">
+        <div className="layout-md:hidden -mx-6 min-w-0 snap-x snap-mandatory overflow-x-auto overflow-y-hidden overscroll-x-contain px-6 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex w-max min-w-full items-start gap-6">
             {cards.map((card, index) => (
               <ProgramDevelopmentCard
                 key={`${card.contentfulName}-${index}`}

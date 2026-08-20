@@ -66,7 +66,7 @@ export function ProgramDevelopmentCardDescription({
       <p
         ref={measureRef}
         aria-hidden="true"
-        className="pointer-events-none invisible absolute inset-x-0 top-0 -z-10 m-0 text-body text-base leading-normal whitespace-pre-line"
+        className="pointer-events-none invisible absolute inset-x-0 top-0 -z-10 m-0 h-0 overflow-hidden text-body text-base leading-normal whitespace-pre-line"
       >
         {parseItalicText(text)}
       </p>
@@ -75,7 +75,10 @@ export function ProgramDevelopmentCardDescription({
         {canExpand ? (
           <button
             type="button"
-            onClick={() => setExpanded((current) => !current)}
+            onClick={(event) => {
+              event.stopPropagation();
+              setExpanded((current) => !current);
+            }}
             className="text-link-cta underline decoration-solid underline-offset-2"
           >
             {expanded ? 'ver menos' : 'ver más'}
