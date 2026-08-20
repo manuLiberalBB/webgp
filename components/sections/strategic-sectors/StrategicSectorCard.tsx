@@ -50,7 +50,7 @@ export function StrategicSectorCard({
         {item.title}
       </h3>
 
-      <p className="min-h-0 text-base leading-6 font-normal text-white line-clamp-2 md:min-h-[4.5rem] md:line-clamp-3">
+      <p className="min-h-0 text-base leading-6 font-normal text-white md:min-h-[4.5rem] md:line-clamp-3">
         {item.description ?? '\u00A0'}
       </p>
 
@@ -62,7 +62,7 @@ export function StrategicSectorCard({
   );
 
   const cardClassName = cn(
-    'group relative flex h-[280px] w-full min-w-0 cursor-pointer flex-col justify-end overflow-hidden rounded-lg px-4 py-4 text-left transition-shadow md:h-[381px] md:py-5',
+    'group relative flex min-h-[280px] w-full min-w-0 cursor-pointer flex-col justify-end overflow-hidden rounded-lg px-4 py-4 text-left transition-shadow md:h-[381px] md:py-5',
     isSelected && 'ring-2 ring-cta ring-offset-2',
     className,
   );
