@@ -168,7 +168,8 @@ export const gridSectionRenderers: Record<
         subtitle={ctx.subtitle}
         posterUrl={posterUrl}
         posterAlt={ctx.imageAlt}
-        videoEmbedUrl={sectionVideo.embedUrl}
+        videoUrl={sectionVideo.embedUrl ?? sectionVideo.url}
+        videoSource={sectionVideo.source}
         videoTitle={sectionVideo.title ?? ctx.title}
       />
     );

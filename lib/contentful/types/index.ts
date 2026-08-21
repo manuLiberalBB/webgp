@@ -62,4 +62,4 @@ export type {
   QuoteBlockFields,
   QuoteBlockSkeleton,
 } from './quoteBlock';
-export type { VideoEntry, VideoFields, VideoItem, VideoSkeleton } from './video';
+export type { VideoEntry, VideoFields, VideoItem, VideoSkeleton, VideoSource } from './video';

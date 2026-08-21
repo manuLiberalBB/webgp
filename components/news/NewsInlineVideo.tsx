@@ -23,7 +23,8 @@ export function NewsInlineVideo({ item, className }: NewsInlineVideoProps) {
       <VideoEmbedPoster
         posterUrl={posterUrl}
         posterAlt={iframeTitle}
-        embedUrl={item.embedUrl}
+        videoUrl={item.source === 'embed' ? item.embedUrl! : item.url}
+        source={item.source}
         title={iframeTitle}
         className={cn(
           NEWS_INLINE_VIDEO_HEIGHT,

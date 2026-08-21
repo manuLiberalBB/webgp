@@ -1,4 +1,4 @@
-import type { EntrySkeletonType } from 'contentful';
+import type { Asset, EntrySkeletonType } from 'contentful';
 
 /**
  * Content type: `video` (Video)
@@ -10,7 +10,10 @@ export type VideoFields = {
   url?: string;
   title?: string;
   author?: string;
+  archivoVideo?: Asset;
 };
+
+export type VideoSource = 'embed' | 'asset';
 
 export type VideoEntry = {
   fields: VideoFields;
@@ -25,7 +28,8 @@ export type VideoItem = {
   id: string;
   contenfulName: string;
   url: string;
-  embedUrl: string;
+  source: VideoSource;
+  embedUrl?: string;
   title?: string;
   author?: string;
 };

@@ -9,7 +9,6 @@ import { getRelatedNews } from '@/lib/contentful/queries';
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';
 import { normalizeNewsCategory } from '@/lib/contentful/news/normalizeNewsCategory';
 import type { NewsFields } from '@/lib/contentful/types/news';
-import { resolveNewsDisplaySubtitle } from '@/lib/news/resolveNewsDisplaySubtitle';
 import { buildNewsArticleContext } from '@/lib/news/buildNewsArticleContext';
 import { getPrimaryCompany } from '@/lib/news/getPrimaryCompany';
 import { resolveNewsPublishedAt, type NewsEntryPublicationSys } from '@/lib/news/resolveNewsPublishedAt';
@@ -31,7 +30,7 @@ export async function NewsDetailView({ fields, entrySys }: NewsDetailViewProps) 
   const category = normalizeNewsCategory(fields.category);
 
   const resolvedPublishedAt = resolveNewsPublishedAt(fields, entrySys);
-  const displaySubtitle = resolveNewsDisplaySubtitle(fields);
+  const subtitle = fields.subtitle?.trim() || undefined;
 
   const [relatedNews] = await Promise.all([
     getRelatedNews({
@@ -48,7 +47,7 @@ export async function NewsDetailView({ fields, entrySys }: NewsDetailViewProps) 
     <article>
       <NewsHero
         title={fields.noticeTitle}
-        subtitle={displaySubtitle}
+        subtitle={subtitle}
         category={category}
         imageUrl={imageUrl}
         imageAlt={imageAlt}
@@ -59,7 +58,7 @@ export async function NewsDetailView({ fields, entrySys }: NewsDetailViewProps) 
         category={category}
         companyName={articleContext.companyName}
         content={fields.content}
-        subtitle={displaySubtitle}
+        subtitle={subtitle}
         publishedAt={resolvedPublishedAt}
       />
 

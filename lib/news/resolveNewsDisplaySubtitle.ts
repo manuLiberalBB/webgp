@@ -22,7 +22,7 @@ function extractContentPlainText(content: NewsFields['content'] | string | undef
   return plainText || undefined;
 }
 
-/** Resuelve la bajada visible: usa `subtitle` o, si falta, un fragmento inicial del contenido en texto plano. */
+/** Resuelve la bajada visible en listados/cards: usa `subtitle` o, si falta, un fragmento inicial del contenido en texto plano. */
 export function resolveNewsDisplaySubtitle(
   fields: Pick<NewsFields, 'subtitle' | 'content'>,
   maxLength = NEWS_DISPLAY_SUBTITLE_MAX_LENGTH,

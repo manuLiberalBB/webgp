@@ -113,7 +113,10 @@ export function I3ConversationsPanel({
     setHasStartedPlayback(false);
   }, [selectedVideo?.id]);
 
-  const embedUrl = selectedVideo?.embedUrl;
+  const playbackUrl =
+    selectedVideo?.source === 'embed'
+      ? selectedVideo.embedUrl
+      : selectedVideo?.url;
   const posterUrl =
     (selectedVideo ? resolveVideoPosterUrl(selectedVideo.url) : null) ??
     defaultPosterUrl;
@@ -127,11 +130,12 @@ export function I3ConversationsPanel({
         className,
       )}
     >
-      {embedUrl ? (
+      {playbackUrl ? (
         <div className="relative h-[260px] w-full shrink-0 overflow-hidden">
           <VideoEmbedPoster
             key={selectedVideo?.id}
-            embedUrl={embedUrl}
+            videoUrl={playbackUrl}
+            source={selectedVideo?.source}
             posterUrl={posterUrl}
             posterAlt={selectedVideo?.title ?? posterAlt}
             title={posterTitle}

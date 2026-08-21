@@ -8,12 +8,14 @@ import {
   parseYoutubeVideoId,
   withVideoAutoplay,
 } from '@/lib/contentful/video/resolveVideoEmbedUrl';
+import type { VideoSource } from '@/lib/contentful/types/video';
 import { cn } from '@/lib/utils';
 
 type VideoEmbedPosterProps = {
   posterUrl?: string;
   posterAlt?: string;
-  embedUrl: string;
+  videoUrl: string;
+  source?: VideoSource;
   title: string;
   className?: string;
   showDimOverlay?: boolean;
@@ -36,20 +38,50 @@ function VideoPlayIcon() {
   );
 }
 
+function VideoAssetPlayer({
+  videoUrl,
+  title,
+  className,
+  autoplay = false,
+}: {
+  videoUrl: string;
+  title: string;
+  className?: string;
+  autoplay?: boolean;
+}) {
+  return (
+    <div
+      className={cn(
+        'relative h-[280px] w-full overflow-hidden rounded-lg sm:h-[360px] lg:h-[442px]',
+        className,
+      )}
+    >
+      <video
+        src={videoUrl}
+        title={title}
+        controls
+        autoPlay={autoplay}
+        playsInline
+        className="absolute inset-0 h-full w-full bg-black object-contain"
+      />
+    </div>
+  );
+}
+
 function VideoIframe({
-  embedUrl,
+  videoUrl,
   title,
   className,
   autoplay = false,
   onPlayingChange,
 }: {
-  embedUrl: string;
+  videoUrl: string;
   title: string;
   className?: string;
   autoplay?: boolean;
   onPlayingChange?: (isPlaying: boolean) => void;
 }) {
-  const youtubeVideoId = parseYoutubeVideoId(embedUrl);
+  const youtubeVideoId = parseYoutubeVideoId(videoUrl);
 
   if (youtubeVideoId && onPlayingChange) {
     return (
@@ -71,7 +103,7 @@ function VideoIframe({
       )}
     >
       <iframe
-        src={autoplay ? withVideoAutoplay(embedUrl) : embedUrl}
+        src={autoplay ? withVideoAutoplay(videoUrl) : videoUrl}
         title={title}
         className="absolute inset-0 h-full w-full border-0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -85,7 +117,8 @@ function VideoIframe({
 export function VideoEmbedPoster({
   posterUrl,
   posterAlt = '',
-  embedUrl,
+  videoUrl,
+  source = 'embed',
   title,
   className,
   showDimOverlay = true,
@@ -99,9 +132,20 @@ export function VideoEmbedPoster({
   };
 
   if (isPlaying) {
+    if (source === 'asset') {
+      return (
+        <VideoAssetPlayer
+          videoUrl={videoUrl}
+          title={title}
+          className={className}
+          autoplay
+        />
+      );
+    }
+
     return (
       <VideoIframe
-        embedUrl={embedUrl}
+        videoUrl={videoUrl}
         title={title}
         className={className}
         autoplay
@@ -111,7 +155,11 @@ export function VideoEmbedPoster({
   }
 
   if (!posterUrl) {
-    return <VideoIframe embedUrl={embedUrl} title={title} className={className} />;
+    if (source === 'asset') {
+      return <VideoAssetPlayer videoUrl={videoUrl} title={title} className={className} />;
+    }
+
+    return <VideoIframe videoUrl={videoUrl} title={title} className={className} />;
   }
 
   return (

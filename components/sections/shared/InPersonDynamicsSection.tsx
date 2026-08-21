@@ -1,4 +1,5 @@
 import { VideoEmbedPoster } from '@/components/cms/VideoEmbedPoster';
+import type { VideoSource } from '@/lib/contentful/types/video';
 import { cn } from '@/lib/utils';
 
 type InPersonDynamicsSectionProps = {
@@ -6,7 +7,8 @@ type InPersonDynamicsSectionProps = {
   subtitle?: string;
   posterUrl: string;
   posterAlt?: string;
-  videoEmbedUrl: string;
+  videoUrl: string;
+  videoSource?: VideoSource;
   videoTitle?: string;
   className?: string;
 };
@@ -16,7 +18,8 @@ export function InPersonDynamicsSection({
   subtitle,
   posterUrl,
   posterAlt = '',
-  videoEmbedUrl,
+  videoUrl,
+  videoSource = 'embed',
   videoTitle,
   className,
 }: InPersonDynamicsSectionProps) {
@@ -47,7 +50,8 @@ export function InPersonDynamicsSection({
         <VideoEmbedPoster
           posterUrl={posterUrl}
           posterAlt={posterAlt}
-          embedUrl={videoEmbedUrl}
+          videoUrl={videoUrl}
+          source={videoSource}
           title={videoTitle ?? title ?? 'Video'}
         />
       </div>

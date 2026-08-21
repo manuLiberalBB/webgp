@@ -7,7 +7,8 @@ import { resolveVideoItems } from './resolveVideoItem';
 
 export type SectionVideo = {
   url: string;
-  embedUrl: string;
+  source: 'embed' | 'asset';
+  embedUrl?: string;
   title?: string;
   posterUrl?: string;
 };
@@ -19,9 +20,13 @@ export function resolveSectionVideo(entries?: Entry[]): SectionVideo | null {
   if (firstVideo) {
     return {
       url: firstVideo.url,
+      source: firstVideo.source,
       embedUrl: firstVideo.embedUrl,
       title: firstVideo.title,
-      posterUrl: resolveVideoPosterUrl(firstVideo.url) ?? undefined,
+      posterUrl:
+        firstVideo.source === 'embed'
+          ? (resolveVideoPosterUrl(firstVideo.url) ?? undefined)
+          : undefined,
     };
   }
 
@@ -33,6 +38,7 @@ export function resolveSectionVideo(entries?: Entry[]): SectionVideo | null {
 
   return {
     url: externalUrl,
+    source: 'embed',
     embedUrl,
     posterUrl: resolveVideoPosterUrl(externalUrl) ?? undefined,
   };

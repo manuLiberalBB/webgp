@@ -13,14 +13,24 @@ export function ContentfulVideo({ item, className }: ContentfulVideoProps) {
   return (
     <figure className={cn('flex w-full flex-col gap-3', className)}>
       <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black">
-        <iframe
-          src={item.embedUrl}
-          title={iframeTitle}
-          className="absolute inset-0 h-full w-full border-0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        />
+        {item.source === 'asset' ? (
+          <video
+            src={item.url}
+            title={iframeTitle}
+            controls
+            playsInline
+            className="absolute inset-0 h-full w-full object-contain"
+          />
+        ) : (
+          <iframe
+            src={item.embedUrl}
+            title={iframeTitle}
+            className="absolute inset-0 h-full w-full border-0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        )}
       </div>
 
       {hasCaption ? (
