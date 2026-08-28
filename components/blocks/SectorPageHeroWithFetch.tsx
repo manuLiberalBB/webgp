@@ -1,8 +1,8 @@
 import { HeroBanner } from '@/components/sections/shared/HeroBanner';
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';
 import { fetchSectorEntryByPagePath } from '@/lib/contentful/sector/fetchSectorEntryByPagePath';
+import { resolveSectorHeroSubtitle } from '@/lib/contentful/sector/isSectorPage';
 import type { SectorFields } from '@/lib/contentful/types/sector';
-import { isCompactMobileHeroPage } from '@/lib/layout/compactMobileHeroPages';
 
 type SectorPageHeroWithFetchProps = {
   pagePath?: string[];
@@ -22,11 +22,10 @@ export async function SectorPageHeroWithFetch({ pagePath }: SectorPageHeroWithFe
   return (
     <HeroBanner
       title={name}
-      subtitle={description}
+      subtitle={resolveSectorHeroSubtitle(pagePath, description)}
       imageUrl={imageUrl}
       imageAlt={imageAlt}
       pagePath={pagePath}
-      compactMobile={isCompactMobileHeroPage(pagePath)}
     />
   );
 }

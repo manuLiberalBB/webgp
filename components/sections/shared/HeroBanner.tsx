@@ -11,6 +11,13 @@ import {
   isInstitutionalHeroPage,
   isQueHacemosHeroPage,
 } from '@/lib/layout/institutionalHeroPages';
+import {
+  isSectorHeroPage,
+  SECTOR_HERO_OVERLAY_GRADIENT,
+  SECTOR_HERO_OVERLAY_SIDE_GRADIENT,
+  SECTOR_HERO_SECTION_CLASS,
+  SECTOR_HERO_TITLE_CLASS,
+} from '@/lib/layout/sectorHeroPages';
 import { cn } from '@/lib/utils';
 
 import { Badge } from '@/components/ui/Badge';
@@ -42,17 +49,20 @@ export function HeroBanner({
 }: HeroBannerProps) {
   const isInstitutionalHero = isInstitutionalHeroPage(pagePath);
   const isCompactLandingHero = isCompactLandingHeroPage(pagePath);
+  const isSectorHero = isSectorHeroPage(pagePath);
   return (
     <section
       id={id}
       className={cn(
         'relative flex w-full max-w-full flex-col overflow-hidden px-6 md:px-layout-x',
-        compactMobile
-          ? COMPACT_MOBILE_HERO_SECTION_CLASS
-          : cn(
-              'min-h-hero justify-center pt-10 md:pt-12',
-              HERO_BOTTOM_PADDING,
-            ),
+        isSectorHero
+          ? SECTOR_HERO_SECTION_CLASS
+          : compactMobile
+            ? COMPACT_MOBILE_HERO_SECTION_CLASS
+            : cn(
+                'min-h-hero justify-center pt-10 md:pt-12',
+                HERO_BOTTOM_PADDING,
+              ),
         id && 'scroll-mt-20',
         className,
       )}
@@ -71,14 +81,19 @@ export function HeroBanner({
           'absolute inset-0',
           !isInstitutionalHero &&
             !isCompactLandingHero &&
+            !isSectorHero &&
             'bg-gradient-to-t from-black/80 from-[39.421%] to-black/25',
         )}
         style={
           isInstitutionalHero
             ? { background: INSTITUTIONAL_HERO_OVERLAY_GRADIENT }
-            : isCompactLandingHero
-              ? { background: COMPACT_LANDING_HERO_OVERLAY }
-              : undefined
+            : isSectorHero
+              ? {
+                  background: `${SECTOR_HERO_OVERLAY_SIDE_GRADIENT}, ${SECTOR_HERO_OVERLAY_GRADIENT}`,
+                }
+              : isCompactLandingHero
+                ? { background: COMPACT_LANDING_HERO_OVERLAY }
+                : undefined
         }
       />
 
@@ -110,8 +125,8 @@ export function HeroBanner({
             <h1
               className={cn(
                 'text-white',
-                isCompactLandingHero
-                  ? 'text-[2.25rem] font-semibold leading-[1.2] tracking-[-0.04em] md:text-[3.375rem] md:leading-[4.104rem] md:tracking-[-1.52px]'
+                isSectorHero || isCompactLandingHero
+                  ? SECTOR_HERO_TITLE_CLASS
                   : 'text-[2.25rem] leading-[1.2] font-bold md:text-[3rem] md:leading-[4.25rem]',
               )}
             >
@@ -123,7 +138,7 @@ export function HeroBanner({
             <p
               className={cn(
                 'text-white',
-                isCompactLandingHero
+                isSectorHero || isCompactLandingHero
                   ? 'text-lg leading-normal md:text-2xl'
                   : 'pt-4 text-[1.25rem] leading-9 md:pt-6 md:text-[1.375rem]',
               )}

@@ -1,5 +1,3 @@
-import { isSectorPage } from '@/lib/contentful/sector/isSectorPage';
-
 const COMPACT_MOBILE_HERO_PAGES = new Set([
   'quienes-somos',
   'economias-regionales',
@@ -8,8 +6,6 @@ const COMPACT_MOBILE_HERO_PAGES = new Set([
 ]);
 
 export function isCompactMobileHeroPage(pagePath?: string[]): boolean {
-  if (isSectorPage(pagePath)) return true;
-
   return pagePath?.length === 1 && COMPACT_MOBILE_HERO_PAGES.has(pagePath[0]);
 }
 

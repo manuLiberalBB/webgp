@@ -25,12 +25,12 @@ function extractContentPlainText(content: NewsFields['content'] | string | undef
 /** Resuelve la bajada visible en listados/cards: usa `subtitle` o, si falta, un fragmento inicial del contenido en texto plano. */
 export function resolveNewsDisplaySubtitle(
   fields: Pick<NewsFields, 'subtitle' | 'content'>,
-  maxLength = NEWS_DISPLAY_SUBTITLE_MAX_LENGTH,
+  maxLength: number | null = NEWS_DISPLAY_SUBTITLE_MAX_LENGTH,
 ): string | undefined {
   const subtitle = fields.subtitle?.trim();
 
   if (subtitle) {
-    return maxLength ? truncateText(subtitle, maxLength) : subtitle;
+    return maxLength === null ? subtitle : truncateText(subtitle, maxLength);
   }
 
   const contentFragment = extractContentPlainText(fields.content);
@@ -39,5 +39,18 @@ export function resolveNewsDisplaySubtitle(
     return undefined;
   }
 
-  return truncateText(contentFragment, maxLength);
+  return maxLength === null ? contentFragment : truncateText(contentFragment, maxLength);
+}
+
+/** Resuelve la bajada para heroes: muestra la bajada completa solo si existe `subtitle`; si no, usa un extracto truncado del contenido. */
+export function resolveNewsHeroSubtitle(
+  fields: Pick<NewsFields, 'subtitle' | 'content'>,
+): string | undefined {
+  const subtitle = fields.subtitle?.trim();
+
+  if (subtitle) {
+    return subtitle;
+  }
+
+  return resolveNewsDisplaySubtitle(fields);
 }

@@ -10,3 +10,12 @@ export function getSectorSlug(pagePath?: string[]): string | undefined {
 export function isBankingSectorPage(pagePath?: string[]): boolean {
   return getSectorSlug(pagePath) === 'banca';
 }
+
+export function resolveSectorHeroSubtitle(
+  pagePath: string[] | undefined,
+  subtitle: string | undefined,
+): string | undefined {
+  if (!subtitle) return undefined;
+  if (isSectorPage(pagePath) && !isBankingSectorPage(pagePath)) return undefined;
+  return subtitle;
+}

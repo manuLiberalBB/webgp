@@ -6,6 +6,7 @@ import { StatisticsBanner } from '@/components/sections/shared/StatisticsBanner'
 import { RichText } from '@/components/cms/RichText';
 import { CtaLinks } from '@/components/ui/CtaLinks';
 import type { BannerContext } from '@/lib/contentful/banner/buildBannerContext';
+import { resolveSectorHeroSubtitle } from '@/lib/contentful/sector/isSectorPage';
 import {
   BANNER_VARIANTS,
   type BannerVariant,
@@ -17,7 +18,7 @@ function renderHeroBanner(ctx: BannerContext) {
       <HeroBanner
         tag={ctx.tag}
         title={ctx.title}
-        subtitle={ctx.subtitle}
+        subtitle={resolveSectorHeroSubtitle(ctx.pagePath, ctx.subtitle)}
         imageUrl={ctx.imageUrl}
         imageAlt={ctx.imageAlt}
         compactMobile={ctx.compactMobile}

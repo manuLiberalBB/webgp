@@ -8,6 +8,8 @@ import {
   parseNewsSearchParams,
 } from '@/lib/contentful/news/newsListFilters';
 import { mapFeaturedNewsItem } from '@/lib/news/mapFeaturedNewsItem';
+import { resolveNewsHeroSubtitle } from '@/lib/news/resolveNewsDisplaySubtitle';
+import type { FeaturedNewsItem } from '@/lib/news/types';
 
 import { FeaturedNewsHero } from '@/components/news/FeaturedNewsHero';
 import { FeaturedNewsSection } from '@/components/news/FeaturedNewsSection';
@@ -24,6 +26,16 @@ function isNewsListingPage(pagePath?: string[]) {
   return pagePath?.length === 1 && pagePath[0] === 'noticias';
 }
 
+function withHeroSubtitle(
+  item: FeaturedNewsItem,
+  fields: NewsFields,
+): FeaturedNewsItem {
+  return {
+    ...item,
+    subtitle: resolveNewsHeroSubtitle(fields),
+  };
+}
+
 export const FeaturedNewsBlock: BlockComponent = ({
   fields,
   pagePath,
@@ -31,19 +43,26 @@ export const FeaturedNewsBlock: BlockComponent = ({
 }) => {
   const { news } = fields as FeaturedNewsFields;
 
-  const items = news
-    .map((entry) =>
-      mapFeaturedNewsItem(
+  const mappedEntries = news
+    .map((entry) => {
+      const item = mapFeaturedNewsItem(
         entry.sys.id,
         entry.fields as NewsFields,
         entry.sys,
-      ),
-    )
-    .filter((item): item is NonNullable<typeof item> => item !== null);
+      );
+
+      return item ? { entry, item } : null;
+    })
+    .filter((mapped): mapped is NonNullable<typeof mapped> => mapped !== null);
+
+  const items = mappedEntries.map(({ item }) => item);
 
   if (isNewsListingPage(pagePath)) {
     const heroIndex = items.length > 1 ? 1 : 0;
-    const heroItem = items[heroIndex];
+    const heroEntry = mappedEntries[heroIndex];
+    const heroItem = heroEntry
+      ? withHeroSubtitle(heroEntry.item, heroEntry.entry.fields as NewsFields)
+      : null;
     const sectionItems = items.filter((_, index) => index !== heroIndex).slice(0, 4);
 
     const parsedFilters = parseNewsSearchParams(searchParams ?? {});
@@ -79,7 +98,12 @@ export const FeaturedNewsBlock: BlockComponent = ({
 
   if (items.length === 0) return null;
 
-  const [heroItem, ...restItems] = items;
+  const [heroEntry, ...restEntries] = mappedEntries;
+  const heroItem = withHeroSubtitle(
+    heroEntry.item,
+    heroEntry.entry.fields as NewsFields,
+  );
+  const restItems = restEntries.map(({ item }) => item);
 
   return (
     <>
