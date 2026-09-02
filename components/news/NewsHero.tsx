@@ -1,6 +1,7 @@
 import { HeroImage } from '@/components/cms/AppImage';
 import type { NewsCategory } from '@/lib/contentful/types/news';
 import { NEWS_IMAGE_OVERLAY_GRADIENT } from '@/lib/news/newsImageOverlayGradient';
+import { renderTextWithBoldMarkers } from '@/lib/ui/renderTextWithBoldMarkers';
 import { cn } from '@/lib/utils';
 
 import { NewsCategoryBadge } from './NewsCategoryBadge';
@@ -43,7 +44,7 @@ export function NewsHero({
 
             {subtitle ? (
               <p className="text-[20px] leading-normal text-white md:text-[21px] md:leading-[1.3]">
-                {subtitle}
+                {renderTextWithBoldMarkers(subtitle, 'font-bold')}
               </p>
             ) : null}
           </div>

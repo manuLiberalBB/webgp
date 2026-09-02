@@ -7,9 +7,15 @@ type LogoGridSectionProps = {
   title?: string;
   items: CarouselItem[];
   className?: string;
+  desktopColumns?: 3 | 4;
 };
 
-export function LogoGridSection({ title, items, className }: LogoGridSectionProps) {
+export function LogoGridSection({
+  title,
+  items,
+  className,
+  desktopColumns = 4,
+}: LogoGridSectionProps) {
   return (
     <section
       className={cn(
@@ -24,7 +30,7 @@ export function LogoGridSection({ title, items, className }: LogoGridSectionProp
           </h2>
         ) : null}
 
-        <CompanyLogoGrid items={items} />
+        <CompanyLogoGrid items={items} desktopColumns={desktopColumns} />
       </div>
     </section>
   );

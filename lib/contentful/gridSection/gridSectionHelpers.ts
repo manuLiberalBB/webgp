@@ -137,3 +137,23 @@ export function isImageOverlayGrid(cards: CardFields[]): boolean {
 
   return cards.every((card) => Boolean(card.image && getAssetUrl(card.image)));
 }
+
+export function resolveLogoGridDesktopColumns(title?: string): 3 | 4 {
+  if (!title?.trim()) return 4;
+
+  const normalized = normalizeSectionLabel(title);
+
+  if (normalized.includes('INTEGRAN') && normalized.includes('UNIDAD MINERA')) {
+    return 3;
+  }
+
+  return 4;
+}
+
+export function isMiningCardsSection(contentfulName?: string): boolean {
+  if (!contentfulName?.trim()) return false;
+
+  const normalized = normalizeSectionLabel(contentfulName);
+
+  return normalized.includes('CARDS') && normalized.includes('MINERIA');
+}

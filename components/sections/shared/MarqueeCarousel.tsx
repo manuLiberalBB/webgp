@@ -34,12 +34,12 @@ function MarqueeCarouselItem({
       width={item.imageWidth}
       height={item.imageHeight}
       style={AUTO_ASPECT_STYLE}
-      className="h-12 w-auto max-w-full object-contain"
+      className="max-h-20 max-w-full object-contain md:max-h-24 md:max-w-[20rem]"
     />
   );
 
   const contentClassName = cn(
-    'flex h-14 items-center justify-center',
+    'flex h-[5.5rem] shrink-0 items-center justify-center px-3 md:h-28',
     className,
   );
 
@@ -150,9 +150,9 @@ export function MarqueeCarousel({
 
   return (
     <div className={cn('w-full', className)} aria-label="Carrusel de logos">
-      <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:hidden">
+      <div className="grid grid-cols-2 gap-x-7 gap-y-10 md:hidden">
         {items.map((item) => (
-          <MarqueeCarouselItem key={item.id} item={item} className="w-full px-2" />
+          <MarqueeCarouselItem key={item.id} item={item} className="w-full" />
         ))}
       </div>
 
@@ -164,16 +164,12 @@ export function MarqueeCarousel({
         <div
           ref={trackRef}
           className={cn(
-            'company-carousel-track flex w-max items-center gap-layout-x',
-            reduceMotion && 'w-full flex-wrap justify-center gap-10',
+            'company-carousel-track flex w-max items-center gap-16 md:gap-20',
+            reduceMotion && 'w-full flex-wrap justify-center gap-16 md:gap-20',
           )}
         >
           {trackItems.map((item, index) => (
-            <MarqueeCarouselItem
-              key={`${item.id}-${index}`}
-              item={item}
-              className="shrink-0 px-2"
-            />
+            <MarqueeCarouselItem key={`${item.id}-${index}`} item={item} />
           ))}
         </div>
       </div>

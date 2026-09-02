@@ -7,6 +7,7 @@ import { getAssetUrl } from '@/lib/contentful/getAssetUrl';
 import { HERO_BOTTOM_PADDING } from '@/lib/layout/sectionPadding';
 import { resolveNavLink } from '@/lib/contentful/resolveNavLink';
 import type { CardFields } from '@/lib/contentful/types/card';
+import { renderTextWithBoldMarkers } from '@/lib/ui/renderTextWithBoldMarkers';
 import { cn } from '@/lib/utils';
 
 const QUALIA_CARD_CTA_LABEL = 'Conocer más';
@@ -149,7 +150,9 @@ export function QualiaBanner({
                 ) : null}
 
                 {subtitle ? (
-                  <p className="text-lg leading-normal md:text-xl">{subtitle}</p>
+                  <p className="text-lg leading-normal md:text-xl">
+                    {renderTextWithBoldMarkers(subtitle, 'font-bold')}
+                  </p>
                 ) : null}
               </div>
             )}

@@ -17,6 +17,7 @@ export type BlockComponentProps = {
   pagePath?: string[];
   searchParams?: Record<string, string | string[] | undefined>;
   isAboveFold?: boolean;
+  hideFeaturedNewsHero?: boolean;
 };
 
 export type BlockComponent = ComponentType<BlockComponentProps>;

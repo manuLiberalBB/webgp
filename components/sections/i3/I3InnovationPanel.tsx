@@ -1,23 +1,9 @@
 import { AppImage as Image } from '@/components/cms/AppImage';
-import type { ReactNode } from 'react';
 
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';
 import type { CardFields } from '@/lib/contentful/types/card';
+import { renderTextWithBoldMarkers } from '@/lib/ui/renderTextWithBoldMarkers';
 import { cn } from '@/lib/utils';
-
-function renderTextWithBoldMarkers(text: string): ReactNode {
-  return text.split(/(\*\*[^*]+\*\*)/g).map((part, index) => {
-    if (part.startsWith('**') && part.endsWith('**')) {
-      return (
-        <strong key={index} className="font-semibold">
-          {part.slice(2, -2)}
-        </strong>
-      );
-    }
-
-    return part;
-  });
-}
 
 type I3InnovationPanelProps = {
   tag?: string;
@@ -79,7 +65,7 @@ export function I3InnovationPanel({
 
             {subtitle ? (
               <p className="text-body text-xl leading-normal">
-                {renderTextWithBoldMarkers(subtitle)}
+                {renderTextWithBoldMarkers(subtitle, 'font-semibold')}
               </p>
             ) : null}
           </div>

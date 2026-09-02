@@ -5,6 +5,7 @@ import { CtaLinks } from '@/components/ui/CtaLinks';
 import type { StatisticItem } from '@/lib/contentful/types/statistic';
 import { HERO_BOTTOM_PADDING } from '@/lib/layout/sectionPadding';
 import { COMPACT_MOBILE_HERO_SECTION_CLASS } from '@/lib/layout/compactMobileHeroPages';
+import { renderTextWithBoldMarkers } from '@/lib/ui/renderTextWithBoldMarkers';
 import { cn } from '@/lib/utils';
 
 type StatisticsBannerProps = {
@@ -61,7 +62,9 @@ export function StatisticsBanner({
         ) : null}
 
         {subtitle ? (
-          <p className="max-w-[656px] text-lg leading-7 text-white">{subtitle}</p>
+          <p className="max-w-[656px] text-lg leading-7 text-white">
+            {renderTextWithBoldMarkers(subtitle, 'font-bold')}
+          </p>
         ) : null}
       </div>
 

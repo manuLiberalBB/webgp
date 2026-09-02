@@ -59,7 +59,6 @@ function renderEmbeddedAsset(node: { data: { target?: AssetTarget } }) {
         imageAlt: title ?? '',
         width,
         height,
-        epigraph: title,
       }}
     />
   );

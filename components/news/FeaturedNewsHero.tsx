@@ -3,17 +3,21 @@ import { NewsArticleButton } from '@/components/news/NewsArticleButton';
 import { NewsCategoryBadge } from '@/components/news/NewsCategoryBadge';
 import { NewsCompanyBadge } from '@/components/news/NewsCompanyBadge';
 import type { FeaturedNewsItem } from '@/lib/news/types';
+import {
+  FEATURED_NEWS_HERO_CONTENT_CLASS,
+  FEATURED_NEWS_HERO_OVERLAY_GRADIENT,
+  FEATURED_NEWS_HERO_WRAPPER_CLASS,
+} from '@/lib/news/featuredNewsHeroStyles';
+import { renderTextWithBoldMarkers } from '@/lib/ui/renderTextWithBoldMarkers';
 import { cn } from '@/lib/utils';
 
 type FeaturedNewsHeroProps = {
   item: FeaturedNewsItem;
   className?: string;
+  embedded?: boolean;
 };
 
 const HERO_EYEBROW_CLASS = 'px-2.5 py-1.5 text-xs tracking-[1.25px]';
-
-const HERO_OVERLAY_GRADIENT =
-  'linear-gradient(76deg, rgba(0, 0, 0, 0.80) 24.91%, rgba(0, 0, 0, 0.50) 52.19%, rgba(0, 0, 0, 0.00) 79.48%)';
 
 function ArrowRightIcon() {
   return (
@@ -29,13 +33,16 @@ function ArrowRightIcon() {
   );
 }
 
-export function FeaturedNewsHero({ item, className }: FeaturedNewsHeroProps) {
+export function FeaturedNewsHero({
+  item,
+  className,
+  embedded = false,
+}: FeaturedNewsHeroProps) {
+  const Wrapper = embedded ? 'div' : 'section';
+
   return (
-    <section
-      className={cn(
-        'relative flex w-full min-h-[440px] flex-col overflow-hidden md:min-h-[500px]',
-        className,
-      )}
+    <Wrapper
+      className={cn(FEATURED_NEWS_HERO_WRAPPER_CLASS, className)}
     >
       <HeroImage
         src={item.coverImageUrl}
@@ -47,10 +54,10 @@ export function FeaturedNewsHero({ item, className }: FeaturedNewsHeroProps) {
       <div
         aria-hidden
         className="absolute inset-0"
-        style={{ background: HERO_OVERLAY_GRADIENT }}
+        style={{ background: FEATURED_NEWS_HERO_OVERLAY_GRADIENT }}
       />
 
-      <div className="relative z-10 px-6 pb-12 pt-10 md:px-layout-x md:pb-16 md:pt-14 lg:pt-16">
+      <div className={FEATURED_NEWS_HERO_CONTENT_CLASS}>
         <div className="mx-auto flex w-full max-w-content flex-col items-start gap-5 md:gap-6">
           <div className="flex flex-wrap items-start gap-3">
             {item.category ? (
@@ -67,7 +74,7 @@ export function FeaturedNewsHero({ item, className }: FeaturedNewsHeroProps) {
 
           {item.subtitle ? (
             <p className="max-w-[52.875rem] text-[19px] leading-normal text-[#e5e7eb] md:text-[22px] md:leading-[1.3]">
-              {item.subtitle}
+              {renderTextWithBoldMarkers(item.subtitle, 'font-bold')}
             </p>
           ) : null}
 
@@ -99,6 +106,6 @@ export function FeaturedNewsHero({ item, className }: FeaturedNewsHeroProps) {
           </div>
         </div>
       </div>
-    </section>
+    </Wrapper>
   );
 }

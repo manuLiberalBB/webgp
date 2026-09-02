@@ -34,7 +34,9 @@ import { resolveCompanyLogoGridItems } from '@/lib/contentful/company/resolveCom
 import type { GridSectionContext } from '@/lib/contentful/gridSection/buildGridSectionContext';
 import {
   isGroupWideCommitmentLayout,
+  isMiningCardsSection,
   resolveImageOverlayGridSectionProps,
+  resolveLogoGridDesktopColumns,
 } from '@/lib/contentful/gridSection/gridSectionHelpers';
 import {
   GRID_SECTION_VARIANTS,
@@ -94,6 +96,7 @@ export const gridSectionRenderers: Record<
     <LogoGridSection
       title={ctx.title}
       items={resolveCompanyLogoGridItems(ctx.items)}
+      desktopColumns={resolveLogoGridDesktopColumns(ctx.title)}
     />
   ),
 
@@ -250,6 +253,7 @@ export const gridSectionRenderers: Record<
       title={ctx.title}
       subtitle={ctx.subtitle}
       cards={ctx.cards}
+      className={isMiningCardsSection(ctx.contentfulName) ? 'bg-white' : undefined}
     />
   ),
 

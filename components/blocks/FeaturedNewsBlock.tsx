@@ -40,6 +40,7 @@ export const FeaturedNewsBlock: BlockComponent = ({
   fields,
   pagePath,
   searchParams,
+  hideFeaturedNewsHero = false,
 }) => {
   const { news } = fields as FeaturedNewsFields;
 
@@ -97,6 +98,14 @@ export const FeaturedNewsBlock: BlockComponent = ({
   }
 
   if (items.length === 0) return null;
+
+  if (hideFeaturedNewsHero) {
+    const restItems = items.slice(1);
+
+    if (restItems.length === 0) return null;
+
+    return <FeaturedNewsSection items={restItems} />;
+  }
 
   const [heroEntry, ...restEntries] = mappedEntries;
   const heroItem = withHeroSubtitle(

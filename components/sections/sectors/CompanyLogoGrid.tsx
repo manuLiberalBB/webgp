@@ -6,6 +6,12 @@ import { cn } from '@/lib/utils';
 type CompanyLogoGridProps = {
   items: CarouselItem[];
   className?: string;
+  desktopColumns?: 3 | 4;
+};
+
+const DESKTOP_COLUMN_WIDTH: Record<3 | 4, string> = {
+  3: 'md:w-[calc(33.333%-1rem)]',
+  4: 'md:w-[calc(25%-1.125rem)]',
 };
 
 export function CompanyLogoCard({ item }: { item: CarouselItem }) {
@@ -43,6 +49,7 @@ export function CompanyLogoCard({ item }: { item: CarouselItem }) {
 export function CompanyLogoCardGrid({
   items,
   className,
+  desktopColumns = 4,
 }: CompanyLogoGridProps) {
   if (items.length === 0) return null;
 
@@ -57,7 +64,10 @@ export function CompanyLogoCardGrid({
       {items.map((item) => (
         <div
           key={item.id}
-          className="w-[calc(50%-0.375rem)] min-w-0 md:w-[calc(25%-1.125rem)]"
+          className={cn(
+            'w-[calc(50%-0.375rem)] min-w-0',
+            DESKTOP_COLUMN_WIDTH[desktopColumns],
+          )}
         >
           <CompanyLogoCard item={item} />
         </div>
@@ -66,6 +76,16 @@ export function CompanyLogoCardGrid({
   );
 }
 
-export function CompanyLogoGrid({ items, className }: CompanyLogoGridProps) {
-  return <CompanyLogoCardGrid items={items} className={className} />;
+export function CompanyLogoGrid({
+  items,
+  className,
+  desktopColumns,
+}: CompanyLogoGridProps) {
+  return (
+    <CompanyLogoCardGrid
+      items={items}
+      className={className}
+      desktopColumns={desktopColumns}
+    />
+  );
 }

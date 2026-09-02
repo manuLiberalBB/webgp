@@ -4,6 +4,8 @@ import { Suspense } from 'react';
 
 import { AfterHeroSectionWrap } from '@/components/layout/AfterHeroSectionWrap';
 import { PageContentReady } from '@/components/layout/PageLoadCoordinator';
+import { renderBannerHeroFooter } from '@/components/blocks/banner/renderBannerHeroFooter';
+import { HomeHeroCarouselSection } from '@/components/home/HomeHeroCarouselSection';
 
 import { AllNewsSectionWithFetch } from '@/components/news/AllNewsSectionWithFetch';
 import { NewsResultsLoading } from '@/components/news/NewsResultsLoading';
@@ -39,6 +41,7 @@ import {
   getPageYouMayAlsoLikeConfig,
   shouldSkipCmsYouMayAlsoLikeGridSection,
 } from '@/lib/news/pageYouMayAlsoLikeConfig';
+import { buildHomeHeroCarouselPlan } from '@/lib/home/buildHomeHeroCarouselPlan';
 
 type PageRendererProps = {
   content?: Entry[];
@@ -63,6 +66,7 @@ function renderBlock(
   pagePath?: string[],
   searchParams?: Record<string, string | string[] | undefined>,
   isAboveFold = false,
+  extraProps: Partial<BlockComponentProps> = {},
 ) {
   const contentTypeId = entry.sys.contentType?.sys.id;
   if (!contentTypeId) return null;
@@ -89,6 +93,7 @@ function renderBlock(
     pagePath,
     searchParams,
     isAboveFold,
+    ...extraProps,
   };
 
   return <Block key={entry.sys.id} {...props} />;
@@ -140,6 +145,8 @@ export function PageRenderer({
   };
 
   const pageYouMayAlsoLikeConfig = getPageYouMayAlsoLikeConfig(pagePath);
+  const homeHeroCarouselPlan = buildHomeHeroCarouselPlan(contentToRender, pagePath);
+  let homeHeroCarouselRendered = false;
 
   for (let index = 0; index < contentToRender.length; index += 1) {
     const entry = contentToRender[index];
@@ -218,6 +225,45 @@ export function PageRenderer({
               </div>
             </div>
           </section>,
+          entry.sys.id,
+        );
+        continue;
+      }
+    }
+
+    if (homeHeroCarouselPlan) {
+      if (
+        !homeHeroCarouselRendered &&
+        index === homeHeroCarouselPlan.carouselInsertIndex
+      ) {
+        pushBlock(
+          <HomeHeroCarouselSection
+            featuredNewsHeroItem={homeHeroCarouselPlan.featuredNewsHeroItem}
+            bannerContext={homeHeroCarouselPlan.bannerContext}
+          />,
+          'home-hero-carousel',
+          true,
+        );
+        homeHeroCarouselRendered = true;
+      }
+
+      if (index === homeHeroCarouselPlan.bannerIndex) {
+        const bannerFooter = renderBannerHeroFooter(
+          homeHeroCarouselPlan.bannerContext,
+        );
+
+        if (bannerFooter) {
+          pushBlock(bannerFooter, `${entry.sys.id}-banner-footer`);
+        }
+
+        continue;
+      }
+
+      if (index === homeHeroCarouselPlan.featuredNewsIndex) {
+        pushBlock(
+          renderBlock(entry, pagePath, searchParams, false, {
+            hideFeaturedNewsHero: true,
+          }),
           entry.sys.id,
         );
         continue;

@@ -5,7 +5,7 @@ import type { Entry } from 'contentful';
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';
 import { resolveNavLink } from '@/lib/contentful/resolveNavLink';
 import type { CardFields } from '@/lib/contentful/types/card';
-import { CARD_IMAGE_OVERLAY_GRADIENT } from '@/lib/ui/cardImageOverlayGradient';
+import { IMAGE_OVERLAY_GRID_GRADIENT } from '@/lib/ui/cardImageOverlayGradient';
 import { cn } from '@/lib/utils';
 
 import { FoundationAreaCardDescription } from '@/components/sections/foundations/FoundationAreaCardDescription';
@@ -67,7 +67,7 @@ export function GridOverlayCard({
       <div
         aria-hidden
         className="absolute inset-0 rounded-lg"
-        style={{ background: CARD_IMAGE_OVERLAY_GRADIENT }}
+        style={{ background: IMAGE_OVERLAY_GRID_GRADIENT }}
       />
 
       <div className="relative z-10 flex h-full min-h-0 w-full min-w-0 flex-col">
