@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils';
 
 import { HomeHeroCarouselDots } from './HomeHeroCarouselDots';
 
-const AUTO_ADVANCE_MS = 6000;
+const AUTO_ADVANCE_MS = 4000;
 
 type HomeHeroCarouselProps = {
   slides: ReactNode[];
