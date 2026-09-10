@@ -11,7 +11,7 @@ export type SectorFields = {
   name: string;
   companies: Entry[];
   description: string;
-  icon: Asset;
+  icon?: Asset;
   image: Asset;
   /** Entry `link` */
   cta: Entry | LinkEntry;

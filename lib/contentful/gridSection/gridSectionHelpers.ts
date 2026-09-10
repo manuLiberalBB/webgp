@@ -49,10 +49,14 @@ function isRegionalPresenceSection(title?: string, cardsCount?: number): boolean
   return cardsCount === 5;
 }
 
-function isNewsListingImpactSection(pagePath?: string[], title?: string): boolean {
-  if (!isNewsListingPage(pagePath) || !title?.trim()) return false;
+function isImpactGenerationSection(title?: string): boolean {
+  if (!title?.trim()) return false;
 
   return normalizeSectionLabel(title).includes('GENERAMOS IMPACTO');
+}
+
+function isNewsListingImpactSection(pagePath?: string[], title?: string): boolean {
+  return isNewsListingPage(pagePath) && isImpactGenerationSection(title);
 }
 
 function isCommunityCommitmentSection(title?: string): boolean {
@@ -101,6 +105,8 @@ export function resolveImageOverlayGridSectionProps({
 }) {
   const isRegionalPresence = isRegionalPresenceSection(title, cards.length);
   const isFundacionesAreasAccion = isFoundationAreasSection(title, subtitle);
+  const isCommunityCommitment = isCommunityCommitmentSection(title);
+  const isImpactGeneration = isImpactGenerationSection(title);
   const hasExpandableDescription = hasExpandableImageOverlayDescription(
     pagePath,
     title,
@@ -129,6 +135,12 @@ export function resolveImageOverlayGridSectionProps({
     className: isFundacionesAreasAccion ? 'pt-0 md:pt-0' : undefined,
     cardVariant: isFundacionesAreasAccion ? ('foundationArea' as const) : undefined,
     expandableDescription: hasExpandableDescription,
+    cardContentDensity:
+      isCommunityCommitment ||
+      isImpactGeneration ||
+      isRegionalPresenceTitle(title)
+        ? ('compact' as const)
+        : undefined,
   };
 }
 

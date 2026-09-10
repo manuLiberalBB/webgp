@@ -46,16 +46,18 @@ function SectorsGridCardContent({ item }: { item: SectorsGridItem }) {
       <div className="flex flex-1 flex-col p-6">
         <div className="flex flex-1 flex-col justify-between">
           <div className="flex flex-col">
-            <div className="mb-4 flex size-12 items-center justify-center rounded bg-[rgba(21,93,252,0.1)]">
-              <div className="relative size-6">
-                <Image
-                  src={item.iconUrl}
-                  alt={item.iconAlt}
-                  fill
-                  className="object-contain"
-                />
+            {item.iconUrl ? (
+              <div className="mb-4 flex size-12 items-center justify-center rounded bg-[rgba(21,93,252,0.1)]">
+                <div className="relative size-6">
+                  <Image
+                    src={item.iconUrl}
+                    alt={item.iconAlt ?? item.title}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
               </div>
-            </div>
+            ) : null}
 
             <h3 className="mb-2 text-lg font-semibold leading-6 text-[#123476]">
               {item.title}

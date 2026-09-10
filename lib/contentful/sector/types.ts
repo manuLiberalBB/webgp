@@ -28,8 +28,8 @@ export type SectorsGridItem = {
   description: string;
   imageUrl: string;
   imageAlt: string;
-  iconUrl: string;
-  iconAlt: string;
+  iconUrl?: string;
+  iconAlt?: string;
   href?: string;
   linkLabel?: string;
   external?: boolean;

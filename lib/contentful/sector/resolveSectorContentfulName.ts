@@ -1,6 +1,15 @@
-import { getSectorSlug } from './isSectorPage';
+import {
+  FINANCIAL_SERVICES_SECTOR_SLUG,
+  getSectorSlug,
+  LEGACY_FINANCIAL_SERVICES_SECTOR_SLUG,
+} from './isSectorPage';
 
 const SECTOR_TEST_CONTENTFUL_NAME = 'SECTOR - TEST';
+
+const SECTOR_SLUG_CONTENTFUL_NAME_OVERRIDES: Record<string, string> = {
+  [FINANCIAL_SERVICES_SECTOR_SLUG]: 'SECTOR - Servicios Financieros',
+  [LEGACY_FINANCIAL_SERVICES_SECTOR_SLUG]: 'SECTOR - Servicios Financieros',
+};
 
 function slugToSectorContentfulName(slug: string): string {
   const normalized = slug
@@ -19,5 +28,5 @@ export function resolveSectorContentfulName(pagePath?: string[]): string {
   const slug = getSectorSlug(pagePath);
   if (!slug) return SECTOR_TEST_CONTENTFUL_NAME;
 
-  return slugToSectorContentfulName(slug);
+  return SECTOR_SLUG_CONTENTFUL_NAME_OVERRIDES[slug] ?? slugToSectorContentfulName(slug);
 }

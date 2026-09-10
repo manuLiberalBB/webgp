@@ -16,6 +16,7 @@ type GridOverlayCardProps = {
   className?: string;
   variant?: 'default' | 'foundationArea';
   expandableDescription?: boolean;
+  contentDensity?: 'default' | 'compact';
 };
 
 function resolveCardLink(url?: Entry[]) {
@@ -29,6 +30,7 @@ export function GridOverlayCard({
   className,
   variant = 'default',
   expandableDescription = false,
+  contentDensity = 'default',
 }: GridOverlayCardProps) {
   const imageUrl = fields.image ? getAssetUrl(fields.image) : undefined;
   const link = resolveCardLink(fields.url);
@@ -37,19 +39,31 @@ export function GridOverlayCard({
       ? fields.image.fields.title
       : undefined) ?? fields.title ?? '';
   const isFoundationArea = variant === 'foundationArea';
+  const isExpandableDescription = isFoundationArea || expandableDescription;
+  const isCompactContent = contentDensity === 'compact';
+  const descriptionMaxLines = isCompactContent ? 3 : 5;
+  const descriptionSlotMinHeight = isExpandableDescription
+    ? isCompactContent
+      ? 'min-h-[6.25rem]'
+      : 'min-h-[9.5rem]'
+    : 'min-h-[4.5rem]';
 
   if (!imageUrl) return null;
 
   const descriptionContent = fields.description?.trim() ? (
-    isFoundationArea || expandableDescription ? (
-      <FoundationAreaCardDescription text={fields.description.trim()} />
+    isExpandableDescription ? (
+      <FoundationAreaCardDescription
+        text={fields.description.trim()}
+        reserveExpandActionSpace
+        maxLines={descriptionMaxLines}
+      />
     ) : (
-      <p className="min-h-[4.5rem] line-clamp-3 text-base leading-6 text-white">
+      <p className="line-clamp-3 text-base leading-6 text-white">
         {fields.description}
       </p>
     )
   ) : (
-    <p aria-hidden className="text-base leading-6 text-white">
+    <p aria-hidden className="line-clamp-3 text-base leading-6 text-white">
       {'\u00A0'}
     </p>
   );
@@ -81,25 +95,26 @@ export function GridOverlayCard({
         ) : null}
 
         <div className="mt-auto flex w-full min-w-0 flex-col gap-1.5">
-          {fields.title ? (
-            <h3
-              className={cn(
-                'text-xl font-bold leading-6 text-white',
-                !isFoundationArea && 'line-clamp-2 min-h-[3rem]',
-              )}
-            >
-              {fields.title}
-            </h3>
-          ) : null}
+          <h3
+            className={cn(
+              'line-clamp-2 text-xl font-bold leading-6 text-white',
+              isCompactContent ? 'min-h-[1.5rem]' : 'min-h-[3rem]',
+            )}
+          >
+            {fields.title?.trim() || '\u00A0'}
+          </h3>
 
-          {descriptionContent}
+          <div className={cn('w-full min-w-0', descriptionSlotMinHeight)}>
+            {descriptionContent}
+          </div>
         </div>
       </div>
     </>
   );
 
   const cardClassName = cn(
-    'group relative flex h-full w-full min-h-[320px] flex-col overflow-hidden rounded-lg p-5 md:min-h-[381px]',
+    'group relative flex h-full w-full min-h-[320px] flex-col overflow-hidden rounded-lg md:min-h-[381px]',
+    isCompactContent ? 'px-5 pt-5 pb-4' : 'p-5',
     link && 'cursor-pointer',
     className,
   );

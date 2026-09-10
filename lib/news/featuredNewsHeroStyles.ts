@@ -8,4 +8,4 @@ export const FEATURED_NEWS_HERO_CONTENT_CLASS =
   'relative z-10 px-6 pb-12 pt-10 md:px-layout-x md:pb-16 md:pt-14 lg:pt-16';
 
 export const FEATURED_NEWS_HERO_WRAPPER_CLASS =
-  `relative flex w-full flex-col overflow-hidden ${FEATURED_NEWS_HERO_MIN_HEIGHT_CLASS}`;
+  `relative flex h-full w-full flex-col overflow-hidden ${FEATURED_NEWS_HERO_MIN_HEIGHT_CLASS}`;

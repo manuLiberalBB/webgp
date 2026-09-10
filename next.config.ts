@@ -22,6 +22,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/sectores/banca',
+        destination: '/sectores/servicios-financieros',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     const allowIndexing = process.env.ALLOW_INDEXING === 'true';
 

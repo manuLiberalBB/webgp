@@ -250,6 +250,7 @@ export function PageRenderer({
       if (index === homeHeroCarouselPlan.bannerIndex) {
         const bannerFooter = renderBannerHeroFooter(
           homeHeroCarouselPlan.bannerContext,
+          { hideCta: true },
         );
 
         if (bannerFooter) {

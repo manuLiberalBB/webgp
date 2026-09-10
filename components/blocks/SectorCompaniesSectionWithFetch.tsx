@@ -2,7 +2,7 @@ import type { Entry } from 'contentful';
 
 import { SectorCompaniesSection } from '@/components/sections/sectors/SectorCompaniesSection';
 import { fetchSectorCompaniesByPagePath } from '@/lib/contentful/sector/fetchSectorCompaniesByPagePath';
-import { isBankingSectorPage } from '@/lib/contentful/sector/isSectorPage';
+import { isFinancialServicesSectorPage } from '@/lib/contentful/sector/isSectorPage';
 import {
   resolveSectorCompaniesFromItems,
   type SectorCompaniesLayout,
@@ -18,7 +18,7 @@ type SectorCompaniesSectionWithFetchProps = {
 };
 
 function resolveSectorCompaniesLayout(pagePath?: string[]): SectorCompaniesLayout {
-  return isBankingSectorPage(pagePath) ? 'banking' : 'feature';
+  return isFinancialServicesSectorPage(pagePath) ? 'banking' : 'feature';
 }
 
 export async function SectorCompaniesSectionWithFetch({

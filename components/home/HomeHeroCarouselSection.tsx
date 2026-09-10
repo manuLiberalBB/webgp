@@ -27,6 +27,11 @@ export function HomeHeroCarouselSection({
       )}
       imageUrl={bannerContext.imageUrl}
       imageAlt={bannerContext.imageAlt}
+      logoUrl={bannerContext.logoUrl}
+      logoAlt={bannerContext.logoAlt}
+      logoWidth={bannerContext.logoWidth}
+      logoHeight={bannerContext.logoHeight}
+      urlList={bannerContext.urlList}
       pagePath={bannerContext.pagePath}
       id={bannerContext.sectionId}
       priority={bannerContext.isAboveFold}

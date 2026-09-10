@@ -6,7 +6,7 @@ export const CARD_IMAGE_OVERLAY_GRADIENT =
 export const IMAGE_OVERLAY_GRID_GRADIENT =
   'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 1.44%, rgba(0, 0, 0, 0.50) 55.59%, #000 95.73%)';
 
-/** Overlay para cards de empresas bancarias del sector. */
+/** Overlay para cards de empresas del sector Servicios Financieros. */
 export const SECTOR_BANKING_COMPANY_OVERLAY_GRADIENT =
   'linear-gradient(185deg, rgba(0, 0, 0, 0.00) 22.98%, rgba(0, 0, 0, 0.60) 42.05%, rgba(0, 0, 0, 0.60) 71.61%)';
 

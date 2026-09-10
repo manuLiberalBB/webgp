@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils';
 
 import { HomeHeroCarouselDots } from './HomeHeroCarouselDots';
 
-const AUTO_ADVANCE_MS = 4000;
+const AUTO_ADVANCE_MS = 6000;
 
 type HomeHeroCarouselProps = {
   slides: ReactNode[];
@@ -22,9 +22,7 @@ type HomeHeroCarouselProps = {
 export function HomeHeroCarousel({ slides, className }: HomeHeroCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [reduceMotion, setReduceMotion] = useState(false);
-  const [trackHeight, setTrackHeight] = useState<number | undefined>(undefined);
   const intervalRef = useRef<number | undefined>(undefined);
-  const slideRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   const slideCount = slides.length;
 
@@ -51,25 +49,6 @@ export function HomeHeroCarousel({ slides, className }: HomeHeroCarouselProps) {
       motionMedia.removeEventListener('change', updateMotion);
     };
   }, []);
-
-  useEffect(() => {
-    const activeSlide = slideRefs.current[activeIndex];
-
-    if (!activeSlide) return;
-
-    const updateHeight = () => {
-      setTrackHeight(activeSlide.offsetHeight);
-    };
-
-    updateHeight();
-
-    const resizeObserver = new ResizeObserver(updateHeight);
-    resizeObserver.observe(activeSlide);
-
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, [activeIndex, slides]);
 
   useEffect(() => {
     if (slideCount <= 1 || reduceMotion) return;
@@ -114,26 +93,17 @@ export function HomeHeroCarousel({ slides, className }: HomeHeroCarouselProps) {
       onFocusCapture={pauseAutoAdvance}
       onBlurCapture={resumeAutoAdvance}
     >
-      <div
-        className={cn(
-          'relative overflow-hidden transition-[height] duration-500',
-          !reduceMotion && 'ease-in-out',
-        )}
-        style={trackHeight ? { height: trackHeight } : undefined}
-      >
+      <div className="grid">
         {slides.map((slide, index) => (
           <div
             key={index}
-            ref={(node) => {
-              slideRefs.current[index] = node;
-            }}
             role="tabpanel"
             aria-hidden={index !== activeIndex}
             className={cn(
-              'transition-opacity duration-500',
+              'col-start-1 row-start-1 h-full min-h-0 transition-opacity duration-500',
               index === activeIndex
-                ? 'relative z-10 opacity-100'
-                : 'pointer-events-none absolute inset-x-0 top-0 z-0 opacity-0',
+                ? 'z-10 opacity-100'
+                : 'pointer-events-none z-0 opacity-0',
               !reduceMotion && index !== activeIndex && 'invisible',
             )}
           >

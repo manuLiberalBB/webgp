@@ -3,6 +3,7 @@ import type { Document } from '@contentful/rich-text-types';
 
 import type { BlockComponentProps } from '@/components/blocks/registry';
 import { resolveBannerCardItems } from '@/lib/contentful/banner/resolveBannerCardItems';
+import { getAssetDimensions } from '@/lib/contentful/getAssetDimensions';
 import { getAssetUrl } from '@/lib/contentful/getAssetUrl';
 import { resolveStatisticItems } from '@/lib/contentful/statistic/resolveStatisticItems';
 import type { CardFields } from '@/lib/contentful/types/card';
@@ -30,6 +31,8 @@ export type BannerContext = {
   imageAlt: string;
   logoUrl?: string;
   logoAlt: string;
+  logoWidth?: number;
+  logoHeight?: number;
   statistics: StatisticItem[];
   qualiaCards: CardFields[];
   compactMobile: boolean;
@@ -76,6 +79,9 @@ export function buildBannerContext({
   const logoAlt =
     (typeof logo?.fields.title === 'string' ? logo.fields.title : undefined) ??
     'Qualia Seguros';
+  const logoDimensions = logo
+    ? getAssetDimensions(logo, { width: 250, height: 55 })
+    : undefined;
 
   return {
     fields: bannerFields,
@@ -93,6 +99,8 @@ export function buildBannerContext({
     imageAlt,
     logoUrl,
     logoAlt,
+    logoWidth: logoDimensions?.width,
+    logoHeight: logoDimensions?.height,
     statistics: resolveStatisticItems(items),
     qualiaCards: resolveBannerCardItems(items),
     compactMobile: isCompactMobileHeroPage(pagePath),

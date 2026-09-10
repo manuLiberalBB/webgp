@@ -14,18 +14,19 @@ export function mapSectorToGridItem(
   fields: SectorFields,
 ): SectorsGridItem | null {
   const imageUrl = getAssetUrl(fields.image);
-  const iconUrl = getAssetUrl(fields.icon);
+  const iconUrl = fields.icon ? getAssetUrl(fields.icon) : undefined;
 
-  if (!imageUrl || !iconUrl || !fields.description || !fields.name) return null;
+  if (!imageUrl || !fields.description || !fields.name) return null;
 
   const imageAlt =
     (typeof fields.image?.fields.title === 'string'
       ? fields.image.fields.title
       : undefined) ?? fields.name;
-  const iconAlt =
-    (typeof fields.icon?.fields.title === 'string'
-      ? fields.icon.fields.title
-      : undefined) ?? fields.name;
+  const iconAlt = iconUrl
+    ? ((typeof fields.icon?.fields.title === 'string'
+        ? fields.icon.fields.title
+        : undefined) ?? fields.name)
+    : undefined;
   const cta = fields.cta ? resolveNavLink(fields.cta as Entry) : null;
   const href = resolveSectorPagePath(fields);
 
